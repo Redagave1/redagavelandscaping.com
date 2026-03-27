@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<title>Service Area | Red Agave Landscaping Austin TX</title>
+<meta name="description" content="Red Agave Landscaping serves Austin, Westlake Hills, Cedar Park, Round Rock, Dripping Springs, Bee Cave, Georgetown, Buda and Kyle TX. Call 512-695-7566">
+<style>
+:root{--gold:#c9a84c;--gold-light:#e8c96a;--gold-glow:rgba(201,168,76,0.5);--dark:#080b06;--dark2:#0d120a;--dark3:#0a1208;--cream:#f0ead6;--cream60:rgba(240,234,214,0.6);--cream20:rgba(240,234,214,0.1);--teal:#5a9090;--pink:#e87cb0;--pink-glow:rgba(232,124,176,0.6);--blue-glow:rgba(160,200,255,0.5);--ease:cubic-bezier(0.16,1,0.3,1);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{overflow-x:hidden}body{background:var(--dark);color:var(--cream);font-family:'Montserrat',sans-serif;overflow-x:hidden;cursor:none}img{display:block;object-fit:cover}a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--gold)}
+#cur{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:difference;transition:width .25s,height .25s}
+#cur-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,168,76,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .12s}
+#nav{position:fixed;top:0;left:0;right:0;z-index:800;padding:0 60px;transition:all .5s var(--ease)}
+#nav.scrolled{background:rgba(8,11,6,0.92);backdrop-filter:blur(24px);border-bottom:1px solid rgba(201,168,76,0.12);box-shadow:0 4px 40px rgba(0,0,0,0.5)}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;height:78px;max-width:1440px;margin:0 auto}
+.nav-logo{font-family:'Bebas Neue',cursive;font-size:30px;letter-spacing:5px;color:var(--gold);text-shadow:0 0 20px rgba(201,168,76,0.3)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--cream60);transition:color .3s;position:relative;padding-bottom:3px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease)}
+.nav-links a:hover,.nav-links a.active{color:var(--gold)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);transform-origin:left}
+.nav-r{display:flex;align-items:center;gap:20px}
+.nav-phone{font-size:10px;letter-spacing:1.5px;color:rgba(240,234,214,0.3)}
+.nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:9px 24px;font-size:9px;letter-spacing:3px;text-transform:uppercase;cursor:none;font-family:'Montserrat',sans-serif;transition:all .3s;position:relative;overflow:hidden}
+.nav-cta::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateY(101%);transition:transform .35s var(--ease)}
+.nav-cta span{position:relative;z-index:1;transition:color .35s}
+.nav-cta:hover::before{transform:translateY(0)}.nav-cta:hover span{color:var(--dark)}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none}
+.hbg span{display:block;width:26px;height:1.5px;background:var(--cream);transition:all .4s var(--ease)}
+.hbg.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}.hbg.open span:nth-child(2){opacity:0}.hbg.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+#mob-menu{position:fixed;inset:0;z-index:790;background:rgba(8,11,6,0.97);backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;clip-path:circle(0% at calc(100% - 60px) 39px);transition:clip-path .7s var(--ease);pointer-events:none}
+#mob-menu.open{clip-path:circle(150% at calc(100% - 60px) 39px);pointer-events:all}
+#mob-menu a{font-family:'Bebas Neue',cursive;font-size:clamp(40px,8vw,68px);letter-spacing:4px;color:var(--cream60);transition:color .3s}
+#mob-menu a:hover{color:var(--gold);text-shadow:0 0 30px var(--gold-glow)}
+.btn-p{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--dark);padding:14px 40px;font-size:9px;letter-spacing:3.5px;text-transform:uppercase;font-weight:700;font-family:'Montserrat',sans-serif;cursor:none;border:none;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;box-shadow:0 0 20px rgba(201,168,76,0.25)}
+.btn-p::before{content:'';position:absolute;inset:0;background:var(--gold-light);transform:translateX(-101%);transition:transform .4s var(--ease)}
+.btn-p:hover{transform:translateY(-2px)}.btn-p:hover::before{transform:translateX(0)}.btn-p span{position:relative;z-index:1}
+.btn-s{display:inline-flex;align-items:center;gap:8px;background:rgba(90,144,144,0.75);color:#fff;padding:14px 40px;font-size:9px;letter-spacing:3.5px;text-transform:uppercase;font-family:'Montserrat',sans-serif;border-radius:60px;cursor:none;backdrop-filter:blur(10px);border:1px solid rgba(90,144,144,0.4);transition:all .35s var(--ease)}
+.btn-s:hover{background:var(--teal);transform:translateY(-2px)}
+.sec{padding:110px 60px}.s-eye{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px;text-shadow:0 0 12px rgba(201,168,76,0.3)}.s-eye::before{content:'';width:30px;height:1px;background:var(--gold);box-shadow:0 0 8px var(--gold-glow)}
+.s-title{font-family:'Bebas Neue',cursive;font-size:clamp(52px,6.5vw,92px);line-height:.88}
+.s-title .pink{color:var(--pink);text-shadow:0 0 30px var(--pink-glow),0 0 60px rgba(232,124,176,0.25)}
+.s-title .gold{color:var(--gold);text-shadow:0 0 30px var(--gold-glow)}
+.s-title .dim{-webkit-text-stroke:1px rgba(240,234,214,0.18);color:transparent}
+.rev{opacity:0;transform:translateY(36px);will-change:opacity,transform}.rev-l{opacity:0;transform:translateX(-36px);will-change:opacity,transform}
+footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,168,76,0.07)}
+.ft-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:44px;margin-bottom:56px}
+.ft-brand{font-family:'Bebas Neue',cursive;font-size:36px;letter-spacing:6px;color:var(--gold);text-shadow:0 0 20px rgba(201,168,76,0.2);margin-bottom:10px}
+.ft-tag{font-size:10px;color:rgba(240,234,214,0.16);letter-spacing:2px;text-transform:uppercase;line-height:1.9}
+.ft-info{margin-top:20px;font-size:11px;color:rgba(240,234,214,0.25);line-height:2}.ft-info a{color:var(--gold)}
+.ft-ct{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,234,214,0.28);margin-bottom:18px;display:block}
+.ft-col a{display:block;font-size:11px;color:rgba(240,234,214,0.2);margin-bottom:10px;transition:color .2s,transform .2s}
+.ft-col a:hover{color:var(--gold);transform:translateX(4px)}
+.ft-bot{border-top:1px solid rgba(240,234,214,0.04);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.ft-copy{font-size:9px;color:rgba(240,234,214,0.12);letter-spacing:1px}
+.ft-phone{font-family:'Bebas Neue',cursive;font-size:22px;color:rgba(201,168,76,0.25);letter-spacing:3px}
+@media(max-width:1024px){#nav{padding:0 32px}.sec{padding:72px 32px}.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){body{cursor:auto}#cur,#cur-ring{display:none}.hbg{display:flex}.nav-links,.nav-r{display:none}.ft-grid{grid-template-columns:1fr}footer{padding:60px 24px 28px}}
+.ph{position:relative;height:55vh;min-height:420px;display:flex;align-items:flex-end;background-size:cover;background-position:center;overflow:hidden;margin-top:78px}
+.ph-ov{position:absolute;inset:0;background:linear-gradient(130deg,rgba(8,11,6,0.88) 0%,rgba(8,11,6,0.55) 60%,rgba(8,11,6,0.78) 100%)}
+.ph-inner{position:relative;z-index:1;padding:0 60px 60px;max-width:900px}
+.ph-title{font-family:'Bebas Neue',cursive;font-size:clamp(64px,9vw,128px);line-height:.85;color:var(--cream);margin:12px 0 16px}
+.ph-sub{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,234,214,0.45);line-height:2;max-width:560px;border-left:1px solid rgba(201,168,76,0.4);padding-left:20px;font-weight:300;font-style:italic}
+@media(max-width:680px){.ph-inner{padding:0 24px 40px}.ph-title{font-size:56px}}
+.cta-strip{background:linear-gradient(135deg,var(--dark3),var(--dark2));padding:80px 60px;text-align:center;border-top:1px solid rgba(201,168,76,0.1)}
+.cta-strip-inner{max-width:700px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:28px}
+.cta-strip-title{font-family:'Bebas Neue',cursive;font-size:clamp(40px,5vw,64px);color:var(--gold);text-shadow:0 0 40px rgba(201,168,76,0.3);line-height:.9}
+@media(max-width:680px){.cta-strip{padding:60px 24px}}
+.area-intro{padding:80px 60px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.area-intro-title{font-family:'Bebas Neue',cursive;font-size:clamp(52px,6vw,88px);line-height:.88;color:var(--cream)}
+.area-intro-title span{color:var(--gold);text-shadow:0 0 30px var(--gold-glow)}
+.area-intro-body{font-size:13px;color:rgba(240,234,214,0.5);line-height:2;font-weight:300}
+.area-intro-body p{margin-bottom:16px}
+.area-map{background:var(--dark3);padding:20px 60px 60px}
+.area-map-box{background:linear-gradient(135deg,rgba(201,168,76,0.04),rgba(90,144,144,0.04));border:1px solid rgba(201,168,76,0.08);height:400px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.area-map-placeholder{text-align:center}
+.area-map-icon{font-size:48px;margin-bottom:12px;opacity:.3}
+.area-map-text{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:3px;color:rgba(201,168,76,0.3)}
+.area-map-sub{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,234,214,0.2);margin-top:8px}
+/* Decorative city dots */
+.city-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold-glow);animation:pulse 2s ease-in-out infinite}
+.city-dot::after{content:attr(data-city);position:absolute;left:14px;top:-4px;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.7);white-space:nowrap}
+@keyframes pulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+.area-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(0,0,0,0.4);padding:0 0 0}
+.area-card{background:var(--dark2);padding:40px 32px;border-top:2px solid transparent;transition:border-color .4s,background .4s;position:relative}
+.area-card:hover{border-top-color:var(--gold);background:var(--dark3)}
+.area-card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.area-name{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:1px;color:var(--cream);line-height:1}
+.area-status{font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(201,168,76,0.6);background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.15);padding:4px 10px;margin-top:4px;white-space:nowrap}
+.area-desc{font-size:11px;color:rgba(240,234,214,0.38);line-height:1.9;margin-bottom:16px;font-weight:300}
+.area-time{font-size:9px;letter-spacing:1px;color:rgba(240,234,214,0.3);margin-bottom:16px}
+.area-time strong{color:var(--gold)}
+.area-time-icon{margin-right:4px}
+.area-link{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:inline-block;transition:transform .3s;opacity:.7}
+.area-link:hover{transform:translateX(4px);opacity:1}
+.area-note{padding:60px;text-align:center;background:var(--dark3);border-top:1px solid var(--cream20)}
+.area-note-title{font-family:'Bebas Neue',cursive;font-size:42px;color:var(--cream);margin-bottom:12px}
+.area-note-text{font-size:12px;color:rgba(240,234,214,0.4);line-height:2;max-width:600px;margin:0 auto;font-weight:300}
+@media(max-width:1200px){.area-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:1024px){.area-intro{grid-template-columns:1fr;gap:32px;padding:60px 32px}.area-map{padding:0 32px 40px}}
+@media(max-width:680px){.area-grid{grid-template-columns:1fr}.area-note{padding:40px 24px}}
+</style></head>
+<body><div id="cur"></div><div id="cur-ring"></div>
+<div id="mob-menu">
+  <a href="index.html">Home</a><a href="services.html">Services</a><a href="featured.html">Featured</a><a href="media.html">Media</a><a href="service-area.html">Service Area</a><a href="#contact">Contact</a>
+</div>
+<nav id="nav"><div class="nav-inner">
+  <a href="index.html" class="nav-logo">Red Agave</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="featured.html">Featured</a></li>
+    <li><a href="media.html">Media</a></li>
+    <li><a href="service-area.html">Service Area</a></li>
+  </ul>
+  <div class="nav-r"><span class="nav-phone">512-695-7566</span><button class="nav-cta" id="nav-quote-btn"><span>Get a Quote</span></button></div>
+  <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
+</div></nav>
+<section class="ph" style="background-image:url('https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-7237-Large.webp')">
+  <div class="ph-ov"></div>
+  <div class="ph-inner">
+    <div class="s-eye" style="opacity:1;transform:none">Where We Work</div>
+    <h1 class="ph-title">Service Area</h1>
+    <p class="ph-sub">We bring Austin's finest landscaping to the entire Greater Austin metro and Texas Hill Country.</p>
+  </div>
+</section>
+<div class="area-intro">
+  <div>
+    <div class="s-eye rev">Our Coverage</div>
+    <h2 class="area-intro-title rev">Austin &amp; the <span>Hill Country</span></h2>
+  </div>
+  <div class="area-intro-body rev">
+    <p>Red Agave Landscaping is based in Austin, TX and serves a wide radius across the Greater Austin metro area and into the Texas Hill Country. We bring the same luxury standard to every project, regardless of location.</p>
+    <p>Don't see your city listed? Give us a call at <a href="tel:5126957566" style="color:var(--gold)">512-695-7566</a> &mdash; we regularly take on projects outside our listed areas for the right project.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px">
+      <a href="tel:5126957566" class="btn-p" style="padding:12px 28px;font-size:8px"><span>Call Us</span></a>
+      <a href="index.html#contact" class="btn-s" style="padding:12px 28px;font-size:8px;border-radius:50px">Free Consultation</a>
+    </div>
+  </div>
+</div>
+
+<div class="area-map sec" style="padding-top:0">
+  <div class="area-map-box">
+    <!-- Decorative dots representing service areas -->
+    <div class="city-dot" data-city="Austin" style="left:47%;top:48%;animation-delay:0s"></div>
+    <div class="city-dot" data-city="Westlake" style="left:40%;top:50%;animation-delay:.4s"></div>
+    <div class="city-dot" data-city="Bee Cave" style="left:33%;top:53%;animation-delay:.8s"></div>
+    <div class="city-dot" data-city="Dripping Springs" style="left:25%;top:60%;animation-delay:1.2s"></div>
+    <div class="city-dot" data-city="Cedar Park" style="left:44%;top:32%;animation-delay:.6s"></div>
+    <div class="city-dot" data-city="Round Rock" style="left:50%;top:26%;animation-delay:1s"></div>
+    <div class="city-dot" data-city="Georgetown" style="left:52%;top:18%;animation-delay:1.4s"></div>
+    <div class="city-dot" data-city="Buda" style="left:48%;top:66%;animation-delay:1.6s"></div>
+    <div class="area-map-placeholder">
+      <div class="area-map-icon">&#128205;</div>
+      <div class="area-map-text">Greater Austin Service Area</div>
+      <div class="area-map-sub">Interactive map &mdash; embed Google Maps for full functionality</div>
+    </div>
+  </div>
+</div>
+
+<section style="padding:0">
+  <div class="area-grid">
+<div class="area-card rev">
+  <div class="area-card-header">
+    <div class="area-name">Austin</div>
+    <div class="area-status">Premier service</div>
+  </div>
+  <p class="area-desc">The heart of our operations. We've completed 300+ projects across Austin's diverse neighborhoods — from South Congress to Tarrytown to East Austin.</p>
+  <div class="area-time"><span class="area-time-icon">&#8987;</span> Travel time from Austin HQ: <strong>10–15 min response</strong></div>
+  <a href="index.html#contact" class="area-link">Request a Quote in Austin &#8594;</a>
+</div>
+<div class="area-card rev">
+  <div class="area-card-header">
+    <div class="area-name">Westlake Hills</div>
+    <div class="area-status">Hill Country expertise</div>
+  </div>
+  <p class="area-desc">One of our most active service areas. The hillside terrain calls for our specialty in terraced xeriscape, boulder features, and dramatic lighting.</p>
+  <div class="area-time"><span class="area-time-icon">&#8987;</span> Travel time from Austin HQ: <strong>15–20 min</strong></div>
+  <a href="index.html#contact" class="area-link">Request a Quote in Westlake Hills &#8594;</a>
+</div>
+<div class="area-card rev">
+  <div class="area-card-header">
+    <div class="area-name">Bee Cave</div>
+    <div class="area-status">Full service available</div>
+  </div>
+  <p class="area-desc">Rapid growth area with incredible opportunities for luxury outdoor living. We've built some of our most ambitious projects here.</p>
+  <div class="area-time"><span class="area-time-icon">&#8987;</span> Travel time from Austin HQ: <strong>20–25 min</strong></div>
+  <a href="index.html#contact" class="area-link">Request a Quote in Bee Cave &#8594;</a>
+</div>
+<div class="area-card rev">
+  <div class="area-card-header">
+    <div class="area-name">Dripping Springs</div>
+    <div class="area-status">Hill Country specialists</div>
+  </div>
+  <p class="area-desc">The western Hill Country calls for our xeriscape expertise. Water conservation meets stunning design in every project we complete here.</p>
+  <div class="area-time"><span class="area-time-icon">&#8987;</span> Travel time from Austin HQ: <strong>25–30 min</strong></div>
+  <a href="index.html#contact" class="area-link">Request a Quote in Dripping Springs &#8594;</a>
+</div>
+<div class="area-card rev">
+  <div class="area-card-header">
+    <div class="area-name">Cedar Park</div>
+    <div class="area-status">Full service available</div>
+  </div>
+  <p class="area-desc">North Austin's fast-growing suburb with a strong demand for outdoor living spaces and modern landscape design.</p>
+  <div class="area-time"><span class="area-time-icon">&#8987;</span> Travel time from Austin HQ: <strong>20–25 min</strong></div>
+  <a href="index.html#contact" class="area-link">Request a Quote in Cedar Park &#8594;</a>
+</div>
+<div class="area-card rev">
+  <div class="area-card-header">
+    <div class="area-name">Round Rock</div>
+    <div class="area-status">Full service available</div>
+  </div>
+  <p class="area-desc">From intimate backyard transformations to full estate landscapes, we serve Round Rock's growing community with the same luxury standard.</p>
+  <div class="area-time"><span class="area-time-icon">&#8987;</span> Travel time from Austin HQ: <strong>20–25 min</strong></div>
+  <a href="index.html#contact" class="area-link">Request a Quote in Round Rock &#8594;</a>
+</div>
+<div class="area-card rev">
+  <div class="area-card-header">
+    <div class="area-name">Georgetown</div>
+    <div class="area-status">Available by appointment</div>
+  </div>
+  <p class="area-desc">Historic charm meets modern landscape design. We bring our full range of services to Georgetown's stunning properties.</p>
+  <div class="area-time"><span class="area-time-icon">&#8987;</span> Travel time from Austin HQ: <strong>30–35 min</strong></div>
+  <a href="index.html#contact" class="area-link">Request a Quote in Georgetown &#8594;</a>
+</div>
+<div class="area-card rev">
+  <div class="area-card-header">
+    <div class="area-name">Buda / Kyle</div>
+    <div class="area-status">Available by appointment</div>
+  </div>
+  <p class="area-desc">South of Austin and growing fast. Our services are fully available throughout Buda and Kyle for projects of all sizes.</p>
+  <div class="area-time"><span class="area-time-icon">&#8987;</span> Travel time from Austin HQ: <strong>25–35 min</strong></div>
+  <a href="index.html#contact" class="area-link">Request a Quote in Buda / Kyle &#8594;</a>
+</div></div>
+</section>
+
+<div class="area-note">
+  <div class="area-note-title rev">Don't See Your City?</div>
+  <p class="area-note-text rev">We regularly take on projects outside our standard service area. If you have an exceptional project in mind, don't hesitate to reach out. We'll always let you know if we can make it work.</p>
+  <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px" class="rev">
+    <a href="tel:5126957566" class="btn-p"><span>Call 512-695-7566</span></a>
+    <a href="index.html#contact" class="btn-s">Send a Message</a>
+  </div>
+</div>
+<footer><div class="ft-grid">
+  <div><div class="ft-brand">Red Agave</div><div class="ft-tag">Austin's Premier Design + Build Landscaper</div><div class="ft-info"><a href="tel:5126957566">512-695-7566</a><br><a href="/cdn-cgi/l/email-protection#533a3d353c1321363732343225363f323d37203032233a3d347d303c3e"><span class="__cf_email__" data-cfemail="6d04030b022d1f08090c0a0c1b08010c03091e0e0c1d04030a430e0200">[email&#160;protected]</span></a><br>Austin, TX &amp; Surrounding Areas</div></div>
+  <div class="ft-col"><span class="ft-ct">Pages</span><a href="index.html">Home</a><a href="services.html">Services</a><a href="featured.html">Featured Projects</a><a href="media.html">Media</a><a href="service-area.html">Service Area</a></div>
+  <div class="ft-col"><span class="ft-ct">Services</span><a href="services.html">Xeriscape &amp; Hardscape</a><a href="services.html">Lighting</a><a href="services.html">Custom Decks</a><a href="services.html">Fire &amp; Water</a><a href="services.html">Planters</a></div>
+  <div class="ft-col"><span class="ft-ct">Service Area</span><a href="service-area.html">Austin</a><a href="service-area.html">Cedar Park</a><a href="service-area.html">Round Rock</a><a href="service-area.html">Westlake Hills</a><a href="service-area.html">Dripping Springs</a></div>
+</div>
+<div class="ft-bot"><span class="ft-copy">&copy; 2025 Red Agave Landscaping &middot; Austin, TX &middot; Licensed &amp; Insured</span><span class="ft-phone">512-695-7566</span></div>
+</footer><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+gsap.registerPlugin(ScrollTrigger);
+var cur=document.getElementById('cur'),ring=document.getElementById('cur-ring'),mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;});
+(function ac(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;if(cur){cur.style.left=mx+'px';cur.style.top=my+'px';}if(ring){ring.style.left=rx+'px';ring.style.top=ry+'px';}requestAnimationFrame(ac);})();
+document.querySelectorAll('a,button').forEach(function(el){el.addEventListener('mouseenter',function(){if(cur){cur.style.width='18px';cur.style.height='18px';}if(ring){ring.style.width='56px';ring.style.height='56px';ring.style.borderColor='rgba(201,168,76,0.8)';}});el.addEventListener('mouseleave',function(){if(cur){cur.style.width='10px';cur.style.height='10px';}if(ring){ring.style.width='36px';ring.style.height='36px';ring.style.borderColor='rgba(201,168,76,0.5)';}});});
+if(document.getElementById('nav')){ScrollTrigger.create({start:'top -80',onUpdate:function(s){document.getElementById('nav').classList.toggle('scrolled',s.progress>0);}});}
+var nqb=document.getElementById('nav-quote-btn');if(nqb){nqb.addEventListener('click',function(){var c=document.getElementById('contact');if(c)c.scrollIntoView({behavior:'smooth'});else window.location.href='index.html#contact';});}
+var hbg=document.getElementById('hbg'),mob=document.getElementById('mob-menu'),mopen=false;
+if(hbg&&mob){hbg.addEventListener('click',function(){mopen=!mopen;hbg.classList.toggle('open',mopen);mob.classList.toggle('open',mopen);document.body.style.overflow=mopen?'hidden':'';});mob.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mopen=false;hbg.classList.remove('open');mob.classList.remove('open');document.body.style.overflow='';});});}
+gsap.utils.toArray('.rev').forEach(function(el){gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});});
+gsap.utils.toArray('.rev-l').forEach(function(el){gsap.to(el,{opacity:1,x:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:el,start:'top
