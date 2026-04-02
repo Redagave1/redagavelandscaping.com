@@ -248,14 +248,184 @@ a{text-decoration:none;color:inherit}
 .nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:8px 22px;font-size:9px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;font-family:'Montserrat',sans-serif;border-radius:9999px;transition:all .3s}
 .nav-cta:hover{background:var(--gold);color:var(--dark)}
 .hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
-.hbg span{display:block;width:24px;height:1.5px;background:var(--cream);transition:all .35s}
-.hbg.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.hbg span{display:block;width:22px;height:1.5px;background:var(--gold);transition:all .35s;opacity:0.7}
+.hbg.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px);opacity:1}
 .hbg.open span:nth-child(2){opacity:0}
-.hbg.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
-#mob-menu{position:fixed;inset:0;z-index:790;background:rgba(8,11,6,0.97);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;clip-path:circle(0% at calc(100% - 56px) 38px);transition:clip-path .6s var(--ease);pointer-events:none}
-#mob-menu.open{clip-path:circle(150% at calc(100% - 56px) 38px);pointer-events:all}
-#mob-menu a{font-family:'Bebas Neue',cursive;font-size:clamp(36px,7vw,64px);letter-spacing:4px;color:var(--cream60);transition:color .3s}
-#mob-menu a:hover{color:var(--gold)}
+.hbg.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px);opacity:1}
+/* ══ MOBILE MENU — Dark Luxury Magazine ══ */
+#mob-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 790;
+  background: #080b06;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+  clip-path: circle(0% at calc(100% - 44px) 38px);
+  transition: clip-path .7s cubic-bezier(0.16,1,0.3,1);
+  overflow: hidden;
+}
+#mob-menu.open {
+  clip-path: circle(160% at calc(100% - 44px) 38px);
+  pointer-events: all;
+}
+
+/* Photo bg */
+#mob-menu::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5410-Large.webp');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+/* Gold diagonal accent */
+#mob-menu::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(201,168,76,0.5), transparent);
+  pointer-events: none;
+}
+
+/* Inner layout */
+.mob-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 100px 48px 52px;
+  justify-content: space-between;
+}
+
+/* Top section — nav links */
+.mob-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Eyebrow above links */
+.mob-eyebrow {
+  font-size: 8px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: rgba(201,168,76,0.45);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.mob-eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+  opacity: .5;
+}
+
+/* Nav links */
+#mob-menu a.mob-link {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(44px, 11vw, 72px);
+  letter-spacing: 3px;
+  color: rgba(240,234,214,0.22);
+  transition: color .3s ease, letter-spacing .3s ease;
+  line-height: 1.05;
+  display: block;
+  text-decoration: none;
+  position: relative;
+  padding-left: 0;
+  transition: all .3s var(--ease);
+  /* staggered entrance */
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity .5s ease, transform .5s var(--ease), color .3s, letter-spacing .3s;
+}
+#mob-menu.open a.mob-link { opacity: 1; transform: translateX(0); }
+#mob-menu.open a.mob-link:nth-child(1) { transition-delay: 0.08s; }
+#mob-menu.open a.mob-link:nth-child(2) { transition-delay: 0.14s; }
+#mob-menu.open a.mob-link:nth-child(3) { transition-delay: 0.20s; }
+#mob-menu.open a.mob-link:nth-child(4) { transition-delay: 0.26s; }
+#mob-menu.open a.mob-link:nth-child(5) { transition-delay: 0.32s; }
+#mob-menu a.mob-link:hover {
+  color: var(--gold);
+  letter-spacing: 5px;
+}
+/* Gold left-bar on hover */
+#mob-menu a.mob-link::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 50%; transform: translateY(-50%) scaleY(0);
+  width: 2px;
+  height: 60%;
+  background: var(--gold);
+  transition: transform .3s var(--ease);
+}
+#mob-menu a.mob-link:hover::before { transform: translateY(-50%) scaleY(1); }
+
+/* Divider */
+.mob-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, rgba(201,168,76,0.3), transparent);
+  margin: 32px 0 28px;
+  opacity: 0;
+  transition: opacity .4s ease .35s;
+}
+#mob-menu.open .mob-divider { opacity: 1; }
+
+/* Bottom section */
+.mob-bottom {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .5s ease .4s, transform .5s var(--ease) .4s;
+}
+#mob-menu.open .mob-bottom { opacity: 1; transform: translateY(0); }
+
+.mob-phone {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(32px, 8vw, 48px);
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-shadow: 0 0 24px rgba(201,168,76,0.3);
+  display: block;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+.mob-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold);
+  color: var(--dark);
+  padding: 13px 36px;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all .3s;
+  margin-bottom: 28px;
+}
+.mob-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+.mob-location {
+  font-size: 8px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(240,234,214,0.2);
+}
 
 /* ══ BUTTONS ══ */
 /* ══ CONTACT US — Huly sun-flare architecture ══
@@ -1309,8 +1479,8 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 }
 /* Slim "We Offer" relative to "Services" */
 #services .s-title .led-flicker-wrap {
-  font-size: 0.68em;
-  letter-spacing: 6px;
+  font-size: 0.52em;
+  letter-spacing: 5px;
   vertical-align: middle;
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
@@ -1399,12 +1569,24 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 
 <!-- MOBILE MENU -->
 <div id="mob-menu">
-  <a href="index.html">Home</a>
-  <a href="services.html">Services</a>
-  <a href="featured.html">Featured</a>
-  <a href="media.html">Media</a>
-  <a href="service-area.html">Service Area</a>
-  <a href="#contact">Contact</a>
+  <div class="mob-inner">
+    <div class="mob-nav">
+      <div class="mob-eyebrow">Navigation</div>
+      <a href="featured.html" class="mob-link">Featured</a>
+      <a href="media.html" class="mob-link">Media</a>
+      <a href="services.html" class="mob-link">Services</a>
+      <a href="service-area.html" class="mob-link">Locations</a>
+      <a href="#contact" class="mob-link">Contact</a>
+    </div>
+    <div>
+      <div class="mob-divider"></div>
+      <div class="mob-bottom">
+        <a href="tel:5126957566" class="mob-phone">512-695-7566</a>
+        <a href="#contact" class="mob-cta">Get a Free Quote &#8594;</a>
+        <div class="mob-location">Austin, Texas &nbsp;&middot;&nbsp; Any Project Any Budget</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- NAV -->

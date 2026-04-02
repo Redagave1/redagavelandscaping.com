@@ -531,6 +531,68 @@ img{display:block;width:100%;object-fit:cover}
   .hbg{display:flex}
   .nav-links,.nav-r{display:none}
 }
+
+/* ══ LED FLICKER — "We Offer" from homepage ══ */
+.led-flicker-wrap { display: inline; }
+.lf {
+  display: inline-block;
+  color: #e87cb0;
+  text-shadow:
+    0 0 4px  rgba(232,124,176,0.95),
+    0 0 14px rgba(232,124,176,0.65),
+    0 0 32px rgba(232,124,176,0.30),
+    0 0 64px rgba(232,124,176,0.12);
+  transition: text-shadow 0.9s ease, color 0.9s ease;
+}
+.lf.dim {
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(255,255,255,0.9), 0 0 16px rgba(255,255,255,0.5), 0 0 32px rgba(255,255,255,0.2);
+}
+.lf.dim2 {
+  color: #ffffff;
+  text-shadow: 0 0 4px rgba(255,255,255,0.7), 0 0 12px rgba(255,255,255,0.35), 0 0 24px rgba(255,255,255,0.12);
+}
+/* ══ BTN-HULY — glowing gold button ══ */
+.btn-huly-wrap { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+.btn-huly-blob-1 {
+  position: absolute; width: 140px; height: 140px; top: 50%; left: 50%;
+  transform: translate(-50%,-50%); border-radius: 50%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(255,252,230,0.95) 3.5%, rgba(230,180,50,0.75) 26.5%, rgba(210,155,30,0.45) 37.5%, rgba(201,168,76,0.20) 55%, rgba(180,130,20,0.00) 92.5%);
+  pointer-events: none; z-index: 0; opacity: 0; transition: opacity 0.35s ease;
+}
+.btn-huly-blob-2 {
+  position: absolute; width: 240px; height: 120px; top: 50%; left: 50%;
+  transform: translate(-50%,-50%); border-radius: 50%;
+  background: radial-gradient(43.3% 44.23% at 50% 49.51%, rgba(255,255,240,0.9) 29%, rgba(240,210,130,0.6) 48.5%, rgba(210,168,76,0.3) 60.71%, rgba(180,130,40,0.00) 100%);
+  filter: blur(8px); pointer-events: none; z-index: 0; opacity: 0; transition: opacity 0.35s ease;
+}
+.btn-huly-wrap:hover .btn-huly-blob-1,
+.btn-huly-wrap:hover .btn-huly-blob-2 { opacity: 1; }
+.btn-huly {
+  position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center;
+  gap: 0.5rem; padding: 0 36px; height: 44px; font-size: 10px; font-weight: 700;
+  letter-spacing: 2.5px; text-transform: uppercase; font-family: 'Montserrat', sans-serif;
+  color: rgba(232,196,90,0.95); text-decoration: none; cursor: none; border-radius: 9999px;
+  border: 2px solid transparent;
+  background: linear-gradient(var(--dark), var(--dark)) padding-box,
+    linear-gradient(103.7deg, rgba(201,168,76,0.08) 0%, rgba(201,168,76,0.15) 30%, rgba(232,196,90,0.70) 65%, rgba(255,240,180,0.95) 82%, rgba(255,255,220,1.00) 100%) border-box;
+  background-color: rgba(201,168,76,0.06);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 2px 12px rgba(0,0,0,0.3);
+  transition: all 0.3s ease; white-space: nowrap; overflow: hidden;
+}
+.btn-huly::after {
+  content: ''; position: absolute; top: -50%; left: -120%; width: 55%; height: 200%;
+  background: linear-gradient(110deg, transparent 20%, rgba(255,240,180,0.22) 50%, transparent 75%);
+  transition: left 0.55s ease;
+}
+.btn-huly-wrap:hover .btn-huly::after, .btn-huly:hover::after { left: 150%; }
+.btn-huly:hover {
+  background-color: rgba(201,168,76,0.14); color: rgba(255,248,200,1);
+  border-color: transparent;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), 0 4px 20px rgba(201,168,76,0.2);
+  transform: translateY(-1px);
+}
+
 </style>
 </head>
 <body>
@@ -634,9 +696,43 @@ img{display:block;width:100%;object-fit:cover}
 </div>
 
 <!-- SERVICES IN THIS CITY -->
+
+<!-- LOCAL KNOWLEDGE — SEO layer, natural content -->
+<section class="local-knowledge" style="background:var(--dark3);padding:60px 60px;border-top:1px solid rgba(201,168,76,0.07);border-bottom:1px solid rgba(201,168,76,0.07)">
+  <div style="max-width:1440px;margin:0 auto">
+    <div class="s-eye rev" style="margin-bottom:20px">Local Expertise</div>
+    <h2 style="font-family:'Bebas Neue',cursive;font-size:clamp(28px,3vw,42px);color:var(--cream);letter-spacing:2px;margin-bottom:28px;line-height:.95">What We Know About<br><span style="color:var(--gold)">Dripping Springs</span></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px">
+      <div class="rev" style="border-left:2px solid rgba(201,168,76,0.25);padding-left:20px">
+        <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Soil &amp; Terrain</div>
+        <p style="font-size:10px;color:rgba(240,234,214,0.45);line-height:1.9;font-weight:300">Dripping Springs is true Hill Country — thin limestone soil over solid rock, with very little water retention. This demands a completely different design approach: raised bed systems, decomposed granite, and deep-rooted natives that have evolved for this exact terrain.</p>
+      </div>
+      <div class="rev" style="border-left:2px solid rgba(201,168,76,0.25);padding-left:20px">
+        <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Water &amp; Climate</div>
+        <p style="font-size:10px;color:rgba(240,234,214,0.45);line-height:1.9;font-weight:300">Many Dripping Springs properties rely on well water, making efficient irrigation critical. We design rainwater harvesting integrations and low-flow drip systems that stretch well capacity. Properties on city water follow Dripping Springs MUD restrictions.</p>
+      </div>
+      <div class="rev" style="border-left:2px solid rgba(201,168,76,0.25);padding-left:20px">
+        <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">HOA &amp; Permits</div>
+        <p style="font-size:10px;color:rgba(240,234,214,0.45);line-height:1.9;font-weight:300">Dripping Springs properties outside city limits often have minimal HOA restrictions, giving us more design freedom. Properties in planned communities like Belterra or Headwaters follow their own guidelines — we know both environments.</p>
+      </div>
+      <div class="rev" style="border-left:2px solid rgba(201,168,76,0.25);padding-left:20px">
+        <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Native Plants</div>
+        <p style="font-size:10px;color:rgba(240,234,214,0.45);line-height:1.9;font-weight:300">Agarita, Texas sotol, Havard's agave, Hill Country penstemon, and Texas columbine are exceptional for Dripping Springs' rocky Hill Country terrain. These are the plants you see thriving naturally on roadsides — in your landscape, they look intentional and extraordinary.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="city-services" id="services">
   <div class="s-eye rev">What We Do in Westlake Hills</div>
-  <h2 class="s-title rev">Our Services<br><span class="gold">In Your Area</span></h2>
+  <h2 class="s-title rev">Services <span style="font-size:0.52em;letter-spacing:5px;font-family:'Montserrat',sans-serif;font-weight:300;text-transform:uppercase;vertical-align:middle;" class="led-flicker-wrap"><span class="lf">W</span><span class="lf">e</span>&nbsp;<span class="lf">O</span><span class="lf">f</span><span class="lf">f</span><span class="lf">e</span><span class="lf">r</span></span></h2>
+    <div style="margin-top:20px">
+      <div class="btn-huly-wrap">
+        <div class="btn-huly-blob-1"></div>
+        <div class="btn-huly-blob-2"></div>
+        <a href="../services.html" class="btn-huly">View All Services</a>
+      </div>
+    </div>
   <div class="cs-grid">
     <div class="cs-card rev">
       <span class="cs-icon">&#9762;</span>
@@ -718,7 +814,7 @@ img{display:block;width:100%;object-fit:cover}
   <div class="cb-right rev">
     <a href="tel:5126957566" class="cb-phone">512-695-7566</a>
     <a href="tel:5126957566" class="btn-primary" style="font-size:9px">Call Now &#8594;</a>
-    <a href="/cdn-cgi/l/email-protection#325b5c545d7240575653555344575e535c56415153425b5c551c515d5f" class="btn-ghost" style="font-size:9px">Email Us &#8594;</a>
+    <a href="/cdn-cgi/l/email-protection#82ebece4edc2f0e7e6e3e5e3f4e7eee3ece6f1e1e3f2ebece5ace1edef" class="btn-ghost" style="font-size:9px">Email Us &#8594;</a>
   </div>
 </div>
 

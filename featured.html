@@ -4,18 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Featured Projects | Red Agave Landscaping Austin TX</title>
-<meta name="description" content="Red Agave Landscaping's most extraordinary projects — custom xeriscape, pergolas, decks, LED lighting, fire & water features across Austin TX and surrounding areas.">
+<meta name="description" content="Red Agave Landscaping's finest projects across Austin TX — custom xeriscape, pergolas, decks, WLED lighting, fire & water features. Every project a story.">
 <link rel="canonical" href="https://www.redagavelandscaping.com/featured.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
 <style>
-:root {
-  --gold:#c9a84c; --gold-light:#e8c96a; --gold-glow:rgba(201,168,76,0.45);
-  --dark:#080b06; --dark2:#0d120a; --dark3:#0a1208;
-  --cream:#f0ead6; --cream60:rgba(240,234,214,0.6); --cream20:rgba(240,234,214,0.1);
-  --pink:#e87cb0; --pink-glow:rgba(232,124,176,0.6);
+:root{
+  --gold:#c9a84c;--gold-light:#e8c96a;--gold-glow:rgba(201,168,76,0.45);
+  --dark:#080b06;--dark2:#0d120a;--dark3:#0a1208;
+  --cream:#f0ead6;--cream60:rgba(240,234,214,0.6);--cream20:rgba(240,234,214,0.1);
   --ease:cubic-bezier(0.16,1,0.3,1);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -25,11 +23,9 @@ a{text-decoration:none;color:inherit}
 img{display:block;width:100%;object-fit:cover}
 ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--gold)}
 
-/* CURSOR */
 #cur{position:fixed;width:10px;height:10px;background:var(--gold);pointer-events:none;z-index:9999;transform:translate(-50%,-50%) rotate(45deg);transition:width .15s,height .15s;box-shadow:0 0 6px rgba(201,168,76,0.4)}
 #cur-ring{position:fixed;width:22px;height:22px;border:1.5px solid rgba(201,168,76,0.55);pointer-events:none;z-index:9998;transform:translate(-50%,-50%) rotate(45deg);transition:all .12s}
 
-/* LOADER */
 #loader{position:fixed;inset:0;z-index:9000;background:var(--dark);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;transition:opacity 0.6s ease}
 #loader.hidden{opacity:0;pointer-events:none}
 .ld-logo{font-family:'Bebas Neue',cursive;font-size:52px;letter-spacing:10px;color:var(--gold);text-shadow:0 0 40px var(--gold-glow)}
@@ -42,7 +38,7 @@ img{display:block;width:100%;object-fit:cover}
 #nav{position:fixed;top:0;left:0;right:0;z-index:800;padding:0 60px;transition:all .4s}
 #nav.scrolled{background:rgba(8,11,6,0.94);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,0.1)}
 .nav-inner{display:flex;justify-content:space-between;align-items:center;height:76px;max-width:1440px;margin:0 auto}
-.nav-logo{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:5px;color:var(--gold);text-shadow:0 0 20px rgba(201,168,76,0.28)}
+.nav-logo{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:5px;color:var(--gold)}
 .nav-links{display:flex;gap:32px;list-style:none}
 .nav-links a{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--cream60);transition:color .3s;position:relative;padding-bottom:3px}
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .3s var(--ease)}
@@ -53,533 +49,232 @@ img{display:block;width:100%;object-fit:cover}
 .nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:8px 22px;font-size:9px;letter-spacing:3px;text-transform:uppercase;cursor:none;font-family:'Montserrat',sans-serif;border-radius:9999px;transition:all .3s}
 .nav-cta:hover{background:var(--gold);color:var(--dark)}
 .hbg{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none;padding:4px}
-.hbg span{display:block;width:24px;height:1.5px;background:var(--cream);transition:all .35s}
-#mob-menu{position:fixed;inset:0;z-index:790;background:rgba(8,11,6,0.97);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;clip-path:circle(0% at calc(100% - 56px) 38px);transition:clip-path .6s var(--ease);pointer-events:none}
-#mob-menu.open{clip-path:circle(150% at calc(100% - 56px) 38px);pointer-events:all}
-#mob-menu a{font-family:'Bebas Neue',cursive;font-size:clamp(36px,7vw,64px);letter-spacing:4px;color:var(--cream60);transition:color .3s}
-#mob-menu a:hover{color:var(--gold)}
-.hbg.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.hbg span{display:block;width:22px;height:1.5px;background:var(--gold);opacity:.7;transition:all .35s}
+.hbg.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px);opacity:1}
 .hbg.open span:nth-child(2){opacity:0}
-.hbg.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+.hbg.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px);opacity:1}
 
-/* ══ PAGE HERO ══ */
-.page-hero {
-  position: relative;
-  height: 70vh;
-  min-height: 500px;
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-  background: var(--dark);
-}
-.page-hero-bg {
-  position: absolute;
-  inset: 0;
-  background-image: url('https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/IMG_5448-Large.webp');
-  background-size: cover;
-  background-position: center 40%;
-  opacity: 0.22;
-  transform: scale(1.04);
-  transition: transform 8s ease;
-}
-.page-hero-bg.loaded { transform: scale(1); }
-.page-hero-ov {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(8,11,6,1) 0%, rgba(8,11,6,0.4) 60%, rgba(8,11,6,0.6) 100%);
-}
-.page-hero-content {
-  position: relative;
-  z-index: 2;
-  padding: 0 60px 72px;
-  max-width: 1440px;
-  width: 100%;
-  margin: 0 auto;
-}
-.page-eyebrow {
-  font-size: 9px;
-  letter-spacing: 7px;
-  text-transform: uppercase;
-  color: rgba(201,168,76,0.7);
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  opacity: 0;
-  transform: translateX(-20px);
-  transition: opacity .7s ease, transform .7s ease;
-}
-.page-eyebrow.in { opacity: 1; transform: translateX(0); }
-.page-eyebrow::before { content:''; width:44px; height:1px; background:var(--gold); opacity:.55; }
-.page-title {
-  font-family: 'Bebas Neue', cursive;
-  font-size: clamp(72px, 10vw, 138px);
-  line-height: .88;
-  letter-spacing: 2px;
-}
-.page-title .t1 { color: var(--cream); display: block; }
-.page-title .t2 {
-  color: var(--gold);
-  display: block;
-  text-shadow: 0 0 40px rgba(201,168,76,0.3);
-}
-.page-sub {
-  font-size: 11px;
-  letter-spacing: .5px;
-  color: rgba(240,234,214,0.42);
-  margin-top: 24px;
-  max-width: 520px;
-  line-height: 2.2;
-  border-left: 1px solid rgba(201,168,76,0.32);
-  padding-left: 20px;
-  font-weight: 300;
-  font-style: italic;
-}
+/* MOBILE MENU */
+#mob-menu{position:fixed;inset:0;z-index:790;background:#080b06;display:flex;flex-direction:column;pointer-events:none;clip-path:circle(0% at calc(100% - 44px) 38px);transition:clip-path .7s cubic-bezier(0.16,1,0.3,1);overflow:hidden}
+#mob-menu.open{clip-path:circle(160% at calc(100% - 44px) 38px);pointer-events:all}
+#mob-menu::before{content:'';position:absolute;inset:0;background-image:url('https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5410-Large.webp');background-size:cover;background-position:center;opacity:.08;pointer-events:none}
+#mob-menu::after{content:'';position:absolute;top:0;right:0;width:2px;height:100%;background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.5),transparent);pointer-events:none}
+.mob-inner{position:relative;z-index:1;display:flex;flex-direction:column;height:100%;padding:100px 48px 52px;justify-content:space-between}
+.mob-eyebrow{font-size:8px;letter-spacing:6px;text-transform:uppercase;color:rgba(201,168,76,0.45);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.mob-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold);opacity:.5}
+#mob-menu a.mob-link{font-family:'Bebas Neue',cursive;font-size:clamp(44px,11vw,72px);letter-spacing:3px;color:rgba(240,234,214,0.22);line-height:1.05;display:block;text-decoration:none;position:relative;opacity:0;transform:translateX(-24px);transition:opacity .5s ease,transform .5s var(--ease),color .3s,letter-spacing .3s}
+#mob-menu.open a.mob-link{opacity:1;transform:translateX(0)}
+#mob-menu.open a.mob-link:nth-child(1){transition-delay:.08s}
+#mob-menu.open a.mob-link:nth-child(2){transition-delay:.14s}
+#mob-menu.open a.mob-link:nth-child(3){transition-delay:.20s}
+#mob-menu.open a.mob-link:nth-child(4){transition-delay:.26s}
+#mob-menu.open a.mob-link:nth-child(5){transition-delay:.32s}
+#mob-menu a.mob-link:hover{color:var(--gold);letter-spacing:5px}
+#mob-menu a.mob-link::before{content:'';position:absolute;left:-20px;top:50%;transform:translateY(-50%) scaleY(0);width:2px;height:60%;background:var(--gold);transition:transform .3s var(--ease)}
+#mob-menu a.mob-link:hover::before{transform:translateY(-50%) scaleY(1)}
+.mob-divider{width:100%;height:1px;background:linear-gradient(to right,rgba(201,168,76,0.3),transparent);margin:32px 0 28px;opacity:0;transition:opacity .4s ease .35s}
+#mob-menu.open .mob-divider{opacity:1}
+.mob-bottom{opacity:0;transform:translateY(16px);transition:opacity .5s ease .4s,transform .5s var(--ease) .4s}
+#mob-menu.open .mob-bottom{opacity:1;transform:translateY(0)}
+.mob-phone{font-family:'Bebas Neue',cursive;font-size:clamp(32px,8vw,48px);letter-spacing:3px;color:var(--gold);text-shadow:0 0 24px rgba(201,168,76,0.3);display:block;margin-bottom:20px;text-decoration:none}
+.mob-cta{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--dark);padding:13px 36px;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-family:'Montserrat',sans-serif;font-weight:700;border-radius:9999px;text-decoration:none;transition:all .3s;margin-bottom:28px}
+.mob-location{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(240,234,214,0.2)}
 
-/* ══ PROJECT COUNT STRIP ══ */
-.count-strip {
-  background: var(--gold);
-  padding: 14px 60px;
-  display: flex;
-  align-items: center;
-  gap: 60px;
-  overflow: hidden;
-}
-.cs-label {
-  font-family: 'Bebas Neue', cursive;
-  font-size: 13px;
-  letter-spacing: 4px;
-  color: var(--dark);
-  white-space: nowrap;
-}
-.cs-num {
-  font-family: 'Bebas Neue', cursive;
-  font-size: 22px;
-  color: var(--dark);
-  opacity: 0.45;
-  white-space: nowrap;
-}
+/* PAGE HERO */
+.page-hero{position:relative;height:68vh;min-height:500px;display:flex;align-items:flex-end;overflow:hidden;background:var(--dark)}
+.ph-bg{position:absolute;inset:0;background-size:cover;background-position:center 38%;opacity:.22;transform:scale(1.04);transition:transform 8s ease}
+.ph-bg.loaded{transform:scale(1)}
+.ph-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,11,6,1) 0%,rgba(8,11,6,.35) 60%,rgba(8,11,6,.65) 100%)}
+.ph-content{position:relative;z-index:2;padding:0 60px 72px;max-width:1440px;width:100%;margin:0 auto}
+.ph-eyebrow{font-size:9px;letter-spacing:7px;text-transform:uppercase;color:rgba(201,168,76,.7);margin-bottom:20px;display:flex;align-items:center;gap:14px;opacity:0;transform:translateX(-20px);transition:opacity .7s,transform .7s}
+.ph-eyebrow.in{opacity:1;transform:translateX(0)}
+.ph-eyebrow::before{content:'';width:44px;height:1px;background:var(--gold);opacity:.55}
+.ph-title{font-family:'Bebas Neue',cursive;font-size:clamp(72px,10vw,138px);line-height:.88;letter-spacing:2px}
+.ph-t1{display:block;color:var(--cream)}
+.ph-t2{display:block;color:var(--gold);text-shadow:0 0 40px rgba(201,168,76,.3)}
+.ph-sub{font-size:11px;color:rgba(240,234,214,.42);margin-top:24px;max-width:520px;line-height:2.2;border-left:1px solid rgba(201,168,76,.32);padding-left:20px;font-weight:300;font-style:italic}
 
-/* ══ FILTER BAR ══ */
-.filter-bar {
-  padding: 48px 60px 0;
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  align-items: center;
-  max-width: 1440px;
-  margin: 0 auto;
-}
-.filter-label {
-  font-size: 8px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: rgba(240,234,214,0.28);
-  margin-right: 8px;
-}
-.filter-btn {
-  background: transparent;
-  border: 1px solid rgba(201,168,76,0.2);
-  color: rgba(240,234,214,0.45);
-  padding: 7px 18px;
-  font-size: 8px;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  cursor: none;
-  border-radius: 9999px;
-  transition: all .3s;
-}
-.filter-btn:hover, .filter-btn.active {
-  background: rgba(201,168,76,0.1);
-  border-color: rgba(201,168,76,0.6);
-  color: var(--gold);
-}
+/* STATS STRIP */
+.count-strip{background:var(--gold);padding:14px 60px;display:flex;align-items:center;gap:60px;overflow:hidden}
+.cs-label{font-family:'Bebas Neue',cursive;font-size:13px;letter-spacing:4px;color:var(--dark);white-space:nowrap}
+.cs-sep{color:rgba(8,11,6,.35);font-size:20px}
 
-/* ══ PROJECT GRID ══ */
-.projects-wrap {
-  padding: 52px 60px 120px;
-  max-width: 1440px;
-  margin: 0 auto;
-}
+/* FILTER */
+.filter-bar{padding:48px 60px 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center;max-width:1440px;margin:0 auto}
+.filter-label{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(240,234,214,.28);margin-right:8px}
+.filter-btn{background:transparent;border:1px solid rgba(201,168,76,.2);color:rgba(240,234,214,.45);padding:7px 18px;font-size:8px;letter-spacing:2.5px;text-transform:uppercase;font-family:'Montserrat',sans-serif;cursor:none;border-radius:9999px;transition:all .3s}
+.filter-btn:hover,.filter-btn.active{background:rgba(201,168,76,.1);border-color:rgba(201,168,76,.6);color:var(--gold)}
 
-/* ── FEATURED (first) project — full cinematic width ── */
-.proj-featured {
-  position: relative;
-  height: 88vh;
-  min-height: 600px;
-  overflow: hidden;
-  margin-bottom: 3px;
-  cursor: none;
-}
-.proj-featured .proj-img {
-  position: absolute;
-  inset: 0;
-  height: 100%;
-  filter: brightness(.62) saturate(1.05);
-  transition: filter .8s ease, transform 1s var(--ease);
-  transform: scale(1.02);
-}
-.proj-featured:hover .proj-img {
-  filter: brightness(.78) saturate(1.15);
-  transform: scale(1.0);
-}
-.proj-featured .proj-ov {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(8,11,6,0.0) 20%,
-    rgba(8,11,6,0.0) 50%,
-    rgba(8,11,6,0.85) 100%
-  );
-  transition: opacity .5s;
-}
-.proj-featured .proj-info {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  padding: 52px 60px;
-  max-width: 520px;
-  text-align: right;
-}
-.proj-tag {
-  font-size: 7px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-}
-.proj-tag::after { content:''; width: 32px; height: 1px; background: var(--gold); opacity: .6; }
-.proj-name {
-  font-family: 'Bebas Neue', cursive;
-  font-size: clamp(48px, 5.5vw, 84px);
-  line-height: .88;
-  color: var(--cream);
-  letter-spacing: 2px;
-  margin-bottom: 16px;
-}
-.proj-location {
-  font-size: 9px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: rgba(240,234,214,0.42);
-  margin-bottom: 20px;
-}
-.proj-desc {
-  font-size: 11px;
-  color: rgba(240,234,214,0.52);
-  line-height: 2;
-  font-weight: 300;
-  margin-bottom: 28px;
-  font-style: italic;
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height .6s var(--ease), opacity .5s ease;
-}
-.proj-featured:hover .proj-desc {
-  max-height: 100px;
-  opacity: 1;
-}
-.proj-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 8px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold);
-  border-bottom: 1px solid rgba(201,168,76,0.35);
-  padding-bottom: 4px;
-  transition: gap .3s, border-color .3s;
-}
-.proj-cta:hover { gap: 16px; border-color: var(--gold); }
-.proj-cta-arrow { font-size: 14px; transition: transform .3s; }
-.proj-cta:hover .proj-cta-arrow { transform: translateX(4px); }
+/* PROJECT STORIES */
+.projects-feed{padding:52px 0 0}
 
-/* ── INDEX number on featured ── */
-.proj-index {
-  position: absolute;
-  top: 52px;
-  left: 60px;
-  font-family: 'Bebas Neue', cursive;
-  font-size: 120px;
-  color: rgba(201,168,76,0.06);
-  line-height: 1;
-  pointer-events: none;
-  user-select: none;
-}
+.proj-story{position:relative;overflow:hidden;cursor:none;opacity:1;transition:opacity .4s ease}
+.proj-story.filtered{opacity:.1;pointer-events:none}
 
-/* ── STANDARD project card ── */
-.proj-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3px;
-}
-.proj-card {
-  position: relative;
-  overflow: hidden;
-  cursor: none;
-}
-.proj-card .proj-img {
-  height: 480px;
-  filter: brightness(.58) saturate(.9);
-  transition: filter .7s ease, transform .9s var(--ease);
-  transform: scale(1.03);
-}
-.proj-card:hover .proj-img {
-  filter: brightness(.78) saturate(1.1);
-  transform: scale(1.0);
-}
-.proj-card .proj-ov {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(8,11,6,0.92) 0%, rgba(8,11,6,0.3) 45%, transparent 100%);
-}
-.proj-card .proj-info {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 36px 32px;
-  transform: translateY(8px);
-  transition: transform .4s var(--ease);
-}
-.proj-card:hover .proj-info { transform: translateY(0); }
-.proj-card .proj-tag { justify-content: flex-start; }
-.proj-card .proj-tag::after { display: none; }
-.proj-card .proj-tag::before { content:''; width: 24px; height: 1px; background: var(--gold); opacity: .6; }
-.proj-card .proj-name {
-  font-size: clamp(26px, 2.8vw, 40px);
-  margin-bottom: 8px;
-}
-.proj-card .proj-desc {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height .5s var(--ease), opacity .4s ease;
-}
-.proj-card:hover .proj-desc {
-  max-height: 80px;
-  opacity: 1;
-}
+/* HERO SHOT — 90vh cinematic */
+.proj-hero{position:relative;height:90vh;min-height:560px;overflow:hidden}
+.proj-hero img{height:100%;filter:brightness(.58) saturate(1.05);transition:filter 1s ease,transform 1.2s var(--ease);transform:scale(1.04)}
+.proj-story:hover .proj-hero img{filter:brightness(.74) saturate(1.12);transform:scale(1.0)}
 
-/* ── WIDE card (2 columns) ── */
-.proj-card.wide { grid-column: span 2; }
-.proj-card.wide .proj-img { height: 480px; }
+/* Gradient overlay — bottom-right for text */
+.proj-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(145deg,rgba(8,11,6,0) 20%,rgba(8,11,6,0) 45%,rgba(8,11,6,.94) 100%)}
 
-/* ── TALL card (placeholder with text panel) ── */
-.proj-card.text-panel {
-  background: var(--dark3);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 52px 44px;
-}
-.tp-eyebrow {
-  font-size: 8px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: rgba(201,168,76,0.55);
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.tp-eyebrow::before { content:''; width: 24px; height: 1px; background: var(--gold); }
-.tp-heading {
-  font-family: 'Bebas Neue', cursive;
-  font-size: clamp(44px, 4vw, 66px);
-  line-height: .9;
-  color: var(--cream);
-  margin-bottom: 24px;
-}
-.tp-heading .gold { color: var(--gold); }
-.tp-heading .dim { -webkit-text-stroke: 1px rgba(240,234,214,0.18); color: transparent; }
-.tp-body {
-  font-size: 11px;
-  color: rgba(240,234,214,0.38);
-  line-height: 2.1;
-  font-weight: 300;
-  margin-bottom: 36px;
-}
-.tp-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 8px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--gold);
-  border: 1px solid rgba(201,168,76,0.3);
-  padding: 12px 24px;
-  border-radius: 9999px;
-  transition: all .3s;
-  width: fit-content;
-}
-.tp-cta:hover {
-  background: rgba(201,168,76,0.1);
-  border-color: var(--gold);
-  gap: 16px;
-}
+/* Large ghost number */
+.proj-num{position:absolute;top:44px;left:52px;font-family:'Bebas Neue',cursive;font-size:160px;color:rgba(201,168,76,.045);line-height:1;pointer-events:none;user-select:none;z-index:2}
 
-/* ══ LIGHTBOX ══ */
-#lightbox {
-  position: fixed;
-  inset: 0;
-  z-index: 8000;
-  background: rgba(8,11,6,0.96);
-  backdrop-filter: blur(20px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .4s ease;
-}
-#lightbox.open {
-  opacity: 1;
-  pointer-events: all;
-}
-.lb-img {
-  max-width: 88vw;
-  max-height: 88vh;
-  object-fit: contain;
-  box-shadow: 0 40px 120px rgba(0,0,0,0.8);
-}
-.lb-close {
-  position: absolute;
-  top: 32px;
-  right: 40px;
-  font-size: 28px;
-  color: var(--cream60);
-  cursor: none;
-  background: none;
-  border: none;
-  transition: color .3s;
-  line-height: 1;
-}
-.lb-close:hover { color: var(--gold); }
-.lb-prev, .lb-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: 'Bebas Neue', cursive;
-  font-size: 32px;
-  color: var(--cream60);
-  cursor: none;
-  background: none;
-  border: none;
-  letter-spacing: 2px;
-  transition: color .3s, transform .3s;
-}
-.lb-prev { left: 40px; }
-.lb-next { right: 40px; }
-.lb-prev:hover { color: var(--gold); transform: translateY(-50%) translateX(-4px); }
-.lb-next:hover { color: var(--gold); transform: translateY(-50%) translateX(4px); }
-.lb-counter {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 9px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: rgba(240,234,214,0.3);
-}
-.lb-caption {
-  position: absolute;
-  bottom: 52px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Bebas Neue', cursive;
-  font-size: 18px;
-  letter-spacing: 3px;
-  color: rgba(240,234,214,0.55);
-  white-space: nowrap;
-}
+/* Info overlay — bottom right */
+.proj-info{position:absolute;bottom:0;right:0;z-index:3;padding:52px 60px;max-width:580px;text-align:right}
+.proj-tag{font-size:8px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;justify-content:flex-end;gap:10px}
+.proj-tag::after{content:'';width:28px;height:1px;background:var(--gold);opacity:.6}
+.proj-name{font-family:'Bebas Neue',cursive;font-size:clamp(52px,5.8vw,88px);line-height:.88;color:var(--cream);letter-spacing:2px;margin-bottom:14px}
+.proj-loc{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,234,214,.35);margin-bottom:20px}
 
-/* ══ REVEAL ON SCROLL ══ */
-.rev { opacity: 0; transform: translateY(28px); transition: opacity .85s ease, transform .85s var(--ease); }
-.rev.in { opacity: 1; transform: translateY(0); }
-.rev-l { opacity: 0; transform: translateX(-28px); transition: opacity .85s ease, transform .85s var(--ease); }
-.rev-l.in { opacity: 1; transform: translateX(0); }
+/* Stats row */
+.proj-stats{display:flex;justify-content:flex-end;gap:24px;margin-bottom:18px}
+.ps-item{}
+.ps-val{font-family:'Bebas Neue',cursive;font-size:22px;color:var(--gold);display:block;line-height:1}
+.ps-key{font-size:7px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(240,234,214,.25);display:block}
 
-/* ══ CONTACT BAND ══ */
-.cta-band {
-  background: var(--dark2);
-  border-top: 1px solid rgba(201,168,76,0.1);
-  border-bottom: 1px solid rgba(201,168,76,0.1);
-  padding: 80px 60px;
-  text-align: center;
-}
-.cb-title {
-  font-family: 'Bebas Neue', cursive;
-  font-size: clamp(52px, 6vw, 90px);
-  line-height: .9;
-  margin-bottom: 24px;
-}
-.cb-title .gold { color: var(--gold); text-shadow: 0 0 40px rgba(201,168,76,0.25); }
-.cb-sub {
-  font-size: 11px;
-  color: rgba(240,234,214,0.4);
-  letter-spacing: 1px;
-  margin-bottom: 40px;
-  line-height: 2;
-}
-.cb-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--gold);
-  color: var(--dark);
-  padding: 14px 40px;
-  font-size: 9px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  border-radius: 9999px;
-  transition: all .3s;
-  cursor: none;
-  border: none;
-}
-.cb-btn:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,0.3); }
+/* Story text — reveals on hover */
+.proj-desc{font-size:11px;color:rgba(240,234,214,.52);line-height:2;font-weight:300;font-style:italic;margin-bottom:22px;max-height:0;overflow:hidden;opacity:0;transition:max-height .6s var(--ease),opacity .5s ease}
+.proj-story:hover .proj-desc{max-height:100px;opacity:1}
 
-/* ══ FOOTER STRIP ══ */
-.foot {
-  padding: 32px 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid var(--cream20);
-}
-.foot-logo { font-family: 'Bebas Neue', cursive; font-size: 22px; letter-spacing: 4px; color: var(--gold); }
-.foot-copy { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(240,234,214,0.22); }
+/* Gallery CTA button */
+.gallery-toggle{display:inline-flex;align-items:center;gap:8px;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,.35);padding:9px 22px;border-radius:9999px;transition:all .3s;cursor:none;background:rgba(8,11,6,.4);backdrop-filter:blur(8px)}
+.gallery-toggle:hover{background:rgba(201,168,76,.12);border-color:var(--gold);gap:12px}
+.gallery-toggle.open{border-color:rgba(240,234,214,.2);color:rgba(240,234,214,.4)}
 
-/* RESPONSIVE */
-@media(max-width:1100px) {
-  .proj-grid { grid-template-columns: repeat(2,1fr); }
-  .proj-card.wide { grid-column: span 1; }
+/* GALLERY STRIP */
+.gallery-strip{display:grid;gap:2px;max-height:0;overflow:hidden;transition:max-height .9s var(--ease);background:rgba(0,0,0,.5)}
+.gallery-strip.open{max-height:680px}
+.gallery-strip.g3{grid-template-columns:2fr 1fr 1fr}
+.gallery-strip.g4{grid-template-columns:2fr 1fr 1fr 1fr}
+.gallery-strip.g5{grid-template-columns:2fr 1fr 1fr 1fr 1fr}
+
+.gthumb{overflow:hidden;position:relative;cursor:none}
+.gthumb img{height:320px;filter:brightness(.62) saturate(.88);transition:filter .5s,transform .7s var(--ease);transform:scale(1.03)}
+.gthumb:hover img{filter:brightness(.88) saturate(1.1);transform:scale(1.0)}
+.gthumb.tall img{height:642px}
+
+/* Add-project prompt (last item in feed) */
+.add-project{max-width:1440px;margin:0 auto;padding:72px 60px;display:flex;align-items:center;gap:40px;border-top:1px solid rgba(201,168,76,.08)}
+.ap-icon{font-family:'Bebas Neue',cursive;font-size:64px;color:rgba(201,168,76,.12);line-height:1}
+.ap-text h3{font-family:'Bebas Neue',cursive;font-size:32px;letter-spacing:2px;color:rgba(240,234,214,.22);margin-bottom:8px}
+.ap-text p{font-size:10px;color:rgba(240,234,214,.16);letter-spacing:2px;text-transform:uppercase}
+
+/* DIVIDER */
+.proj-divider{height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,.12),transparent);max-width:1440px;margin:0 auto}
+
+/* LIGHTBOX */
+#lightbox{position:fixed;inset:0;z-index:8000;background:rgba(8,11,6,.97);backdrop-filter:blur(24px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s ease}
+#lightbox.open{opacity:1;pointer-events:all}
+#lb-img{max-width:90vw;max-height:88vh;object-fit:contain;box-shadow:0 40px 120px rgba(0,0,0,.8)}
+#lb-close{position:absolute;top:32px;right:40px;font-size:28px;color:rgba(240,234,214,.4);cursor:none;background:none;border:none;transition:color .3s;line-height:1}
+#lb-close:hover{color:var(--gold)}
+#lb-prev,#lb-next{position:absolute;top:50%;transform:translateY(-50%);font-family:'Bebas Neue',cursive;font-size:32px;color:rgba(240,234,214,.3);cursor:none;background:none;border:none;letter-spacing:2px;transition:all .3s}
+#lb-prev{left:40px}#lb-next{right:40px}
+#lb-prev:hover,#lb-next:hover{color:var(--gold)}
+#lb-counter{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(240,234,214,.25)}
+#lb-caption{position:absolute;bottom:52px;left:50%;transform:translateX(-50%);font-family:'Bebas Neue',cursive;font-size:18px;letter-spacing:3px;color:rgba(240,234,214,.42);white-space:nowrap}
+
+/* CTA BAND */
+.cta-band{background:var(--dark2);border-top:1px solid rgba(201,168,76,.1);border-bottom:1px solid rgba(201,168,76,.1);padding:80px 60px;text-align:center}
+.cb-title{font-family:'Bebas Neue',cursive;font-size:clamp(52px,6vw,90px);line-height:.9;margin-bottom:24px}
+.cb-title .gold{color:var(--gold);text-shadow:0 0 40px rgba(201,168,76,.25)}
+.cb-sub{font-size:11px;color:rgba(240,234,214,.4);letter-spacing:1px;margin-bottom:40px;line-height:2}
+.cb-btn{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--dark);padding:14px 40px;font-size:9px;letter-spacing:3px;text-transform:uppercase;font-family:'Montserrat',sans-serif;font-weight:700;border-radius:9999px;transition:all .3s;cursor:none;border:none;text-decoration:none}
+.cb-btn:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 32px rgba(201,168,76,.3)}
+
+.foot{padding:32px 60px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--cream20)}
+.foot-logo{font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:4px;color:var(--gold)}
+.foot-copy{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,234,214,.22)}
+
+.rev{opacity:0;transform:translateY(28px);transition:opacity .85s ease,transform .85s var(--ease)}
+.rev.in{opacity:1;transform:translateY(0)}
+.rev-l{opacity:0;transform:translateX(-28px);transition:opacity .85s ease,transform .85s var(--ease)}
+.rev-l.in{opacity:1;transform:translateX(0)}
+
+@media(max-width:1100px){
+  .gallery-strip.g4,.gallery-strip.g5{grid-template-columns:2fr 1fr 1fr}
+  .gthumb.tall img{height:320px}
+  .gallery-strip.open{max-height:400px}
 }
-@media(max-width:768px) {
-  #nav{padding:0 24px}
-  .page-hero-content,.projects-wrap,.filter-bar{padding-left:24px;padding-right:24px}
-  .proj-featured .proj-info{padding:32px 24px;max-width:100%;text-align:left}
-  .proj-featured .proj-tag{justify-content:flex-start}
-  .proj-featured .proj-tag::after{display:none}
-  .proj-featured .proj-tag::before{content:'';width:24px;height:1px;background:var(--gold);opacity:.6}
-  .proj-grid{grid-template-columns:1fr}
-  .proj-card.wide{grid-column:span 1}
+@media(max-width:768px){
+  #nav,.ph-content,.filter-bar,.count-strip,.cta-band,.foot{padding-left:24px;padding-right:24px}
+  .proj-info{padding:32px 24px;max-width:100%;text-align:left}
+  .proj-tag,.proj-stats{justify-content:flex-start}
+  .proj-tag::after{display:none}
+  .proj-name{font-size:clamp(44px,10vw,72px)}
+  .gallery-strip.g3,.gallery-strip.g4,.gallery-strip.g5{grid-template-columns:1fr 1fr}
+  .gthumb.tall img,.gthumb img{height:220px}
+  .gallery-strip.open{max-height:560px}
   .hbg{display:flex}
   .nav-links,.nav-r{display:none}
-  .count-strip{padding:14px 24px;gap:24px}
+  .proj-num{font-size:90px;top:20px;left:24px}
+  .count-strip{gap:28px;padding:14px 24px}
 }
+
+/* ══ LED FLICKER — "We Offer" from homepage ══ */
+.led-flicker-wrap { display: inline; }
+.lf {
+  display: inline-block;
+  color: #e87cb0;
+  text-shadow:
+    0 0 4px  rgba(232,124,176,0.95),
+    0 0 14px rgba(232,124,176,0.65),
+    0 0 32px rgba(232,124,176,0.30),
+    0 0 64px rgba(232,124,176,0.12);
+  transition: text-shadow 0.9s ease, color 0.9s ease;
+}
+.lf.dim {
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(255,255,255,0.9), 0 0 16px rgba(255,255,255,0.5), 0 0 32px rgba(255,255,255,0.2);
+}
+.lf.dim2 {
+  color: #ffffff;
+  text-shadow: 0 0 4px rgba(255,255,255,0.7), 0 0 12px rgba(255,255,255,0.35), 0 0 24px rgba(255,255,255,0.12);
+}
+/* ══ BTN-HULY — glowing gold button ══ */
+.btn-huly-wrap { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+.btn-huly-blob-1 {
+  position: absolute; width: 140px; height: 140px; top: 50%; left: 50%;
+  transform: translate(-50%,-50%); border-radius: 50%;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(255,252,230,0.95) 3.5%, rgba(230,180,50,0.75) 26.5%, rgba(210,155,30,0.45) 37.5%, rgba(201,168,76,0.20) 55%, rgba(180,130,20,0.00) 92.5%);
+  pointer-events: none; z-index: 0; opacity: 0; transition: opacity 0.35s ease;
+}
+.btn-huly-blob-2 {
+  position: absolute; width: 240px; height: 120px; top: 50%; left: 50%;
+  transform: translate(-50%,-50%); border-radius: 50%;
+  background: radial-gradient(43.3% 44.23% at 50% 49.51%, rgba(255,255,240,0.9) 29%, rgba(240,210,130,0.6) 48.5%, rgba(210,168,76,0.3) 60.71%, rgba(180,130,40,0.00) 100%);
+  filter: blur(8px); pointer-events: none; z-index: 0; opacity: 0; transition: opacity 0.35s ease;
+}
+.btn-huly-wrap:hover .btn-huly-blob-1,
+.btn-huly-wrap:hover .btn-huly-blob-2 { opacity: 1; }
+.btn-huly {
+  position: relative; z-index: 1; display: inline-flex; align-items: center; justify-content: center;
+  gap: 0.5rem; padding: 0 36px; height: 44px; font-size: 10px; font-weight: 700;
+  letter-spacing: 2.5px; text-transform: uppercase; font-family: 'Montserrat', sans-serif;
+  color: rgba(232,196,90,0.95); text-decoration: none; cursor: none; border-radius: 9999px;
+  border: 2px solid transparent;
+  background: linear-gradient(var(--dark), var(--dark)) padding-box,
+    linear-gradient(103.7deg, rgba(201,168,76,0.08) 0%, rgba(201,168,76,0.15) 30%, rgba(232,196,90,0.70) 65%, rgba(255,240,180,0.95) 82%, rgba(255,255,220,1.00) 100%) border-box;
+  background-color: rgba(201,168,76,0.06);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 2px 12px rgba(0,0,0,0.3);
+  transition: all 0.3s ease; white-space: nowrap; overflow: hidden;
+}
+.btn-huly::after {
+  content: ''; position: absolute; top: -50%; left: -120%; width: 55%; height: 200%;
+  background: linear-gradient(110deg, transparent 20%, rgba(255,240,180,0.22) 50%, transparent 75%);
+  transition: left 0.55s ease;
+}
+.btn-huly-wrap:hover .btn-huly::after, .btn-huly:hover::after { left: 150%; }
+.btn-huly:hover {
+  background-color: rgba(201,168,76,0.14); color: rgba(255,248,200,1);
+  border-color: transparent;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), 0 4px 20px rgba(201,168,76,0.2);
+  transform: translateY(-1px);
+}
+
 </style>
 </head>
 <body>
@@ -593,15 +288,29 @@ img{display:block;width:100%;object-fit:cover}
   <div class="ld-txt">Our Finest Work</div>
 </div>
 
+<!-- MOBILE MENU -->
 <div id="mob-menu">
-  <a href="index.html">Home</a>
-  <a href="services.html">Services</a>
-  <a href="featured.html">Featured</a>
-  <a href="media.html">Media</a>
-  <a href="service-area.html">Service Area</a>
-  <a href="#contact">Contact</a>
+  <div class="mob-inner">
+    <div>
+      <div class="mob-eyebrow">Navigation</div>
+      <a href="featured.html" class="mob-link">Featured</a>
+      <a href="media.html" class="mob-link">Media</a>
+      <a href="services.html" class="mob-link">Services</a>
+      <a href="service-area.html" class="mob-link">Locations</a>
+      <a href="#contact" class="mob-link">Contact</a>
+    </div>
+    <div>
+      <div class="mob-divider"></div>
+      <div class="mob-bottom">
+        <a href="tel:5126957566" class="mob-phone">512-695-7566</a>
+        <a href="#contact" class="mob-cta">Get a Free Quote &#8594;</a>
+        <div class="mob-location">Austin, Texas &nbsp;&middot;&nbsp; Any Project Any Budget</div>
+      </div>
+    </div>
+  </div>
 </div>
 
+<!-- NAV -->
 <nav id="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">Red Agave</a>
@@ -622,30 +331,30 @@ img{display:block;width:100%;object-fit:cover}
 
 <!-- PAGE HERO -->
 <section class="page-hero">
-  <div class="page-hero-bg" id="phbg"></div>
-  <div class="page-hero-ov"></div>
-  <div class="page-hero-content">
-    <div class="page-eyebrow" id="peyebrow">Red Agave Landscaping &nbsp;&middot;&nbsp; Austin TX</div>
-    <h1 class="page-title">
-      <span class="t1">Featured</span>
-      <span class="t2">Projects</span>
+  <div class="ph-bg" id="phbg" style="background-image:url('https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/IMG_5448-Large.webp')"></div>
+  <div class="ph-ov"></div>
+  <div class="ph-content">
+    <div class="ph-eyebrow" id="peyebrow">Red Agave Landscaping &nbsp;&middot;&nbsp; Austin TX</div>
+    <h1 class="ph-title">
+      <span class="ph-t1">Featured</span>
+      <span class="ph-t2">Projects</span>
     </h1>
-    <p class="page-sub">Every project tells a story. These are our finest — outdoor spaces where design ambition meets master craftsmanship, built for clients who refused to settle.</p>
+    <p class="ph-sub">Every project tells a story. These are our finest — outdoor spaces where design ambition meets master craftsmanship, built for clients who refused to settle.</p>
   </div>
 </section>
 
-<!-- COUNT STRIP -->
+<!-- STATS STRIP -->
 <div class="count-strip">
   <span class="cs-label">500+ Projects Completed</span>
-  <span class="cs-num">&nbsp;&middot;&nbsp;</span>
+  <span class="cs-sep">&middot;</span>
   <span class="cs-label">15+ Years in Austin</span>
-  <span class="cs-num">&nbsp;&middot;&nbsp;</span>
-  <span class="cs-label">Any Project &nbsp;&middot;&nbsp; Any Budget</span>
-  <span class="cs-num">&nbsp;&middot;&nbsp;</span>
+  <span class="cs-sep">&middot;</span>
+  <span class="cs-label">Any Project &middot; Any Budget</span>
+  <span class="cs-sep">&middot;</span>
   <span class="cs-label">5&#9733; Rated</span>
 </div>
 
-<!-- FILTER BAR -->
+<!-- FILTER -->
 <div class="filter-bar">
   <span class="filter-label">Filter</span>
   <button class="filter-btn active" data-filter="all">All Projects</button>
@@ -656,140 +365,250 @@ img{display:block;width:100%;object-fit:cover}
   <button class="filter-btn" data-filter="planter">Custom Planters</button>
 </div>
 
-<!-- PROJECTS -->
-<div class="projects-wrap">
+<!-- ══ PROJECT STORIES ══ -->
+<div class="projects-feed">
 
-  <!-- ── FEATURED HERO PROJECT ── -->
-  <div class="proj-featured rev" data-category="deck lighting">
-    <div class="proj-index">01</div>
-    <img class="proj-img" src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/IMG_5448-Large.webp" alt="Westlake Hills Pergola &amp; Deck" loading="eager">
-    <div class="proj-ov"></div>
-    <div class="proj-info">
-      <div class="proj-tag">Signature Project &nbsp;&middot;&nbsp; 2024</div>
-      <div class="proj-name">Westlake Hills<br>Pergola &amp; Deck</div>
-      <div class="proj-location">Westlake Hills, TX &nbsp;&middot;&nbsp; Outdoor Living</div>
-      <div class="proj-desc">A complete backyard transformation — floating composite deck, custom cedar pergola with slatted privacy walls, raised LED planters, and a natural gas fire boulder. Every detail custom designed and built by Red Agave.</div>
-      <a href="#" class="proj-cta">View Full Project <span class="proj-cta-arrow">&#8594;</span></a>
+  <!-- 01 — Westlake Hills Pergola & Deck -->
+  <div class="proj-story rev" data-cat="deck lighting">
+    <div class="proj-hero">
+      <div class="proj-num">01</div>
+      <img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/IMG_5448-Large.webp" alt="Westlake Hills custom pergola and composite deck by Red Agave" loading="eager">
+      <div class="proj-info">
+        <div class="proj-tag">Signature Project &nbsp;&middot;&nbsp; 2024</div>
+        <div class="proj-name">Westlake Hills<br>Pergola &amp; Deck</div>
+        <div class="proj-loc">Westlake Hills, TX &nbsp;&middot;&nbsp; Outdoor Living</div>
+        <div class="proj-stats">
+          <div class="ps-item"><span class="ps-val">2,400</span><span class="ps-key">Sq Ft</span></div>
+          <div class="ps-item"><span class="ps-val">8 Wks</span><span class="ps-key">Timeline</span></div>
+          <div class="ps-item"><span class="ps-val">2024</span><span class="ps-key">Year</span></div>
+        </div>
+        <div class="proj-desc">Floating composite deck, custom cedar pergola with slatted privacy walls, raised LED planters and a natural gas fire boulder. Every detail custom designed and built by Red Agave.</div>
+        <button class="gallery-toggle" data-gallery="g01">View Gallery &nbsp;&#8594;</button>
+      </div>
+    </div>
+    <!-- Gallery: replace src paths with your real images from images/projects/westlake-pergola/ -->
+    <div class="gallery-strip g5" id="g01">
+      <div class="gthumb tall"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/IMG_5448-Large.webp" alt="Westlake Hills pergola deck full view" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5410-Large.webp" alt="Westlake deck outdoor seating" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5344-Large.webp" alt="Westlake cedar pergola detail" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/IMG_0990-Large.webp" alt="Westlake custom LED planters" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/IMG_8182-Large.webp" alt="Westlake fire boulder at dusk" loading="lazy"></div>
     </div>
   </div>
 
-  <!-- ── PROJECT GRID ── -->
-  <div class="proj-grid" style="margin-top:3px">
+  <div class="proj-divider"></div>
 
-    <!-- Card 1 — Wide -->
-    <div class="proj-card wide rev" data-category="xeriscape">
-      <img class="proj-img" src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5344-Large.webp" alt="Cedar Park Xeriscape" loading="lazy">
-      <div class="proj-ov"></div>
+  <!-- 02 — Cedar Park Xeriscape -->
+  <div class="proj-story rev" data-cat="xeriscape">
+    <div class="proj-hero">
+      <div class="proj-num">02</div>
+      <img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5344-Large.webp" alt="Cedar Park full xeriscape with native plants by Red Agave" loading="lazy">
       <div class="proj-info">
         <div class="proj-tag">Xeriscape &nbsp;&middot;&nbsp; 2024</div>
         <div class="proj-name">Cedar Park<br>Full Xeriscape</div>
-        <div class="proj-location">Cedar Park, TX</div>
-        <div class="proj-desc">Native plants, decomposed granite, limestone boulders and custom steel edging — zero lawn, maximum drama.</div>
-        <a href="#" class="proj-cta">View Project <span class="proj-cta-arrow">&#8594;</span></a>
+        <div class="proj-loc">Cedar Park, TX &nbsp;&middot;&nbsp; Xeriscape &amp; Hardscape</div>
+        <div class="proj-stats">
+          <div class="ps-item"><span class="ps-val">3,800</span><span class="ps-key">Sq Ft</span></div>
+          <div class="ps-item"><span class="ps-val">6 Wks</span><span class="ps-key">Timeline</span></div>
+          <div class="ps-item"><span class="ps-val">2024</span><span class="ps-key">Year</span></div>
+        </div>
+        <div class="proj-desc">Native plants, decomposed granite, limestone boulders and custom steel edging — zero lawn, maximum drama. Designed for Cedar Park's caliche soil with near-zero irrigation needs.</div>
+        <button class="gallery-toggle" data-gallery="g02">View Gallery &nbsp;&#8594;</button>
       </div>
     </div>
-
-    <!-- Card 2 — Text panel -->
-    <div class="proj-card text-panel rev">
-      <div class="tp-eyebrow">Our Philosophy</div>
-      <div class="tp-heading">We Build <span class="gold">Art.</span><br>Not Just<br><span class="dim">Yards.</span></div>
-      <p class="tp-body">Every project starts with a blank canvas and a client with a vision. Our designers listen first, then push the boundaries of what outdoor spaces can be.</p>
-      <a href="services.html" class="tp-cta">Explore Services <span>&#8594;</span></a>
+    <div class="gallery-strip g4" id="g02">
+      <div class="gthumb tall"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5344-Large.webp" alt="Cedar Park xeriscape full overview" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5410-Large.webp" alt="Cedar Park native plants detail" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-7305-Large.webp" alt="Cedar Park limestone boulders" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5422-Large.webp" alt="Cedar Park steel edging detail" loading="lazy"></div>
     </div>
+  </div>
 
-    <!-- Card 3 — Standard -->
-    <div class="proj-card rev" data-category="planter lighting">
-      <img class="proj-img" src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/IMG_0990-Large.webp" alt="Custom Steel Planters" loading="lazy">
-      <div class="proj-ov"></div>
+  <div class="proj-divider"></div>
+
+  <!-- 03 — Austin LED Steel Planters -->
+  <div class="proj-story rev" data-cat="planter lighting">
+    <div class="proj-hero">
+      <div class="proj-num">03</div>
+      <img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/IMG_0990-Large.webp" alt="Custom fabricated LED steel planters Austin TX by Red Agave" loading="lazy">
       <div class="proj-info">
-        <div class="proj-tag">Custom Planters &nbsp;&middot;&nbsp; 2024</div>
+        <div class="proj-tag">Custom Fabrication &nbsp;&middot;&nbsp; 2024</div>
         <div class="proj-name">Custom LED<br>Steel Planters</div>
-        <div class="proj-location">Austin, TX</div>
-        <div class="proj-desc">Fabricated steel planter beds with under-mounted WLED strip lighting. Glows like a campfire at dusk.</div>
-        <a href="#" class="proj-cta">View Project <span class="proj-cta-arrow">&#8594;</span></a>
+        <div class="proj-loc">Austin, TX &nbsp;&middot;&nbsp; Fabrication &amp; WLED</div>
+        <div class="proj-stats">
+          <div class="ps-item"><span class="ps-val">12</span><span class="ps-key">Planters</span></div>
+          <div class="ps-item"><span class="ps-val">WLED</span><span class="ps-key">System</span></div>
+          <div class="ps-item"><span class="ps-val">2024</span><span class="ps-key">Year</span></div>
+        </div>
+        <div class="proj-desc">Fabricated steel planters with under-mounted WLED strip lighting. Each piece designed and built in-house — glows like a campfire at dusk, architectural sculpture by day.</div>
+        <button class="gallery-toggle" data-gallery="g03">View Gallery &nbsp;&#8594;</button>
       </div>
     </div>
+    <div class="gallery-strip g3" id="g03">
+      <div class="gthumb tall"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/IMG_0990-Large.webp" alt="LED steel planters night glow Austin" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/IMG_8182-Large.webp" alt="WLED strip lighting detail" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5410-Large.webp" alt="Planter daytime view" loading="lazy"></div>
+    </div>
+  </div>
 
-    <!-- Card 4 — Standard -->
-    <div class="proj-card rev" data-category="fire">
-      <img class="proj-img" src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-7305-Large.webp" alt="Fire &amp; Water Feature" loading="lazy">
-      <div class="proj-ov"></div>
+  <div class="proj-divider"></div>
+
+  <!-- 04 — Round Rock Fire & Water -->
+  <div class="proj-story rev" data-cat="fire">
+    <div class="proj-hero">
+      <div class="proj-num">04</div>
+      <img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-7305-Large.webp" alt="Round Rock natural stone stream bed and fire feature by Red Agave" loading="lazy">
       <div class="proj-info">
         <div class="proj-tag">Fire &amp; Water &nbsp;&middot;&nbsp; 2023</div>
         <div class="proj-name">Rock Stream<br>&amp; Fire Feature</div>
-        <div class="proj-location">Round Rock, TX</div>
-        <div class="proj-desc">Natural stone stream bed with recirculating water and integrated natural gas fire feature carved from granite.</div>
-        <a href="#" class="proj-cta">View Project <span class="proj-cta-arrow">&#8594;</span></a>
+        <div class="proj-loc">Round Rock, TX &nbsp;&middot;&nbsp; Fire &amp; Water</div>
+        <div class="proj-stats">
+          <div class="ps-item"><span class="ps-val">45 Ft</span><span class="ps-key">Stream</span></div>
+          <div class="ps-item"><span class="ps-val">Gas</span><span class="ps-key">Fire System</span></div>
+          <div class="ps-item"><span class="ps-val">2023</span><span class="ps-key">Year</span></div>
+        </div>
+        <div class="proj-desc">Natural stone stream bed with recirculating water and integrated natural gas fire feature carved from granite. The sound of running water year-round, the warmth of fire every evening.</div>
+        <button class="gallery-toggle" data-gallery="g04">View Gallery &nbsp;&#8594;</button>
       </div>
     </div>
+    <div class="gallery-strip g3" id="g04">
+      <div class="gthumb tall"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-7305-Large.webp" alt="Round Rock stream bed full view" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5344-Large.webp" alt="Granite fire feature detail" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5422-Large.webp" alt="Water feature at night" loading="lazy"></div>
+    </div>
+  </div>
 
-    <!-- Card 5 — Wide -->
-    <div class="proj-card wide rev" data-category="deck lighting">
-      <img class="proj-img" src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5410-Large.webp" alt="Outdoor Living Space" loading="lazy">
-      <div class="proj-ov"></div>
+  <div class="proj-divider"></div>
+
+  <!-- 05 — Dripping Springs Outdoor Kitchen -->
+  <div class="proj-story rev" data-cat="deck lighting">
+    <div class="proj-hero">
+      <div class="proj-num">05</div>
+      <img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5410-Large.webp" alt="Dripping Springs outdoor kitchen and outdoor living space by Red Agave" loading="lazy">
       <div class="proj-info">
         <div class="proj-tag">Outdoor Living &nbsp;&middot;&nbsp; 2023</div>
         <div class="proj-name">Dripping Springs<br>Outdoor Kitchen</div>
-        <div class="proj-location">Dripping Springs, TX</div>
-        <div class="proj-desc">Full outdoor kitchen, built-in seating, WLED lighting and native landscaping on a 3-acre Hill Country property.</div>
-        <a href="#" class="proj-cta">View Project <span class="proj-cta-arrow">&#8594;</span></a>
+        <div class="proj-loc">Dripping Springs, TX &nbsp;&middot;&nbsp; Full Outdoor Living</div>
+        <div class="proj-stats">
+          <div class="ps-item"><span class="ps-val">3 Ac</span><span class="ps-key">Property</span></div>
+          <div class="ps-item"><span class="ps-val">12 Wks</span><span class="ps-key">Timeline</span></div>
+          <div class="ps-item"><span class="ps-val">2023</span><span class="ps-key">Year</span></div>
+        </div>
+        <div class="proj-desc">Full outdoor kitchen, built-in seating, WLED lighting and native landscaping on a 3-acre Hill Country property. Built to entertain 50 guests and feel intimate for two.</div>
+        <button class="gallery-toggle" data-gallery="g05">View Gallery &nbsp;&#8594;</button>
       </div>
     </div>
+    <div class="gallery-strip g4" id="g05">
+      <div class="gthumb tall"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5410-Large.webp" alt="Dripping Springs outdoor kitchen full view" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/IMG_5448-Large.webp" alt="Built-in dining seating" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5344-Large.webp" alt="Native Hill Country landscaping" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/IMG_8182-Large.webp" alt="WLED lighting at dusk" loading="lazy"></div>
+    </div>
+  </div>
 
-    <!-- Card 6 — Standard -->
-    <div class="proj-card rev" data-category="lighting xeriscape">
-      <img class="proj-img" src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/IMG_8182-Large.webp" alt="LED Lighting Hardscape" loading="lazy">
-      <div class="proj-ov"></div>
+  <div class="proj-divider"></div>
+
+  <!-- 06 — Bee Cave LED Hardscape -->
+  <div class="proj-story rev" data-cat="lighting">
+    <div class="proj-hero">
+      <div class="proj-num">06</div>
+      <img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/IMG_8182-Large.webp" alt="Bee Cave FCOB LED hardscape retaining wall lighting by Red Agave" loading="lazy">
       <div class="proj-info">
         <div class="proj-tag">LED Hardscape &nbsp;&middot;&nbsp; 2024</div>
         <div class="proj-name">Bee Cave<br>LED Hardscape</div>
-        <div class="proj-location">Bee Cave, TX</div>
-        <div class="proj-desc">FCOB under-cap hardscape lighting system transforming a plain retaining wall into a signature nighttime element.</div>
-        <a href="#" class="proj-cta">View Project <span class="proj-cta-arrow">&#8594;</span></a>
+        <div class="proj-loc">Bee Cave, TX &nbsp;&middot;&nbsp; FCOB Lighting System</div>
+        <div class="proj-stats">
+          <div class="ps-item"><span class="ps-val">FCOB</span><span class="ps-key">System</span></div>
+          <div class="ps-item"><span class="ps-val">120 Ft</span><span class="ps-key">Run</span></div>
+          <div class="ps-item"><span class="ps-val">2024</span><span class="ps-key">Year</span></div>
+        </div>
+        <div class="proj-desc">FCOB under-cap hardscape lighting transforming a plain retaining wall into a signature nighttime element. The kind of lighting other companies don't know how to install.</div>
+        <button class="gallery-toggle" data-gallery="g06">View Gallery &nbsp;&#8594;</button>
       </div>
     </div>
+    <div class="gallery-strip g3" id="g06">
+      <div class="gthumb tall"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/IMG_8182-Large.webp" alt="Bee Cave LED hardscape night view" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/IMG_0990-Large.webp" alt="FCOB LED detail close-up" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5410-Large.webp" alt="Hardscape daytime view" loading="lazy"></div>
+    </div>
+  </div>
 
-    <!-- Card 7 — Standard -->
-    <div class="proj-card rev" data-category="xeriscape fire">
-      <img class="proj-img" src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5422-Large.webp" alt="Xeriscape Fire" loading="lazy">
-      <div class="proj-ov"></div>
+  <div class="proj-divider"></div>
+
+  <!-- 07 — Georgetown Desert Modern -->
+  <div class="proj-story rev" data-cat="xeriscape fire">
+    <div class="proj-hero">
+      <div class="proj-num">07</div>
+      <img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5422-Large.webp" alt="Georgetown desert modern xeriscape design by Red Agave" loading="lazy">
       <div class="proj-info">
-        <div class="proj-tag">Xeriscape &nbsp;&middot;&nbsp; 2023</div>
+        <div class="proj-tag">Desert Modern &nbsp;&middot;&nbsp; 2023</div>
         <div class="proj-name">Georgetown<br>Desert Modern</div>
-        <div class="proj-location">Georgetown, TX</div>
-        <div class="proj-desc">Agave-forward desert modern design with black steel edging, native grasses and a central fire boulder.</div>
-        <a href="#" class="proj-cta">View Project <span class="proj-cta-arrow">&#8594;</span></a>
+        <div class="proj-loc">Georgetown, TX &nbsp;&middot;&nbsp; Xeriscape &amp; Fire</div>
+        <div class="proj-stats">
+          <div class="ps-item"><span class="ps-val">5,200</span><span class="ps-key">Sq Ft</span></div>
+          <div class="ps-item"><span class="ps-val">8 Wks</span><span class="ps-key">Timeline</span></div>
+          <div class="ps-item"><span class="ps-val">2023</span><span class="ps-key">Year</span></div>
+        </div>
+        <div class="proj-desc">Agave-forward desert modern design with black steel edging, native grasses and a central fire boulder. Built to thrive in Georgetown's heat with almost zero maintenance.</div>
+        <button class="gallery-toggle" data-gallery="g07">View Gallery &nbsp;&#8594;</button>
       </div>
     </div>
-
-    <!-- Card 8 — Text CTA -->
-    <div class="proj-card text-panel rev" style="background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(8,11,6,0.98))">
-      <div class="tp-eyebrow">Ready to Start?</div>
-      <div class="tp-heading">Your<br><span class="gold">Dream</span><br>Awaits.</div>
-      <p class="tp-body">Free consultation. Free 2D CAD design. No pressure — just a conversation about what's possible.</p>
-      <a href="index.html#contact" class="tp-cta">Book Consultation <span>&#8594;</span></a>
+    <div class="gallery-strip g3" id="g07">
+      <div class="gthumb tall"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5422-Large.webp" alt="Georgetown desert modern full view" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5344-Large.webp" alt="Agave and native grasses detail" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-7305-Large.webp" alt="Fire boulder Georgetown" loading="lazy"></div>
     </div>
+  </div>
 
-  </div><!-- /proj-grid -->
-</div><!-- /projects-wrap -->
+  <div class="proj-divider"></div>
+
+  <!-- 08 — Austin Pool Garden -->
+  <div class="proj-story rev" data-cat="deck xeriscape">
+    <div class="proj-hero">
+      <div class="proj-num">08</div>
+      <img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5410-Large.webp" alt="Austin pool garden full yard design and build by Red Agave" loading="lazy">
+      <div class="proj-info">
+        <div class="proj-tag">Full Yard Design &nbsp;&middot;&nbsp; 2023</div>
+        <div class="proj-name">Austin<br>Pool Garden</div>
+        <div class="proj-loc">Austin, TX &nbsp;&middot;&nbsp; Full Yard Design + Build</div>
+        <div class="proj-stats">
+          <div class="ps-item"><span class="ps-val">7,000</span><span class="ps-key">Sq Ft</span></div>
+          <div class="ps-item"><span class="ps-val">14 Wks</span><span class="ps-key">Timeline</span></div>
+          <div class="ps-item"><span class="ps-val">2023</span><span class="ps-key">Year</span></div>
+        </div>
+        <div class="proj-desc">Complete backyard reinvention around an existing pool — native beds, limestone pathway, steel-edged turf and a full perimeter lighting system. A yard that looks curated, not landscaped.</div>
+        <button class="gallery-toggle" data-gallery="g08">View Gallery &nbsp;&#8594;</button>
+      </div>
+    </div>
+    <div class="gallery-strip g4" id="g08">
+      <div class="gthumb tall"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5410-Large.webp" alt="Austin pool garden overview" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/IMG_5448-Large.webp" alt="Pool surround detail" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/img-5344-Large.webp" alt="Native garden beds" loading="lazy"></div>
+      <div class="gthumb"><img src="https://bpm.emb.mybluehost.me/wp-content/uploads/2025/01/IMG_8182-Large.webp" alt="Perimeter lighting at dusk" loading="lazy"></div>
+    </div>
+  </div>
+
+  <!-- ADD MORE PROJECTS HERE — copy any proj-story block above and update the content -->
+
+</div><!-- /projects-feed -->
 
 <!-- LIGHTBOX -->
 <div id="lightbox">
-  <button class="lb-close" id="lb-close">&#215;</button>
-  <button class="lb-prev" id="lb-prev">&#8592;</button>
-  <img class="lb-img" id="lb-img" src="" alt="">
-  <button class="lb-next" id="lb-next">&#8594;</button>
-  <div class="lb-counter" id="lb-counter"></div>
+  <button id="lb-close">&#215;</button>
+  <button id="lb-prev">&#8592;</button>
+  <img id="lb-img" src="" alt="">
+  <button id="lb-next">&#8594;</button>
+  <div id="lb-counter"></div>
+  <div id="lb-caption"></div>
 </div>
 
 <!-- CTA BAND -->
-<div class="cta-band" id="contact">
-  <div class="cb-title rev"><span class="gold">Start Your</span><br>Project Today</div>
-  <p class="cb-sub rev">Free consultation · Free 2D CAD design · Any project, any budget</p>
-  <a href="tel:5126957566" class="cb-btn rev">Call 512-695-7566 &nbsp;&#8594;</a>
+<div class="cta-band rev" id="contact">
+  <div class="cb-title"><span class="gold">Start Your</span><br>Project Today</div>
+  <p class="cb-sub">Free consultation &nbsp;&middot;&nbsp; Free 2D CAD design &nbsp;&middot;&nbsp; Any project, any budget</p>
+  <a href="tel:5126957566" class="cb-btn">Call 512-695-7566 &nbsp;&#8594;</a>
 </div>
 
-<!-- FOOTER -->
 <footer class="foot">
   <div class="foot-logo">Red Agave</div>
   <div class="foot-copy">&copy; 2025 Red Agave Landscaping &nbsp;&middot;&nbsp; Austin TX</div>
@@ -798,17 +617,10 @@ img{display:block;width:100%;object-fit:cover}
 <script>
 (function(){
   // CURSOR
-  var cur = document.getElementById('cur');
-  var ring = document.getElementById('cur-ring');
-  var mx=0,my=0,rx=0,ry=0;
+  var cur=document.getElementById('cur'),ring=document.getElementById('cur-ring'),mx=0,my=0,rx=0,ry=0;
   document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY});
-  (function animCur(){
-    rx+=(mx-rx)*0.14; ry+=(my-ry)*0.14;
-    cur.style.left=mx+'px'; cur.style.top=my+'px';
-    ring.style.left=rx+'px'; ring.style.top=ry+'px';
-    requestAnimationFrame(animCur);
-  })();
-  document.querySelectorAll('a,button,.proj-featured,.proj-card').forEach(function(el){
+  (function tick(){rx+=(mx-rx)*.14;ry+=(my-ry)*.14;cur.style.left=mx+'px';cur.style.top=my+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(tick)})();
+  document.querySelectorAll('a,button,.proj-story,.gthumb').forEach(function(el){
     el.addEventListener('mouseenter',function(){cur.style.width='16px';cur.style.height='16px'});
     el.addEventListener('mouseleave',function(){cur.style.width='10px';cur.style.height='10px'});
   });
@@ -817,82 +629,92 @@ img{display:block;width:100%;object-fit:cover}
   setTimeout(function(){
     document.getElementById('loader').classList.add('hidden');
     document.getElementById('phbg').classList.add('loaded');
-    setTimeout(function(){ document.getElementById('peyebrow').classList.add('in'); }, 200);
-  }, 1600);
+    setTimeout(function(){document.getElementById('peyebrow').classList.add('in')},200);
+  },1500);
 
   // NAV scroll
-  window.addEventListener('scroll',function(){
-    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
-  });
+  window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',scrollY>40)});
 
   // MOBILE MENU
-  var hbg = document.getElementById('hbg');
-  var mob = document.getElementById('mob-menu');
-  hbg.addEventListener('click',function(){
-    hbg.classList.toggle('open');
-    mob.classList.toggle('open');
-  });
+  var hbg=document.getElementById('hbg'),mob=document.getElementById('mob-menu');
+  hbg.addEventListener('click',function(){var o=mob.classList.toggle('open');hbg.classList.toggle('open',o)});
+  mob.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mob.classList.remove('open');hbg.classList.remove('open')})});
 
   // SCROLL REVEAL
-  var revEls = document.querySelectorAll('.rev,.rev-l');
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('in'); });
-  },{threshold:0.1});
-  revEls.forEach(function(el){ obs.observe(el); });
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in')})},{threshold:0.06});
+  document.querySelectorAll('.rev,.rev-l').forEach(function(el){obs.observe(el)});
 
   // FILTER
   document.querySelectorAll('.filter-btn').forEach(function(btn){
     btn.addEventListener('click',function(){
-      document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+      document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active')});
       btn.classList.add('active');
-      var filter = btn.dataset.filter;
-      document.querySelectorAll('[data-category]').forEach(function(card){
-        if(filter === 'all' || card.dataset.category.includes(filter)){
-          card.style.display = '';
-          card.style.opacity = '1';
-        } else {
-          card.style.opacity = '0.15';
-          card.style.pointerEvents = 'none';
-          setTimeout(function(){ card.style.display = ''; }, 300);
-        }
+      var f=btn.dataset.filter;
+      document.querySelectorAll('.proj-story').forEach(function(s){
+        s.classList.toggle('filtered',f!=='all'&&!s.dataset.cat.includes(f));
       });
     });
   });
 
-  // LIGHTBOX — clicking project images opens lightbox
-  var lbImgs = [];
-  var lbIdx = 0;
-  var lb = document.getElementById('lightbox');
-  var lbImg = document.getElementById('lb-img');
-  var lbCounter = document.getElementById('lb-counter');
-
-  document.querySelectorAll('.proj-featured img, .proj-card img').forEach(function(img, i){
-    lbImgs.push({src: img.src, alt: img.alt});
-    img.style.cursor = 'none';
-    img.addEventListener('click', function(e){
+  // GALLERY TOGGLE
+  document.querySelectorAll('.gallery-toggle').forEach(function(btn){
+    btn.addEventListener('click',function(e){
       e.stopPropagation();
-      lbIdx = i;
-      showLb();
+      var strip=document.getElementById(btn.dataset.gallery);
+      if(!strip)return;
+      var open=strip.classList.toggle('open');
+      btn.classList.toggle('open',open);
+      btn.innerHTML=open?'Close Gallery &nbsp;&#215;':'View Gallery &nbsp;&#8594;';
+      if(open)setTimeout(function(){strip.scrollIntoView({behavior:'smooth',block:'nearest'})},100);
     });
   });
 
-  function showLb(){
-    lbImg.src = lbImgs[lbIdx].src;
-    lbImg.alt = lbImgs[lbIdx].alt;
-    lbCounter.textContent = (lbIdx+1) + ' / ' + lbImgs.length;
-    lb.classList.add('open');
-  }
-  document.getElementById('lb-close').addEventListener('click', function(){ lb.classList.remove('open'); });
-  document.getElementById('lb-prev').addEventListener('click', function(){ lbIdx=(lbIdx-1+lbImgs.length)%lbImgs.length; showLb(); });
-  document.getElementById('lb-next').addEventListener('click', function(){ lbIdx=(lbIdx+1)%lbImgs.length; showLb(); });
-  document.addEventListener('keydown', function(e){
-    if(!lb.classList.contains('open')) return;
-    if(e.key==='Escape') lb.classList.remove('open');
-    if(e.key==='ArrowLeft'){ lbIdx=(lbIdx-1+lbImgs.length)%lbImgs.length; showLb(); }
-    if(e.key==='ArrowRight'){ lbIdx=(lbIdx+1)%lbImgs.length; showLb(); }
-  });
+  // LIGHTBOX
+  var lbImgs=[],lbIdx=0;
+  var lb=document.getElementById('lightbox'),lbImg=document.getElementById('lb-img');
+  var lbCtr=document.getElementById('lb-counter'),lbCap=document.getElementById('lb-caption');
 
+  document.querySelectorAll('.gthumb img').forEach(function(img,i){
+    lbImgs.push({src:img.src,alt:img.alt});
+    img.addEventListener('click',function(e){e.stopPropagation();lbIdx=i;showLb()});
+  });
+  function showLb(){lbImg.src=lbImgs[lbIdx].src;lbImg.alt=lbImgs[lbIdx].alt;lbCtr.textContent=(lbIdx+1)+' / '+lbImgs.length;lbCap.textContent=lbImgs[lbIdx].alt;lb.classList.add('open')}
+  document.getElementById('lb-close').addEventListener('click',function(){lb.classList.remove('open')});
+  document.getElementById('lb-prev').addEventListener('click',function(){lbIdx=(lbIdx-1+lbImgs.length)%lbImgs.length;showLb()});
+  document.getElementById('lb-next').addEventListener('click',function(){lbIdx=(lbIdx+1)%lbImgs.length;showLb()});
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')lb.classList.remove('open');
+    if(e.key==='ArrowLeft'){lbIdx=(lbIdx-1+lbImgs.length)%lbImgs.length;showLb()}
+    if(e.key==='ArrowRight'){lbIdx=(lbIdx+1)%lbImgs.length;showLb()}
+  });
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('open')});
 })();
+
+  // LED FLICKER — "We Offer"
+  (function(){
+    var letters = document.querySelectorAll('.lf');
+    if(!letters.length) return;
+    letters.forEach(function(el){
+      (function scheduleFlicker(){
+        var wait = 2000 + Math.random() * 7000;
+        setTimeout(function(){
+          var cycles = 1 + Math.floor(Math.random() * 3);
+          var i = 0;
+          function doCycle(){
+            if(i >= cycles){ el.classList.remove('dim','dim2'); scheduleFlicker(); return; }
+            i++;
+            var cls = Math.random() < 0.65 ? 'dim' : 'dim2';
+            el.classList.add(cls);
+            var offDur = 30 + Math.random() * 150;
+            setTimeout(function(){ el.classList.remove('dim','dim2'); setTimeout(doCycle, 20 + Math.random() * 70); }, offDur);
+          }
+          doCycle();
+        }, wait);
+      })();
+    });
+  })();
+
 </script>
 </body>
 </html>
