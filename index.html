@@ -631,11 +631,19 @@ a{text-decoration:none;color:inherit}
 /* Line 2: TOP DESIGN — old gold #c9a84c, slow pulse, glow radiates FROM the letters not a box */
 .hl2 {
   color: #e8c96a;
-  display:block;transform:translateY(0);
+  display: block;
+  transform: translateY(0);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 0.68em;
+  letter-spacing: 5px;
+  text-transform: uppercase;
   text-shadow:
-    0 0 30px rgba(232,196,90,0.55),
-    0 0 60px rgba(201,168,76,0.25);
+    0 0 24px rgba(232,196,90,0.45),
+    0 0 48px rgba(201,168,76,0.18);
   filter: none;
+  margin-bottom: 2px;
+  margin-top: 2px;
 }
 
 /* Line 3: +BUILD — outline text with slow orbital light halo */
@@ -1480,11 +1488,16 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 /* Slim "We Offer" relative to "Services" */
 #services .s-title .led-flicker-wrap {
   font-size: 0.52em;
-  letter-spacing: 5px;
+  letter-spacing: 6px;
   vertical-align: middle;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat', sans-serif !important;
   font-weight: 300;
   text-transform: uppercase;
+}
+/* Force Montserrat on each letter span too */
+#services .s-title .led-flicker-wrap .lf {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 300;
 }
 
 /* ══ GOLDEN SAND AMBIENT GLOW around card cluster ══ */
@@ -1630,7 +1643,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
       <h1 class="hero-title" aria-label="Austin's Top Design +Build Landscaper">
         <span class="htl"><span class="htw hl1" id="hl1-word">AUSTIN'S</span></span>
         <span class="htl"><span class="htw hl2" id="hl2-word">TOP DESIGN</span></span>
-        <span class="htl"><span class="htw hl3">+<span class="hl3-wrap"><span class="hl3-blob-1"></span><span class="hl3-blob-2"></span>BUILD</span></span></span>
+        <span class="htl"><span class="htw hl3">+&thinsp;<span class="hl3-wrap"><span class="hl3-blob-1"></span><span class="hl3-blob-2"></span><span style="letter-spacing:8px">BUILD</span></span></span></span>
         <span class="htl"><span class="htw hl4" id="hl4-word">LANDSCAPER</span></span>
       </h1>
       <p class="hero-sub" id="hero-sub" style="opacity:0;transform:translateY(16px)">Our mission is to create the bespoke outdoor living space of your dreams &mdash; on time, on budget and beyond your expectations. Experience the difference of cutting edge design coupled with quality craftsmanship.</p>
@@ -1724,7 +1737,11 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   <div class="svc-top">
     <div><div class="s-eye rev">What We Do</div><h2 class="s-title rev">Services <span class="pink led-flicker-wrap"><span class="lf">W</span><span class="lf">e</span>&nbsp;<span class="lf">O</span><span class="lf">f</span><span class="lf">f</span><span class="lf">e</span><span class="lf">r</span></span></h2></div>
     <div style="display:flex;gap:10px;padding-bottom:6px" class="rev">
-      <a href="services.html" class="btn-huly" style="height:36px;padding:0 18px;font-size:8px">View All Services</a>
+      <div class="btn-huly-wrap">
+        <div class="btn-huly-blob-1"></div>
+        <div class="btn-huly-blob-2"></div>
+        <a href="services.html" class="btn-huly">View All Services</a>
+      </div>
     </div>
   </div>
   <p class="svc-sub rev">At Red Agave we offer a wide range of services in Austin, TX. If you can dream it, we can create it.</p>
@@ -1912,9 +1929,9 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     (function curTick() {
       // Cursor dot: snaps instantly to mouse
       cur.style.left = cmx + 'px'; cur.style.top = cmy + 'px';
-      // Diamond ring: fast lerp — much less lag than before
-      crx += (cmx - crx) * 0.22;
-      cry += (cmy - cry) * 0.22;
+      // Diamond ring: very fast lerp — minimal lag
+      crx += (cmx - crx) * 0.55;
+      cry += (cmy - cry) * 0.55;
       ring.style.left = crx + 'px'; ring.style.top = cry + 'px';
       requestAnimationFrame(curTick);
     }());
