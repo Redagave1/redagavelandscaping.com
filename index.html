@@ -1452,6 +1452,9 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   #nav{padding:0 32px}
   .hero-inner,.sec,.process,.testi,.cf,.cf .form-grid{padding-left:32px;padding-right:32px}
   .svc-top,.svc-sub{padding-left:32px;padding-right:32px}
+  /* Force We Offer onto one line on mobile */
+  #services .s-title{white-space:nowrap;font-size:clamp(32px,8vw,52px)}
+  #services .s-title .led-flicker-wrap{font-size:0.48em;letter-spacing:3px}
   .svc-grid,.proc-grid,.testi-grid{grid-template-columns:1fr 1fr}
   .stats{grid-template-columns:1fr 1fr}
   .diff{grid-template-columns:1fr}.diff-r{display:none}
@@ -1595,7 +1598,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
       <div class="mob-divider"></div>
       <div class="mob-bottom">
         <a href="tel:5126957566" class="mob-phone">512-695-7566</a>
-        <a href="#contact" class="mob-cta">Get a Free Quote &#8594;</a>
+        <a href="contact.html" class="mob-cta">Get a Free Quote &#8594;</a>
         <div class="mob-location">Austin, Texas &nbsp;&middot;&nbsp; Any Project Any Budget</div>
       </div>
     </div>
@@ -1651,7 +1654,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
         <div class="btn-huly-wrap">
           <div class="btn-huly-blob-1"></div>
           <div class="btn-huly-blob-2"></div>
-          <a href="#contact" class="btn-huly">Contact Us</a>
+          <a href="contact.html" class="btn-huly">Contact Us</a>
         </div>
 
       </div>
@@ -2433,45 +2436,66 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     window.addEventListener('scroll', onScroll, {passive:true});
   })();
 
-  // ── +BUILD ORBITAL LIGHT ──
-  // A warm glow point travels slowly around the perimeter of +BUILD
-  // using requestAnimationFrame along a parametric ellipse.
+  // ── +BUILD ORGANIC PULSE GLOW ──
+  // Natural random pulsations drift across BUILD — no visible path,
+  // just warm light appearing and fading organically like fire or embers.
   (function(){
     const wrap  = document.querySelector('.hl3-wrap');
     const blob1 = document.querySelector('.hl3-blob-1');
     const blob2 = document.querySelector('.hl3-blob-2');
     if(!wrap || !blob1 || !blob2) return;
 
-    const PERIOD = 16000; // ms for one full orbit (very slow)
-    const TRAIL  = 1200;  // ms blob2 lags behind blob1
-    let start = null;
+    // Each blob has its own independent wandering target
+    var b1 = {x:0.5, y:0.5, tx:0.5, ty:0.5, opacity:0.7, topc:0.7, life:0, maxlife:0};
+    var b2 = {x:0.8, y:0.4, tx:0.8, ty:0.4, opacity:0.4, topc:0.4, life:0, maxlife:0};
 
-    function posOnEllipse(t, w, h) {
-      // Parametric ellipse: slightly larger than the element to hug its perimeter
-      const cx = w / 2;
-      const cy = h / 2;
-      const rx = w * 0.54;  // horizontal radius — hugs width
-      const ry = h * 0.62;  // vertical radius — hugs height
-      const angle = (t / PERIOD) * Math.PI * 2;
-      return {
-        x: cx + rx * Math.cos(angle),
-        y: cy + ry * Math.sin(angle)
-      };
+    function newTarget(b) {
+      // Pick random position weighted toward center of word
+      b.tx = 0.1 + Math.random() * 0.8;
+      b.ty = 0.15 + Math.random() * 0.7;
+      b.topc = 0.3 + Math.random() * 0.7;
+      b.maxlife = 1800 + Math.random() * 3200; // 1.8–5s per wander
+      b.life = 0;
     }
 
+    newTarget(b1);
+    newTarget(b2);
+    // Offset b2 so they don't sync
+    b2.x = 0.7; b2.y = 0.3; b2.life = b2.maxlife * 0.6;
+
+    var last = null;
     function frame(ts) {
-      if(!start) start = ts;
-      const elapsed = ts - start;
-      const w = wrap.offsetWidth;
-      const h = wrap.offsetHeight;
+      if(!last) last = ts;
+      var dt = Math.min(ts - last, 50);
+      last = ts;
 
-      const p1 = posOnEllipse(elapsed, w, h);
-      const p2 = posOnEllipse(elapsed - TRAIL, w, h);
+      var w = wrap.offsetWidth || 200;
+      var h = wrap.offsetHeight || 80;
 
-      blob1.style.left = p1.x + 'px';
-      blob1.style.top  = p1.y + 'px';
-      blob2.style.left = p2.x + 'px';
-      blob2.style.top  = p2.y + 'px';
+      // Advance blob 1
+      b1.life += dt;
+      if(b1.life >= b1.maxlife) newTarget(b1);
+      var ease1 = dt / 900; // smooth lerp speed
+      b1.x += (b1.tx - b1.x) * ease1;
+      b1.y += (b1.ty - b1.y) * ease1;
+      b1.opacity += (b1.topc - b1.opacity) * (dt / 1200);
+
+      // Advance blob 2
+      b2.life += dt;
+      if(b2.life >= b2.maxlife) newTarget(b2);
+      var ease2 = dt / 1200;
+      b2.x += (b2.tx - b2.x) * ease2;
+      b2.y += (b2.ty - b2.y) * ease2;
+      b2.opacity += (b2.topc - b2.opacity) * (dt / 1500);
+
+      // Apply positions — blobs are centered via transform:translate(-50%,-50%)
+      blob1.style.left    = (b1.x * w) + 'px';
+      blob1.style.top     = (b1.y * h) + 'px';
+      blob1.style.opacity = b1.opacity;
+
+      blob2.style.left    = (b2.x * w) + 'px';
+      blob2.style.top     = (b2.y * h) + 'px';
+      blob2.style.opacity = b2.opacity;
 
       requestAnimationFrame(frame);
     }
