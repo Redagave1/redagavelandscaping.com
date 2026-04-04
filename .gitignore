@@ -3,9 +3,6 @@
 .DS_Store?
 ._*
 
-# Images folder
-images/
-
 # Zip files
 *.zip
 
