@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://bpm.emb.mybluehost.me">
   <link rel="preload" as="image" href="images/hero/IMG_9106.webp" fetchpriority="high">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"LandscapeService","name":"Red Agave Landscaping","url":"https://www.redagaveatx.com","telephone":"512-695-7566","email":"redagaveatx@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Austin","addressRegion":"TX","addressCountry":"US"},"geo":{"@type":"GeoCoordinates","latitude":30.2672,"longitude":-97.7431},"areaServed":["Austin TX","Westlake Hills TX","Cedar Park TX","Round Rock TX","Georgetown TX","Lakeway TX"],"priceRange":"$$-$$$$","openingHours":"Mo-Sa 07:00-19:00"}<\/script>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <style>
     :root{--gold:#c9a84c;--gold-light:#e8c96a;--gold-glow:rgba(201,168,76,.45);--dark:#080b06;--dark2:#0d120a;--dark3:#0a1208;--cream:#f0ead6;--cream60:rgba(240,234,214,.6);--cream20:rgba(240,234,214,.1);--teal:#5a9090;--ease:cubic-bezier(.16,1,.3,1)}
     *,::before,::after{margin:0;padding:0;box-sizing:border-box}
@@ -37,7 +37,7 @@
     }
 
     /* LOADER */
-    #loader{position:fixed;inset:0;z-index:9000;background:#080b06;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;transition:opacity .6s}
+    #loader{position:fixed;inset:0;z-index:9000;background:var(--dark);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;transition:opacity .6s}
     #loader.done{opacity:0;pointer-events:none}
     .loader-logo{font-family:"Bebas Neue",cursive;font-size:clamp(36px,8vw,72px);letter-spacing:.12em;color:var(--gold);text-shadow:var(--gold-glow) 0 0 30px}
     .loader-bar{width:160px;height:1px;background:rgba(201,168,76,.2);position:relative;overflow:hidden}
@@ -249,7 +249,7 @@
 <body>
 <div id="cur"></div>
 <div id="cur-ring"></div>
-<div id="loader"><div class="loader-logo">Red Agave</div><div class="loader-bar"></div></div>
+<div id="loader" style="background:#080b06"><div class="loader-logo">Red Agave</div><div class="loader-bar"></div></div>
 
 <!-- NAV -->
 <nav id="nav">
@@ -446,7 +446,7 @@
 
 <script>
 /* LOADER */
-window.addEventListener("load",()=>setTimeout(()=>document.getElementById("loader").classList.add("done"),1100));
+(function(){function h(){var l=document.getElementById("loader");if(l)l.classList.add("done");}window.addEventListener("load",function(){setTimeout(h,400);});setTimeout(h,2000);})();
 
 /* CURSOR */
 (function(){
