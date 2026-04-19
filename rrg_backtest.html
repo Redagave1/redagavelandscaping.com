@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RRG Backtest Results</title>
+<style>
+  :root{
+    --bg:#0d0d1a;--panel:#13132a;--border:#1e1e3f;--accent:#7c3aed;
+    --green:#00c853;--red:#f44336;--yellow:#ffc107;--blue:#2196f3;
+    --gold:#ffd700;--text:#e2e2f0;--muted:#6b6b8a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh}
+
+  header{background:linear-gradient(135deg,#0d0d1a,#1a0a2e);border-bottom:1px solid var(--border);
+    padding:14px 28px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .logo{font-size:18px;font-weight:700}
+  .back{color:var(--muted);font-size:12px;text-decoration:none;margin-right:auto}
+  .back:hover{color:var(--text)}
+  .meta{font-size:11px;color:var(--muted)}
+  .meta b{color:var(--text)}
+
+  .page{max-width:1400px;margin:0 auto;padding:20px 28px 60px}
+
+  /* ── Cards ───────────────────────────────────────────────── */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:24px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+  .card .lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px}
+  .card .val{font-size:28px;font-weight:700;line-height:1}
+  .card .sub{font-size:11px;color:var(--muted);margin-top:4px}
+
+  /* ── Section ─────────────────────────────────────────────── */
+  .sec{margin-bottom:28px}
+  .sec-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+    color:var(--muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);
+    display:flex;align-items:center;gap:10px}
+  .sec-title span{color:var(--text)}
+
+  /* ── Tables ──────────────────────────────────────────────── */
+  .tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid var(--border)}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  thead tr{background:#08081a}
+  th{padding:9px 12px;text-align:left;font-size:10px;font-weight:600;text-transform:uppercase;
+    letter-spacing:.05em;color:var(--muted);cursor:pointer;white-space:nowrap}
+  th:hover{color:var(--text)}
+  tbody tr{border-bottom:1px solid #111824;transition:background .1s}
+  tbody tr:hover{background:#ffffff06}
+  td{padding:8px 12px;white-space:nowrap}
+
+  /* ── Calibration table ───────────────────────────────────── */
+  .cal-up  {color:var(--green);font-weight:700}
+  .cal-down{color:var(--red);font-weight:700}
+  .cal-ok  {color:var(--muted)}
+  .delta-bar{display:flex;align-items:center;gap:6px}
+  .dbar{height:6px;border-radius:3px;min-width:4px}
+
+  /* ── Monthly chart ───────────────────────────────────────── */
+  .chart-box{background:var(--panel);border:1px solid var(--border);border-radius:12px;
+    padding:20px;margin-bottom:24px}
+  .chart-box canvas{display:block;width:100%}
+
+  /* ── Badges ──────────────────────────────────────────────── */
+  .badge{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700}
+  .b-long {background:#00c85322;color:var(--green);border:1px solid #00c85344}
+  .b-short{background:#f4433622;color:var(--red);  border:1px solid #f4433644}
+  .b-high {color:var(--green);font-weight:700;font-size:11px}
+  .b-med  {color:var(--yellow);font-size:11px}
+
+  .qp{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:600}
+  .q-Leading  {color:#00c853;background:#00c85318}
+  .q-Improving{color:#2196f3;background:#2196f318}
+  .q-Weakening{color:#ffc107;background:#ffc10718}
+  .q-Lagging  {color:#f44336;background:#f4433618}
+
+  .exit-TIME    {color:var(--muted)}
+  .exit-HARD_STOP{color:var(--red);font-weight:700}
+  .exit-ROTATION{color:var(--yellow)}
+  .exit-MOM_FADE{color:var(--blue)}
+
+  /* ── Win/loss pill ───────────────────────────────────────── */
+  .won-true {color:var(--green);font-weight:700}
+  .won-false{color:var(--red)}
+
+  /* ── Filters ─────────────────────────────────────────────── */
+  .filters{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center}
+  .fbtn{background:var(--panel);border:1px solid var(--border);border-radius:6px;
+    padding:5px 12px;font-size:11px;color:var(--text);cursor:pointer;transition:all .15s}
+  .fbtn.active,.fbtn:hover{border-color:var(--accent);color:var(--accent)}
+  #search{background:var(--panel);border:1px solid var(--border);border-radius:6px;
+    padding:5px 12px;font-size:11px;color:var(--text);outline:none;width:160px;margin-left:auto}
+  #search:focus{border-color:var(--accent)}
+
+  #loading{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:14px;z-index:99}
+  .spin{width:34px;height:34px;border:3px solid var(--border);
+    border-top-color:var(--accent);border-radius:50%;animation:sp .7s linear infinite}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  #err{background:#f4433618;border:1px solid #f4433644;border-radius:10px;
+    padding:16px 22px;margin:20px 28px;color:var(--red);font-size:13px;display:none}
+
+  @media(max-width:768px){
+    header,.page{padding-left:14px;padding-right:14px}
+    .cards{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+<div id="loading"><div class="spin"></div><div>Loading backtest results…</div></div>
+<div id="err"></div>
+
+<header>
+  <a href="rrg_dashboard.html" class="back">← Dashboard</a>
+  <div class="logo">📊 RRG Backtest Results</div>
+  <div class="meta">Generated: <b id="gen">—</b> &nbsp;|&nbsp; Period: <b id="period">—</b></div>
+</header>
+
+<div class="page">
+
+  <!-- Summary cards -->
+  <div class="cards" id="cards"></div>
+
+  <!-- Monthly returns chart -->
+  <div class="chart-box sec">
+    <div class="sec-title">Monthly Returns (avg net return per trade, by exit month) <span id="monthly-note"></span></div>
+    <canvas id="monthly-chart" height="140"></canvas>
+  </div>
+
+  <!-- Calibration table -->
+  <div class="sec">
+    <div class="sec-title">⚡ REGIME_STATS Calibration — Hardcoded vs Actual Win Rate
+      <span style="font-size:10px;color:var(--muted);font-weight:400;text-transform:none">
+        Update REGIME_STATS in the scanner to match Actual p for tighter Kelly sizing
+      </span>
+    </div>
+    <div class="tbl-wrap">
+      <table id="cal-table">
+        <thead><tr>
+          <th>Quad Combo</th>
+          <th>N Trades</th>
+          <th>Hardcoded p</th>
+          <th>Actual p</th>
+          <th>Δ pp</th>
+          <th>Hardcoded b</th>
+          <th>Actual b</th>
+          <th>Status</th>
+        </tr></thead>
+        <tbody id="cal-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- By combo + by category side-by-side -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px" id="combo-grid">
+    <div class="sec" style="margin:0">
+      <div class="sec-title">By Quad Combo</div>
+      <div class="tbl-wrap">
+        <table id="combo-table">
+          <thead><tr>
+            <th onclick="sortCombo('combo')">Combo</th>
+            <th onclick="sortCombo('n')">N</th>
+            <th onclick="sortCombo('win_rate')">Win%</th>
+            <th onclick="sortCombo('avg_return')">AvgRet</th>
+            <th onclick="sortCombo('avg_win')">AvgWin</th>
+            <th onclick="sortCombo('avg_loss')">AvgLoss</th>
+          </tr></thead>
+          <tbody id="combo-body"></tbody>
+        </table>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div class="sec" style="margin:0">
+        <div class="sec-title">By Conviction</div>
+        <div class="tbl-wrap"><table id="conv-table">
+          <thead><tr><th>Level</th><th>N</th><th>Win%</th><th>AvgRet</th></tr></thead>
+          <tbody id="conv-body"></tbody>
+        </table></div>
+      </div>
+      <div class="sec" style="margin:0">
+        <div class="sec-title">By Exit Reason</div>
+        <div class="tbl-wrap"><table id="exit-table">
+          <thead><tr><th>Reason</th><th>N</th><th>Win%</th><th>AvgRet</th><th>AvgWks</th></tr></thead>
+          <tbody id="exit-body"></tbody>
+        </table></div>
+      </div>
+      <div class="sec" style="margin:0">
+        <div class="sec-title">By Category</div>
+        <div class="tbl-wrap"><table id="cat-table">
+          <thead><tr><th>Category</th><th>N</th><th>Win%</th><th>AvgRet</th><th>AvgAlpha</th></tr></thead>
+          <tbody id="cat-body"></tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trade log -->
+  <div class="sec">
+    <div class="sec-title">Full Trade Log <span id="trade-count"></span></div>
+    <div class="filters">
+      <button class="fbtn active" onclick="setF('ALL',this)">All</button>
+      <button class="fbtn" onclick="setF('LONG',this)">Long</button>
+      <button class="fbtn" onclick="setF('SHORT',this)">Short</button>
+      <button class="fbtn" onclick="setF('WIN',this)">Winners</button>
+      <button class="fbtn" onclick="setF('LOSS',this)">Losers</button>
+      <button class="fbtn" onclick="setF('HIGH',this)">HIGH Conv</button>
+      <input id="search" placeholder="Ticker…" oninput="renderTrades()">
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr>
+          <th onclick="srt('ticker')">Ticker</th>
+          <th onclick="srt('category')">Category</th>
+          <th onclick="srt('direction')">Dir</th>
+          <th onclick="srt('conviction')">Conv</th>
+          <th onclick="srt('combo')">Combo</th>
+          <th onclick="srt('entry_date')">Entry</th>
+          <th onclick="srt('exit_date')">Exit</th>
+          <th onclick="srt('bars_held')">Wks</th>
+          <th onclick="srt('exit_reason')">Exit Reason</th>
+          <th onclick="srt('kelly_pct')">Kelly%</th>
+          <th onclick="srt('gross_return')">Gross</th>
+          <th onclick="srt('net_return')">Net</th>
+          <th onclick="srt('spy_return')">SPY</th>
+          <th onclick="srt('alpha')">Alpha</th>
+          <th onclick="srt('won')">Result</th>
+        </tr></thead>
+        <tbody id="trade-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let data={}, trades=[], tFilt='ALL', tSc='exit_date', tSd=-1;
+let cSc='win_rate', cSd=-1;
+
+// ── Load ──────────────────────────────────────────────────────────────────────
+async function load(){
+  try{
+    const r=await fetch('rrg_backtest_results.json?t='+Date.now());
+    if(!r.ok) throw new Error('HTTP '+r.status+' — run the backtest first (Actions → RRG Backtest → Run workflow)');
+    data=await r.json();
+    trades=data.trades||[];
+    document.getElementById('loading').style.display='none';
+    render();
+  }catch(e){
+    document.getElementById('loading').style.display='none';
+    const el=document.getElementById('err');
+    el.style.display='block';
+    el.innerHTML=`<b>No backtest data yet.</b><br>${e.message}`;
+  }
+}
+
+function render(){
+  const s=data.stats||{};
+  const o=s.overall||{};
+  const gen=(data.generated||'').replace('T',' ').replace('Z',' UTC');
+  const cfg=s.config||data.config||{};
+  document.getElementById('gen').textContent=gen;
+  document.getElementById('period').textContent=`${cfg.start||'—'} → ${cfg.end||'present'}`;
+
+  // Cards
+  const cards=[
+    {lbl:'Win Rate',    val:`${o.win_rate??'—'}%`,   sub:`${o.n_trades} trades`,      col:winCol(o.win_rate,55)},
+    {lbl:'Avg Return',  val:`${fmt(o.avg_return)}%`,  sub:'net of slippage',           col:retCol(o.avg_return)},
+    {lbl:'Avg Win',     val:`${fmt(o.avg_win)}%`,     sub:`Loss: ${fmt(o.avg_loss)}%`, col:'var(--green)'},
+    {lbl:'W/L Ratio',   val:`${o.win_loss_ratio??'—'}×`, sub:'avg win ÷ avg loss',    col:'var(--blue)'},
+    {lbl:'Sharpe',      val:o.sharpe??'—',            sub:'annualized',                col:winCol(o.sharpe,0.5)},
+    {lbl:'CAGR',        val:`${o.cagr_approx??'—'}%`, sub:'approx portfolio',          col:retCol(o.cagr_approx)},
+    {lbl:'Max Drawdown',val:`${o.max_drawdown??'—'}%`,sub:'on $100k portfolio',        col:'var(--red)'},
+    {lbl:'Avg Alpha',   val:`${fmt(o.avg_alpha)}%`,   sub:'vs SPY per trade',          col:retCol(o.avg_alpha)},
+    {lbl:'Avg Hold',    val:`${o.avg_bars_held??'—'}w`,sub:'weeks per trade',          col:'var(--muted)'},
+    {lbl:'Tickers',     val:o.n_tickers??'—',         sub:'unique ETFs traded',        col:'var(--accent)'},
+  ];
+  document.getElementById('cards').innerHTML=cards.map(c=>
+    `<div class="card">
+      <div class="lbl">${c.lbl}</div>
+      <div class="val" style="color:${c.col}">${c.val}</div>
+      <div class="sub">${c.sub}</div>
+    </div>`
+  ).join('');
+
+  renderMonthly(s.monthly||[]);
+  renderCalibration(s.calibration||{});
+  renderCombo(s.by_combo||{});
+  renderConviction(s.by_conviction||{});
+  renderExitReason(s.by_exit||{});
+  renderCategory(s.by_category||{});
+  renderTrades();
+}
+
+// ── Monthly chart ─────────────────────────────────────────────────────────────
+function renderMonthly(monthly){
+  const cv=document.getElementById('monthly-chart');
+  const ctx=cv.getContext('2d');
+  const W=cv.parentElement.clientWidth-40; cv.width=W; cv.height=140;
+  ctx.clearRect(0,0,W,140);
+  if(!monthly.length){ ctx.fillStyle='#555';ctx.font='12px system-ui';ctx.textAlign='center';ctx.fillText('No monthly data',W/2,70);return;}
+
+  const vals=monthly.map(m=>m.avg_return||0);
+  const maxA=Math.max(Math.abs(Math.min(...vals)),Math.abs(Math.max(...vals)),1);
+  const bw=Math.max(4,Math.floor((W-40)/monthly.length)-2);
+  const midY=100; const scl=(midY-16)/maxA;
+
+  // Zero line
+  ctx.strokeStyle='#2a2a4a'; ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(20,midY);ctx.lineTo(W-10,midY);ctx.stroke();
+
+  monthly.forEach((m,i)=>{
+    const x=20+i*((W-30)/monthly.length);
+    const v=m.avg_return||0;
+    const h=Math.abs(v)*scl;
+    const y=v>=0?midY-h:midY;
+    ctx.fillStyle=v>=0?'#00c85399':'#f4433699';
+    ctx.fillRect(x,y,bw,h||1);
+    // Label every 6th month
+    if(i%6===0){
+      ctx.fillStyle='#444';ctx.font='8px system-ui';ctx.textAlign='center';
+      ctx.fillText((m.exit_ym||'').slice(0,7),x+bw/2,135);
+    }
+  });
+
+  // Y labels
+  ctx.fillStyle='#444';ctx.font='8px system-ui';ctx.textAlign='right';
+  ctx.fillText(`+${maxA.toFixed(1)}%`,18,20);
+  ctx.fillText('0%',18,midY+4);
+  ctx.fillText(`${(-maxA).toFixed(1)}%`,18,midY*2-10);
+
+  document.getElementById('monthly-note').textContent=`${monthly.length} months`;
+}
+
+// ── Calibration ───────────────────────────────────────────────────────────────
+function renderCalibration(cal){
+  const rows=Object.entries(cal).sort((a,b)=>Math.abs(b[1].delta_pp)-Math.abs(a[1].delta_pp));
+  document.getElementById('cal-body').innerHTML=rows.map(([combo,c])=>{
+    const dp=c.delta_pp??0;
+    const cls=dp>3?'cal-up':dp<-3?'cal-down':'cal-ok';
+    const barW=Math.min(60,Math.abs(dp)*4);
+    const barCol=dp>0?'#00c853':'#f44336';
+    const sig=c.signal||'';
+    return `<tr>
+      <td style="font-weight:600">${combo}</td>
+      <td>${c.n}</td>
+      <td>${pct(c.hardcoded_p)}</td>
+      <td style="font-weight:700;color:${dp>0?'#00c853':dp<0?'#f44336':'#888'}">${pct(c.actual_p)}</td>
+      <td>
+        <div class="delta-bar">
+          <div class="dbar" style="width:${barW}px;background:${barCol}"></div>
+          <span class="${cls}">${dp>0?'+':''}${dp.toFixed(1)}pp</span>
+        </div>
+      </td>
+      <td>${c.hardcoded_b??'—'}×</td>
+      <td>${c.actual_b??'—'}×</td>
+      <td class="${cls}" style="font-size:11px">${sig}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ── By combo ──────────────────────────────────────────────────────────────────
+let comboData={};
+function renderCombo(by_combo){
+  comboData=by_combo;
+  sortCombo(cSc);
+}
+function sortCombo(col){
+  if(col===cSc) cSd*=-1; else{cSc=col;cSd=-1;}
+  const rows=Object.entries(comboData).sort((a,b)=>{
+    const av=a[1][cSc]??0, bv=b[1][cSc]??0;
+    return (av<bv?-1:av>bv?1:0)*cSd;
+  });
+  document.getElementById('combo-body').innerHTML=rows.map(([combo,s])=>`<tr>
+    <td style="font-weight:600;font-size:11px">${combo}</td>
+    <td>${s.n}</td>
+    <td style="color:${winCol(s.win_rate,55)};font-weight:700">${s.win_rate}%</td>
+    <td style="color:${retCol(s.avg_return)}">${fmt(s.avg_return)}%</td>
+    <td style="color:var(--green)">${fmt(s.avg_win)}%</td>
+    <td style="color:var(--red)">${fmt(s.avg_loss)}%</td>
+  </tr>`).join('');
+}
+
+function renderConviction(bc){
+  document.getElementById('conv-body').innerHTML=Object.entries(bc).map(([k,s])=>`<tr>
+    <td class="b-${k.toLowerCase()}">${k}</td>
+    <td>${s.n}</td>
+    <td style="color:${winCol(s.win_rate,55)};font-weight:700">${s.win_rate}%</td>
+    <td style="color:${retCol(s.avg_return)}">${fmt(s.avg_return)}%</td>
+  </tr>`).join('');
+}
+
+function renderExitReason(be){
+  const rows=Object.entries(be).sort((a,b)=>b[1].n-a[1].n);
+  document.getElementById('exit-body').innerHTML=rows.map(([k,s])=>`<tr>
+    <td class="exit-${k}" style="font-weight:600">${k}</td>
+    <td>${s.n}</td>
+    <td style="color:${winCol(s.win_rate,55)};font-weight:700">${s.win_rate}%</td>
+    <td style="color:${retCol(s.avg_return)}">${fmt(s.avg_return)}%</td>
+    <td>${s.avg_bars??'—'}</td>
+  </tr>`).join('');
+}
+
+function renderCategory(bc){
+  const rows=Object.entries(bc).sort((a,b)=>b[1].win_rate-a[1].win_rate);
+  document.getElementById('cat-body').innerHTML=rows.map(([k,s])=>`<tr>
+    <td style="font-weight:600">${k}</td>
+    <td>${s.n}</td>
+    <td style="color:${winCol(s.win_rate,55)};font-weight:700">${s.win_rate}%</td>
+    <td style="color:${retCol(s.avg_return)}">${fmt(s.avg_return)}%</td>
+    <td style="color:${retCol(s.avg_alpha)}">${fmt(s.avg_alpha)}%</td>
+  </tr>`).join('');
+}
+
+// ── Trade log ─────────────────────────────────────────────────────────────────
+function setF(f,btn){
+  tFilt=f;
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTrades();
+}
+function srt(col){if(col===tSc)tSd*=-1;else{tSc=col;tSd=-1;}renderTrades();}
+
+function renderTrades(){
+  const q=(document.getElementById('search').value||'').toLowerCase();
+  let rows=trades.filter(t=>{
+    if(tFilt==='LONG' && t.direction!=='LONG') return false;
+    if(tFilt==='SHORT'&& t.direction!=='SHORT')return false;
+    if(tFilt==='WIN'  && !t.won)               return false;
+    if(tFilt==='LOSS' && t.won)                return false;
+    if(tFilt==='HIGH' && t.conviction!=='HIGH') return false;
+    if(q && !t.ticker.toLowerCase().includes(q))return false;
+    return true;
+  });
+  rows.sort((a,b)=>{
+    let av=a[tSc]??'', bv=b[tSc]??'';
+    return (av<bv?-1:av>bv?1:0)*tSd;
+  });
+  document.getElementById('trade-count').textContent=`(${rows.length} of ${trades.length})`;
+  document.getElementById('trade-body').innerHTML=rows.map(t=>{
+    const dc=t.direction==='LONG'?'var(--green)':'var(--red)';
+    const net=t.net_return??0;
+    const qcls=`q-${t.w_quadrant||''}`;
+    return `<tr>
+      <td style="font-weight:700;color:${dc}">${t.ticker}</td>
+      <td style="color:var(--muted);font-size:11px">${t.category||'—'}</td>
+      <td><span class="badge b-${(t.direction||'').toLowerCase()}">${t.direction}</span></td>
+      <td class="b-${(t.conviction||'').toLowerCase()}">${t.conviction}</td>
+      <td style="font-size:11px;font-weight:600">${t.combo||'—'}</td>
+      <td style="color:var(--muted);font-size:11px">${t.entry_date||'—'}</td>
+      <td style="color:var(--muted);font-size:11px">${t.exit_date||'—'}</td>
+      <td style="color:var(--muted)">${t.bars_held??'—'}</td>
+      <td class="exit-${t.exit_reason}">${t.exit_reason||'—'}</td>
+      <td style="color:var(--muted)">${t.kelly_pct??'—'}%</td>
+      <td style="color:${retCol(t.gross_return)}">${fmt(t.gross_return)}%</td>
+      <td style="color:${retCol(net)};font-weight:700">${fmt(net)}%</td>
+      <td style="color:var(--muted)">${fmt(t.spy_return)}%</td>
+      <td style="color:${retCol(t.alpha)};font-weight:600">${fmt(t.alpha)}%</td>
+      <td class="won-${t.won}">${t.won?'✓ WIN':'✗ LOSS'}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function fmt(v){ return v==null?'—':(v>=0?'+':'')+Number(v).toFixed(2); }
+function pct(v){ return v==null?'—':(v*100).toFixed(1)+'%'; }
+function winCol(v,threshold){ return v==null?'var(--muted)':v>=threshold?'var(--green)':'var(--red)'; }
+function retCol(v){ return v==null?'var(--muted)':v>0?'var(--green)':v<0?'var(--red)':'var(--muted)'; }
+
+window.addEventListener('resize',()=>{ if(data.stats) renderMonthly(data.stats.monthly||[]); });
+load();
+</script>
+</body>
+</html>

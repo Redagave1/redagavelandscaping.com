@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RRG Full Chart — v6</title>
+<style>
+  :root{--bg:#0d0d1a;--panel:#13132a;--border:#1e1e3f;--accent:#7c3aed;
+    --green:#00c853;--red:#f44336;--yellow:#ffc107;--blue:#2196f3;
+    --text:#e2e2f0;--muted:#6b6b8a;--gold:#ffd700}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;
+    height:100vh;display:flex;flex-direction:column;overflow:hidden}
+
+  header{background:linear-gradient(135deg,#0d0d1a,#1a0a2e);
+    border-bottom:1px solid var(--border);padding:10px 20px;
+    display:flex;align-items:center;gap:16px;flex-wrap:wrap;flex-shrink:0}
+  .logo{font-size:16px;font-weight:700;white-space:nowrap}
+  .back{color:var(--muted);font-size:12px;text-decoration:none}
+  .back:hover{color:var(--text)}
+  .controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-left:auto}
+  .btn{background:var(--panel);border:1px solid var(--border);border-radius:6px;
+    padding:5px 13px;font-size:11px;color:var(--text);cursor:pointer;transition:all .15s}
+  .btn.active{border-color:var(--accent);color:var(--accent);background:#7c3aed18}
+  .btn-gold{border-color:#ffd70044;color:var(--gold)}
+  .btn-gold.active{border-color:var(--gold);background:#ffd70015;color:var(--gold)}
+  .btn-green{border-color:#00c85344;color:var(--green)}
+  .btn-green.active{border-color:var(--green);background:#00c85318}
+  .btn-red{border-color:#f4433644;color:var(--red)}
+  .btn-red.active{border-color:var(--red);background:#f4433618}
+
+  .main{display:flex;flex:1;overflow:hidden}
+
+  /* ── Chart area ─────────────────────────────────────────── */
+  .chart-wrap{flex:1;position:relative;background:var(--bg);overflow:hidden}
+  canvas{display:block;width:100%;height:100%}
+  .chart-title{position:absolute;top:12px;left:50%;transform:translateX(-50%);
+    font-size:10px;font-weight:700;letter-spacing:.1em;color:var(--muted);
+    text-transform:uppercase;pointer-events:none}
+  #tooltip{position:absolute;display:none;background:#1a1a36ee;border:1px solid var(--border);
+    border-radius:8px;padding:10px 14px;font-size:12px;pointer-events:none;min-width:180px;z-index:10}
+  #tooltip b{color:var(--text);font-size:13px}
+  #tooltip .trow{display:flex;justify-content:space-between;gap:16px;
+    color:var(--muted);margin-top:3px;font-size:11px}
+  #tooltip .tval{color:var(--text)}
+
+  /* ── Sidebar ─────────────────────────────────────────────── */
+  .sidebar{width:300px;border-left:1px solid var(--border);
+    display:flex;flex-direction:column;overflow:hidden;flex-shrink:0}
+  .sb-tabs{display:flex;border-bottom:1px solid var(--border)}
+  .sb-tab{flex:1;padding:8px;font-size:11px;font-weight:700;text-align:center;
+    cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;transition:all .15s}
+  .sb-tab.active{color:var(--text);border-bottom-color:var(--accent)}
+  .sb-body{flex:1;overflow-y:auto;padding:8px}
+  .sb-body::-webkit-scrollbar{width:4px}
+  .sb-body::-webkit-scrollbar-thumb{background:#2a2a4a;border-radius:2px}
+
+  .sig-card{padding:10px 12px;border-radius:8px;border:1px solid var(--border);
+    margin-bottom:6px;cursor:pointer;transition:all .15s;background:var(--panel)}
+  .sig-card:hover{border-color:var(--accent)}
+  .sig-card.explosive{border-color:#ffd70055;background:linear-gradient(135deg,#ffd70008,var(--panel))}
+  .sc-top{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+  .sc-tkr{font-size:14px;font-weight:700}
+  .sc-tkr-long{color:var(--green)} .sc-tkr-short{color:var(--red)}
+  .sc-name{font-size:11px;color:var(--muted);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .sc-score{font-size:12px;font-weight:700;color:var(--accent)}
+  .sc-meta{display:flex;gap:10px;font-size:10px;color:var(--muted)}
+  .sc-meta span{white-space:nowrap}
+  .qbadge{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:600}
+  .q-Leading  {color:#00c853;background:#00c85318}
+  .q-Improving{color:#2196f3;background:#2196f318}
+  .q-Weakening{color:#ffc107;background:#ffc10718}
+  .q-Lagging  {color:#f44336;background:#f4433618}
+  .exp-badge{color:var(--gold);font-size:10px;font-weight:700;
+    background:#ffd70018;padding:1px 6px;border-radius:3px}
+
+  .rank-num{font-size:10px;color:var(--muted);min-width:18px;text-align:center}
+
+  #loading{position:fixed;inset:0;background:var(--bg);display:flex;
+    flex-direction:column;align-items:center;justify-content:center;gap:14px;z-index:99}
+  .spin{width:34px;height:34px;border:3px solid var(--border);
+    border-top-color:var(--accent);border-radius:50%;animation:s .7s linear infinite}
+  @keyframes s{to{transform:rotate(360deg)}}
+
+  /* Legend overlay */
+  .legend{position:absolute;bottom:12px;left:14px;display:flex;gap:14px;
+    flex-wrap:wrap;pointer-events:none}
+  .leg-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted)}
+  .leg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+</style>
+</head>
+<body>
+<div id="loading"><div class="spin"></div><div>Loading RRG data…</div></div>
+
+<header>
+  <a href="rrg_dashboard.html" class="back">← Dashboard</a>
+  <div class="logo">⚡ RRG Full Chart</div>
+  <div class="controls">
+    <span style="font-size:11px;color:var(--muted)">Timeframe:</span>
+    <button class="btn active" id="btn-weekly" onclick="setTF('weekly',this)">Weekly</button>
+    <button class="btn" id="btn-daily" onclick="setTF('daily',this)">Daily</button>
+    <span style="font-size:11px;color:var(--muted);margin-left:4px">Category:</span>
+    <button class="btn active" onclick="setCat('ALL',this)">All</button>
+    <button class="btn btn-gold" onclick="setCat('Sector',this)">★ SS Sectors</button>
+    <button class="btn" onclick="setCat('Sub-Sector',this)">Sub-Sectors</button>
+    <button class="btn" onclick="setCat('Country',this)">Countries</button>
+    <span style="font-size:11px;color:var(--muted);margin-left:4px">Direction:</span>
+    <button class="btn btn-green active" onclick="setDir('ALL',this)">All</button>
+    <button class="btn btn-green" onclick="setDir('LONG',this)">Long</button>
+    <button class="btn btn-red" onclick="setDir('SHORT',this)">Short</button>
+    <button class="btn btn-gold" onclick="toggleExplosive(this)" id="btn-exp">⚡ Explosive</button>
+  </div>
+</header>
+
+<div class="main">
+  <div class="chart-wrap">
+    <div class="chart-title" id="chart-title">WEEKLY RRG — 6-12 MONTH PRIMARY</div>
+    <canvas id="rrg-canvas"></canvas>
+    <div id="tooltip"></div>
+    <div class="legend">
+      <div class="leg-item"><div class="leg-dot" style="background:#00c853"></div>LONG HIGH</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#00c85366"></div>LONG MED</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#f44336"></div>SHORT HIGH</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#f4433666"></div>SHORT MED</div>
+      <div class="leg-item"><div class="leg-dot" style="background:var(--gold);box-shadow:0 0 6px var(--gold)"></div>⚡ Explosive</div>
+      <div class="leg-item" style="margin-left:8px;font-style:italic">Tails = 8-week history</div>
+    </div>
+  </div>
+  <div class="sidebar">
+    <div class="sb-tabs">
+      <div class="sb-tab active" onclick="setSbTab('high',this)">HIGH Conviction</div>
+      <div class="sb-tab" onclick="setSbTab('exp',this)">⚡ Explosive</div>
+      <div class="sb-tab" onclick="setSbTab('all',this)">All Ranked</div>
+    </div>
+    <div class="sb-body" id="sb-body"></div>
+  </div>
+</div>
+
+<script>
+let all=[], tf='weekly', cat='ALL', dir='ALL', expOnly=false, sbTab='high';
+
+const rrF  =()=>tf==='weekly'?'w_rs_ratio':'d_rs_ratio';
+const rmF  =()=>tf==='weekly'?'w_rs_mom'  :'d_rs_mom';
+const trailF=()=>tf==='weekly'?'w_trail'  :'d_trail';
+const quadF=()=>tf==='weekly'?'w_quadrant':'d_quadrant';
+
+function setTF(t, btn){
+  tf=t;
+  document.querySelectorAll('#btn-weekly,#btn-daily').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('chart-title').textContent=
+    t==='weekly'?'WEEKLY RRG — 6-12 MONTH PRIMARY':'DAILY RRG — 1-3 MONTH CONFIRMATION';
+  draw(); renderSidebar();
+}
+function setCat(c, btn){
+  cat=c;
+  document.querySelectorAll('.btn').forEach(b=>{
+    if(['ALL','Sector','Sub-Sector','Country'].includes(b.textContent.replace('★ SS ','').trim())||
+       b.textContent==='★ SS Sectors') b.classList.remove('active');
+  });
+  btn.classList.add('active');
+  draw(); renderSidebar();
+}
+function setDir(d, btn){
+  dir=d;
+  document.querySelectorAll('.btn-green,.btn-red').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  draw(); renderSidebar();
+}
+function toggleExplosive(btn){
+  expOnly=!expOnly;
+  btn.classList.toggle('active',expOnly);
+  draw(); renderSidebar();
+}
+function setSbTab(t, btn){
+  sbTab=t;
+  document.querySelectorAll('.sb-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderSidebar();
+}
+
+function filteredPts(){
+  return all.filter(d=>{
+    if(d[rrF()]==null||d[rmF()]==null) return false;
+    if(cat!=='ALL'&&d.category!==cat) return false;
+    if(dir!=='ALL'&&d.direction!==dir) return false;
+    if(expOnly&&!d.explosive) return false;
+    return true;
+  });
+}
+
+// ── Draw ──────────────────────────────────────────────────────────────────────
+function draw(){
+  const cv=document.getElementById('rrg-canvas');
+  const ctx=cv.getContext('2d');
+  const rect=cv.parentElement.getBoundingClientRect();
+  cv.width=rect.width; cv.height=rect.height;
+  const W=cv.width, H=cv.height;
+  ctx.clearRect(0,0,W,H);
+
+  const pad_px=60;
+  const plotL=pad_px, plotR=W-pad_px, plotT=pad_px, plotB=H-pad_px;
+  const plotW=plotR-plotL, plotH=plotB-plotT;
+
+  const pts=filteredPts();
+
+  // Scale using all trail + current points
+  let allRR=pts.map(d=>d[rrF()]), allRM=pts.map(d=>d[rmF()]);
+  pts.forEach(d=>(d[trailF()]||[]).forEach(([tr,tm])=>{allRR.push(tr);allRM.push(tm);}));
+  const rpad=0.5;
+  const rrMin=Math.min(...allRR,99.5)-rpad, rrMax=Math.max(...allRR,100.5)+rpad;
+  const rmMin=Math.min(...allRM,99.5)-rpad, rmMax=Math.max(...allRM,100.5)+rpad;
+  const toX=v=>plotL+((v-rrMin)/(rrMax-rrMin))*plotW;
+  const toY=v=>plotB-((v-rmMin)/(rmMax-rmMin))*plotH;
+  const cx100=toX(100), cy100=toY(100);
+
+  // Quadrant fills
+  ctx.fillStyle='#2196f30c'; ctx.fillRect(plotL,plotT,cx100-plotL,cy100-plotT);
+  ctx.fillStyle='#00c8530c'; ctx.fillRect(cx100,plotT,plotR-cx100,cy100-plotT);
+  ctx.fillStyle='#f443360c'; ctx.fillRect(plotL,cy100,cx100-plotL,plotB-cy100);
+  ctx.fillStyle='#ffc1070c'; ctx.fillRect(cx100,cy100,plotR-cx100,plotB-cy100);
+
+  // Quadrant labels
+  const ql=[['IMPROVING',(plotL+cx100)/2,plotT+18,'#2196f366'],
+            ['LEADING',(cx100+plotR)/2,plotT+18,'#00c85366'],
+            ['LAGGING',(plotL+cx100)/2,plotB-8,'#f4433666'],
+            ['WEAKENING',(cx100+plotR)/2,plotB-8,'#ffc10766']];
+  ctx.font='bold 11px system-ui'; ctx.textAlign='center';
+  ql.forEach(([t,x,y,c])=>{ctx.fillStyle=c;ctx.fillText(t,x,y);});
+
+  // Axes
+  ctx.strokeStyle='#2a2a4a88'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(plotL,cy100); ctx.lineTo(plotR,cy100); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx100,plotT); ctx.lineTo(cx100,plotB); ctx.stroke();
+
+  // 100/100 dashed refs
+  ctx.strokeStyle='#ffffff18'; ctx.setLineDash([4,5]);
+  ctx.beginPath(); ctx.moveTo(cx100,plotT); ctx.lineTo(cx100,plotB); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(plotL,cy100); ctx.lineTo(plotR,cy100); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Axis labels
+  ctx.font='9px system-ui'; ctx.fillStyle='#444'; ctx.textAlign='center';
+  ctx.fillText('← RS-Ratio →',plotL+plotW/2,plotB+18);
+  ctx.save(); ctx.translate(plotL-24,plotT+plotH/2);
+  ctx.rotate(-Math.PI/2); ctx.fillText('← RS-Momentum →',0,0); ctx.restore();
+
+  // ── Tails ──────────────────────────────────────────────────
+  pts.forEach(d=>{
+    const trail=d[trailF()]||[];
+    if(trail.length<2) return;
+    const rgb=d.direction==='LONG'?'0,200,83':d.direction==='SHORT'?'244,67,54':'128,128,128';
+    for(let i=0;i<trail.length-1;i++){
+      const alpha=((i+1)/trail.length)*0.65;
+      ctx.beginPath();
+      ctx.moveTo(toX(trail[i][0]),toY(trail[i][1]));
+      ctx.lineTo(toX(trail[i+1][0]),toY(trail[i+1][1]));
+      ctx.strokeStyle=`rgba(${rgb},${alpha})`;
+      ctx.lineWidth=1.8;
+      ctx.stroke();
+      // Tail dot
+      const sz=1+((i+1)/trail.length)*2;
+      ctx.beginPath();
+      ctx.arc(toX(trail[i][0]),toY(trail[i][1]),sz,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${rgb},${alpha*0.8})`;
+      ctx.fill();
+    }
+  });
+
+  // ── Explosive glows ─────────────────────────────────────────
+  pts.filter(d=>d.explosive).forEach(d=>{
+    const x=toX(d[rrF()]),y=toY(d[rmF()]);
+    // Outer pulse ring
+    ctx.beginPath(); ctx.arc(x,y,22,0,Math.PI*2);
+    ctx.strokeStyle='rgba(255,215,0,0.25)'; ctx.lineWidth=2; ctx.stroke();
+    // Inner glow
+    const g=ctx.createRadialGradient(x,y,3,x,y,20);
+    g.addColorStop(0,'rgba(255,215,0,0.5)');
+    g.addColorStop(1,'rgba(255,215,0,0)');
+    ctx.beginPath(); ctx.arc(x,y,20,0,Math.PI*2);
+    ctx.fillStyle=g; ctx.fill();
+  });
+
+  // ── Main dots ───────────────────────────────────────────────
+  pts.forEach(d=>{
+    const x=toX(d[rrF()]),y=toY(d[rmF()]);
+    const col=d.direction==='LONG'?'#00c853':d.direction==='SHORT'?'#f44336':'#888';
+    const rad=d.conviction==='HIGH'?9:d.kelly_pct>10?7:5;
+    ctx.beginPath(); ctx.arc(x,y,rad,0,Math.PI*2);
+    ctx.fillStyle=col+(d.conviction==='HIGH'?'dd':'88');
+    ctx.fill();
+    ctx.strokeStyle=d.explosive?'#ffd700':col;
+    ctx.lineWidth=d.explosive?2.5:d.conviction==='HIGH'?1.5:0.8;
+    ctx.stroke();
+    // Label — always visible on full chart
+    ctx.fillStyle=d.explosive?'#ffd700':d.conviction==='HIGH'?'rgba(255,255,255,0.95)':'rgba(255,255,255,0.6)';
+    ctx.font=(d.conviction==='HIGH'?'bold ':'')+`${d.conviction==='HIGH'?10:9}px system-ui`;
+    ctx.textAlign='center';
+    ctx.fillText(d.ticker,x,y-rad-3);
+  });
+}
+
+// ── Tooltip on hover ──────────────────────────────────────────────────────────
+(function(){
+  const cv=document.getElementById('rrg-canvas');
+  const tip=document.getElementById('tooltip');
+  cv.addEventListener('mousemove',e=>{
+    const rect=cv.getBoundingClientRect();
+    const mx=e.clientX-rect.left, my=e.clientY-rect.top;
+    const plotL=60,plotR=cv.width-60,plotT=60,plotB=cv.height-60;
+    const plotW=plotR-plotL,plotH=plotB-plotT;
+    const pts=filteredPts();
+    let allRR=pts.map(d=>d[rrF()]),allRM=pts.map(d=>d[rmF()]);
+    pts.forEach(d=>(d[trailF()]||[]).forEach(([tr,tm])=>{allRR.push(tr);allRM.push(tm);}));
+    const rrMin=Math.min(...allRR,99.5)-.5,rrMax=Math.max(...allRR,100.5)+.5;
+    const rmMin=Math.min(...allRM,99.5)-.5,rmMax=Math.max(...allRM,100.5)+.5;
+    const toX=v=>plotL+((v-rrMin)/(rrMax-rrMin))*plotW;
+    const toY=v=>plotB-((v-rmMin)/(rmMax-rmMin))*plotH;
+    let nearest=null,nearDist=30;
+    pts.forEach(d=>{
+      const dx=toX(d[rrF()])-mx,dy=toY(d[rmF()])-my;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<nearDist){nearDist=dist;nearest=d;}
+    });
+    if(!nearest){tip.style.display='none';return;}
+    const col=nearest.direction==='LONG'?'#00c853':'#f44336';
+    const cmf=nearest.cmf!=null?`${nearest.cmf>=0?'+':''}${nearest.cmf.toFixed(2)}`:'—';
+    const hvp=nearest.hvp!=null?`${nearest.hvp.toFixed(0)}%`:'—';
+    tip.innerHTML=`
+      <b style="color:${col}">${nearest.ticker}</b>
+      ${nearest.explosive?'<span style="color:#ffd700;font-size:11px;margin-left:6px">⚡ EXPLOSIVE</span>':''}
+      <div style="color:var(--muted);font-size:11px;margin-top:2px">${nearest.name}</div>
+      <div class="trow"><span>Direction</span><span class="tval" style="color:${col}">${nearest.direction} · ${nearest.conviction}</span></div>
+      <div class="trow"><span>Duration</span><span class="tval">${nearest.duration}</span></div>
+      <div class="trow"><span>Kelly</span><span class="tval">${nearest.kelly_pct}% · $${Math.round(nearest.usd_size||0).toLocaleString()}</span></div>
+      <div class="trow"><span>RS-Ratio</span><span class="tval">${(nearest[rrF()]||0).toFixed(2)}</span></div>
+      <div class="trow"><span>RS-Mom</span><span class="tval">${(nearest[rmF()]||0).toFixed(2)}</span></div>
+      <div class="trow"><span>CMF / HVP</span><span class="tval">${cmf} / ${hvp}</span></div>
+      <div class="trow"><span>Rank Score</span><span class="tval">${nearest.rank_score||'—'}</span></div>`;
+    const tx=Math.min(e.clientX+14,window.innerWidth-200);
+    const ty=Math.min(e.clientY-10,window.innerHeight-200);
+    tip.style.left=tx+'px'; tip.style.top=ty+'px'; tip.style.display='block';
+  });
+  cv.addEventListener('mouseleave',()=>{tip.style.display='none';});
+})();
+
+// ── Sidebar ───────────────────────────────────────────────────────────────────
+function renderSidebar(){
+  let pts=filteredPts();
+  if(sbTab==='high')       pts=pts.filter(d=>d.conviction==='HIGH').sort((a,b)=>(b.rank_score||0)-(a.rank_score||0));
+  else if(sbTab==='exp')   pts=pts.filter(d=>d.explosive).sort((a,b)=>(b.rank_score||0)-(a.rank_score||0));
+  else                     pts=[...pts].sort((a,b)=>(b.rank_score||0)-(a.rank_score||0));
+
+  const QC={Leading:'q-Leading',Improving:'q-Improving',Weakening:'q-Weakening',Lagging:'q-Lagging'};
+  document.getElementById('sb-body').innerHTML=pts.length
+    ? pts.map((d,i)=>{
+        const col=d.direction==='LONG'?'sc-tkr-long':'sc-tkr-short';
+        const qcls=QC[d[quadF()]]||'';
+        const cmf=d.cmf!=null?`CMF ${d.cmf>=0?'+':''}${d.cmf.toFixed(2)}`:'';
+        const hvp=d.hvp!=null?`HVP ${d.hvp.toFixed(0)}%`:'';
+        return `<div class="sig-card${d.explosive?' explosive':''}" onclick="highlightTicker('${d.ticker}')">
+          <div class="sc-top">
+            <span class="rank-num">#${i+1}</span>
+            <span class="sc-tkr ${col}">${d.ticker}</span>
+            ${d.explosive?'<span class="exp-badge">⚡ EXPLOSIVE</span>':''}
+            <span class="sc-name">${d.name}</span>
+            <span class="sc-score">${d.rank_score||'—'}</span>
+          </div>
+          <div class="sc-meta">
+            <span><span class="qbadge ${qcls}">${d[quadF()]||'—'}</span></span>
+            <span>${d.conviction} · ${d.duration}</span>
+            <span>${cmf}</span>
+            <span>${hvp}</span>
+          </div>
+        </div>`;
+      }).join('')
+    : '<div style="color:var(--muted);font-size:12px;padding:16px">No signals match current filters.</div>';
+}
+
+function highlightTicker(tkr){
+  // Flash the ticker label on canvas by temporarily filtering to just that one
+  // (simple implementation: just scroll to it in sidebar)
+}
+
+async function loadData(){
+  try{
+    const r=await fetch('rrg_latest.json?t='+Date.now());
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const d=await r.json();
+    all=d.results||[];
+    document.getElementById('loading').style.display='none';
+    draw();
+    renderSidebar();
+  }catch(e){
+    document.getElementById('loading').innerHTML=
+      `<div style="color:#f44336;font-size:14px">Error: ${e.message}<br><small>Run scanner first to generate rrg_latest.json</small></div>`;
+  }
+}
+
+window.addEventListener('resize',draw);
+loadData();
+</script>
+</body>
+</html>

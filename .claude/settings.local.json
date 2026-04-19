@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m http.server 8080)",
+      "Bash(echo \"PID: $!\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8080/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8080/index.html)",
+      "WebFetch(domain:elyse-residence-dev.webflow.io)",
+      "mcp__Claude_Preview__preview_start",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__computer",
+      "mcp__Claude_in_Chrome__javascript_tool",
+      "Bash(python3 -m http.server 8080 --directory /Users/jensenmehrens/Desktop/redagave-deploy)",
+      "Bash(mkdir -p /tmp/rrg_demo)",
+      "Bash(cp /Users/jensenmehrens/Desktop/rrg_dashboard.html /tmp/rrg_demo/index.html)",
+      "Bash(python3 rrg_backtest.py --help)",
+      "Read(//Users/jensenmehrens/Downloads/**)",
+      "Bash(git -C ~/Downloads/Y remote get-url origin)",
+      "Bash(gh auth *)",
+      "Bash(git -C ~/Downloads/ remote -v)",
+      "Bash(cp /Users/jensenmehrens/Desktop/rrg_backtest.py /tmp/sector-rotation-trader/)",
+      "Bash(cp /Users/jensenmehrens/Desktop/rrg_backtest.yml /tmp/sector-rotation-trader/.github/workflows/)",
+      "Bash(cp /Users/jensenmehrens/Desktop/rrg_scanner_v6.py /tmp/sector-rotation-trader/)",
+      "Bash(python -c \"import ast; ast.parse\\(open\\('rrg_backtest.py'\\).read\\(\\)\\); print\\('syntax ok'\\)\")",
+      "Bash(python3 -c \"import ast; ast.parse\\(open\\('rrg_backtest.py'\\).read\\(\\)\\); print\\('syntax ok'\\)\")",
+      "Bash(chmod +x sync_to_site.sh)",
+      "Bash(./sync_to_site.sh)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git pull *)",
+      "Bash(git init *)",
+      "Bash(git commit *)"
+    ]
+  }
+}
