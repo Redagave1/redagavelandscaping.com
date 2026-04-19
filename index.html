@@ -1239,7 +1239,7 @@ a{text-decoration:none;color:inherit}
 .svc-sub{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);padding:20px 60px 40px;line-height:2.2}
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(0,0,0,0.5)}
 .svc{position:relative;overflow:hidden;height:300px}
-.svc img{position:absolute;inset:0;width:100%;height:100%;filter:brightness(.58) saturate(.9);transition:filter .5s,transform .65s var(--ease)}
+.svc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.58) saturate(.9);transition:filter .5s,transform .65s var(--ease)}
 /* Gold left-edge accent line on each service card */
 .svc::before{
   content:'';position:absolute;left:0;top:0;bottom:0;width:2px;z-index:3;
@@ -1532,7 +1532,7 @@ a{text-decoration:none;color:inherit}
 .marquee{padding:72px 0;overflow:hidden;background:var(--dark2);border-top:1px solid var(--cream20);border-bottom:1px solid var(--cream20)}
 .m-track{display:flex;animation:mq 30s linear infinite;white-space:nowrap}
 .m-w{font-family:'Bebas Neue',cursive;font-size:74px;padding:0 48px;letter-spacing:5px;flex-shrink:0}
-.m-w.m{color:rgba(232,240,255,0.04)}.m-w.s{color:rgba(201,168,76,0.06)}
+.m-w.m{color:rgba(232,240,255,0.82)}.m-w.s{color:rgba(201,168,76,0.75)}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ══ TESTIMONIALS ══ */
@@ -2788,14 +2788,14 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     if(!wrap || !blob1 || !blob2) return;
 
     // Each blob has its own independent wandering target
-    var b1 = {x:0.5, y:0.5, tx:0.5, ty:0.5, opacity:0.7, topc:0.7, life:0, maxlife:0};
-    var b2 = {x:0.8, y:0.4, tx:0.8, ty:0.4, opacity:0.4, topc:0.4, life:0, maxlife:0};
+    var b1 = {x:0.5, y:0.5, tx:0.5, ty:0.5, opacity:0.3, topc:0.3, life:0, maxlife:0};
+    var b2 = {x:0.8, y:0.4, tx:0.8, ty:0.4, opacity:0.2, topc:0.2, life:0, maxlife:0};
 
     function newTarget(b) {
       // Pick random position weighted toward center of word
       b.tx = 0.1 + Math.random() * 0.8;
       b.ty = 0.15 + Math.random() * 0.7;
-      b.topc = 0.3 + Math.random() * 0.7;
+      b.topc = 0.12 + Math.random() * 0.32;
       b.maxlife = 1800 + Math.random() * 3200; // 1.8–5s per wander
       b.life = 0;
     }
