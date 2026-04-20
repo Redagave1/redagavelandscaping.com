@@ -178,7 +178,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 
 <style>
 .svc-hero-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(0,0,0,.5)}
-.svc-card{position:relative;overflow:hidden;height:300px}
+.svc-card{position:relative;overflow:hidden;aspect-ratio:4/3;min-height:300px}
 .svc-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.58) saturate(.9);transition:filter .5s,transform .65s cubic-bezier(0.16,1,0.3,1)}
 .svc-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;z-index:3;background:linear-gradient(to bottom,transparent,rgba(201,168,76,.7),transparent);transform:scaleY(0);transform-origin:center;transition:transform .55s cubic-bezier(0.16,1,0.3,1)}
 .svc-card:hover::before{transform:scaleY(1)}
@@ -198,12 +198,12 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 @media(max-width:1024px){.svc-hero-grid{grid-template-columns:1fr 1fr}.sub-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:600px){.svc-hero-grid,.sub-grid{grid-template-columns:1fr}}
 </style>
-<section class="sec" style="background:var(--dark2);padding-top:80px;padding-bottom:0">
+<section class="sec" aria-labelledby="primary-services" style="background:var(--dark2);padding-top:80px;padding-bottom:0">
   <div class="s-eye rev">What We Do</div>
-  <h2 class="s-title rev">Primary <span class="slim-gold">Services</span></h2>
+  <h2 id="primary-services" class="s-title rev">Primary <span class="slim-gold">Services</span></h2>
   <p class="rev" style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--cream30);margin:20px 0 40px;line-height:2.2">At Red Agave we offer a wide range of services in Austin, TX. If you can dream it, we can create it.</p>
 </section>
-<div class="svc-hero-grid">
+<section class="svc-hero-grid" aria-label="Primary services gallery">
   <div class="svc-card rev"><img src="images/gallery/IMG_0991.webp" alt="Xeriscape hardscape Austin TX" loading="lazy"><div class="svc-ov"></div><div class="svc-info"><div class="svc-n">01</div><div class="svc-name">Xeriscape / Hardscape</div><div class="svc-desc">Native plants, decomposed granite, custom steel edging</div></div></div>
   <div class="svc-card rev"><img src="images/gallery/IMG_8182.webp" alt="WLED lighting Austin TX" loading="lazy"><div class="svc-ov"></div><div class="svc-info"><div class="svc-n">02</div><div class="svc-name">WLED &amp; FCOB Lighting</div><div class="svc-desc">State of the art lighting systems others can't do</div></div></div>
   <div class="svc-card rev"><img src="images/gallery/DSC04042.webp" alt="Custom deck Austin TX" loading="lazy"><div class="svc-ov"></div><div class="svc-info"><div class="svc-n">03</div><div class="svc-name">Custom Built Decks</div><div class="svc-desc">Composite, cedar, IPE &mdash; pergolas &amp; privacy walls</div></div></div>
@@ -213,7 +213,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   <div class="svc-card rev"><img src="images/services/DSC04039.webp" alt="Custom planters Austin TX" loading="lazy"><div class="svc-ov"></div><div class="svc-info"><div class="svc-n">07</div><div class="svc-name">Custom Planters</div><div class="svc-desc">Corten steel, concrete, cedar &mdash; any scale</div></div></div>
   <div class="svc-card rev"><img src="images/featured/1707 Ulit Ave-029-Kieran Reeves Photography [MLS].webp" alt="Full yard design build Austin TX" loading="lazy"><div class="svc-ov"></div><div class="svc-info"><div class="svc-n">08</div><div class="svc-name">Full Yard Design + Build</div><div class="svc-desc">Complete transformations, concept to completion</div></div></div>
   <div class="svc-card rev"><img src="images/gallery/IMG_8182.webp" alt="Pool construction Austin TX" loading="lazy"><div class="svc-ov"></div><div class="svc-info"><div class="svc-n">09</div><div class="svc-name">Pools</div><div class="svc-desc">Custom pool design and construction</div></div></div>
-</div>
+</section>
 <section class="sec" style="background:var(--dark3)">
   <div class="s-eye rev">Additional</div>
   <h2 class="s-title rev">Specialty <span class="slim-gold">Services</span></h2>

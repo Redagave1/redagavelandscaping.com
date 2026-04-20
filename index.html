@@ -1548,36 +1548,45 @@ a{text-decoration:none;color:inherit}
 .tc-name{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--cream);margin-bottom:3px}
 .tc-loc{font-size:9px;letter-spacing:2px;color:rgba(240,234,214,0.28);text-transform:uppercase}
 
-/* ══ CTA ══ */
-.cta{background:var(--gold);padding:100px 60px;position:relative;overflow:hidden}
-.cta-bg-txt{position:absolute;font-family:'Bebas Neue',cursive;font-size:clamp(80px,13vw,180px);color:rgba(8,11,6,0.06);letter-spacing:4px;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;user-select:none}
-.cta-inner{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:44px;flex-wrap:wrap}
-.cta-title{font-family:'Bebas Neue',cursive;font-size:clamp(52px,7.5vw,96px);color:var(--dark);line-height:.88}
-.cta-r{display:flex;flex-direction:column;gap:12px;min-width:250px}
-.cta-lbl{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(8,11,6,0.42);margin-bottom:4px}
-.btn-dark{display:inline-block;text-align:center;background:var(--dark);color:var(--gold);padding:0 44px;height:44px;line-height:44px;font-size:9px;letter-spacing:3.5px;text-transform:uppercase;font-weight:700;font-family:'Montserrat',sans-serif;border-radius:9999px;transition:all .3s}
-.btn-dark:hover{background:#1a2418;transform:translateY(-2px)}
-.btn-outline-dark{display:inline-block;text-align:center;background:transparent;border:1px solid rgba(8,11,6,0.3);color:var(--dark);padding:0 44px;height:44px;line-height:44px;font-size:9px;letter-spacing:3.5px;text-transform:uppercase;font-family:'Montserrat',sans-serif;border-radius:9999px;transition:all .3s}
-.btn-outline-dark:hover{background:rgba(8,11,6,0.1)}
-.cta-phone{font-family:'Bebas Neue',cursive;font-size:24px;color:rgba(8,11,6,0.32);letter-spacing:3px;margin-top:6px}
+/* ══ SHOWCASE STRIP — visual break between whatmakes & process ══ */
+.showcase-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:#000}
+.ss-tile{position:relative;display:block;overflow:hidden;aspect-ratio:5/4;cursor:pointer}
+.ss-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.6) saturate(.95);transition:filter .6s var(--ease),transform .8s var(--ease)}
+.ss-tile:hover img{filter:brightness(1) saturate(1.05);transform:scale(1.04)}
+.ss-tile .ss-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(8,11,6,0.7) 100%);pointer-events:none;z-index:1}
+.ss-tile::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.55),transparent);opacity:0;transition:opacity .45s var(--ease);z-index:2}
+.ss-tile:hover::after{opacity:1}
 
-/* ══ FORM ══ */
-.cf{background:var(--dark);padding:100px 60px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(240,234,214,0.04);max-width:920px;margin:52px auto 0}
+/* ══ CONVERSION ZONE — unified CTA + form, cinematic ══ */
+.conversion{background:var(--dark2);padding:120px 60px;position:relative;overflow:hidden;border-top:1px solid rgba(201,168,76,0.08)}
+.conv-bg{position:absolute;inset:0;background:url('images/gallery/IMG_8575.webp') center/cover no-repeat;opacity:.08;filter:grayscale(100%);pointer-events:none;z-index:0}
+.conv-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,11,6,.65) 0%,rgba(8,11,6,.95) 100%)}
+.conv-bgtxt{position:absolute;font-family:'Bebas Neue',cursive;font-size:clamp(80px,14vw,200px);color:rgba(201,168,76,0.035);letter-spacing:6px;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;user-select:none;z-index:0}
+.conv-inner{position:relative;z-index:1;max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1.15fr;gap:84px;align-items:start}
+.conv-copy{padding-top:10px}
+.conv-copy .s-eye{margin-bottom:20px}
+.conv-title{font-family:'Bebas Neue',cursive;font-size:clamp(52px,6.5vw,92px);line-height:.88;color:var(--cream);margin-bottom:28px}
+.conv-title-accent{color:var(--gold);text-shadow:0 0 28px var(--gold-glow)}
+.conv-sub{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,234,214,.45);line-height:2.2;margin-bottom:24px}
+.conv-phone{display:inline-block;font-family:'Bebas Neue',cursive;font-size:clamp(28px,3vw,38px);color:var(--gold);letter-spacing:3px;text-shadow:0 0 24px rgba(201,168,76,0.28);transition:text-shadow .4s var(--ease),transform .4s var(--ease)}
+.conv-phone:hover{text-shadow:0 0 40px rgba(201,168,76,0.45);transform:translateY(-1px)}
+.conv-note{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(240,234,214,.28);margin-top:10px}
+.conv-form{max-width:none;margin:0;background:rgba(201,168,76,0.018);border:1px solid rgba(201,168,76,0.08);border-top:1px solid rgba(201,168,76,0.22);box-shadow:0 32px 80px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.05);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(201,168,76,0.06)}
 .ff{background:var(--dark);position:relative}
 .ff.full{grid-column:span 2}
 .fi,.ft,.fsel{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(240,234,214,0.1);color:var(--cream);font-family:'Montserrat',sans-serif;font-size:13px;padding:28px 24px 14px;outline:none;transition:border-color .3s;appearance:none}
 .fi:focus,.ft:focus,.fsel:focus{border-color:var(--gold)}
 .ft{min-height:128px;resize:vertical}
 .fl{position:absolute;top:18px;left:24px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,234,214,0.3);pointer-events:none;transition:all .28s}
-.fi:focus~.fl,.fi:not(:placeholder-shown)~.fl,.ft:focus~.fl,.ft:not(:placeholder-shown)~.fl{top:8px;font-size:7px;color:var(--gold)}
+.fi:focus~.fl,.fi:not(:placeholder-shown)~.fl,.ft:focus~.fl,.ft:not(:placeholder-shown)~.fl,.fsel:focus~.fl,.fsel:valid~.fl{top:8px;font-size:7px;color:var(--gold)}
 .fi::placeholder,.ft::placeholder{color:transparent}
 .fsel option{background:var(--dark2);color:var(--cream)}
-.fs-wrap{grid-column:span 2;background:var(--dark);padding:28px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.fs-note{font-size:9px;letter-spacing:1px;color:rgba(240,234,214,0.25)}
-.fs-btn{background:var(--gold);color:var(--dark);padding:0 44px;height:44px;font-size:9px;letter-spacing:3.5px;text-transform:uppercase;font-weight:700;font-family:'Montserrat',sans-serif;border:none;cursor:pointer;border-radius:9999px;position:relative;overflow:hidden;transition:transform .3s}
-.fs-btn::before{content:'';position:absolute;inset:0;background:var(--gold-light);border-radius:9999px;transform:translateX(-101%);transition:transform .35s var(--ease)}
-.fs-btn:hover{transform:translateY(-2px)}
+.fs-wrap{grid-column:span 2;background:var(--dark);padding:28px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.fs-note{font-size:9px;letter-spacing:2px;color:rgba(240,234,214,0.3);text-transform:uppercase}
+.fs-btn{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:var(--gold);padding:0 40px;height:46px;font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:700;font-family:'Montserrat',sans-serif;border:1px solid var(--gold);cursor:pointer;border-radius:9999px;position:relative;overflow:hidden;transition:color .4s var(--ease),transform .35s var(--ease);text-decoration:none}
+.fs-btn::before{content:'';position:absolute;inset:0;background:var(--gold);border-radius:9999px;transform:translateX(-101%);transition:transform .45s var(--ease);z-index:0}
+.fs-btn:hover{color:var(--dark);transform:translateY(-1px)}
 .fs-btn:hover::before{transform:translateX(0)}
 .fs-btn span{position:relative;z-index:1}
 
@@ -1648,17 +1657,16 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   .fcard:nth-child(3) img{ height:240px !important; }
 }
 @media(max-width:1024px){
-  
-  {
   #nav{padding:0 32px}
-  .hero-inner,.sec,.process,.testi,.cf,.cf .form-grid{padding-left:32px;padding-right:32px}
+  .hero-inner,.sec,.process,.testi,.conversion,.conv-inner{padding-left:32px;padding-right:32px}
   .svc-top,.svc-sub{padding-left:32px;padding-right:32px}
-  /* Force We Offer onto one line on mobile */
   #services .s-title{white-space:nowrap!important;font-size:clamp(28px,6.5vw,52px);overflow:hidden}
   .svc-grid,.proc-grid,.testi-grid{grid-template-columns:1fr 1fr}
   .stats{grid-template-columns:1fr 1fr}
   .diff{grid-template-columns:1fr}
-  .cta-inner{flex-direction:column;text-align:center}
+  .conv-inner{grid-template-columns:1fr;gap:48px}
+  .conv-copy{text-align:center}
+  .showcase-strip{grid-template-columns:repeat(2,1fr)}
   .form-grid{grid-template-columns:1fr}
   .ff.full,.fs-wrap{grid-column:span 1}
   .ft-grid{grid-template-columns:1fr 1fr}
@@ -1676,7 +1684,10 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   .cards-scatter{display:none}
   footer{padding:52px 24px 24px}
   .ft-grid{grid-template-columns:1fr}
-  .sec,.process,.testi,.cf{padding-left:24px;padding-right:24px}
+  .sec,.process,.testi,.conversion,.conv-inner{padding-left:24px;padding-right:24px}
+  .showcase-strip{grid-template-columns:1fr 1fr;gap:6px}
+  .conv-title{font-size:clamp(42px,11vw,72px)}
+  .conv-phone{font-size:clamp(32px,9vw,52px)}
   .hbg{display:flex}
   .nav-links,.nav-r{display:none}
   /* Scroll parallax off on mobile — too much movement on small screen */
@@ -2046,13 +2057,25 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   </div>
 </section>
 
-<!-- GALLERY -->
-<div id="gallery" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:#000">
-  <img src="images/gallery/IMG_9652.webp" alt="Pool" style="height:340px;object-fit:cover;filter:brightness(.7);transition:filter .4s" onmouseover="this.style.filter='brightness(1)'" onmouseout="this.style.filter='brightness(.7)'" loading="lazy">
-  <img src="images/gallery/IMG_8667.webp" alt="Outdoor" style="height:340px;object-fit:cover;filter:brightness(.7);transition:filter .4s" onmouseover="this.style.filter='brightness(1)'" onmouseout="this.style.filter='brightness(.7)'" loading="lazy">
-  <img src="images/gallery/IMG_5116.webp" alt="Xeriscape" style="height:340px;object-fit:cover;filter:brightness(.7);transition:filter .4s" onmouseover="this.style.filter='brightness(1)'" onmouseout="this.style.filter='brightness(.7)'" loading="lazy">
-  <img src="images/gallery/IMG_5491.webp" alt="Fire" style="height:340px;object-fit:cover;filter:brightness(.7);transition:filter .4s" onmouseover="this.style.filter='brightness(1)'" onmouseout="this.style.filter='brightness(.7)'" loading="lazy">
-</div>
+<!-- SHOWCASE STRIP -->
+<section class="showcase-strip" aria-label="Recent project highlights">
+  <a class="ss-tile rev" href="gallery.html">
+    <img src="images/gallery/IMG_9652.webp" alt="Custom luxury pool and outdoor living installation" loading="lazy">
+    <span class="ss-ov"></span>
+  </a>
+  <a class="ss-tile rev" href="gallery.html">
+    <img src="images/gallery/IMG_8667.webp" alt="Outdoor living space with pergola and kitchen" loading="lazy">
+    <span class="ss-ov"></span>
+  </a>
+  <a class="ss-tile rev" href="gallery.html">
+    <img src="images/gallery/IMG_5116.webp" alt="Native Texas xeriscape with hardscape and steel edging" loading="lazy">
+    <span class="ss-ov"></span>
+  </a>
+  <a class="ss-tile rev" href="gallery.html">
+    <img src="images/gallery/IMG_5491.webp" alt="Custom fire feature with integrated water element" loading="lazy">
+    <span class="ss-ov"></span>
+  </a>
+</section>
 
 <!-- PROCESS -->
 <section id="process" class="process sec">
@@ -2091,33 +2114,30 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta" id="contact">
-  <div class="cta-bg-txt" aria-hidden="true">RED AGAVE</div>
-  <div class="cta-inner">
-    <div class="cta-title rev">Ready to<br>Transform<br>Your Space?</div>
-    <div class="cta-r rev">
-      <div class="cta-lbl">Any Project &middot; Any Budget</div>
-      <a href="contact.html" class="btn-dark">Start Your Project &#8594;</a>
-      <a href="contact.html" class="btn-outline-dark">Get a Free Quote</a>
-      <a href="contact.html" class="btn-outline-dark" style="margin-top:4px">Let's Connect</a>
-      <div class="cta-phone" style="opacity:0.2">512-695-7566 &middot; Text Preferred</div>
+<!-- CONVERSION ZONE -->
+<section class="conversion" id="contact">
+  <div class="conv-bg" aria-hidden="true"></div>
+  <div class="conv-bgtxt" aria-hidden="true">RED AGAVE</div>
+  <div class="conv-inner">
+    <div class="conv-copy rev">
+      <div class="s-eye">Start Your Project</div>
+      <h2 class="conv-title">Ready to<br>Transform<br><span class="conv-title-accent">Your Space?</span></h2>
+      <p class="conv-sub">Any Project &middot; Any Budget &middot; Complimentary Consultation</p>
+      <a href="tel:5126957566" class="conv-phone">512-695-7566</a>
+      <div class="conv-note">Text preferred &middot; 24-hour response</div>
     </div>
+    <form class="conv-form form-grid rev" id="cform" novalidate>
+      <div class="ff"><input class="fi" type="text" id="fn" placeholder=" " required><label class="fl" for="fn">Full Name *</label></div>
+      <div class="ff"><input class="fi" type="email" id="fe" placeholder=" " required><label class="fl" for="fe">Email Address *</label></div>
+      <div class="ff"><input class="fi" type="tel" id="fp" placeholder=" "><label class="fl" for="fp">Phone Number</label></div>
+      <div class="ff"><select class="fsel" id="fsvc" aria-label="Select a service"><option value="">Select a Service</option><option>Xeriscape &amp; Hardscape</option><option>State of the Art Lighting</option><option>Custom Built Decks</option><option>Fire &amp; Water Features</option><option>Outdoor Living Spaces</option><option>Custom Planters</option><option>Full Yard Design + Build</option></select></div>
+      <div class="ff full"><textarea class="ft" id="fm" placeholder=" "></textarea><label class="fl" for="fm">Tell Us About Your Project</label></div>
+      <div class="fs-wrap">
+        <span class="fs-note">Free consultation &middot; Austin, TX</span>
+        <a href="contact.html" class="fs-btn"><span>Start Your Project &#8594;</span></a>
+      </div>
+    </form>
   </div>
-</section>
-
-<!-- FORM -->
-<section class="cf">
-  <div class="s-eye rev">Start Your Project</div>
-  <h2 class="s-title rev"><a href="contact.html" style="color:inherit;text-decoration:none">Tell Us About <span class="dim">Your Vision</span></a></h2>
-  <form class="form-grid" id="cform" novalidate>
-    <div class="ff rev"><input class="fi" type="text" id="fn" placeholder="x" required><label class="fl" for="fn">Full Name *</label></div>
-    <div class="ff rev"><input class="fi" type="email" id="fe" placeholder="x" required><label class="fl" for="fe">Email Address *</label></div>
-    <div class="ff rev"><input class="fi" type="tel" id="fp" placeholder="x"><label class="fl" for="fp">Phone Number</label></div>
-    <div class="ff rev"><select class="fsel"><option value="">Select a Service</option><option>Xeriscape &amp; Hardscape</option><option>State of the Art Lighting</option><option>Custom Built Decks</option><option>Fire &amp; Water Features</option><option>Outdoor Living Spaces</option><option>Custom Planters</option><option>Full Yard Design + Build</option></select></div>
-    <div class="ff full rev"><textarea class="ft" id="fm" placeholder="x"></textarea><label class="fl" for="fm">Tell Us About Your Project</label></div>
-    <div class="fs-wrap rev"><span class="fs-note">We respond within 24 hours &middot; Free consultation &middot; Austin TX</span><a href="contact.html" class="fs-btn" style="display:inline-flex;align-items:center;justify-content:center;text-decoration:none"><span>Start Your Project &#8594;</span></a></div>
-  </form>
 </section>
 
 </main>

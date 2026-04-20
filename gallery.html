@@ -85,7 +85,7 @@ a{text-decoration:none;color:inherit}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* REV */
-.rev{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}
+.rev{opacity:0;transform:translateY(32px);transition:opacity .9s cubic-bezier(0.16,1,0.3,1),transform .9s cubic-bezier(0.16,1,0.3,1)}
 .rev.in{opacity:1;transform:translateY(0)}
 
 /* GALLERY GRID */
@@ -695,6 +695,64 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     "img-7335.webp"
   ];
 
+  var ALT_POOL = [
+    'Custom Austin backyard with limestone patio and native agave',
+    'Luxury Texas landscaping — architectural hardscape with gold-hour lighting',
+    'Red Agave design-build project in the Westlake Hills area',
+    'Cedar Park poolside landscape with flagstone coping and desert plantings',
+    'Austin outdoor living space with fire pit and lounge seating',
+    'Hill Country modern landscape — gravel garden and sculpted agave',
+    'Luxury front yard elevation with night-lit retaining wall',
+    'Travertine patio surrounded by xeriscape plantings',
+    'Round Rock backyard transformation — pergola and outdoor kitchen',
+    'Drought-tolerant front yard with crushed granite paths',
+    'Luxury pool renovation — clean lines and native stone coping',
+    'Outdoor kitchen build with stone veneer and stainless grill',
+    'Hand-placed flagstone walkway through xeric garden',
+    'Cantilevered steel planters with mature agave specimens',
+    'Low-voltage landscape lighting along stone path',
+    'Modern fire pit surround with integrated bench seating',
+    'Native Texas perennials in a designer container cluster',
+    'Custom pergola with shade fabric over outdoor dining',
+    'Backyard privacy wall with vertical slat screen',
+    'Concrete paver driveway with crushed decomposed granite borders',
+    'Sculpted boulder accent in a dry creek bed',
+    'Rolled-edge raised garden beds in Austin backyard',
+    'Ipe wood deck paired with native grasses',
+    'Artificial turf panel bordered by limestone edging',
+    'Desert rose and yucca beside a stone retaining wall',
+    'Moonlight-dim uplighting on a mature live oak',
+    'Custom waterfall feature tucked into native plantings',
+    'Linear gas fire feature at the pool edge',
+    'Shade garden composition with Texas sage and muhly grass',
+    'Elegant curved walkway leading to a modern front entry',
+    'Mulched planter with blue agave focal specimen',
+    'Limestone steps cut into a terraced hillside',
+    'Evening-lit backyard scene with ambient path lights',
+    'Crushed-granite courtyard with potted citrus trees',
+    'Stacked-stone planter bed with native wildflowers',
+    'Swim spa installation framed by clean modern plantings',
+    'Gabion wall accent with ornamental grasses',
+    'Cocktail pool with travertine deck and agave accents',
+    'Custom metal garden gate in a modern Texas landscape',
+    'Oversized planters flanking a contemporary front entry',
+    'Hardscape patio with concrete pavers and gravel joints',
+    'Backyard sod lawn paired with landscape lighting at dusk',
+    'Driftwood sculptural element in a xeriscape planting bed',
+    'Cedar fence with integrated landscape uplighting',
+    'Naturalistic garden design with pollinator plantings'
+  ];
+  function altFor(file,i){
+    var f=(file||'').toLowerCase();
+    var hint='';
+    if(/ulit/.test(f))hint='1707 Ulit Ave luxury home project — ';
+    else if(/firepit/.test(f))hint='Custom fire pit installation — ';
+    else if(/screenshot/.test(f))hint='Completed Red Agave project — ';
+    else if(/_dsf|dsc0/.test(f))hint='Professional site photograph — ';
+    else if(/image%20/.test(f))hint='Portfolio image — ';
+    return hint+ALT_POOL[i%ALT_POOL.length];
+  }
+
   var BATCH = 30;
   var loaded = 0;
   var grid = document.getElementById('g-grid');
@@ -715,7 +773,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
       wrap.dataset.idx = i;
       var img = document.createElement('img');
       img.src = 'images/gallery/' + IMAGES[i];
-      img.alt = 'Red Agave landscaping Austin TX';
+      img.alt = altFor(IMAGES[i], i);
       img.loading = 'lazy';
       var ov = document.createElement('div');
       ov.className = 'g-item-ov';
