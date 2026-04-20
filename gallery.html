@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 <style>
-:root{--gold:#c9a84c;--gold-light:#e8c96a;--gold-glow:rgba(201,168,76,0.45);--dark:#080b06;--dark2:#0d120a;--dark3:#0a1208;--cream:#f0ead6;--cream60:rgba(240,234,214,0.6);--cream20:rgba(240,234,214,0.1);--teal:#5a9090;--pink:#e87cb0;--pink-glow:rgba(232,124,176,0.6);--ease:cubic-bezier(0.16,1,0.3,1)}
+:root{--gold:#c9a84c;--gold-light:#e8c96a;--gold-glow:rgba(201,168,76,0.45);--dark:#080b06;--dark2:#0d120a;--dark3:#0a1208;--cream:#f0ead6;--cream60:rgba(240,234,214,0.6);--cream20:rgba(240,234,214,0.1);--ease:cubic-bezier(0.16,1,0.3,1)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{overflow-x:hidden;scroll-behavior:smooth}
 body{background:var(--dark);color:var(--cream);font-family:'Montserrat',sans-serif;overflow-x:hidden}
@@ -20,6 +20,8 @@ a{text-decoration:none;color:inherit}
 @media(hover:hover){body{cursor:none}}
 #cur{position:fixed;width:10px;height:10px;background:var(--gold);pointer-events:none;z-index:9999;transform:translate(-50%,-50%) rotate(45deg);transition:width .15s,height .15s,background .15s;box-shadow:0 0 6px rgba(201,168,76,0.4)}
 #cur-ring{position:fixed;width:22px;height:22px;border:1.5px solid rgba(201,168,76,0.55);pointer-events:none;z-index:9998;transform:translate(-50%,-50%) rotate(45deg);transition:width .1s,height .1s,border-color .1s}
+
+/* NAV */
 #nav{position:fixed;top:0;left:0;right:0;z-index:800;padding:0 60px;transition:all .4s}
 #nav.scrolled{background:rgba(8,11,6,0.94);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,0.1)}
 .nav-inner{display:flex;justify-content:space-between;align-items:center;height:76px;max-width:1440px;margin:0 auto}
@@ -39,6 +41,8 @@ a{text-decoration:none;color:inherit}
 .hbg.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px);opacity:1}
 @media(max-width:1024px){#nav{padding:0 32px}.nav-links{gap:18px}}
 @media(max-width:768px){.nav-links,.nav-r .nav-phone{display:none}.hbg{display:flex}}
+
+/* MOB MENU */
 #mob-menu{position:fixed;inset:0;z-index:790;background:#080b06;display:flex;flex-direction:column;pointer-events:none;-webkit-clip-path:circle(0% at calc(100% - 44px) 38px);clip-path:circle(0% at calc(100% - 44px) 38px);transition:clip-path .7s cubic-bezier(0.16,1,0.3,1),-webkit-clip-path .7s cubic-bezier(0.16,1,0.3,1);overflow:hidden}
 #mob-menu::after{content:'';position:absolute;top:0;right:0;width:2px;height:100%;background:linear-gradient(to bottom,transparent,rgba(201,168,76,0.5),transparent);pointer-events:none}
 #mob-menu.open{-webkit-clip-path:circle(160% at calc(100% - 44px) 38px);clip-path:circle(160% at calc(100% - 44px) 38px);pointer-events:all}
@@ -62,34 +66,217 @@ a{text-decoration:none;color:inherit}
 .mob-phone{font-family:'Bebas Neue',cursive;font-size:clamp(32px,8vw,48px);letter-spacing:3px;color:var(--gold);display:block;margin-bottom:20px}
 .mob-cta{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--dark);padding:13px 36px;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-family:'Montserrat',sans-serif;font-weight:700;border-radius:9999px;transition:all .3s;margin-bottom:28px}
 .mob-location{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(240,234,214,0.2)}
+
 /* PAGE HEADER */
-.page-header{position:relative;min-height:360px;display:flex;align-items:flex-end;overflow:hidden;padding:120px 60px 60px;background:#000}
-.page-header canvas{position:absolute;inset:0;z-index:1;pointer-events:none}
-.page-header-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.45}
-.page-header-ov{position:absolute;inset:0;background:linear-gradient(130deg,rgba(8,11,6,.92),rgba(8,11,6,.55) 50%,rgba(8,11,6,.78))}
+.page-header{position:relative;min-height:320px;display:flex;align-items:flex-end;overflow:hidden;padding:120px 60px 52px;background:#000}
+.page-header-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.4}
+.page-header-ov{position:absolute;inset:0;background:linear-gradient(130deg,rgba(8,11,6,.95),rgba(8,11,6,.5) 55%,rgba(8,11,6,.82))}
 .page-header-inner{position:relative;z-index:2;max-width:1440px;width:100%}
 .page-eyebrow{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px}
 .page-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold)}
 .page-title{font-family:'Bebas Neue',cursive;font-size:clamp(52px,7vw,96px);line-height:.88;color:var(--cream)}
-.page-title .slim-pink{font-size:0.42em;font-family:'Montserrat',sans-serif;font-weight:300;letter-spacing:6px;vertical-align:middle;color:var(--pink);text-shadow:0 0 4px rgba(232,124,176,.95),0 0 14px rgba(232,124,176,.65),0 0 32px rgba(232,124,176,.3);-webkit-text-stroke:0}
-/* SECTIONS */
-.sec{padding:100px 60px}
-.s-eye{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:12px;text-shadow:0 0 10px rgba(201,168,76,0.32)}
-.s-eye::before{content:'';width:28px;height:1px;background:var(--gold)}
-.s-title{font-family:'Bebas Neue',cursive;font-size:clamp(52px,6.5vw,92px);line-height:.88}
-.rev{opacity:0;transform:translateY(32px);transition:opacity .8s,transform .8s}
-.rev.in{opacity:1;transform:translateY(0)}
+.page-count-line{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(240,234,214,0.25);margin-top:14px}
+
 /* TICKER */
 .ticker{background:var(--gold);padding:11px 0;overflow:hidden;white-space:nowrap}
 .t-track{display:inline-flex;animation:tick 28s linear infinite}
 .t-item{font-family:'Bebas Neue',cursive;font-size:14px;letter-spacing:4px;color:var(--dark);padding:0 28px}
 .t-sep{color:rgba(8,11,6,0.3);padding:0 4px}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-/* GLASS CARD (Grok style) */
-.glass-card{background:rgba(201,168,76,0.018);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);border:1px solid rgba(201,168,76,0.08);border-top:1px solid rgba(201,168,76,0.22);box-shadow:0 32px 80px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.06);position:relative;overflow:hidden;transition:all .4s}
-.glass-card::before{content:'';position:absolute;inset:0;background:radial-gradient(600px circle at var(--mouse-x,50%) var(--mouse-y,50%),rgba(201,168,76,0.12),transparent 45%);opacity:0;transition:opacity .45s;pointer-events:none;z-index:0}
-.glass-card:hover::before{opacity:1}
-.glass-card:hover{border-color:rgba(201,168,76,0.25);box-shadow:0 32px 80px rgba(0,0,0,0.7),inset 0 1px 0 rgba(255,255,255,0.08),0 0 50px rgba(201,168,76,0.07)}
+
+/* REV */
+.rev{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}
+.rev.in{opacity:1;transform:translateY(0)}
+
+/* GALLERY GRID */
+.gallery-wrap{padding:0;background:var(--dark)}
+.gallery-header{padding:52px 60px 36px;display:flex;align-items:flex-end;justify-content:space-between;max-width:1440px;margin:0 auto}
+.gallery-label{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(240,234,214,0.22)}
+.gallery-showing{font-family:'Bebas Neue',cursive;font-size:15px;letter-spacing:3px;color:rgba(201,168,76,0.45)}
+
+.g-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:3px;
+  padding:0 3px 3px;
+  background:var(--dark);
+}
+@media(max-width:1100px){.g-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:680px){.g-grid{grid-template-columns:repeat(2,1fr)}}
+
+.g-item{
+  position:relative;
+  overflow:hidden;
+  aspect-ratio:4/3;
+  background:#0a0a08;
+  cursor:zoom-in;
+}
+.g-item img{
+  width:100%;height:100%;
+  object-fit:cover;
+  filter:brightness(.72) saturate(1.05);
+  transition:transform .65s var(--ease), filter .55s ease;
+  display:block;
+}
+.g-item:hover img{
+  transform:scale(1.08);
+  filter:brightness(1) saturate(1.15);
+}
+.g-item-ov{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(8,11,6,0.55) 0%, transparent 50%);
+  opacity:0;
+  transition:opacity .4s ease;
+  pointer-events:none;
+}
+.g-item:hover .g-item-ov{opacity:1}
+.g-item-gold{
+  position:absolute;
+  inset:0;
+  border:1px solid rgba(201,168,76,0);
+  transition:border-color .4s ease;
+  pointer-events:none;
+  z-index:2;
+}
+.g-item:hover .g-item-gold{border-color:rgba(201,168,76,0.3)}
+
+/* fade-in for new items */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.g-item.fade-in{animation:fadeUp .55s var(--ease) both}
+
+/* LOAD MORE */
+.load-more-wrap{
+  padding:72px 60px 88px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+}
+.lm-line{
+  display:flex;
+  align-items:center;
+  gap:0;
+  width:100%;
+  max-width:480px;
+}
+.lm-rule{flex:1;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.25))}
+.lm-rule.right{background:linear-gradient(to left,transparent,rgba(201,168,76,0.25))}
+.lm-btn{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  padding:0 40px;
+  cursor:pointer;
+  background:none;
+  border:none;
+  font-family:'Montserrat',sans-serif;
+  position:relative;
+}
+.lm-btn-label{
+  font-family:'Bebas Neue',cursive;
+  font-size:13px;
+  letter-spacing:5px;
+  color:rgba(201,168,76,0.5);
+  text-transform:uppercase;
+  transition:color .35s, letter-spacing .35s;
+}
+.lm-btn-sub{
+  font-size:8px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:rgba(240,234,214,0.18);
+  transition:color .35s;
+}
+.lm-btn:hover .lm-btn-label{color:var(--gold);letter-spacing:7px}
+.lm-btn:hover .lm-btn-sub{color:rgba(240,234,214,0.4)}
+.lm-diamond{
+  font-size:7px;
+  color:rgba(201,168,76,0.35);
+  transition:color .35s;
+  margin-top:4px;
+}
+.lm-btn:hover .lm-diamond{color:var(--gold)}
+
+/* hide button when all loaded */
+.load-more-wrap.done{display:none}
+.all-loaded-msg{
+  text-align:center;
+  padding:72px 60px 88px;
+  font-size:9px;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color:rgba(201,168,76,0.3);
+  display:none;
+}
+.all-loaded-msg.show{display:block}
+
+/* LIGHTBOX */
+#lightbox{
+  position:fixed;inset:0;z-index:9900;
+  background:rgba(4,5,3,0);
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;
+  transition:background .4s ease;
+}
+#lightbox.open{background:rgba(4,5,3,0.96);pointer-events:all}
+#lb-img-wrap{
+  position:relative;
+  max-width:92vw;max-height:88vh;
+  opacity:0;transform:scale(0.94);
+  transition:opacity .4s var(--ease),transform .4s var(--ease);
+}
+#lightbox.open #lb-img-wrap{opacity:1;transform:scale(1)}
+#lb-img{
+  max-width:92vw;max-height:88vh;
+  width:auto;height:auto;
+  object-fit:contain;
+  display:block;
+  box-shadow:0 40px 120px rgba(0,0,0,0.8);
+}
+#lb-gold-border{
+  position:absolute;inset:0;
+  border:1px solid rgba(201,168,76,0.18);
+  pointer-events:none;
+}
+#lb-close{
+  position:fixed;top:28px;right:36px;
+  width:44px;height:44px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;background:none;border:none;
+  font-size:22px;color:rgba(240,234,214,0.4);
+  transition:color .25s, transform .25s;
+  font-family:'Montserrat',sans-serif;font-weight:300;
+  letter-spacing:0;
+}
+#lb-close:hover{color:var(--gold);transform:rotate(90deg)}
+#lb-prev,#lb-next{
+  position:fixed;top:50%;
+  transform:translateY(-50%);
+  background:none;border:none;cursor:pointer;
+  font-family:'Bebas Neue',cursive;
+  font-size:11px;letter-spacing:5px;
+  color:rgba(201,168,76,0.35);
+  transition:color .25s, letter-spacing .25s;
+  padding:16px;
+}
+#lb-prev{left:24px}
+#lb-next{right:24px}
+#lb-prev:hover,#lb-next:hover{color:var(--gold);letter-spacing:7px}
+#lb-counter{
+  position:fixed;bottom:28px;left:50%;transform:translateX(-50%);
+  font-size:9px;letter-spacing:4px;
+  color:rgba(201,168,76,0.3);
+  font-family:'Bebas Neue',cursive;
+}
+@media(max-width:768px){
+  #lb-prev,#lb-next{display:none}
+  #lb-close{top:20px;right:20px}
+  .gallery-header{padding:32px 20px 24px;flex-direction:column;align-items:flex-start;gap:4px}
+  .load-more-wrap{padding:48px 20px 64px}
+  .page-header{padding:100px 24px 40px}
+}
+
 /* FOOTER */
 footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,168,76,0.06)}
 .ft-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:44px;margin-bottom:52px}
@@ -103,12 +290,14 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 .ft-bot{border-top:1px solid rgba(240,234,214,0.04);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .ft-copy{font-size:9px;color:rgba(240,234,214,0.12);letter-spacing:1px}
 .ft-phone{font-family:'Bebas Neue',cursive;font-size:22px;color:rgba(232,160,32,0.24);letter-spacing:3px}
-@media(max-width:768px){.ft-grid{grid-template-columns:1fr 1fr}.sec{padding:64px 24px}.page-header{padding:100px 24px 48px}}
+@media(max-width:768px){.ft-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div id="cur"></div><div id="cur-ring"></div>
+
+<!-- MOBILE MENU -->
 <div id="mob-menu">
   <div class="mob-inner">
     <div class="mob-nav">
@@ -130,6 +319,8 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     </div>
   </div>
 </div>
+
+<!-- NAV -->
 <nav id="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">Red Agave</a>
@@ -148,15 +339,20 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<!-- HERO HEADER -->
 <div class="page-header">
   <canvas class="page-canvas" style="position:absolute;inset:0;z-index:1;pointer-events:none;width:100%;height:100%"></canvas>
   <div class="page-header-bg" style="background-image:url('images/gallery/DSC03875.webp')"></div>
   <div class="page-header-ov"></div>
   <div class="page-header-inner">
     <div class="page-eyebrow rev">Red Agave Landscaping &nbsp;&middot;&nbsp; Austin, TX</div>
-    <h1 class="page-title rev">Photo <span class="slim-pink">Gallery</span></h1>
+    <h1 class="page-title rev">Our Work</h1>
+    <div class="page-count-line rev">231 Projects &nbsp;&middot;&nbsp; Austin &amp; Surrounding Areas</div>
   </div>
 </div>
+
+<!-- TICKER -->
 <div class="ticker" aria-hidden="true"><div class="t-track">
   <span class="t-item">Xeriscape &amp; Hardscape</span><span class="t-sep">&#9670;</span>
   <span class="t-item">Custom Built Decks</span><span class="t-sep">&#9670;</span>
@@ -174,49 +370,40 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   <span class="t-item">Any Project &middot; Any Budget</span><span class="t-sep">&#9670;</span>
 </div></div>
 
-<style>
-.gallery-grid{columns:3;gap:3px;padding:3px;background:#000}
-.gallery-grid img{display:block;width:100%;break-inside:avoid;margin-bottom:3px;filter:brightness(.75) saturate(1.05);transition:filter .4s,transform .4s;cursor:zoom-in}
-.gallery-grid img:hover{filter:brightness(1) saturate(1.15);transform:scale(1.01)}
-@media(max-width:900px){.gallery-grid{columns:2}}
-@media(max-width:500px){.gallery-grid{columns:1}}
-</style>
-<section class="sec" style="background:var(--dark2);padding-bottom:48px">
-  <div class="s-eye rev">All Work</div>
-  <h2 class="s-title rev">Photo <span class="slim-pink">Gallery</span></h2>
-</section>
-<div class="gallery-grid">
-  <img src="images/gallery/DSC03875.webp" alt="Red Agave landscaping Austin TX" loading="lazy">
-  <img src="images/gallery/IMG_5344.webp" alt="Xeriscape design Austin" loading="lazy">
-  <img src="images/gallery/IMG_8182.webp" alt="Custom deck Austin TX" loading="lazy">
-  <img src="images/gallery/DSC04001.webp" alt="Fire feature Austin TX" loading="lazy">
-  <img src="images/gallery/IMG_0990.webp" alt="Outdoor living Austin" loading="lazy">
-  <img src="images/gallery/IMG_5448.webp" alt="Landscape design Austin" loading="lazy">
-  <img src="images/gallery/IMG_8667.webp" alt="Hardscape Austin TX" loading="lazy">
-  <img src="images/gallery/IMG_3169.webp" alt="WLED lighting Austin" loading="lazy">
-  <img src="images/gallery/IMG_4424.webp" alt="Custom planter Austin" loading="lazy">
-  <img src="images/gallery/IMG_2706.webp" alt="Outdoor kitchen Austin" loading="lazy">
-  <img src="images/gallery/IMG_6284.webp" alt="Water feature Austin" loading="lazy">
-  <img src="images/gallery/IMG_3861.webp" alt="Pergola Austin TX" loading="lazy">
-  <img src="images/gallery/IMG_5852.webp" alt="Landscape Austin" loading="lazy">
-  <img src="images/gallery/IMG_4521.webp" alt="Red Agave project" loading="lazy">
-  <img src="images/gallery/IMG_0103.webp" alt="Austin landscaping" loading="lazy">
-  <img src="images/gallery/IMG_1343.webp" alt="Cedar Park landscaping" loading="lazy">
-  <img src="images/gallery/IMG_8976.webp" alt="Westlake landscaping" loading="lazy">
-  <img src="images/gallery/DSC04042.webp" alt="Circle C Ranch landscaping" loading="lazy">
-  <img src="images/gallery/IMG_5116.webp" alt="Bee Cave landscaping" loading="lazy">
-  <img src="images/gallery/IMG_0596.webp" alt="Barton Creek landscaping" loading="lazy">
-  <img src="images/gallery/IMG_2229.webp" alt="Tarrytown landscaping" loading="lazy">
-  <img src="images/gallery/IMG_4106.webp" alt="Round Rock landscaping" loading="lazy">
-  <img src="images/gallery/IMG_3807.webp" alt="Buda landscaping" loading="lazy">
-  <img src="images/gallery/IMG_1611.webp" alt="Cedar Park landscaping" loading="lazy">
-  <img src="images/gallery/IMG_0991.webp" alt="Native plants Austin" loading="lazy">
-  <img src="images/gallery/IMG_1318.webp" alt="Austin outdoor design" loading="lazy">
-  <img src="images/gallery/IMG_2194.webp" alt="Red Agave work" loading="lazy">
-  <img src="images/gallery/IMG_4149.webp" alt="Landscape installation" loading="lazy">
-  <img src="images/gallery/IMG_4342.webp" alt="Hardscape Austin" loading="lazy">
-  <img src="images/gallery/IMG_4627.webp" alt="Custom design Austin" loading="lazy">
+<!-- GALLERY -->
+<div class="gallery-wrap">
+  <div class="gallery-header">
+    <span class="gallery-label">All Projects &nbsp;&middot;&nbsp; Austin, TX</span>
+    <span class="gallery-showing" id="showing-label">Showing 30 of 231</span>
+  </div>
+  <div class="g-grid" id="g-grid"></div>
+  <div class="load-more-wrap" id="lm-wrap">
+    <div class="lm-line">
+      <div class="lm-rule"></div>
+      <button class="lm-btn" id="lm-btn">
+        <span class="lm-btn-label">Load More Work</span>
+        <span class="lm-btn-sub" id="lm-sub">30 more photos</span>
+        <span class="lm-diamond">&#9670;</span>
+      </button>
+      <div class="lm-rule right"></div>
+    </div>
+  </div>
+  <div class="all-loaded-msg" id="all-msg">— All 231 Projects Shown —</div>
 </div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button id="lb-close">&#10005;</button>
+  <button id="lb-prev">&#8592; Prev</button>
+  <div id="lb-img-wrap">
+    <img id="lb-img" src="" alt="">
+    <div id="lb-gold-border"></div>
+  </div>
+  <button id="lb-next">Next &#8594;</button>
+  <div id="lb-counter" id="lb-counter"></div>
+</div>
+
+<!-- FOOTER -->
 <footer>
   <div class="ft-grid">
     <div>
@@ -233,32 +420,384 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     <span class="ft-phone">512-695-7566</span>
   </div>
 </footer>
+
 <script>
 (function(){
-  var cur=document.getElementById('cur'), ring=document.getElementById('cur-ring');
+  /* ── Custom cursor ── */
+  var cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
   if(cur&&ring&&window.matchMedia('(hover:hover)').matches){
     var mx=0,my=0,rx=0,ry=0;
     document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
     (function t(){rx+=(mx-rx)*.55;ry+=(my-ry)*.55;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(t)})();
   }
+
+  /* ── Nav scroll ── */
   var nav=document.getElementById('nav');
   window.addEventListener('scroll',function(){nav&&nav.classList.toggle('scrolled',scrollY>60)},{passive:true});
+
+  /* ── Mobile menu ── */
   var hbg=document.getElementById('hbg'),mob=document.getElementById('mob-menu');
   if(hbg&&mob){hbg.addEventListener('click',function(){var o=mob.classList.toggle('open');hbg.classList.toggle('open',o)});mob.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mob.classList.remove('open');hbg.classList.remove('open')})})}
-  // Reveal on scroll
+
+  /* ── Reveal on scroll ── */
   var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('in')})},{threshold:0.1});
   document.querySelectorAll('.rev').forEach(function(el){obs.observe(el)});
-  // Glass card mouse tracking
-  document.querySelectorAll('.glass-card').forEach(function(card){
-    card.addEventListener('mousemove',function(e){var r=card.getBoundingClientRect();card.style.setProperty('--mouse-x',(e.clientX-r.left)+'px');card.style.setProperty('--mouse-y',(e.clientY-r.top)+'px')});
-  });
-  // Particle canvas for page headers
+
+  /* ── Particle canvas ── */
   document.querySelectorAll('.page-canvas').forEach(function(cv){
     var ctx=cv.getContext('2d'),pts=[],W,H;
     function rs(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;pts=[];for(var i=0;i<80;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.4+.4,op:Math.random()*.4+.25})}
     function dr(){ctx.clearRect(0,0,W,H);pts.forEach(function(p){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='rgba(201,168,76,'+p.op+')';ctx.fill()});for(var i=0;i<pts.length;i++)for(var j=i+1;j<pts.length;j++){var dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<100){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle='rgba(201,168,76,'+(1-d/100)*.18+')';ctx.lineWidth=.55;ctx.stroke()}}requestAnimationFrame(dr)}
     window.addEventListener('resize',function(){rs()},{passive:true});rs();dr();
   });
+
+  /* ── GALLERY ── */
+  var IMAGES = [
+    "106.webp",
+    "1707%20Ulit%20Ave-029-Kieran%20Reeves%20Photography%20%5BMLS%5D.webp",
+    "1707%20Ulit%20Ave-030-Kieran%20Reeves%20Photography%20%5BMLS%5D.webp",
+    "1707%20Ulit%20Ave-031-Kieran%20Reeves%20Photography%20%5BMLS%5D.webp",
+    "1707%20Ulit%20Ave-032-Kieran%20Reeves%20Photography%20%5BMLS%5D.webp",
+    "1707%20Ulit%20Ave-033-Kieran%20Reeves%20Photography%20%5BMLS%5D%20%281%29.webp",
+    "1707%20Ulit%20Ave-033-Kieran%20Reeves%20Photography%20%5BMLS%5D.webp",
+    "55ba2a41-cc7a-4445-8a32-6a1e8b32f663-1-105-c.webp",
+    "67042504517__AAD2216C-F532-4A97-9583-703FA58A03BD.fullsizerender.webp",
+    "DSC03775.webp",
+    "DSC03818.webp",
+    "DSC03828.webp",
+    "DSC03875.webp",
+    "DSC03996.webp",
+    "DSC04001.webp",
+    "DSC04039.webp",
+    "DSC04040.webp",
+    "DSC04041%20%281%29.webp",
+    "DSC04041.webp",
+    "DSC04042%20%281%29.webp",
+    "DSC04042.webp",
+    "DSC04049.webp",
+    "DSC04080.webp",
+    "DSC04110.webp",
+    "IMG_0001.webp",
+    "IMG_0011.webp",
+    "IMG_0103.webp",
+    "IMG_0106.webp",
+    "IMG_0114.webp",
+    "IMG_0194.webp",
+    "IMG_0350.webp",
+    "IMG_0591.webp",
+    "IMG_0596.webp",
+    "IMG_0597.webp",
+    "IMG_0794.webp",
+    "IMG_0799.webp",
+    "IMG_0851.webp",
+    "IMG_0990.webp",
+    "IMG_0991.webp",
+    "IMG_0994.webp",
+    "IMG_1318.webp",
+    "IMG_1343.webp",
+    "IMG_1422.webp",
+    "IMG_1611.webp",
+    "IMG_2194.webp",
+    "IMG_2207.webp",
+    "IMG_2229.webp",
+    "IMG_2549.webp",
+    "IMG_2554.webp",
+    "IMG_2556.webp",
+    "IMG_2579.webp",
+    "IMG_2706.webp",
+    "IMG_3169.webp",
+    "IMG_3205.webp",
+    "IMG_3482.webp",
+    "IMG_3664.webp",
+    "IMG_3702.webp",
+    "IMG_3803.webp",
+    "IMG_3807.webp",
+    "IMG_3855.webp",
+    "IMG_3856.webp",
+    "IMG_3859.webp",
+    "IMG_3861.webp",
+    "IMG_4104.webp",
+    "IMG_4106.webp",
+    "IMG_4119.webp",
+    "IMG_4149.webp",
+    "IMG_4324.webp",
+    "IMG_4342.webp",
+    "IMG_4424.webp",
+    "IMG_4432.webp",
+    "IMG_4451.webp",
+    "IMG_4521.webp",
+    "IMG_4627.webp",
+    "IMG_5116.webp",
+    "IMG_5119.webp",
+    "IMG_5344.webp",
+    "IMG_5373.webp",
+    "IMG_5391.webp",
+    "IMG_5448.webp",
+    "IMG_5451%202.webp",
+    "IMG_5451.webp",
+    "IMG_5466.webp",
+    "IMG_5474.webp",
+    "IMG_5491.webp",
+    "IMG_5562.webp",
+    "IMG_5852.webp",
+    "IMG_6279.webp",
+    "IMG_6284.webp",
+    "IMG_8161.webp",
+    "IMG_8168.webp",
+    "IMG_8177.webp",
+    "IMG_8182.webp",
+    "IMG_8183.webp",
+    "IMG_8186.webp",
+    "IMG_8191.webp",
+    "IMG_8212.webp",
+    "IMG_8215.webp",
+    "IMG_8216.webp",
+    "IMG_8217.webp",
+    "IMG_8219.webp",
+    "IMG_8220.webp",
+    "IMG_8227.webp",
+    "IMG_8250.webp",
+    "IMG_8253.webp",
+    "IMG_8256.webp",
+    "IMG_8260.webp",
+    "IMG_8271.webp",
+    "IMG_8275.webp",
+    "IMG_8283.webp",
+    "IMG_8293.webp",
+    "IMG_8339.webp",
+    "IMG_8343.webp",
+    "IMG_8345.webp",
+    "IMG_8347.webp",
+    "IMG_8504.webp",
+    "IMG_8512.webp",
+    "IMG_8520.webp",
+    "IMG_8542.webp",
+    "IMG_8575.webp",
+    "IMG_8579.webp",
+    "IMG_8582.webp",
+    "IMG_8584.webp",
+    "IMG_8586.webp",
+    "IMG_8587.webp",
+    "IMG_8591.webp",
+    "IMG_8667.webp",
+    "IMG_8668.webp",
+    "IMG_8674.webp",
+    "IMG_8676.webp",
+    "IMG_8679.webp",
+    "IMG_8693.webp",
+    "IMG_8699.webp",
+    "IMG_8703.webp",
+    "IMG_8705.webp",
+    "IMG_8720.webp",
+    "IMG_8722.webp",
+    "IMG_8782.webp",
+    "IMG_8784.webp",
+    "IMG_8788.webp",
+    "IMG_8798.webp",
+    "IMG_8801.webp",
+    "IMG_8804.webp",
+    "IMG_8807.webp",
+    "IMG_8836.webp",
+    "IMG_8854.webp",
+    "IMG_8855.webp",
+    "IMG_8890.webp",
+    "IMG_8909.webp",
+    "IMG_8917.webp",
+    "IMG_8919.webp",
+    "IMG_8949.webp",
+    "IMG_8976.webp",
+    "IMG_8977.webp",
+    "IMG_8979.webp",
+    "IMG_8997.webp",
+    "IMG_9007.webp",
+    "IMG_9017.webp",
+    "IMG_9021.webp",
+    "IMG_9027.webp",
+    "IMG_9039.webp",
+    "IMG_9047.webp",
+    "IMG_9049.webp",
+    "IMG_9051.webp",
+    "IMG_9053.webp",
+    "IMG_9065.webp",
+    "IMG_9077.webp",
+    "IMG_9083.webp",
+    "IMG_9085.webp",
+    "IMG_9096.webp",
+    "IMG_9106.webp",
+    "IMG_9107.webp",
+    "IMG_9109.webp",
+    "IMG_9440.webp",
+    "IMG_9445.webp",
+    "IMG_9453.webp",
+    "IMG_9461.webp",
+    "IMG_9566.webp",
+    "IMG_9584.webp",
+    "IMG_9597.webp",
+    "IMG_9613.webp",
+    "IMG_9622.webp",
+    "IMG_9628.webp",
+    "IMG_9638.webp",
+    "IMG_9645.webp",
+    "IMG_9652.webp",
+    "IMG_9667.webp",
+    "IMG_9669.webp",
+    "IMG_9678.webp",
+    "IMG_9683.webp",
+    "IMG_9687.webp",
+    "IMG_9712.webp",
+    "IMG_9839.webp",
+    "IMG_9840.webp",
+    "IMG_9899.webp",
+    "IMG_9912.webp",
+    "IMG_9990.webp",
+    "IMG_9999.webp",
+    "Image%2024.webp",
+    "Image%2029.webp",
+    "Image%2030.webp",
+    "Image%2037.webp",
+    "Image%2039.webp",
+    "Image%2040.webp",
+    "Image%2043.webp",
+    "Image%2044.webp",
+    "Image%2046.webp",
+    "Image%2048.webp",
+    "Screenshot%202024-10-03%20at%207.13.30%E2%80%AFAM.webp",
+    "Screenshot%202026-04-03%20at%207.18.48%E2%80%AFAM.webp",
+    "_DSF0159.webp",
+    "_DSF0163.webp",
+    "firepit.webp",
+    "imagejpeg_1.webp",
+    "img-2917-2.webp",
+    "img-4831.webp",
+    "img-5127.webp",
+    "img-5129.webp",
+    "img-5344.webp",
+    "img-5394.webp",
+    "img-5402.webp",
+    "img-5410.webp",
+    "img-5414.webp",
+    "img-5419.webp",
+    "img-6305.webp",
+    "img-6311.webp",
+    "img-6504.webp",
+    "img-6505.webp",
+    "img-7237.webp",
+    "img-7305.webp",
+    "img-7335.webp"
+  ];
+
+  var BATCH = 30;
+  var loaded = 0;
+  var grid = document.getElementById('g-grid');
+  var lmWrap = document.getElementById('lm-wrap');
+  var lmBtn = document.getElementById('lm-btn');
+  var lmSub = document.getElementById('lm-sub');
+  var showLabel = document.getElementById('showing-label');
+  var allMsg = document.getElementById('all-msg');
+  var TOTAL = IMAGES.length;
+
+  function renderBatch() {
+    var end = Math.min(loaded + BATCH, TOTAL);
+    var frag = document.createDocumentFragment();
+    for (var i = loaded; i < end; i++) {
+      var wrap = document.createElement('div');
+      wrap.className = 'g-item fade-in';
+      wrap.style.animationDelay = ((i - loaded) * 0.04) + 's';
+      wrap.dataset.idx = i;
+      var img = document.createElement('img');
+      img.src = 'images/gallery/' + IMAGES[i];
+      img.alt = 'Red Agave landscaping Austin TX';
+      img.loading = 'lazy';
+      var ov = document.createElement('div');
+      ov.className = 'g-item-ov';
+      var gold = document.createElement('div');
+      gold.className = 'g-item-gold';
+      wrap.appendChild(img);
+      wrap.appendChild(ov);
+      wrap.appendChild(gold);
+      wrap.addEventListener('click', function() { openLB(parseInt(this.dataset.idx)); });
+      frag.appendChild(wrap);
+    }
+    grid.appendChild(frag);
+    loaded = end;
+
+    // update labels
+    var showing = Math.min(loaded, TOTAL);
+    showLabel.textContent = 'Showing ' + showing + ' of ' + TOTAL;
+    var remaining = TOTAL - loaded;
+    if (remaining <= 0) {
+      lmWrap.classList.add('done');
+      allMsg.classList.add('show');
+    } else {
+      lmSub.textContent = Math.min(remaining, BATCH) + ' more photos';
+    }
+  }
+
+  // Initial load
+  renderBatch();
+
+  // Load more button
+  lmBtn.addEventListener('click', function() {
+    lmBtn.style.pointerEvents = 'none';
+    setTimeout(function() { lmBtn.style.pointerEvents = ''; }, 600);
+    renderBatch();
+    // scroll down slightly so user sees new content
+    setTimeout(function(){
+      var items = grid.querySelectorAll('.g-item');
+      var target = items[loaded - BATCH] || items[items.length - 1];
+      if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    }, 100);
+  });
+
+  /* ── LIGHTBOX ── */
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lb-img');
+  var lbCounter = document.getElementById('lb-counter');
+  var currentIdx = 0;
+
+  function openLB(idx) {
+    currentIdx = idx;
+    lbImg.src = 'images/gallery/' + IMAGES[idx];
+    lbCounter.textContent = (idx + 1) + ' / ' + TOTAL;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLB() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(function(){ lbImg.src = ''; }, 400);
+  }
+  function lbNav(dir) {
+    currentIdx = (currentIdx + dir + TOTAL) % TOTAL;
+    // if navigating to an image not yet loaded, load up to that point
+    while(loaded <= currentIdx) renderBatch();
+    lbImg.style.opacity = '0';
+    setTimeout(function(){
+      lbImg.src = 'images/gallery/' + IMAGES[currentIdx];
+      lbCounter.textContent = (currentIdx + 1) + ' / ' + TOTAL;
+      lbImg.style.opacity = '1';
+    }, 150);
+  }
+
+  document.getElementById('lb-close').addEventListener('click', closeLB);
+  document.getElementById('lb-prev').addEventListener('click', function(){ lbNav(-1); });
+  document.getElementById('lb-next').addEventListener('click', function(){ lbNav(1); });
+  lb.addEventListener('click', function(e){ if(e.target === lb) closeLB(); });
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLB();
+    if(e.key === 'ArrowLeft') lbNav(-1);
+    if(e.key === 'ArrowRight') lbNav(1);
+  });
+
+  // Swipe support for mobile lightbox
+  var lbTouchX = 0;
+  lb.addEventListener('touchstart', function(e){ lbTouchX = e.touches[0].clientX; }, {passive:true});
+  lb.addEventListener('touchend', function(e){
+    var dx = e.changedTouches[0].clientX - lbTouchX;
+    if(Math.abs(dx) > 50) lbNav(dx < 0 ? 1 : -1);
+  });
+
 })();
 </script>
 </body>
