@@ -1436,63 +1436,227 @@ a{text-decoration:none;color:inherit}
 }
 
 /* ══ WHAT MAKES ══ */
-.whatmakes{background:var(--dark);padding:100px 60px;text-align:center}
-.wm-ghost{font-family:'Bebas Neue',cursive;font-size:clamp(52px,8vw,108px);line-height:.88;margin-bottom:60px;letter-spacing:6px;pointer-events:none;user-select:none;position:relative;cursor:default}
-.wm-ghost .wg1{color:rgba(240,234,214,0.06);transition:color 0.3s ease}
-.wm-ghost .wg2{color:rgba(201,168,76,0.06);transition:color 0.3s ease}
-.wm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,168,76,0.06)}
-.wm-card{
-  background:rgba(201,168,76,0.018);
-  backdrop-filter:blur(32px);
-  -webkit-backdrop-filter:blur(32px);
-  padding:52px 36px;
-  border:1px solid rgba(201,168,76,0.08);
-  border-top:1px solid rgba(201,168,76,0.22);
+/* ══ WHAT MAKES — B&W photo bg + illuminated hero-style title + bronze flip cards ══ */
+.whatmakes{
   position:relative;
+  background:var(--dark);
+  padding:160px 60px 140px;
+  text-align:center;
   overflow:hidden;
-  transition:transform 0.5s cubic-bezier(0.23,1,0.32,1),background .5s,box-shadow .5s,border-color .4s;
-  box-shadow:0 32px 80px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.06),inset 0 -1px 0 rgba(0,0,0,0.4);
-  transform-style:preserve-3d;
-  cursor:default;
 }
-/* warm inner glow at top edge — like light hitting a surface */
-.wm-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;
-  height:1px;
-  background:linear-gradient(to right,transparent,rgba(201,168,76,0.45),transparent);
+.wm-bg{
+  position:absolute;inset:0;
+  background-size:cover;
+  background-position:center;
+  filter:grayscale(1) brightness(0.32) contrast(1.12);
+  opacity:0.55;
+  z-index:0;
+  will-change:transform;
 }
-/* bottom gold line that sweeps in on hover */
-.wm-card::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;
-  height:1px;
-  background:linear-gradient(to right,transparent,rgba(201,168,76,0.3),transparent);
-  transform:scaleX(0);transform-origin:center;
-  transition:transform .5s var(--ease);
+.wm-bg-ov{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 40%, rgba(8,11,6,0.35) 0%, rgba(8,11,6,0.72) 70%, rgba(8,11,6,0.92) 100%),
+    linear-gradient(180deg, rgba(8,11,6,0.4) 0%, rgba(8,11,6,0.05) 35%, rgba(8,11,6,0.05) 65%, rgba(8,11,6,0.85) 100%);
 }
-.wm-card:hover{
-  border-top-color:rgba(201,168,76,0.55);
-  background:rgba(201,168,76,0.04);
-  box-shadow:0 32px 80px rgba(0,0,0,0.7),inset 0 1px 0 rgba(255,255,255,0.08),0 0 60px rgba(201,168,76,0.08);
+
+/* Title — hero-style illumination, scroll-revealed */
+.wm-title{
+  position:relative;z-index:3;
+  margin-bottom:96px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity 1.1s cubic-bezier(0.16,1,0.3,1), transform 1.1s cubic-bezier(0.16,1,0.3,1);
 }
-/* Grok spotlight on wm-card */
-.wm-card::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(600px circle at var(--mouse-x,50%) var(--mouse-y,50%),rgba(201,168,76,0.13),transparent 45%);
-  z-index:0;opacity:0;transition:opacity 0.45s ease;pointer-events:none;
+.wm-title.in{opacity:1;transform:translateY(0)}
+.wm-eye{
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:'Montserrat',sans-serif;
+  font-size:10px;font-style:italic;font-weight:300;
+  letter-spacing:6px;text-transform:uppercase;
+  color:rgba(201,168,76,0.55);
+  margin-bottom:32px;
 }
-.wm-card:hover::before{opacity:1}
-.wm-card:hover::after{transform:scaleX(1)}
-.wm-num{font-family:'Bebas Neue',cursive;font-size:50px;line-height:1;margin-bottom:14px;color:var(--gold);text-shadow:0 0 18px rgba(201,168,76,0.45),0 0 40px rgba(201,168,76,0.15)}
-.wm-t{
+.wm-eye::before,.wm-eye::after{content:'';width:44px;height:1px;background:var(--gold);opacity:.55}
+.wm-line{
   font-family:'Bebas Neue',cursive;
-  font-size:28px;
-  letter-spacing:2.5px;
-  line-height:1.1;
-  color:#e8c96a;
-  text-shadow:0 0 16px rgba(201,168,76,0.8),0 0 32px rgba(201,168,76,0.3);
+  line-height:.92;
+  letter-spacing:3px;
+  display:block;
+}
+/* Top line — cream-dim like hl1 */
+.wml1{
+  font-size:clamp(36px,4.5vw,68px);
+  color:#f0ead6;
+  letter-spacing:4px;
+  text-shadow:0 2px 8px rgba(0,0,0,0.7),0 0 24px rgba(240,234,214,0.1);
   margin-bottom:10px;
 }
-.wm-p{font-size:11px;color:rgba(240,234,214,0.45);line-height:2}
+/* Bottom line — hero "TOP DESIGN" illumination (Montserrat medium gold w/ warm glow) */
+.wml2{
+  font-family:'Montserrat',sans-serif;
+  font-weight:500;
+  font-size:clamp(34px,5.2vw,78px);
+  letter-spacing:5px;
+  text-transform:uppercase;
+  color:#e8c96a;
+  text-shadow:
+    0 0 28px rgba(232,196,90,0.5),
+    0 0 64px rgba(201,168,76,0.22),
+    0 0 120px rgba(232,196,90,0.12),
+    0 4px 14px rgba(0,0,0,0.85);
+  animation:wmGlowPulse 4.2s ease-in-out infinite;
+}
+@keyframes wmGlowPulse{
+  0%,100%{text-shadow:0 0 28px rgba(232,196,90,0.5),0 0 64px rgba(201,168,76,0.22),0 0 120px rgba(232,196,90,0.12),0 4px 14px rgba(0,0,0,0.85)}
+  50%{text-shadow:0 0 36px rgba(232,196,90,0.62),0 0 90px rgba(201,168,76,0.3),0 0 160px rgba(232,196,90,0.18),0 4px 14px rgba(0,0,0,0.85)}
+}
+
+/* ── Grid ── */
+.wm-grid{
+  position:relative;z-index:3;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  max-width:1280px;
+  margin:0 auto;
+  perspective:1600px;
+}
+
+/* ── FLIP CARD ── */
+.wm-card{
+  position:relative;
+  height:420px;
+  transform-style:preserve-3d;
+  cursor:pointer;
+  transition:transform .4s cubic-bezier(0.16,1,0.3,1);
+}
+.wm-inner{
+  position:relative;
+  width:100%;height:100%;
+  transform-style:preserve-3d;
+  transition:transform .95s cubic-bezier(0.77,0,0.175,1);
+  will-change:transform;
+}
+.wm-card:hover .wm-inner{transform:rotateY(180deg)}
+
+.wm-face{
+  position:absolute;inset:0;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  padding:48px 36px;
+  display:flex;flex-direction:column;
+  justify-content:flex-start;
+  text-align:left;
+  overflow:hidden;
+  border:1px solid rgba(176,122,60,0.22);
+  /* Liquid bronze — warm copper gradient, no green hint */
+  background:
+    radial-gradient(ellipse 120% 100% at 0% 0%, rgba(212,146,72,0.10) 0%, rgba(138,90,43,0.04) 40%, transparent 70%),
+    linear-gradient(145deg, rgba(40,26,14,0.92) 0%, rgba(22,14,8,0.96) 50%, rgba(15,10,6,0.98) 100%);
+  box-shadow:
+    0 24px 60px rgba(0,0,0,0.55),
+    inset 0 1px 0 rgba(212,146,72,0.28),
+    inset 0 -1px 0 rgba(0,0,0,0.5),
+    inset 1px 0 0 rgba(176,122,60,0.08),
+    inset -1px 0 0 rgba(176,122,60,0.08);
+}
+/* Warm bronze top sheen */
+.wm-face::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(to right, transparent 0%, rgba(212,146,72,0.55) 20%, rgba(232,170,88,0.78) 50%, rgba(212,146,72,0.55) 80%, transparent 100%);
+  pointer-events:none;
+}
+/* Subtle bronze liquid reflection in corner */
+.wm-face::after{
+  content:'';position:absolute;top:0;right:0;
+  width:55%;height:55%;
+  background:radial-gradient(ellipse at top right, rgba(232,170,88,0.10) 0%, rgba(176,122,60,0.04) 40%, transparent 70%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.wm-back{
+  transform:rotateY(180deg);
+  /* Back — richer bronze tone with soft inner glow */
+  background:
+    radial-gradient(ellipse 100% 120% at 50% 0%, rgba(232,170,88,0.14) 0%, rgba(138,90,43,0.06) 40%, transparent 75%),
+    linear-gradient(145deg, rgba(58,36,18,0.96) 0%, rgba(32,20,12,0.98) 55%, rgba(20,12,6,1) 100%);
+  border-color:rgba(212,146,72,0.35);
+  padding:44px 32px;
+}
+
+/* Content above gradients */
+.wm-num,.wm-t,.wm-p,.wm-more,.wm-back-t,.wm-back-p,.wm-back-list{position:relative;z-index:2}
+
+.wm-num{
+  font-family:'Bebas Neue',cursive;
+  font-size:46px;line-height:1;
+  margin-bottom:18px;
+  color:transparent;
+  background:linear-gradient(135deg, #f0c97a 0%, #d4a050 45%, #8a5a2b 100%);
+  -webkit-background-clip:text;background-clip:text;
+  filter:drop-shadow(0 0 18px rgba(212,146,72,0.45));
+  letter-spacing:2px;
+}
+.wm-t{
+  font-family:'Bebas Neue',cursive;
+  font-size:30px;letter-spacing:2.5px;line-height:1.1;
+  margin-bottom:14px;
+  /* Liquid bronze gradient text */
+  color:transparent;
+  background:linear-gradient(135deg, #fde5a6 0%, #e8b870 30%, #c08438 60%, #7a4a1e 100%);
+  -webkit-background-clip:text;background-clip:text;
+  filter:drop-shadow(0 2px 10px rgba(212,146,72,0.35));
+}
+.wm-p{
+  font-size:11px;
+  color:rgba(240,230,210,0.55);
+  line-height:2;
+  font-weight:300;
+  margin-bottom:auto;
+}
+.wm-more{
+  margin-top:28px;
+  font-size:9px;letter-spacing:4px;text-transform:uppercase;
+  color:rgba(232,170,88,0.7);
+  font-weight:400;
+  transition:color .3s, letter-spacing .3s;
+}
+.wm-card:hover .wm-more{color:rgba(240,200,130,0.95);letter-spacing:5px}
+
+.wm-back-t{
+  font-family:'Bebas Neue',cursive;
+  font-size:24px;letter-spacing:2.5px;
+  color:transparent;
+  background:linear-gradient(135deg, #fde5a6 0%, #e8b870 30%, #c08438 60%, #7a4a1e 100%);
+  -webkit-background-clip:text;background-clip:text;
+  margin-bottom:14px;
+  padding-bottom:12px;
+  border-bottom:1px solid rgba(212,146,72,0.28);
+}
+.wm-back-p{
+  font-size:11px;
+  color:rgba(240,230,210,0.72);
+  line-height:1.9;
+  font-weight:300;
+  margin-bottom:16px;
+}
+.wm-back-list{
+  list-style:none;padding:0;margin:0;
+}
+.wm-back-list li{
+  font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(232,170,88,0.78);
+  padding:6px 0 6px 18px;
+  position:relative;
+  font-weight:400;
+}
+.wm-back-list li::before{
+  content:'';position:absolute;left:0;top:14px;
+  width:8px;height:1px;
+  background:linear-gradient(to right, rgba(232,170,88,0.85), transparent);
+}
 
 /* ══ PROCESS ══ */
 .process{background:var(--dark3);padding:100px 60px}
@@ -1768,18 +1932,6 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   opacity: 0.85 !important;
 }
 
-/* ══ WM-CARD — scroll-driven scale growth ══ */
-.wm-card {
-  transform-origin: center bottom;
-}
-.wm-card.wm-focus {
-  transform: scale(1.055) !important;
-  border-top-color: rgba(201,168,76,0.65) !important;
-}
-.wm-card.wm-near {
-  transform: scale(1.025) !important;
-}
-
 /* ══ PROCESS step numbers grow on scroll ══ */
 .step-num {
   transition: font-size 0.5s cubic-bezier(0.16,1,0.3,1), text-shadow 0.5s !important;
@@ -1790,44 +1942,12 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   padding-top: 76px !important;
 }
 
-/* ══ Grok kinetic mouse tracking on wm-cards ══ */
-.wm-content {
-  position: relative;
-  z-index: 10;
-}
-
-
-/* ══ WM-CARD grow on hover (cursor-driven scale) ══ */
-.wm-card {
-  transition: transform 0.45s cubic-bezier(0.23,1,0.32,1),
-              background 0.5s, box-shadow 0.5s, border-color 0.4s !important;
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-/* Kinetic 3D tilt handled by JS — base scale on hover */
-.wm-grid:hover .wm-card:not(:hover) {
-  transform: scale(0.97) !important;
-  opacity: 0.85;
-  transition: transform 0.45s, opacity 0.45s !important;
-}
-.wm-card:hover {
-  transform: scale(1.06) !important;
-}
-
 /* ══ PROCESS numbers grow on scroll (base + transition) ══ */
 .step-num {
   display: block;
   transition: font-size 0.5s cubic-bezier(0.16,1,0.3,1),
               text-shadow 0.5s ease !important;
   will-change: font-size;
-}
-
-/* ══ WM-CARD content above glass effect ══ */
-.wm-card .wm-num,
-.wm-card .wm-t,
-.wm-card .wm-p {
-  position: relative;
-  z-index: 2;
 }
 
 </style>
@@ -2009,12 +2129,76 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 </section>
 
 <!-- WHAT MAKES -->
-<section class="whatmakes">
-  <div class="wm-ghost" id="wm-ghost" aria-hidden="true"><div class="wg1">WHAT MAKES RED AGAVE</div><div class="wg2">THE PREMIER LANDSCAPER</div></div>
+<section class="whatmakes" id="whatmakes">
+  <div class="wm-bg" aria-hidden="true" style="background-image:url('images/hero/IMG_9106.webp')"></div>
+  <div class="wm-bg-ov" aria-hidden="true"></div>
+
+  <div class="wm-title" id="wm-title">
+    <div class="wm-eye">(why us)</div>
+    <div class="wm-line wml1">WHAT MAKES RED AGAVE</div>
+    <div class="wm-line wml2">THE PREMIER LANDSCAPER</div>
+  </div>
+
   <div class="wm-grid">
-    <div class="wm-card rev"><div class="wm-t">Innovative Design</div><div class="wm-p">We develop new processes unique to Red Agave, pushing the boundaries of what outdoor spaces can be.</div></div>
-    <div class="wm-card rev"><div class="wm-t">Expert Artistry</div><div class="wm-p">We are craftsmen who will turn your yard into a work of art, expanding our creativity with each project.</div></div>
-    <div class="wm-card rev"><div class="wm-t">Client Focus</div><div class="wm-p">Clear communication and transparency is our top priority &mdash; making this the best contractor experience you've had.</div></div>
+    <div class="wm-card rev">
+      <div class="wm-inner">
+        <div class="wm-face wm-front">
+          <div class="wm-num">01</div>
+          <div class="wm-t">Innovative Design</div>
+          <div class="wm-p">We develop new processes unique to Red Agave, pushing the boundaries of what outdoor spaces can be.</div>
+          <div class="wm-more">Hover to Learn More &#8594;</div>
+        </div>
+        <div class="wm-face wm-back">
+          <div class="wm-back-t">Innovative Design</div>
+          <div class="wm-back-p">Every backyard starts as a blank canvas. Our designers blend Texas-native plants, bespoke hardscape, water features, and architectural lighting into a cohesive vision that is entirely yours &mdash; never a template.</div>
+          <ul class="wm-back-list">
+            <li>Custom CAD renderings + 2D plans</li>
+            <li>Site-specific material palette</li>
+            <li>Revisions until it's perfect</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="wm-card rev">
+      <div class="wm-inner">
+        <div class="wm-face wm-front">
+          <div class="wm-num">02</div>
+          <div class="wm-t">Expert Artistry</div>
+          <div class="wm-p">We are craftsmen who will turn your yard into a work of art, expanding our creativity with each project.</div>
+          <div class="wm-more">Hover to Learn More &#8594;</div>
+        </div>
+        <div class="wm-face wm-back">
+          <div class="wm-back-t">Expert Artistry</div>
+          <div class="wm-back-p">Our in-house crew are stonemasons, carpenters, horticulturists, and lighting technicians &mdash; not subcontractors. That means consistent quality, accountability, and the same hands finishing your project that started it.</div>
+          <ul class="wm-back-list">
+            <li>Master-level hardscape &amp; stonework</li>
+            <li>Custom-built decks, pergolas, planters</li>
+            <li>Integrated WLED lighting design</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="wm-card rev">
+      <div class="wm-inner">
+        <div class="wm-face wm-front">
+          <div class="wm-num">03</div>
+          <div class="wm-t">Client Focus</div>
+          <div class="wm-p">Clear communication and transparency is our top priority &mdash; making this the best contractor experience you've had.</div>
+          <div class="wm-more">Hover to Learn More &#8594;</div>
+        </div>
+        <div class="wm-face wm-back">
+          <div class="wm-back-t">Client Focus</div>
+          <div class="wm-back-p">One project manager, weekly on-site walkthroughs, and a dedicated text thread for your build. No voicemails, no guesswork &mdash; you always know what's happening and when the next milestone lands.</div>
+          <ul class="wm-back-list">
+            <li>Dedicated project manager</li>
+            <li>24-hour response guarantee</li>
+            <li>On-time, on-budget commitment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -2808,38 +2992,29 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   );
 })();
 
-// ══ WHAT MAKES — cursor illuminates ghost text black→gold ══
+// ══ WHAT MAKES — scroll-reveal title + subtle bg parallax ══
 (function() {
-  var ghost = document.getElementById('wm-ghost');
-  var section = document.querySelector('.whatmakes');
-  if (!ghost || !section) return;
+  var section = document.querySelector('#whatmakes');
+  var title = document.getElementById('wm-title');
+  var bg = section ? section.querySelector('.wm-bg') : null;
+  if (!section || !title) return;
 
-  var wg1 = ghost.querySelector('.wg1');
-  var wg2 = ghost.querySelector('.wg2');
+  // Scroll reveal — add .in when title enters viewport
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if (e.isIntersecting) { title.classList.add('in'); obs.disconnect(); } });
+  }, { threshold: 0.25 });
+  obs.observe(title);
 
-  section.addEventListener('mousemove', function(e) {
-    var rect = ghost.getBoundingClientRect();
-    var x = e.clientX - rect.left;
-    var y = e.clientY - rect.top;
-
-    // Distance from cursor to each character approximated by center proximity
-    var cx = rect.width / 2;
-    var cy = rect.height / 2;
-    var dist = Math.sqrt(Math.pow((x - cx) / rect.width, 2) + Math.pow((y - cy) / rect.height, 2));
-    var prox = Math.max(0, 1 - dist * 1.4); // 0 = far, 1 = center
-
-    // Gold → cream illumination: top line glows gold, bottom line brightens to cream
-    var goldAlpha = 0.06 + prox * 0.79;
-    var creamAlpha = 0.06 + prox * 0.6;
-
-    if (wg1) wg1.style.color = 'rgba(201,168,76,' + goldAlpha.toFixed(2) + ')';
-    if (wg2) wg2.style.color = 'rgba(240,234,214,' + creamAlpha.toFixed(2) + ')';
-  });
-
-  section.addEventListener('mouseleave', function() {
-    if (wg1) wg1.style.color = '';
-    if (wg2) wg2.style.color = '';
-  });
+  // Gentle bg parallax — translate Y as section scrolls
+  if (bg) {
+    window.addEventListener('scroll', function() {
+      var r = section.getBoundingClientRect();
+      var vh = window.innerHeight;
+      if (r.bottom < 0 || r.top > vh) return;
+      var progress = 1 - (r.top + r.height/2) / (vh/2 + r.height/2);
+      bg.style.transform = 'translateY(' + (progress * -18).toFixed(1) + 'px) scale(1.06)';
+    }, { passive: true });
+  }
 })();
 </script>
 
@@ -2914,40 +3089,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   resize(); init(); draw();
 })();
 
-// ══ WM-CARDS scale on scroll + Grok mouse tracking ══
-(function() {
-  var cards = document.querySelectorAll('.wm-card');
-  // Scroll scale
-  window.addEventListener('scroll', function() {
-    var wh = window.innerHeight;
-    cards.forEach(function(card) {
-      var r = card.getBoundingClientRect();
-      var center = r.top + r.height/2;
-      var dist = Math.abs(center - wh/2);
-      var ratio = Math.max(0, 1 - dist/(wh*0.5));
-      card.style.transform = 'scale('+(1+ratio*0.055)+')';
-      card.classList.toggle('wm-focus', ratio > 0.6);
-      card.classList.toggle('wm-near', ratio > 0.3 && ratio <= 0.6);
-    });
-  }, {passive:true});
-  // Grok kinetic mouse
-  cards.forEach(function(card) {
-    card.addEventListener('mousemove', function(e) {
-      var rect = card.getBoundingClientRect();
-      var x = e.clientX - rect.left;
-      var y = e.clientY - rect.top;
-      card.style.setProperty('--mouse-x', x+'px');
-      card.style.setProperty('--mouse-y', y+'px');
-      var cx = rect.width/2, cy = rect.height/2;
-      var rx = ((y-cy)/cy)*-5;
-      var ry = ((x-cx)/cx)*5;
-      card.style.transform = 'perspective(1200px) rotateX('+rx+'deg) rotateY('+ry+'deg) scale(1.02)';
-    });
-    card.addEventListener('mouseleave', function() {
-      card.style.transform = '';
-    });
-  });
-})();
+// (wm-card tilt/scale/mouse handlers removed — flip is now handled purely via CSS :hover on .wm-inner)
 
 // ══ PROCESS step numbers grow on scroll ══
 (function() {
@@ -2970,44 +3112,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 </script>
 
 <script>
-// ══ WM-CARDS: Grok kinetic 3D tilt + spotlight + scroll scale ══
-(function() {
-  var cards = document.querySelectorAll('.wm-card');
-
-  // Mouse kinetic per card
-  cards.forEach(function(card) {
-    card.addEventListener('mousemove', function(e) {
-      var rect = card.getBoundingClientRect();
-      var x = e.clientX - rect.left;
-      var y = e.clientY - rect.top;
-      card.style.setProperty('--mouse-x', x + 'px');
-      card.style.setProperty('--mouse-y', y + 'px');
-      var cx = rect.width / 2, cy = rect.height / 2;
-      var rx = ((y - cy) / cy) * -6;
-      var ry = ((x - cx) / cx) * 6;
-      card.style.transform = 'perspective(1200px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) scale3d(1.06,1.06,1.06)';
-    });
-    card.addEventListener('mouseleave', function() {
-      card.style.transform = '';
-    });
-  });
-
-  // Scroll scale
-  window.addEventListener('scroll', function() {
-    // Only scale if no card is being hovered
-    var anyHovered = false;
-    cards.forEach(function(c) { if (c.matches(':hover')) anyHovered = true; });
-    if (anyHovered) return;
-    var wh = window.innerHeight;
-    cards.forEach(function(card) {
-      var r = card.getBoundingClientRect();
-      var center = r.top + r.height / 2;
-      var dist = Math.abs(center - wh / 2);
-      var ratio = Math.max(0, 1 - dist / (wh * 0.55));
-      card.style.transform = 'scale(' + (1 + ratio * 0.04) + ')';
-    });
-  }, { passive: true });
-})();
+// (Secondary wm-card tilt/scale block removed — flip is CSS-only to avoid transform conflicts)
 
 // ══ PROCESS: step numbers grow on scroll ══
 (function() {
