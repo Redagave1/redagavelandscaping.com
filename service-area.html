@@ -9,6 +9,43 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LocalBusiness",
+  "@id":"https://www.redagaveatx.com/#business",
+  "name":"Red Agave Landscaping",
+  "image":"https://www.redagaveatx.com/images/featured/1707%20Ulit%20Ave-029-Kieran%20Reeves%20Photography%20%5BMLS%5D.webp",
+  "url":"https://www.redagaveatx.com/",
+  "telephone":"+1-512-695-7566",
+  "email":"redagaveatx@gmail.com",
+  "priceRange":"$$$$",
+  "address":{"@type":"PostalAddress","addressLocality":"Austin","addressRegion":"TX","addressCountry":"US"},
+  "areaServed":[
+    {"@type":"City","name":"Austin, TX"},
+    {"@type":"Place","name":"Barton Creek"},
+    {"@type":"Place","name":"Round Rock, TX"},
+    {"@type":"Place","name":"Bee Cave, TX"},
+    {"@type":"Place","name":"Westlake Hills, TX"},
+    {"@type":"Place","name":"Buda, TX"},
+    {"@type":"Place","name":"Circle C Ranch"},
+    {"@type":"Place","name":"Tarrytown"},
+    {"@type":"Place","name":"Cedar Park, TX"},
+    {"@type":"Place","name":"Rollingwood, TX"}
+  ],
+  "makesOffer":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Xeriscape & Hardscape"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"WLED & FCOB Landscape Lighting"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Custom Deck Construction"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Fire & Water Features"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Outdoor Living"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Outdoor Kitchens"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Custom Planters"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Full Yard Design + Build"}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Pool Design & Construction"}}
+  ]
+}
+</script>
 <style>
 :root{--gold:#c9a84c;--gold-light:#e8c96a;--gold-glow:rgba(201,168,76,0.45);--dark:#080b06;--dark2:#0d120a;--dark3:#0a1208;--cream:#f0ead6;--cream60:rgba(240,234,214,0.6);--cream30:rgba(240,234,214,0.3);--cream20:rgba(240,234,214,0.1);--ease:cubic-bezier(0.16,1,0.3,1)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -178,78 +215,92 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 
 <style>
 .area-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(201,168,76,.05)}
-.area-card{background:var(--dark2);padding:56px 44px;position:relative;overflow:hidden;transition:background .4s}
-.area-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,.4),transparent);transform:scaleX(0);transition:transform .5s cubic-bezier(0.16,1,0.3,1)}
-.area-card:hover{background:var(--dark3)}.area-card:hover::before{transform:scaleX(1)}
-.area-name{font-family:'Bebas Neue',cursive;font-size:36px;letter-spacing:2px;color:var(--gold);margin-bottom:8px;text-shadow:0 0 20px rgba(201,168,76,.25)}
-.area-sub{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(240,234,214,.3);margin-bottom:20px}
-.area-p{font-size:11px;color:rgba(240,234,214,.45);line-height:2;margin-bottom:20px}
-.area-plant{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);padding-top:16px;border-top:1px solid rgba(201,168,76,.1)}
+.area-card{background:var(--dark2);padding:56px 44px;position:relative;overflow:hidden;aspect-ratio:4/5;display:flex;flex-direction:column;justify-content:flex-end;transition:transform .6s cubic-bezier(0.16,1,0.3,1)}
+.area-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.28) saturate(.95);transform:scale(1.02);transition:filter .8s cubic-bezier(0.16,1,0.3,1),transform 1s cubic-bezier(0.16,1,0.3,1);z-index:0}
+.area-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(8,11,6,.96) 0%,rgba(8,11,6,.72) 45%,rgba(8,11,6,.35) 100%);z-index:1;transition:opacity .5s}
+.area-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,.65),transparent);transform:scaleX(0);transform-origin:center;transition:transform .6s cubic-bezier(0.16,1,0.3,1);z-index:3}
+.area-card:hover .area-bg{filter:brightness(.5) saturate(1.05);transform:scale(1.06)}
+.area-card:hover::before{transform:scaleX(1)}
+.area-card:hover .area-p{color:rgba(240,234,214,.72)}
+.area-card>*:not(.area-bg){position:relative;z-index:2}
+.area-name{font-family:'Bebas Neue',cursive;font-size:clamp(32px,2.6vw,42px);letter-spacing:2px;color:var(--gold);margin-bottom:8px;text-shadow:0 0 22px rgba(201,168,76,.4)}
+.area-sub{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(240,234,214,.42);margin-bottom:20px}
+.area-p{font-size:11px;color:rgba(240,234,214,.55);line-height:2;margin-bottom:20px;transition:color .5s}
+.area-plant{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);padding-top:16px;border-top:1px solid rgba(201,168,76,.18)}
 .area-plant strong{color:var(--cream);display:block;font-family:'Bebas Neue',cursive;font-size:18px;letter-spacing:2px;margin-top:4px}
-@media(max-width:900px){.area-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.area-grid{grid-template-columns:1fr}}
+@media(max-width:900px){.area-grid{grid-template-columns:1fr 1fr}.area-card{aspect-ratio:4/4.5;padding:44px 32px}}
+@media(max-width:600px){.area-grid{grid-template-columns:1fr}.area-card{aspect-ratio:auto;min-height:360px}}
 </style>
-<section class="sec" style="background:var(--dark2);padding-bottom:48px">
+<section class="sec" aria-labelledby="areas-heading" style="background:var(--dark2);padding-bottom:48px">
   <div class="s-eye rev">Where We Work</div>
-  <h2 class="s-title rev">Service <span class="slim-gold">Areas</span></h2>
+  <h2 id="areas-heading" class="s-title rev">Service <span class="slim-gold">Areas</span></h2>
   <p class="rev" style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--cream30);margin-top:20px;line-height:2.2">Serving Austin and all surrounding communities. Any project, any budget.</p>
 </section>
-<div class="area-grid">
-  <div id="barton-creek" class="area-card rev">
-    <div class="area-name">Barton Creek</div>
+<section class="area-grid" aria-label="Neighborhoods we serve">
+  <article id="barton-creek" class="area-card rev">
+    <div class="area-bg" style="background-image:url('images/featured/1707%20Ulit%20Ave-029-Kieran%20Reeves%20Photography%20%5BMLS%5D.webp')" aria-hidden="true"></div>
+    <h3 class="area-name">Barton Creek</h3>
     <div class="area-sub">SW Austin &nbsp;&middot;&nbsp; 78735</div>
     <p class="area-p">Nestled in the Texas Hill Country, Barton Creek's dramatic topography calls for bold, naturalistic designs. We specialize in working with the terrain &mdash; limestone outcroppings, native cedar, and dramatic slope changes.</p>
     <div class="area-plant">Featured Native Plant<strong>Whale Tongue Agave</strong></div>
-  </div>
-  <div id="round-rock" class="area-card rev">
-    <div class="area-name">Round Rock</div>
+  </article>
+  <article id="round-rock" class="area-card rev">
+    <div class="area-bg" style="background-image:url('images/featured/IMG_8161.webp')" aria-hidden="true"></div>
+    <h3 class="area-name">Round Rock</h3>
     <div class="area-sub">North Austin &nbsp;&middot;&nbsp; 78664</div>
     <p class="area-p">Round Rock's mix of established neighborhoods and new developments creates diverse opportunities. We bring the same premium design standards north, creating spaces that stand apart in any neighborhood.</p>
     <div class="area-plant">Featured Native Plant<strong>Russian Sage</strong></div>
-  </div>
-  <div id="bee-cave" class="area-card rev">
-    <div class="area-name">Bee Cave</div>
+  </article>
+  <article id="bee-cave" class="area-card rev">
+    <div class="area-bg" style="background-image:url('images/featured/IMG_5451.webp')" aria-hidden="true"></div>
+    <h3 class="area-name">Bee Cave</h3>
     <div class="area-sub">Hill Country &nbsp;&middot;&nbsp; 78738</div>
     <p class="area-p">Bee Cave's rapid growth hasn't diminished its Hill Country character. We design landscapes that honor the surrounding terrain while creating the luxurious outdoor spaces these properties deserve.</p>
     <div class="area-plant">Featured Native Plant<strong>White Cloud Muhly</strong></div>
-  </div>
-  <div id="westlake" class="area-card rev">
-    <div class="area-name">Westlake Hills</div>
+  </article>
+  <article id="westlake" class="area-card rev">
+    <div class="area-bg" style="background-image:url('images/featured/IMG_3169.webp')" aria-hidden="true"></div>
+    <h3 class="area-name">Westlake Hills</h3>
     <div class="area-sub">West Austin &nbsp;&middot;&nbsp; 78746</div>
     <p class="area-p">Westlake Hills is one of Austin's premier addresses &mdash; and its landscapes should match. We've transformed dozens of Westlake properties with our signature blend of luxury design and artisan craftsmanship.</p>
     <div class="area-plant">Featured Native Plant<strong>Desert Willow</strong></div>
-  </div>
-  <div id="buda" class="area-card rev">
-    <div class="area-name">Buda</div>
+  </article>
+  <article id="buda" class="area-card rev">
+    <div class="area-bg" style="background-image:url('images/featured/IMG_8976.webp')" aria-hidden="true"></div>
+    <h3 class="area-name">Buda</h3>
     <div class="area-sub">South Austin &nbsp;&middot;&nbsp; 78610</div>
     <p class="area-p">Buda's wide lots and open spaces offer incredible canvas for design. We bring city-quality craftsmanship south, creating landscapes that maximize every square foot of your property.</p>
     <div class="area-plant">Featured Native Plant<strong>Artemesia</strong></div>
-  </div>
-  <div id="circle-c" class="area-card rev">
-    <div class="area-name">Circle C Ranch</div>
+  </article>
+  <article id="circle-c" class="area-card rev">
+    <div class="area-bg" style="background-image:url('images/featured/IMG_3855.webp')" aria-hidden="true"></div>
+    <h3 class="area-name">Circle C Ranch</h3>
     <div class="area-sub">SW Austin &nbsp;&middot;&nbsp; 78739</div>
     <p class="area-p">Circle C Ranch's established community and beautiful park settings inspire outdoor living at its finest. We've built some of our most creative fire features, deck systems, and outdoor kitchens in this neighborhood.</p>
     <div class="area-plant">Featured Native Plant<strong>Wheeler Sotol</strong></div>
-  </div>
-  <div id="tarrytown" class="area-card rev">
-    <div class="area-name">Tarrytown</div>
+  </article>
+  <article id="tarrytown" class="area-card rev">
+    <div class="area-bg" style="background-image:url('images/featured/DSC04039.webp')" aria-hidden="true"></div>
+    <h3 class="area-name">Tarrytown</h3>
     <div class="area-sub">Central Austin &nbsp;&middot;&nbsp; 78703</div>
     <p class="area-p">One of Austin's most storied neighborhoods, Tarrytown properties blend historic charm with modern aspirations. Our designs honor the character of the neighborhood while creating spaces for today's outdoor living.</p>
     <div class="area-plant">Featured Native Plant<strong>Crossvine</strong></div>
-  </div>
-  <div id="cedar-park" class="area-card rev">
-    <div class="area-name">Cedar Park</div>
+  </article>
+  <article id="cedar-park" class="area-card rev">
+    <div class="area-bg" style="background-image:url('images/featured/1707%20Ulit%20Ave-030-Kieran%20Reeves%20Photography%20%5BMLS%5D.webp')" aria-hidden="true"></div>
+    <h3 class="area-name">Cedar Park</h3>
     <div class="area-sub">North Austin &nbsp;&middot;&nbsp; 78613</div>
     <p class="area-p">Cedar Park's explosive growth has brought new homeowners who demand premium outdoor spaces. We're building some of our most innovative xeriscape and lighting projects in this fast-growing community.</p>
     <div class="area-plant">Featured Native Plant<strong>Whale Tongue Agave</strong></div>
-  </div>
-  <div id="rollingwood" class="area-card rev">
-    <div class="area-name">Rollingwood</div>
+  </article>
+  <article id="rollingwood" class="area-card rev">
+    <div class="area-bg" style="background-image:url('images/featured/IMG_8182.webp')" aria-hidden="true"></div>
+    <h3 class="area-name">Rollingwood</h3>
     <div class="area-sub">West Austin &nbsp;&middot;&nbsp; 78746</div>
     <p class="area-p">Rollingwood's intimate community feel and beautiful tree canopy create a unique design environment. We specialize in working with mature trees and established landscapes to create seamless, elevated outdoor spaces.</p>
     <div class="area-plant">Featured Native Plant<strong>Russian Sage</strong></div>
-  </div>
-</div>
+  </article>
+</section>
 <section class="sec" style="background:var(--gold);text-align:center">
   <h2 style="font-family:'Bebas Neue',cursive;font-size:clamp(48px,7vw,88px);color:var(--dark);line-height:.88;margin-bottom:20px">Don't See Your Area?</h2>
   <p style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(8,11,6,.55);margin-bottom:36px">We serve all of Greater Austin &mdash; reach out and we'll come to you</p>

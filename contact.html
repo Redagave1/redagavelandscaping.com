@@ -9,6 +9,38 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"LocalBusiness",
+      "@id":"https://www.redagaveatx.com/#business",
+      "name":"Red Agave Landscaping",
+      "image":"https://www.redagaveatx.com/images/featured/1707%20Ulit%20Ave-029-Kieran%20Reeves%20Photography%20%5BMLS%5D.webp",
+      "url":"https://www.redagaveatx.com/",
+      "telephone":"+1-512-695-7566",
+      "email":"redagaveatx@gmail.com",
+      "priceRange":"$$$$",
+      "address":{"@type":"PostalAddress","addressLocality":"Austin","addressRegion":"TX","addressCountry":"US"},
+      "openingHoursSpecification":[
+        {"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday"],"opens":"10:00","closes":"13:00"}
+      ],
+      "areaServed":["Austin, TX","Cedar Park, TX","Westlake Hills, TX","Round Rock, TX","Bee Cave, TX","Buda, TX"]
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"What areas does Red Agave serve?","acceptedAnswer":{"@type":"Answer","text":"Red Agave serves Austin and all surrounding communities including Cedar Park, Westlake Hills, Round Rock, Bee Cave, Buda, Barton Creek, Circle C Ranch, Tarrytown, and Rollingwood, TX."}},
+        {"@type":"Question","name":"How much does a Red Agave landscape project cost?","acceptedAnswer":{"@type":"Answer","text":"Projects typically range from $10,000 up to $100,000+. Every property is different, so we provide a complimentary on-site consultation and a transparent custom quote before any work begins."}},
+        {"@type":"Question","name":"When will I hear back after booking a consultation?","acceptedAnswer":{"@type":"Answer","text":"We confirm every consultation request within 24 hours. If you book a time slot on our booking form, that slot is locked in pending a quick confirmation call or text."}},
+        {"@type":"Question","name":"Do I need to prepare anything before the consultation?","acceptedAnswer":{"@type":"Answer","text":"Nothing is required. If you have photos of your yard or any existing survey documents, you can upload them with your booking so we arrive better prepared."}},
+        {"@type":"Question","name":"Is Red Agave licensed and insured?","acceptedAnswer":{"@type":"Answer","text":"Yes. Red Agave Landscaping is fully licensed and insured for all residential design+build projects throughout the Austin, TX area."}}
+      ]
+    }
+  ]
+}
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
 :root{--gold:#c9a84c;--gold-light:#e8c96a;--dark:#080b06;--dark2:#0d120a;--cream:#f0ead6;--cream60:rgba(240,234,214,0.6);--ease:cubic-bezier(0.16,1,0.3,1)}
@@ -439,35 +471,35 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
         <div class="survey-q rev">
           <span class="survey-q-label">Estimated Budget</span>
           <div class="survey-options">
-            <div class="survey-opt" data-group="budget">Under $10k</div>
-            <div class="survey-opt" data-group="budget">$10k – $25k</div>
-            <div class="survey-opt" data-group="budget">$25k – $50k</div>
-            <div class="survey-opt" data-group="budget">$50k – $100k</div>
-            <div class="survey-opt" data-group="budget">$100k +</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="budget">Under $10k</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="budget">$10k – $25k</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="budget">$25k – $50k</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="budget">$50k – $100k</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="budget">$100k +</div>
           </div>
           <input type="hidden" name="budget" id="budget-val">
         </div>
         <div class="survey-q rev">
           <span class="survey-q-label">Services You're Interested In <span style="color:rgba(240,234,214,.25);font-size:9px">(select all that apply)</span></span>
-          <div class="survey-options multi">
-            <div class="survey-opt" data-group="services">Xeriscape &amp; Hardscape</div>
-            <div class="survey-opt" data-group="services">WLED / Custom Lighting</div>
-            <div class="survey-opt" data-group="services">Deck &amp; Pergola</div>
-            <div class="survey-opt" data-group="services">Fire &amp; Water Features</div>
-            <div class="survey-opt" data-group="services">Custom Planters</div>
-            <div class="survey-opt" data-group="services">Full Yard Design + Build</div>
-            <div class="survey-opt" data-group="services">Outdoor Kitchen</div>
-            <div class="survey-opt" data-group="services">Not Sure Yet</div>
+          <div class="survey-options multi" role="group" aria-label="Services you're interested in">
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="services">Xeriscape &amp; Hardscape</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="services">WLED / Custom Lighting</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="services">Deck &amp; Pergola</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="services">Fire &amp; Water Features</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="services">Custom Planters</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="services">Full Yard Design + Build</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="services">Outdoor Kitchen</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="services">Not Sure Yet</div>
           </div>
           <input type="hidden" name="services" id="services-val">
         </div>
         <div class="survey-q rev">
           <span class="survey-q-label">When would you like to start?</span>
           <div class="survey-options">
-            <div class="survey-opt" data-group="timeline">As Soon as Possible</div>
-            <div class="survey-opt" data-group="timeline">1 – 3 Months</div>
-            <div class="survey-opt" data-group="timeline">3 – 6 Months</div>
-            <div class="survey-opt" data-group="timeline">Just Exploring</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="timeline">As Soon as Possible</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="timeline">1 – 3 Months</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="timeline">3 – 6 Months</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="timeline">Just Exploring</div>
           </div>
           <input type="hidden" name="timeline" id="timeline-val">
         </div>
@@ -655,7 +687,8 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   },200);
 
   // ── THREE.JS PARTICLES ──
-  if(typeof THREE!=='undefined'){
+  // Gated on viewport width + reduced-motion + no THREE: mobile + a11y skip
+  if(typeof THREE!=='undefined' && window.innerWidth>768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     var cv=document.getElementById('h-canvas-contact');
     var ph=document.querySelector('.page-header');
     var W=innerWidth,H=ph.offsetHeight;
@@ -806,15 +839,18 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 
   // ── SURVEY OPTIONS ──
   document.querySelectorAll('.survey-opt').forEach(function(opt){
-    opt.addEventListener('click',function(){
+    function toggle(){
       var group=opt.dataset.group;
       var isMulti=!!opt.closest('.multi');
-      if(!isMulti){document.querySelectorAll('[data-group="'+group+'"]').forEach(function(o){o.classList.remove('active')})}
-      opt.classList.toggle('active');
+      if(!isMulti){document.querySelectorAll('[data-group="'+group+'"]').forEach(function(o){o.classList.remove('active');o.setAttribute('aria-pressed','false')})}
+      var nowActive=opt.classList.toggle('active');
+      opt.setAttribute('aria-pressed',nowActive?'true':'false');
       var vals=Array.from(document.querySelectorAll('[data-group="'+group+'"].active')).map(function(o){return o.textContent.trim()}).join(', ');
       var map={budget:'budget-val',services:'services-val',timeline:'timeline-val'};
       var el=document.getElementById(map[group]);if(el)el.value=vals;
-    });
+    }
+    opt.addEventListener('click',toggle);
+    opt.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}});
   });
 
   // ── FILE UPLOAD PREVIEW ──
