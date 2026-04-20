@@ -180,13 +180,13 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
 <style>
 :root {
   --gold:#c9a84c; --gold-light:#e8c96a; --gold-glow:rgba(201,168,76,0.45);
   --dark:#080b06; --dark2:#0d120a; --dark3:#0a1208;
   --cream:#f0ead6; --cream60:rgba(240,234,214,0.6); --cream20:rgba(240,234,214,0.1);
-  --teal:#5a9090; --pink:#e87cb0; --pink-glow:rgba(232,124,176,0.6);
+  --cream30:rgba(240,234,214,0.3);
   --blue-glow:rgba(160,200,255,0.5);
   --ease:cubic-bezier(0.16,1,0.3,1);
 }
@@ -1045,9 +1045,9 @@ a{text-decoration:none;color:inherit}
 .fcard:nth-child(2):hover .fcard-inner{
   box-shadow:
     -8px 32px 72px rgba(0,0,0,0.6),
-    0 0 0 1px rgba(232,124,176,0.4),
-    0 0 40px rgba(232,124,176,0.2),
-    0 0 80px rgba(232,124,176,0.08) !important;
+    0 0 0 1px rgba(240,234,214,0.4),
+    0 0 40px rgba(240,234,214,0.2),
+    0 0 80px rgba(240,234,214,0.08) !important;
 }
 .fcard:nth-child(3):hover .fcard-inner{
   box-shadow:
@@ -1089,7 +1089,7 @@ a{text-decoration:none;color:inherit}
 .fcard:nth-child(2) .fcard-ov{
   background:linear-gradient(
     160deg,
-    rgba(232,124,176,0.05) 0%,
+    rgba(240,234,214,0.05) 0%,
     transparent 40%,
     rgba(0,0,0,0.5) 100%
   );
@@ -1117,7 +1117,7 @@ a{text-decoration:none;color:inherit}
   background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);
 }
 .fcard:nth-child(2) .fcard-inner::before{
-  background:linear-gradient(to right,transparent,rgba(232,124,176,0.35),transparent);
+  background:linear-gradient(to right,transparent,rgba(240,234,214,0.35),transparent);
 }
 .fcard:nth-child(3) .fcard-inner::before{
   background:linear-gradient(to right,transparent,rgba(160,200,255,0.35),transparent);
@@ -1139,8 +1139,8 @@ a{text-decoration:none;color:inherit}
   text-shadow:0 0 16px rgba(201,168,76,0.8),0 0 32px rgba(201,168,76,0.3);
 }
 .fcard:nth-child(2) .fcard-lt{
-  color:#fff;
-  text-shadow:0 0 16px rgba(232,124,176,0.7),0 0 32px rgba(232,124,176,0.25);
+  color:var(--cream);
+  text-shadow:0 0 16px rgba(240,234,214,0.6),0 0 32px rgba(240,234,214,0.22);
 }
 .fcard:nth-child(3) .fcard-lt{
   color:#e8f0ff;
@@ -1170,9 +1170,9 @@ a{text-decoration:none;color:inherit}
   color:rgba(232,196,90,0.9);
 }
 .fcard:nth-child(2) .fcard-tag{
-  background:rgba(232,124,176,0.12);
-  border-color:rgba(232,124,176,0.3);
-  color:rgba(240,160,200,0.9);
+  background:rgba(240,234,214,0.08);
+  border-color:rgba(240,234,214,0.25);
+  color:rgba(240,234,214,0.85);
 }
 .fcard:nth-child(3) .fcard-tag{
   background:rgba(160,200,255,0.12);
@@ -1236,7 +1236,7 @@ a{text-decoration:none;color:inherit}
 /* ══ SERVICES ══ */
 .services{background:var(--dark2);padding:0}
 .svc-top{padding:88px 60px 0;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px}
-.svc-sub{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);padding:20px 60px 40px;line-height:2.2}
+.svc-sub{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--cream30);padding:20px 60px 40px;line-height:2.2}
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(0,0,0,0.5)}
 .svc{position:relative;overflow:hidden;height:300px}
 .svc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.58) saturate(.9);transition:filter .5s,transform .65s var(--ease)}
@@ -1460,7 +1460,7 @@ a{text-decoration:none;color:inherit}
 .whatmakes{background:var(--dark);padding:100px 60px;text-align:center}
 .wm-ghost{font-family:'Bebas Neue',cursive;font-size:clamp(52px,8vw,108px);line-height:.88;margin-bottom:60px;letter-spacing:6px;pointer-events:none;user-select:none;position:relative;cursor:default}
 .wm-ghost .wg1{color:rgba(240,234,214,0.06);transition:color 0.3s ease}
-.wm-ghost .wg2{color:rgba(232,124,176,0.06);transition:color 0.3s ease}
+.wm-ghost .wg2{color:rgba(201,168,76,0.06);transition:color 0.3s ease}
 .wm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(201,168,76,0.06)}
 .wm-card{
   background:rgba(201,168,76,0.018);
@@ -1522,7 +1522,7 @@ a{text-decoration:none;color:inherit}
 .step::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform .55s var(--ease)}
 .step:hover{background:rgba(201,168,76,0.04);border-color:rgba(201,168,76,0.22);box-shadow:0 32px 80px rgba(0,0,0,0.6),inset 0 1px 0 rgba(255,255,255,0.08),0 0 40px rgba(201,168,76,0.06)}
 .step:hover::before{transform:scaleX(1)}
-.step-ghost{font-family:'Bebas Neue',cursive;font-size:108px;color:rgba(232,124,176,0.05);line-height:.8;position:absolute;top:8px;right:10px;pointer-events:none}
+.step-ghost{font-family:'Bebas Neue',cursive;font-size:108px;color:rgba(201,168,76,0.05);line-height:.8;position:absolute;top:8px;right:10px;pointer-events:none}
 .step-bar{width:30px;height:2px;background:var(--gold);margin-bottom:26px}
 .step-num{font-family:'Bebas Neue',cursive;font-size:40px;color:var(--gold);text-shadow:0 0 18px rgba(201,168,76,0.55);line-height:1;margin-bottom:10px;transition:font-size 0.5s cubic-bezier(0.16,1,0.3,1),text-shadow 0.5s}
 .step-t{font-family:'Bebas Neue',cursive;font-size:21px;letter-spacing:1px;color:var(--cream);margin-bottom:10px;line-height:1.15}
@@ -1586,7 +1586,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 .ft-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:44px;margin-bottom:52px}
 .ft-brand{font-family:'Bebas Neue',cursive;font-size:34px;letter-spacing:6px;color:var(--gold);text-shadow:0 0 18px rgba(201,168,76,0.18);margin-bottom:10px}
 .ft-tag{font-size:10px;color:rgba(240,234,214,0.15);letter-spacing:2px;text-transform:uppercase;line-height:1.9}
-.ft-info{margin-top:18px;font-size:11px;color:rgba(240,234,214,0.24);line-height:2}
+.ft-info{margin-top:18px;font-size:11px;color:rgba(240,234,214,0.24);line-height:2;font-style:normal}
 .ft-info a{color:var(--gold)}
 .ft-ct{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,234,214,0.28);margin-bottom:16px;display:block}
 .ft-col a{display:block;font-size:11px;color:rgba(240,234,214,0.2);margin-bottom:10px;transition:color .2s,transform .2s}
@@ -1655,7 +1655,6 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   .svc-top,.svc-sub{padding-left:32px;padding-right:32px}
   /* Force We Offer onto one line on mobile */
   #services .s-title{white-space:nowrap!important;font-size:clamp(28px,6.5vw,52px);overflow:hidden}
-  #services .s-title .led-flicker-wrap{font-size:0.42em!important;letter-spacing:3px!important;font-weight:300!important}
   .svc-grid,.proc-grid,.testi-grid{grid-template-columns:1fr 1fr}
   .stats{grid-template-columns:1fr 1fr}
   .diff{grid-template-columns:1fr}
@@ -1684,27 +1683,6 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   .hero-title{transform:none !important}
 }
 
-/* ══ SERVICES "WE OFFER" — warm outdoor LED signage ══ */
-#services .s-title .pink {
-  color: var(--pink); /* overridden per-letter by .lf */
-  -webkit-text-stroke: 0px;
-}
-/* Slim "We Offer" relative to "Services" — LOCKED slim at all sizes */
-#services .s-title .led-flicker-wrap {
-  font-size: 0.42em !important;
-  letter-spacing: 6px;
-  vertical-align: middle;
-  font-family: 'Montserrat', sans-serif !important;
-  font-weight: 300 !important;
-  text-transform: uppercase;
-  line-height: 1;
-}
-/* Force Montserrat on each letter span too */
-#services .s-title .led-flicker-wrap .lf {
-  font-family: 'Montserrat', sans-serif !important;
-  font-weight: 300;
-}
-
 /* ══ GOLDEN SAND AMBIENT GLOW around card cluster ══ */
 .cards-scatter::before {
   content: '';
@@ -1723,11 +1701,6 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 @keyframes sandGlow {
   0%   { opacity: 0.6; transform: scale(1) }
   100% { opacity: 1.0; transform: scale(1.06) }
-}
-
-/* ══ LED FLICKER — "We Offer" — base styles now in unified .lf block above ══ */
-.led-flicker-wrap {
-  display: inline;
 }
 
 /* ══ PER-CHARACTER TITLE ANIMATION ══ */
@@ -1834,66 +1807,6 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 }
 
 
-/* ══ WE OFFER — always slim, override everything ══ */
-#services .s-title .led-flicker-wrap,
-.led-flicker-wrap {
-  font-size: 0.42em !important;
-  font-family: 'Montserrat', sans-serif !important;
-  font-weight: 300 !important;
-  letter-spacing: 6px !important;
-  vertical-align: middle !important;
-  text-transform: uppercase !important;
-  display: inline !important;
-  -webkit-text-stroke: 0 !important;
-}
-
-/* ══ UNIFIED PINK NEON — all .lf letters identical everywhere ══
-   Applies to "We Offer", "Your", "Dream Landscape" — everything with .lf
-   The JS flicker toggles .dim/.dim2 classes on top of this base.
-*/
-.lf {
-  display: inline-block !important;
-  color: #e87cb0 !important;
-  font-family: 'Montserrat', sans-serif !important;
-  font-weight: 300 !important;
-  -webkit-text-stroke: 0 !important;
-  text-shadow:
-    0 0 4px  rgba(232,124,176,0.95),
-    0 0 14px rgba(232,124,176,0.65),
-    0 0 32px rgba(232,124,176,0.30),
-    0 0 64px rgba(232,124,176,0.12) !important;
-  transition: text-shadow 0.9s ease, color 0.9s ease !important;
-}
-/* flicker ON — white burst */
-.lf.dim {
-  color: #ffffff !important;
-  text-shadow:
-    0 0 6px  rgba(255,255,255,0.9),
-    0 0 16px rgba(255,255,255,0.5),
-    0 0 32px rgba(255,255,255,0.2) !important;
-}
-/* flicker DIM2 — softer white */
-.lf.dim2 {
-  color: #ffffff !important;
-  text-shadow:
-    0 0 4px  rgba(255,255,255,0.7),
-    0 0 12px rgba(255,255,255,0.35),
-    0 0 24px rgba(255,255,255,0.12) !important;
-}
-
-/* .pink class — for non-lf pink inline words like "Say" */
-.s-title .pink {
-  color: #e87cb0 !important;
-  text-shadow:
-    0 0 4px  rgba(232,124,176,0.95),
-    0 0 14px rgba(232,124,176,0.65),
-    0 0 32px rgba(232,124,176,0.30) !important;
-  font-size: inherit !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  -webkit-text-stroke: inherit !important;
-}
-
 /* ══ WM-CARD grow on hover (cursor-driven scale) ══ */
 .wm-card {
   transition: transform 0.45s cubic-bezier(0.23,1,0.32,1),
@@ -1918,8 +1831,6 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
               text-shadow 0.5s ease !important;
   will-change: font-size;
 }
-
-/* process lf — handled by universal .lf rule */
 
 /* ══ WM-CARD content above glass effect ══ */
 .wm-card .wm-num,
@@ -1985,6 +1896,8 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<main>
 
 <!-- HERO -->
 <section class="hero" id="hero">
@@ -2207,13 +2120,20 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   </form>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
   <div class="ft-grid">
     <div>
       <div class="ft-brand">Red Agave</div>
       <div class="ft-tag">Austin's Premier Design + Build Landscaper</div>
-      <div class="ft-info"><a href="tel:5126957566">512-695-7566</a><br><a href="/cdn-cgi/l/email-protection#fb92959d94bb899e9f9a9c9a8d9e979a959f88989a8b92959cd5989496"><span class="__cf_email__" data-cfemail="e0898e868fa092858481878196858c818e8493838190898e87ce838f8d">[email&#160;protected]</span></a><br>Austin, TX &amp; Surrounding Areas</div>
+      <address class="ft-info">
+        <a href="tel:5126957566">512-695-7566</a><br>
+        <a href="/cdn-cgi/l/email-protection#fb92959d94bb899e9f9a9c9a8d9e979a959f88989a8b92959cd5989496"><span class="__cf_email__" data-cfemail="e0898e868fa092858481878196858c818e8493838190898e87ce838f8d">[email&#160;protected]</span></a><br>
+        Austin, TX Luxury Landscaping<br>
+        Cedar Park &middot; Westlake Hills &middot; Round Rock
+      </address>
     </div>
     <div class="ft-col"><span class="ft-ct">Pages</span><a href="index.html">Home</a><a href="services.html">Services</a><a href="featured.html">Featured</a><a href="media.html">Media</a><a href="service-area.html">Service Area</a></div>
     <div class="ft-col"><span class="ft-ct">Services</span><a href="services.html">Xeriscape &amp; Hardscape</a><a href="services.html">State of the Art Lighting</a><a href="services.html">Custom Built Decks</a><a href="services.html">Fire &amp; Water Features</a><a href="services.html">Custom Planters</a></div>
@@ -2874,46 +2794,6 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   })();
 
 
-  // ── LED FLICKER: "We Offer" ──
-  // Each letter flickers independently at random intervals,
-  // mimicking a real failing LED / neon sign.
-  (function(){
-    const letters = document.querySelectorAll('.lf');
-    if(!letters.length) return;
-
-    letters.forEach(function(el) {
-      (function scheduleFlicker() {
-        // Random long pause between flicker events (10s – 45s)
-        const wait = 2000 + Math.random() * 7000;
-        setTimeout(function() {
-          // Each event is a short burst of 1–4 rapid on/off cycles
-          const cycles = 1 + Math.floor(Math.random() * 3);
-          let i = 0;
-          function doCycle() {
-            if(i >= cycles) {
-              // Fully restore, then schedule next event
-              el.classList.remove('dim','dim2');
-              scheduleFlicker();
-              return;
-            }
-            i++;
-            // Choose dim type: hard off or half-dim
-            const cls = Math.random() < 0.65 ? 'dim' : 'dim2';
-            el.classList.add(cls);
-            // Off duration: 30ms – 180ms
-            const offDur = 30 + Math.random() * 150;
-            setTimeout(function() {
-              el.classList.remove('dim','dim2');
-              // Brief on gap between cycles: 20ms – 90ms
-              setTimeout(doCycle, 20 + Math.random() * 70);
-            }, offDur);
-          }
-          doCycle();
-        }, wait);
-      })();
-    });
-  })();
-
 </script>
 
 <script>
@@ -3009,12 +2889,12 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     var dist = Math.sqrt(Math.pow((x - cx) / rect.width, 2) + Math.pow((y - cy) / rect.height, 2));
     var prox = Math.max(0, 1 - dist * 1.4); // 0 = far, 1 = center
 
-    // Gold illumination: starts nearly black (0.06), goes to bright gold (0.85)
+    // Gold → cream illumination: top line glows gold, bottom line brightens to cream
     var goldAlpha = 0.06 + prox * 0.79;
-    var pinkAlpha = 0.06 + prox * 0.55;
+    var creamAlpha = 0.06 + prox * 0.6;
 
     if (wg1) wg1.style.color = 'rgba(201,168,76,' + goldAlpha.toFixed(2) + ')';
-    if (wg2) wg2.style.color = 'rgba(232,124,176,' + pinkAlpha.toFixed(2) + ')';
+    if (wg2) wg2.style.color = 'rgba(240,234,214,' + creamAlpha.toFixed(2) + ')';
   });
 
   section.addEventListener('mouseleave', function() {
