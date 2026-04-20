@@ -1259,19 +1259,23 @@ a{text-decoration:none;color:inherit}
 .svc-arr{display:inline-block;margin-top:10px;font-size:18px;color:var(--gold);opacity:0;transform:translateX(-10px);transition:all .3s}
 .svc:hover .svc-arr{opacity:1;transform:translateX(0)}
 
-/* ══ DIFFERENCE CAROUSEL ══ */
-.diff-carousel {
+/* ══ THE RED AGAVE DIFFERENCE — Elyse-style 3-photo collage ══ */
+.diff {
   position: relative;
   width: 100%;
   background: var(--dark);
-  padding: 90px 0 80px;
+  padding: 140px 48px 160px;
   overflow: hidden;
   border-top: 1px solid rgba(201,168,76,0.08);
   border-bottom: 1px solid rgba(201,168,76,0.08);
 }
 
-/* Italic eyebrow */
-.dc-eyebrow {
+.diff-eyebrow {
+  position: relative;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
   font-family: 'Montserrat', sans-serif;
   font-size: 11px;
   font-style: italic;
@@ -1279,181 +1283,156 @@ a{text-decoration:none;color:inherit}
   letter-spacing: 3px;
   text-transform: uppercase;
   color: rgba(201,168,76,0.45);
-  padding: 0 80px;
-  margin-bottom: 52px;
+  margin-bottom: 64px;
 }
+.diff-eyebrow::before { content: ''; width: 44px; height: 1px; background: var(--gold); opacity: .55; }
 
-/* Title overlay — absolute center over carousel */
-.dc-title-wrap {
-  position: absolute;
-  left: 0; right: 0;
-  top: 148px;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* 3-photo collage */
+.diff-collage {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 0.72fr 1fr 0.72fr;
+  gap: 22px;
+  height: 68vh;
+  min-height: 520px;
   pointer-events: none;
-  text-align: center;
 }
-.dc-title-wrap::before {
+.dc-col {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  will-change: transform;
+  transform-origin: center center;
+}
+.dc-col--center { z-index: 2; transform: scale(1); }
+.dc-col--left,
+.dc-col--right {
+  z-index: 1;
+  transform: scale(0.9) translateY(10px);
+  opacity: 0.9;
+}
+.dc-img {
+  position: absolute;
+  inset: -6%;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+  filter: brightness(0.88) saturate(0.98);
+}
+.dc-col::after {
   content: '';
   position: absolute;
-  inset: -80px -200px;
-  background: radial-gradient(ellipse, rgba(8,11,6,0.72) 0%, transparent 65%);
+  inset: 0;
   pointer-events: none;
+  background: linear-gradient(180deg, rgba(8,11,6,0) 0%, rgba(8,11,6,0) 55%, rgba(8,11,6,0.42) 100%);
 }
-.dc-title { text-align: center; position: relative; z-index: 1; }
 
-.dc-t1 {
-  font-family: 'Bebas Neue', cursive;
-  font-size: clamp(18px, 2vw, 28px);
-  letter-spacing: 8px;
-  color: rgba(240,234,214,0.5);
-  line-height: 1;
-  display: block;
+/* Floating title — hero-style stack centered over collage */
+.diff-title-wrap {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  text-align: center;
+  z-index: 3;
+  pointer-events: none;
+  padding: 0 48px;
+  will-change: transform, opacity;
 }
-.dc-t2 {
+.diff-title-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -20px -10%;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(8,11,6,0.52) 0%, rgba(8,11,6,0.15) 55%, rgba(8,11,6,0) 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+.diff-title {
+  font-family: 'Bebas Neue', cursive;
+  line-height: .90;
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 0;
+}
+.dtl { display: block; padding-bottom: 0.04em; margin-bottom: -0.02em; }
+.dtw { display: inline-block; }
+
+/* Line 1: THE — spaced small Bebas, cream dim */
+.dl1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(22px, 2.2vw, 36px);
+  letter-spacing: 16px;
+  color: rgba(240,234,214,0.6);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.85);
+}
+/* Line 2: RED AGAVE — gold Montserrat medium, warm glow (like hl2) */
+.dl2 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
-  font-size: clamp(34px, 5.5vw, 84px);
-  letter-spacing: 2px;
+  font-size: clamp(34px, 4.8vw, 72px);
+  letter-spacing: 5px;
   color: #e8c96a;
-  text-shadow: 0 0 40px rgba(232,196,90,0.32), 0 0 80px rgba(201,168,76,0.12);
-  line-height: 1;
-  display: block;
-  margin: 3px 0;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 28px rgba(232,196,90,0.42),
+    0 0 64px rgba(201,168,76,0.18),
+    0 4px 14px rgba(0,0,0,0.85);
 }
-.dc-t3 { display: block; line-height: 0.9; margin-top: 4px; }
-
-/* DIFFERENCE — double-outline (same paint-order technique) */
-.dc-t3-inner {
+/* Line 3: DIFFERENCE — massive cream Bebas (like hl1/hl4) */
+.dl3 {
   font-family: 'Bebas Neue', cursive;
-  font-size: clamp(34px, 5.5vw, 84px);
+  font-size: clamp(64px, 9.5vw, 156px);
+  color: #f0ead6;
   letter-spacing: 3px;
-  position: relative;
-  display: inline-block;
-  color: rgba(240,225,160,0.92);
-  -webkit-text-stroke: 14px rgba(8,11,6,1);
-  paint-order: stroke fill;
-}
-.dc-t3-inner::before {
-  content: 'DIFFERENCE';
-  position: absolute; inset: 0;
-  color: rgba(240,225,160,0.92);
-  -webkit-text-stroke: 7px rgba(8,11,6,1);
-  paint-order: stroke fill;
-  pointer-events: none;
-}
-.dc-t3-inner::after {
-  content: 'DIFFERENCE';
-  position: absolute; inset: 0;
-  color: transparent;
-  -webkit-text-stroke: 1.5px rgba(252,238,178,0.9);
-  paint-order: stroke fill;
-  pointer-events: none;
+  text-shadow:
+    0 4px 22px rgba(0,0,0,0.85),
+    0 2px 6px rgba(0,0,0,0.95),
+    0 0 42px rgba(240,234,214,0.08);
 }
 
-/* Carousel viewport */
-.dc-viewport {
-  overflow: hidden;
+/* Footer strip — sub + CTA */
+.diff-foot {
   position: relative;
-  z-index: 0;
-  padding: 52px 0 48px;
+  z-index: 4;
+  margin-top: 72px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: end;
+  will-change: transform, opacity;
 }
-.dc-track {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-  will-change: transform;
-  cursor: grab;
-  transition: transform 0.95s cubic-bezier(0.16,1,0.3,1);
-  user-select: none;
-  -webkit-user-select: none;
-}
-.dc-track.dragging { cursor: grabbing; transition: none; }
-
-.dc-slide {
-  flex: 0 0 420px;
-  height: 600px;
-  position: relative;
-  transform: scale(0.86);
-  transform-origin: center center;
-  transition: transform 0.95s cubic-bezier(0.16,1,0.3,1);
-  cursor: pointer;
-}
-.dc-slide.active { transform: scale(1); }
-
-.dc-slide-inner {
-  width: 100%; height: 100%;
-  overflow: hidden;
-  position: relative;
-}
-.dc-slide-inner img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 1.1s cubic-bezier(0.16,1,0.3,1), filter 0.9s ease;
-  transform: scale(1.09);
-  filter: brightness(0.5) saturate(0.75);
-  pointer-events: none;
-}
-.dc-slide.active .dc-slide-inner img {
-  transform: scale(1);
-  filter: brightness(0.82) saturate(0.95);
-}
-.dc-slide.active::after {
-  content: '';
-  position: absolute;
-  inset: -7px;
-  border: 1px solid rgba(201,168,76,0.28);
-  pointer-events: none;
-}
-
-/* Pagination */
-.dc-pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 4px;
-  margin-top: 48px;
-  position: relative;
-  z-index: 2;
-}
-.dc-dot {
-  background: none;
-  border: none;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 10px;
+.diff-sub {
+  font-size: 11px;
+  letter-spacing: .5px;
+  color: rgba(240,234,214,0.58);
+  line-height: 2;
+  max-width: 440px;
+  border-left: 1px solid rgba(201,168,76,0.32);
+  padding-left: 20px;
+  font-style: italic;
   font-weight: 300;
-  letter-spacing: 3px;
-  color: rgba(240,234,214,0.18);
-  cursor: pointer;
-  padding: 10px 16px;
-  position: relative;
-  transition: color 0.35s;
+  margin: 0;
 }
-.dc-dot::after {
-  content: '';
-  position: absolute;
-  bottom: 4px; left: 50%;
-  transform: translateX(-50%) scaleX(0);
-  width: 14px; height: 1px;
-  background: var(--gold);
-  transition: transform 0.35s var(--ease);
-}
-.dc-dot.active { color: var(--gold); }
-.dc-dot.active::after { transform: translateX(-50%) scaleX(1); }
 
-@media(max-width:960px){
-  .dc-eyebrow { padding: 0 40px; }
-  .dc-slide { flex: 0 0 300px; height: 440px; }
-  .dc-viewport { padding: 40px 0 36px; }
-  .dc-title-wrap { top: 110px; }
+@media (max-width: 1100px) {
+  .diff { padding: 100px 28px 120px; }
+  .diff-collage { gap: 14px; grid-template-columns: 0.8fr 1fr 0.8fr; height: 60vh; min-height: 460px; }
+  .dl3 { font-size: clamp(56px, 10vw, 120px); }
 }
-@media(max-width:560px){
-  .dc-eyebrow { padding: 0 24px; font-size: 10px; }
-  .dc-title-wrap { top: 90px; }
-  .dc-slide { flex: 0 0 240px; height: 340px; }
+@media (max-width: 720px) {
+  .diff { padding: 80px 18px 90px; }
+  .diff-eyebrow { margin-bottom: 32px; }
+  .diff-collage { grid-template-columns: 1fr; height: 58vh; min-height: 360px; gap: 10px; }
+  .dc-col--left, .dc-col--right { display: none; }
+  .dc-col--center { transform: scale(1); }
+  .diff-title-wrap { padding: 0 18px; }
+  .dl1 { font-size: 18px; letter-spacing: 10px; }
+  .dl2 { font-size: clamp(28px, 9vw, 42px); letter-spacing: 3px; }
+  .dl3 { font-size: clamp(52px, 14vw, 84px); letter-spacing: 2px; }
+  .diff-foot { grid-template-columns: 1fr; gap: 22px; margin-top: 44px; }
+  .diff-sub { max-width: 100%; padding-left: 14px; }
 }
 
 /* ══ WHAT MAKES ══ */
@@ -2001,50 +1980,32 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   </div>
 </section>
 
-<!-- DIFFERENCE CAROUSEL -->
-<section id="difference" class="diff-carousel">
+<!-- THE RED AGAVE DIFFERENCE — 3-photo collage + scroll parallax -->
+<section id="difference" class="diff" aria-label="The Red Agave Difference">
+  <div class="diff-eyebrow">(our work)</div>
 
-  <div class="dc-eyebrow">(our work)</div>
+  <div class="diff-collage" aria-hidden="true">
+    <div class="dc-col dc-col--left"><div class="dc-img" data-diff="img" style="background-image:url('images/gallery/IMG_9652.webp')"></div></div>
+    <div class="dc-col dc-col--center"><div class="dc-img" data-diff="img" style="background-image:url('images/gallery/IMG_8667.webp')"></div></div>
+    <div class="dc-col dc-col--right"><div class="dc-img" data-diff="img" style="background-image:url('images/gallery/IMG_5491.webp')"></div></div>
+  </div>
 
-  <!-- Floating title — centered over carousel -->
-  <div class="dc-title-wrap">
-    <div class="dc-title">
-      <span class="dc-t1">THE</span>
-      <span class="dc-t2">RED AGAVE</span>
-      <span class="dc-t3"><span class="dc-t3-inner">DIFFERENCE</span></span>
+  <div class="diff-title-wrap" data-diff="title">
+    <h2 class="diff-title">
+      <span class="dtl"><span class="dtw dl1">THE</span></span>
+      <span class="dtl"><span class="dtw dl2">RED AGAVE</span></span>
+      <span class="dtl"><span class="dtw dl3">DIFFERENCE</span></span>
+    </h2>
+  </div>
+
+  <div class="diff-foot" data-diff="content">
+    <p class="diff-sub">Every project earns this title. Bespoke design, artisan craftsmanship, zero shortcuts &mdash; outdoor spaces transformed across Austin and beyond.</p>
+    <div class="btn-huly-wrap">
+      <div class="btn-huly-blob-1"></div>
+      <div class="btn-huly-blob-2"></div>
+      <a href="gallery.html" class="btn-huly">View Our Work</a>
     </div>
   </div>
-
-  <!-- Carousel -->
-  <div class="dc-viewport">
-    <div class="dc-track" id="dc-track">
-      <div class="dc-slide active">
-        <div class="dc-slide-inner"><img src="images/gallery/IMG_9652.webp" alt="Custom pool and outdoor living — Red Agave Austin" loading="lazy"></div>
-      </div>
-      <div class="dc-slide">
-        <div class="dc-slide-inner"><img src="images/gallery/IMG_8836.webp" alt="Xeriscape landscape design — Red Agave Austin" loading="lazy"></div>
-      </div>
-      <div class="dc-slide">
-        <div class="dc-slide-inner"><img src="images/gallery/IMG_5491.webp" alt="Custom fire feature — Red Agave Austin" loading="lazy"></div>
-      </div>
-      <div class="dc-slide">
-        <div class="dc-slide-inner"><img src="images/gallery/IMG_8182.webp" alt="Native plant xeriscape — Red Agave Austin" loading="lazy"></div>
-      </div>
-      <div class="dc-slide">
-        <div class="dc-slide-inner"><img src="images/gallery/IMG_8667.webp" alt="Outdoor living space — Red Agave Austin" loading="lazy"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Pagination -->
-  <div class="dc-pagination">
-    <button class="dc-dot active">01</button>
-    <button class="dc-dot">02</button>
-    <button class="dc-dot">03</button>
-    <button class="dc-dot">04</button>
-    <button class="dc-dot">05</button>
-  </div>
-
 </section>
 
 <!-- WHAT MAKES -->
@@ -2817,76 +2778,34 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 </script>
 
 <script>
-// ══ DIFFERENCE CAROUSEL ══
+// ══ THE RED AGAVE DIFFERENCE — Elyse-style scroll parallax ══
 (function() {
-  var track = document.getElementById('dc-track');
-  if (!track) return;
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var section = document.querySelector('#difference');
+  if (!section) return;
 
-  var slides = Array.from(track.querySelectorAll('.dc-slide'));
-  var dots   = Array.from(document.querySelectorAll('.dc-dot'));
-  var current = 0, autoTimer, dragStartX = 0, dragging = false;
-
-  function sw() { return slides[0] ? slides[0].offsetWidth : 420; }
-  function gap() { return 28; }
-
-  function goTo(idx) {
-    current = (idx + slides.length) % slides.length;
-    slides.forEach(function(s, i) { s.classList.toggle('active', i === current); });
-    dots.forEach(function(d, i)   { d.classList.toggle('active', i === current); });
-    var offset = window.innerWidth / 2 - current * (sw() + gap()) - sw() / 2;
-    track.style.transform = 'translateX(' + offset + 'px)';
-  }
-
-  function startAuto() {
-    clearInterval(autoTimer);
-    autoTimer = setInterval(function() { goTo(current + 1); }, 5000);
-  }
-
-  dots.forEach(function(d, i) {
-    d.addEventListener('click', function() { goTo(i); startAuto(); });
+  // Images — drift upward + slight zoom as section scrolls through viewport
+  gsap.to('#difference [data-diff="img"]', {
+    yPercent: 30, scale: 1.08, ease: 'none',
+    scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: 1 }
   });
 
-  slides.forEach(function(s, i) {
-    s.addEventListener('click', function() { if (i !== current) { goTo(i); startAuto(); } });
-  });
+  // Title — rise up + fade near section exit
+  gsap.fromTo('#difference [data-diff="title"]',
+    { yPercent: 18, opacity: 0.25 },
+    { yPercent: -40, opacity: 1, ease: 'none',
+      scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: 1.1 }
+    }
+  );
 
-  // Mouse drag
-  track.addEventListener('mousedown', function(e) {
-    dragStartX = e.clientX; dragging = true;
-    track.classList.add('dragging'); clearInterval(autoTimer);
-  });
-  document.addEventListener('mousemove', function(e) {
-    if (!dragging) return;
-    var base = window.innerWidth / 2 - current * (sw() + gap()) - sw() / 2;
-    track.style.transform = 'translateX(' + (base + e.clientX - dragStartX) + 'px)';
-  });
-  document.addEventListener('mouseup', function(e) {
-    if (!dragging) return;
-    dragging = false; track.classList.remove('dragging');
-    var dx = e.clientX - dragStartX;
-    goTo(Math.abs(dx) > 60 ? (dx < 0 ? current + 1 : current - 1) : current);
-    startAuto();
-  });
-
-  // Touch
-  track.addEventListener('touchstart', function(e) {
-    dragStartX = e.touches[0].clientX; clearInterval(autoTimer);
-  }, { passive: true });
-  track.addEventListener('touchend', function(e) {
-    var dx = e.changedTouches[0].clientX - dragStartX;
-    if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
-    startAuto();
-  }, { passive: true });
-
-  // Keyboard
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'ArrowLeft')  { goTo(current - 1); startAuto(); }
-    if (e.key === 'ArrowRight') { goTo(current + 1); startAuto(); }
-  });
-
-  window.addEventListener('resize', function() { goTo(current); });
-  goTo(0);
-  startAuto();
+  // Foot — drift up slightly slower
+  gsap.fromTo('#difference [data-diff="content"]',
+    { yPercent: 12, opacity: 0.4 },
+    { yPercent: -22, opacity: 1, ease: 'none',
+      scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: 1.4 }
+    }
+  );
 })();
 
 // ══ WHAT MAKES — cursor illuminates ghost text black→gold ══
