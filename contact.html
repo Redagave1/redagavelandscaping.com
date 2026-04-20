@@ -363,12 +363,6 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   </div>
   <div class="page-header-inner">
     <div class="page-eyebrow">Red Agave Landscaping &middot; Austin, TX</div>
-    <div class="hero-title-contact">
-      <span class="htl"><span class="htw hc1">COMPLIMENTARY</span></span>
-      <span class="htl"><span class="htw hc2">DESIGN</span></span>
-      <span class="htl"><span class="htw hc3">CONSULTATION</span></span>
-    </div>
-    <p class="hero-sub-contact">We come to your home, study your space, and craft a vision at no cost to you.</p>
   </div>
 </div>
 
@@ -867,29 +861,25 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
       },1000);
       return;
     }
-    fetch(SCRIPT_URL,{method:'POST',body:JSON.stringify(data),headers:{'Content-Type':'application/json'}})
-      .then(function(r){return r.json()})
-      .then(function(res){
-        btn.style.opacity='1';
-        if(res.status==='ok'){
-          btn.classList.add('sent');txt.textContent='Request Sent ✓';
-          document.getElementById('success-panel').classList.add('show');
-          var s=document.querySelector('.slot.selected');
-          if(s){s.classList.remove('selected');s.classList.add('booked')}
-        } else if(res.status==='conflict'){
-          txt.textContent='Request My Consultation →';
-          alert('That time slot was just booked by someone else. Please choose another.');
-          bookedSlots.push(data.slotKey);
-          buildSlotGrid();
-        } else {
-          txt.textContent='Request My Consultation →';
-          alert('Something went wrong. Please call 512-695-7566.');
-        }
-      })
-      .catch(function(){
-        btn.style.opacity='1';txt.textContent='Request My Consultation →';
-        alert('Could not send. Please call or text: 512-695-7566');
-      });
+    // no-cors bypasses the CORS preflight block — Apps Script still receives and processes the POST
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: JSON.stringify(data),
+      headers: {'Content-Type': 'text/plain'}
+    })
+    .then(function() {
+      btn.style.opacity='1';
+      btn.classList.add('sent');
+      txt.textContent='Request Sent ✓';
+      document.getElementById('success-panel').classList.add('show');
+      var s=document.querySelector('.slot.selected');
+      if(s){s.classList.remove('selected');s.classList.add('booked')}
+    })
+    .catch(function(){
+      btn.style.opacity='1';txt.textContent='Request My Consultation →';
+      alert('Could not send. Please call or text: 512-695-7566');
+    });
   });
 
 })();
