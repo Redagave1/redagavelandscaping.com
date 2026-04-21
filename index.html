@@ -1307,11 +1307,10 @@ a{text-decoration:none;color:inherit}
   transform-origin: center center;
   background: #080b06;
 }
-/* Center: full grid height — taller, breaks visual top/bottom of sides */
+/* Center: 85% grid height — taller than sides, still breaks out */
 .dc-col--center {
   z-index: 2;
-  height: 100%;
-  align-self: stretch;
+  height: 85%;
 }
 /* Sides: ~half center height — strong breakout of center top AND bottom */
 .dc-col--left,
@@ -1325,6 +1324,8 @@ a{text-decoration:none;color:inherit}
   background-size: cover;
   background-position: center;
   will-change: transform;
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
   filter: brightness(0.88) saturate(0.98);
 }
 /* Center image: scroll starts lower in the picture — reveals upward */
@@ -1371,6 +1372,10 @@ a{text-decoration:none;color:inherit}
   0%,100% { text-shadow: 0 0 24px rgba(240,234,214,0.42), 0 0 48px rgba(240,230,200,0.16), 0 4px 22px rgba(0,0,0,0.85); }
   50%      { text-shadow: 0 0 40px rgba(240,234,214,0.65), 0 0 90px rgba(240,230,200,0.28), 0 4px 22px rgba(0,0,0,0.85); }
 }
+@keyframes goldPulse {
+  0%,100% { text-shadow: 0 0 24px rgba(232,196,90,0.45), 0 0 48px rgba(201,168,76,0.18); }
+  50%     { text-shadow: 0 0 36px rgba(232,196,90,0.62), 0 0 90px rgba(201,168,76,0.30); }
+}
 
 /* Line 1: THE — small Montserrat, spaced, cream at half-opacity */
 .dl1 {
@@ -1383,8 +1388,8 @@ a{text-decoration:none;color:inherit}
   text-shadow: 0 2px 8px rgba(0,0,0,0.85);
   margin-bottom: 4px;
 }
-/* Line 2 + 3 share the same size — Montserrat 500 cream, pulse glow */
-.dl2, .dl3 {
+/* Line 2: RED AGAVE — Montserrat 500 cream, pulse glow */
+.dl2 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: clamp(52px, 8vw, 128px);
@@ -1398,7 +1403,20 @@ a{text-decoration:none;color:inherit}
   animation: creamPulse 4.2s ease-in-out infinite;
   line-height: 0.94;
 }
-.dl3 { animation-delay: 0.6s; }
+/* Line 3: DIFFERENCE — gold, smaller, pulse glow */
+.dl3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: clamp(34px, 5vw, 80px);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #e8c96a;
+  text-shadow:
+    0 0 24px rgba(232,196,90,0.45),
+    0 0 48px rgba(201,168,76,0.18);
+  animation: goldPulse 4.2s ease-in-out infinite;
+  line-height: 0.94;
+}
 
 /* Footer strip — sub + CTA */
 .diff-foot {
@@ -3008,25 +3026,25 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     scrollTrigger: { trigger: section, start: 'top 85%', toggleActions: 'play none none none' }
   });
 
-  // Sides parallax — moderate drift
+  // Sides parallax — moderate drift, unified scrub for smoothness
   gsap.to('#difference .dc-col--left [data-diff="img"], #difference .dc-col--right [data-diff="img"]', {
-    yPercent: 38, scale: 1.14, ease: 'none',
-    scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: 1.4 }
+    yPercent: 32, ease: 'none',
+    scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: 1.2 }
   });
 
-  // Center parallax — starts later (section already visible) and reveals upward
+  // Center parallax — reveals upward, same scrub value as sides to keep motion coherent
   gsap.fromTo('#difference .dc-col--center [data-diff="img"]',
-    { yPercent: 0, scale: 1.0 },
-    { yPercent: -42, scale: 1.18, ease: 'none',
-      scrollTrigger: { trigger: section, start: 'top 60%', end: 'bottom top', scrub: 0.9 }
+    { yPercent: 0 },
+    { yPercent: -14, ease: 'none',
+      scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: 1.2 }
     }
   );
 
-  // Title parallax drift
+  // Title parallax drift — same scrub for coherent motion
   gsap.fromTo('#difference [data-diff="title"]',
-    { yPercent: 12 },
-    { yPercent: -38, ease: 'none',
-      scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: 1.1 }
+    { yPercent: 10 },
+    { yPercent: -28, ease: 'none',
+      scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: 1.2 }
     }
   );
 
