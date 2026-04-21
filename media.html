@@ -191,48 +191,12 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 </div></div>
 
 <style>
-.strips-wrap{background:var(--dark2);padding:60px 0;overflow:hidden}
-.v-strip-row{overflow:hidden;margin-bottom:10px;display:flex;gap:10px;height:320px;position:relative}
-.v-strip-row::before,.v-strip-row::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
-.v-strip-row::before{left:0;background:linear-gradient(to right,var(--dark2),transparent)}
-.v-strip-row::after{right:0;background:linear-gradient(to left,var(--dark2),transparent)}
-.v-track{display:flex;gap:10px;height:100%;width:max-content}
-.v-track.r1{animation:sr 38s linear infinite}
-.v-track.r2{animation:sl 44s linear infinite}
-.v-track.r3{animation:sr 32s linear infinite}
-@keyframes sr{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes sl{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-.v-img{height:100%;width:auto;max-width:220px;object-fit:cover;flex-shrink:0;filter:brightness(.72) saturate(1.05);transition:filter .4s;border-radius:2px}
-.v-img:hover{filter:brightness(.95)}
-.strips-wrap.paused .v-track{animation-play-state:paused}
-.carousel-controls{display:flex;justify-content:center;margin-top:30px}
-.carousel-pause{background:transparent;border:1px solid rgba(201,168,76,.35);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:3.5px;text-transform:uppercase;font-weight:600;padding:12px 28px;border-radius:9999px;cursor:pointer;transition:all .35s cubic-bezier(0.16,1,0.3,1);position:relative;overflow:hidden}
-.carousel-pause::before{content:'';position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .4s cubic-bezier(0.16,1,0.3,1);z-index:-1}
-.carousel-pause:hover{color:var(--dark)}
-.carousel-pause:hover::before{transform:scaleX(1);transform-origin:left}
 .media-strip-h2{font-family:'Bebas Neue',cursive;font-size:clamp(38px,4vw,60px);letter-spacing:3px;color:var(--gold);text-align:center;margin:0 auto 12px;text-shadow:0 0 22px rgba(201,168,76,.25)}
 .media-strip-eye{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(240,234,214,.32);text-align:center;margin-bottom:24px}
 .elfsight-wrap{padding:80px 60px;background:var(--dark3)}
 .elfsight-wrap + .elfsight-wrap{background:var(--dark)}
 @media(max-width:768px){.elfsight-wrap{padding:60px 24px}}
 </style>
-<section class="strips-wrap" id="strips" aria-labelledby="strips-h2">
-  <div class="media-strip-eye rev">Video &middot; Photography &middot; Lookbook</div>
-  <h2 id="strips-h2" class="media-strip-h2 rev">Our Work in Motion</h2>
-  <div class="v-strip-row"><div class="v-track r1">
-    <img class="v-img" src="images/gallery/DSC03875.webp" alt="Red Agave"><img class="v-img" src="images/gallery/IMG_5344.webp" alt="Xeriscape"><img class="v-img" src="images/gallery/IMG_8182.webp" alt="Deck"><img class="v-img" src="images/gallery/DSC04001.webp" alt="Fire"><img class="v-img" src="images/gallery/IMG_0990.webp" alt="Outdoor"><img class="v-img" src="images/gallery/IMG_5448.webp" alt="Landscape"><img class="v-img" src="images/gallery/IMG_8667.webp" alt="Hardscape"><img class="v-img" src="images/gallery/IMG_3169.webp" alt="Lighting">
-    <img class="v-img" src="images/gallery/DSC03875.webp" alt="Red Agave"><img class="v-img" src="images/gallery/IMG_5344.webp" alt="Xeriscape"><img class="v-img" src="images/gallery/IMG_8182.webp" alt="Deck"><img class="v-img" src="images/gallery/DSC04001.webp" alt="Fire"><img class="v-img" src="images/gallery/IMG_0990.webp" alt="Outdoor"><img class="v-img" src="images/gallery/IMG_5448.webp" alt="Landscape"><img class="v-img" src="images/gallery/IMG_8667.webp" alt="Hardscape"><img class="v-img" src="images/gallery/IMG_3169.webp" alt="Lighting">
-  </div></div>
-  <div class="v-strip-row"><div class="v-track r2">
-    <img class="v-img" src="images/gallery/IMG_4424.webp" alt="Planter"><img class="v-img" src="images/gallery/IMG_2706.webp" alt="Kitchen"><img class="v-img" src="images/gallery/IMG_6284.webp" alt="Water"><img class="v-img" src="images/gallery/IMG_3861.webp" alt="Pergola"><img class="v-img" src="images/gallery/IMG_5852.webp" alt="Landscape"><img class="v-img" src="images/gallery/IMG_4521.webp" alt="Project"><img class="v-img" src="images/gallery/IMG_0103.webp" alt="Austin"><img class="v-img" src="images/gallery/IMG_1343.webp" alt="Cedar Park">
-    <img class="v-img" src="images/gallery/IMG_4424.webp" alt="Planter"><img class="v-img" src="images/gallery/IMG_2706.webp" alt="Kitchen"><img class="v-img" src="images/gallery/IMG_6284.webp" alt="Water"><img class="v-img" src="images/gallery/IMG_3861.webp" alt="Pergola"><img class="v-img" src="images/gallery/IMG_5852.webp" alt="Landscape"><img class="v-img" src="images/gallery/IMG_4521.webp" alt="Project"><img class="v-img" src="images/gallery/IMG_0103.webp" alt="Austin"><img class="v-img" src="images/gallery/IMG_1343.webp" alt="Cedar Park">
-  </div></div>
-  <div class="v-strip-row"><div class="v-track r3">
-    <img class="v-img" src="images/gallery/IMG_8976.webp" alt="Westlake"><img class="v-img" src="images/gallery/DSC04042.webp" alt="Circle C"><img class="v-img" src="images/gallery/IMG_5116.webp" alt="Bee Cave"><img class="v-img" src="images/gallery/IMG_0596.webp" alt="Barton Creek"><img class="v-img" src="images/gallery/IMG_2229.webp" alt="Tarrytown"><img class="v-img" src="images/gallery/IMG_4106.webp" alt="Round Rock"><img class="v-img" src="images/gallery/IMG_3807.webp" alt="Buda"><img class="v-img" src="images/gallery/IMG_1611.webp" alt="Cedar Park">
-    <img class="v-img" src="images/gallery/IMG_8976.webp" alt="Westlake"><img class="v-img" src="images/gallery/DSC04042.webp" alt="Circle C"><img class="v-img" src="images/gallery/IMG_5116.webp" alt="Bee Cave"><img class="v-img" src="images/gallery/IMG_0596.webp" alt="Barton Creek"><img class="v-img" src="images/gallery/IMG_2229.webp" alt="Tarrytown"><img class="v-img" src="images/gallery/IMG_4106.webp" alt="Round Rock"><img class="v-img" src="images/gallery/IMG_3807.webp" alt="Buda"><img class="v-img" src="images/gallery/IMG_1611.webp" alt="Cedar Park">
-  </div></div>
-  <div class="carousel-controls"><button type="button" class="carousel-pause" id="carousel-pause" aria-pressed="false" aria-controls="strips">Pause Motion</button></div>
-</section>
 <section class="elfsight-wrap" aria-labelledby="ig-h2">
   <div class="media-strip-eye rev">Follow Us</div>
   <h2 id="ig-h2" class="media-strip-h2 rev" style="margin-bottom:40px">Instagram</h2>
@@ -282,15 +246,6 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   // Reveal on scroll
   var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('in')})},{threshold:0.1});
   document.querySelectorAll('.rev').forEach(function(el){obs.observe(el)});
-  // Carousel pause toggle
-  var strips=document.getElementById('strips'),pbtn=document.getElementById('carousel-pause');
-  if(strips&&pbtn){
-    pbtn.addEventListener('click',function(){
-      var paused=strips.classList.toggle('paused');
-      pbtn.setAttribute('aria-pressed',paused?'true':'false');
-      pbtn.textContent=paused?'Resume Motion':'Pause Motion';
-    });
-  }
   // Glass card mouse tracking
   document.querySelectorAll('.glass-card').forEach(function(card){
     card.addEventListener('mousemove',function(e){var r=card.getBoundingClientRect();card.style.setProperty('--mouse-x',(e.clientX-r.left)+'px');card.style.setProperty('--mouse-y',(e.clientY-r.top)+'px')});
