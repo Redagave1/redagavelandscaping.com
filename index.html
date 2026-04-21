@@ -1293,10 +1293,10 @@ a{text-decoration:none;color:inherit}
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 0.62fr 1fr 0.62fr;
-  gap: 28px;
-  height: 92vh;
-  min-height: 640px;
+  grid-template-columns: 1fr 0.7fr 1fr;
+  gap: 7vw;
+  height: 101vh;
+  min-height: 704px;
   align-items: center;
 }
 .dc-col {
@@ -1317,7 +1317,7 @@ a{text-decoration:none;color:inherit}
 .dc-col--left,
 .dc-col--right {
   z-index: 1;
-  height: 52%;
+  height: 47%;
 }
 .dc-img {
   position: absolute;
@@ -1327,12 +1327,9 @@ a{text-decoration:none;color:inherit}
   will-change: transform;
   filter: brightness(0.88) saturate(0.98);
 }
-/* Center image: zoom out — shorter near-square source, show full subject */
+/* Center image: scroll starts lower in the picture — reveals upward */
 .dc-col--center .dc-img {
-  inset: 0;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  background-position: center bottom;
 }
 .dc-col::after {
   content: '';
@@ -1450,8 +1447,8 @@ a{text-decoration:none;color:inherit}
 
 @media (max-width: 1100px) {
   .diff { padding: 60px 28px 100px; }
-  .diff-collage { gap: 14px; grid-template-columns: 0.60fr 1fr 0.60fr; height: 74vh; min-height: 480px; }
-  .dc-col--left, .dc-col--right { height: 62%; }
+  .diff-collage { gap: 5vw; grid-template-columns: 1fr 0.7fr 1fr; height: 84vh; min-height: 540px; }
+  .dc-col--left, .dc-col--right { height: 50%; }
   .dl2, .dl3 { font-size: clamp(38px, 7.5vw, 100px); }
 }
 @media (max-width: 720px) {
@@ -3004,10 +3001,10 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   var section = document.querySelector('#difference');
   if (!section) return;
 
-  // Entry: columns slide up + scale down 1.2→1 (power3.out, staggered from center)
-  gsap.from('#difference .dc-col', {
-    yPercent: 6, scale: 1.2, duration: 1.5, ease: 'power3.out',
-    stagger: { each: 0.14, from: 'center' },
+  // Entry: subtle fade-in on .dc-img (no transforms on .dc-col — parallax handles motion)
+  gsap.from('#difference [data-diff="img"]', {
+    opacity: 0, duration: 1.2, ease: 'power2.out',
+    stagger: { each: 0.12, from: 'center' },
     scrollTrigger: { trigger: section, start: 'top 85%', toggleActions: 'play none none none' }
   });
 
@@ -3017,11 +3014,13 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: 1.4 }
   });
 
-  // Center parallax — faster/deeper for depth separation
-  gsap.to('#difference .dc-col--center [data-diff="img"]', {
-    yPercent: 58, scale: 1.22, ease: 'none',
-    scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: 0.9 }
-  });
+  // Center parallax — starts later (section already visible) and reveals upward
+  gsap.fromTo('#difference .dc-col--center [data-diff="img"]',
+    { yPercent: 0, scale: 1.0 },
+    { yPercent: -42, scale: 1.18, ease: 'none',
+      scrollTrigger: { trigger: section, start: 'top 60%', end: 'bottom top', scrub: 0.9 }
+    }
+  );
 
   // Title parallax drift
   gsap.fromTo('#difference [data-diff="title"]',
