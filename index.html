@@ -1342,10 +1342,10 @@ a{text-decoration:none;color:inherit}
   background: linear-gradient(180deg, rgba(8,11,6,0) 0%, rgba(8,11,6,0) 55%, rgba(8,11,6,0.42) 100%);
 }
 
-/* Floating title — anchored to TOP of collage like Elyse */
+/* Floating title — centered over the photos */
 .diff-title-wrap {
   position: absolute;
-  top: 6%;
+  top: 30%;
   left: 0;
   right: 0;
   text-align: center;
@@ -1444,18 +1444,23 @@ a{text-decoration:none;color:inherit}
   margin: 0;
 }
 .diff-body {
-  position: relative;
-  z-index: 4;
+  position: absolute;
+  /* sits just above the left photo — side photos are 47% tall and centered, so their top = 26.5% from collage top */
+  bottom: 75%;
+  left: 3%;
+  width: 28vw;
+  max-width: 440px;
+  z-index: 3;
+  pointer-events: none;
   font-family: 'Montserrat', sans-serif;
   font-size: 11px;
   font-weight: 300;
   letter-spacing: 0.3px;
   color: rgba(240,234,214,0.62);
   line-height: 2.2;
-  max-width: 600px;
   border-left: 1px solid rgba(201,168,76,0.32);
   padding-left: 20px;
-  margin: 0 0 28px 0;
+  margin: 0;
   will-change: opacity, transform;
   opacity: 0;
 }
@@ -2189,12 +2194,12 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 
 <!-- THE RED AGAVE DIFFERENCE — 3-photo collage + scroll parallax -->
 <section id="difference" class="diff" aria-label="The Red Agave Difference">
-  <p class="diff-body">At Red Agave, we don't just landscape; we engineer luxury outdoor living environments. As Austin's premier design-build studio, we craft bespoke exterior spaces across Westlake, Barton Creek, Tarrytown, Circle C, and the Texas Hill Country. From resort-scale pool surrounds and architectural hardscaping to custom fire features and cedar pergolas, our work is defined by precision. By managing every phase entirely in-house&mdash;from the initial 3D conceptualization to the final installation&mdash;we eliminate the friction of multiple contractors. We deliver a seamless experience and an uncompromising level of craftsmanship. That is the Red Agave difference.</p>
-
   <div class="diff-collage">
     <div class="dc-col dc-col--left"><div class="dc-img" data-diff="img" style="background-image:url('images/gallery/diffleft.webp')"></div></div>
     <div class="dc-col dc-col--center"><div class="dc-img" data-diff="img" style="background-image:url('images/gallery/diffcenter.webp')"></div></div>
     <div class="dc-col dc-col--right"><div class="dc-img" data-diff="img" style="background-image:url('images/gallery/diffright.webp')"></div></div>
+
+    <p class="diff-body">At Red Agave, we don't just landscape; we engineer luxury outdoor living environments. As Austin's premier design-build studio, we craft bespoke exterior spaces across Westlake, Barton Creek, Tarrytown, Circle C, and the Texas Hill Country. From resort-scale pool surrounds and architectural hardscaping to custom fire features and cedar pergolas, our work is defined by precision. By managing every phase entirely in-house&mdash;from the initial 3D conceptualization to the final installation&mdash;we eliminate the friction of multiple contractors. We deliver a seamless experience and an uncompromising level of craftsmanship. That is the Red Agave difference.</p>
 
     <div class="diff-title-wrap" data-diff="title">
       <div class="diff-tagline">cutting edge design + quality craftsmanship</div>
