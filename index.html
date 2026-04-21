@@ -1288,40 +1288,39 @@ a{text-decoration:none;color:inherit}
 }
 .diff-eyebrow::before { content: ''; width: 44px; height: 1px; background: var(--gold); opacity: .55; }
 
-/* 3-photo collage */
+/* 3-photo collage — reference: Lumière Duplex layout */
 .diff-collage {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 0.30fr 1fr 0.30fr;
-  gap: 40px;
-  height: 86vh;
-  min-height: 620px;
-  align-items: end;
+  grid-template-columns: 0.65fr 1fr 0.65fr;
+  gap: 22px;
+  height: 88vh;
+  min-height: 600px;
+  align-items: center;
 }
 .dc-col {
   position: relative;
   overflow: hidden;
   border-radius: 2px;
   will-change: transform;
-  transform-origin: center bottom;
+  transform-origin: center center;
 }
-/* Center: full height of grid, aligned to top */
+/* Center: full grid height — taller, breaks visual top/bottom of sides */
 .dc-col--center {
   z-index: 2;
   height: 100%;
   align-self: stretch;
 }
-/* Sides: shorter, sitting at the bottom so tops show more dark gap */
+/* Sides: shorter, vertically centered — equal dark gap above and below */
 .dc-col--left,
 .dc-col--right {
   z-index: 1;
-  height: 68%;
-  opacity: 0.92;
+  height: 58%;
 }
 .dc-img {
   position: absolute;
-  inset: -6%;
+  inset: -10%;
   background-size: cover;
   background-position: center;
   will-change: transform;
@@ -1443,7 +1442,8 @@ a{text-decoration:none;color:inherit}
 
 @media (max-width: 1100px) {
   .diff { padding: 60px 28px 100px; }
-  .diff-collage { gap: 6px; grid-template-columns: 0.28fr 1fr 0.28fr; height: 72vh; min-height: 480px; }
+  .diff-collage { gap: 14px; grid-template-columns: 0.60fr 1fr 0.60fr; height: 74vh; min-height: 480px; }
+  .dc-col--left, .dc-col--right { height: 62%; }
   .dl2, .dl3 { font-size: clamp(38px, 7.5vw, 100px); }
 }
 @media (max-width: 720px) {
@@ -2996,10 +2996,23 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   var section = document.querySelector('#difference');
   if (!section) return;
 
-  // Images — exaggerated drift + zoom (Elyse-style deep parallax)
-  gsap.to('#difference [data-diff="img"]', {
-    yPercent: 55, scale: 1.22, ease: 'none',
-    scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: 1.2 }
+  // Entry: columns slide up + scale down 1.2→1 (power3.out, staggered from center)
+  gsap.from('#difference .dc-col', {
+    yPercent: 6, scale: 1.2, duration: 1.5, ease: 'power3.out',
+    stagger: { each: 0.14, from: 'center' },
+    scrollTrigger: { trigger: section, start: 'top 85%', toggleActions: 'play none none none' }
+  });
+
+  // Sides parallax — moderate drift
+  gsap.to('#difference .dc-col--left [data-diff="img"], #difference .dc-col--right [data-diff="img"]', {
+    yPercent: 38, scale: 1.14, ease: 'none',
+    scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: 1.4 }
+  });
+
+  // Center parallax — faster/deeper for depth separation
+  gsap.to('#difference .dc-col--center [data-diff="img"]', {
+    yPercent: 58, scale: 1.22, ease: 'none',
+    scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: 0.9 }
   });
 
   // Title parallax drift
