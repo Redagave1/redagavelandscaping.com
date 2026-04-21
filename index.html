@@ -1265,7 +1265,7 @@ a{text-decoration:none;color:inherit}
   position: relative;
   width: 100%;
   background: var(--dark);
-  padding: 80px 48px 120px;
+  padding: 60px 48px 120px;
   overflow: hidden;
   border-top: 1px solid rgba(201,168,76,0.08);
   border-bottom: 1px solid rgba(201,168,76,0.08);
@@ -1284,7 +1284,7 @@ a{text-decoration:none;color:inherit}
   letter-spacing: 3px;
   text-transform: uppercase;
   color: rgba(201,168,76,0.45);
-  margin-bottom: 64px;
+  margin-bottom: 24px;
 }
 .diff-eyebrow::before { content: ''; width: 44px; height: 1px; background: var(--gold); opacity: .55; }
 
@@ -1294,23 +1294,30 @@ a{text-decoration:none;color:inherit}
   z-index: 1;
   display: grid;
   grid-template-columns: 0.30fr 1fr 0.30fr;
-  gap: 8px;
-  height: 82vh;
-  min-height: 580px;
+  gap: 40px;
+  height: 86vh;
+  min-height: 620px;
+  align-items: end;
 }
 .dc-col {
   position: relative;
   overflow: hidden;
   border-radius: 2px;
   will-change: transform;
-  transform-origin: center center;
+  transform-origin: center bottom;
 }
-.dc-col--center { z-index: 2; transform: scale(1); }
+/* Center: full height of grid, aligned to top */
+.dc-col--center {
+  z-index: 2;
+  height: 100%;
+  align-self: stretch;
+}
+/* Sides: shorter, sitting at the bottom so tops show more dark gap */
 .dc-col--left,
 .dc-col--right {
   z-index: 1;
-  transform: scale(0.9) translateY(10px);
-  opacity: 0.9;
+  height: 68%;
+  opacity: 0.92;
 }
 .dc-img {
   position: absolute;
