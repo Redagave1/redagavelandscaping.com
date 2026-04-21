@@ -720,6 +720,9 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     "img-7335.webp"
   ];
 
+  // Fisher-Yates shuffle so same-project photos don't cluster together
+  (function(arr){for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t;}})(IMAGES);
+
   var ALT_POOL = [
     'Custom Austin backyard with limestone patio and native agave',
     'Luxury Texas landscaping — architectural hardscape with gold-hour lighting',
