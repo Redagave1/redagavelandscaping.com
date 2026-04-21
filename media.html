@@ -191,23 +191,198 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 </div></div>
 
 <style>
-.media-strip-h2{font-family:'Bebas Neue',cursive;font-size:clamp(38px,4vw,60px);letter-spacing:3px;color:var(--gold);text-align:center;margin:0 auto 12px;text-shadow:0 0 22px rgba(201,168,76,.25)}
-.media-strip-eye{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(240,234,214,.32);text-align:center;margin-bottom:24px}
-.elfsight-wrap{padding:80px 60px;background:var(--dark3)}
-.elfsight-wrap + .elfsight-wrap{background:var(--dark)}
-@media(max-width:768px){.elfsight-wrap{padding:60px 24px}}
+/* ── SHARED SECTION ─────────────────────────────────────── */
+.media-sec{padding:80px 60px;background:var(--dark3)}
+.media-sec+.media-sec{background:var(--dark)}
+.media-sec-eye{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(240,234,214,.32);text-align:center;margin-bottom:10px}
+.media-sec-h2{font-family:'Bebas Neue',cursive;font-size:clamp(38px,4vw,60px);letter-spacing:3px;color:var(--gold);text-align:center;margin:0 auto 48px;text-shadow:0 0 22px rgba(201,168,76,.25)}
+/* ── YOUTUBE GRID ───────────────────────────────────────── */
+.yt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1320px;margin:0 auto}
+.yt-card{position:relative;overflow:hidden;border-radius:3px;background:#0a100a;border:1px solid rgba(201,168,76,.08);cursor:pointer;transition:border-color .3s,transform .3s,box-shadow .3s}
+.yt-card:hover{border-color:rgba(201,168,76,.28);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.6),0 0 0 1px rgba(201,168,76,.12)}
+.yt-thumb{position:relative;padding-bottom:56.25%;overflow:hidden;background:#080b06}
+.yt-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease);filter:brightness(.82) saturate(1.05)}
+.yt-card:hover .yt-thumb img{transform:scale(1.04);filter:brightness(.94)}
+.yt-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(8,11,6,.28);transition:background .3s}
+.yt-card:hover .yt-play{background:rgba(8,11,6,.08)}
+.yt-play svg{width:52px;height:52px;filter:drop-shadow(0 0 12px rgba(201,168,76,.55));transition:transform .3s}
+.yt-card:hover .yt-play svg{transform:scale(1.12)}
+.yt-info{padding:18px 20px 20px}
+.yt-info-title{font-family:'Montserrat',sans-serif;font-weight:600;font-size:12px;color:var(--cream);letter-spacing:.3px;line-height:1.5;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.yt-info-meta{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,234,214,.28)}
+.yt-loading,.yt-error{text-align:center;padding:60px 0;color:rgba(240,234,214,.3);font-size:11px;letter-spacing:3px;text-transform:uppercase}
+.yt-sub-cta{display:flex;justify-content:center;margin-top:40px}
+.yt-sub-btn{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(201,168,76,.35);color:var(--gold);padding:12px 32px;font-size:9px;letter-spacing:3px;text-transform:uppercase;font-family:'Montserrat',sans-serif;font-weight:600;border-radius:9999px;transition:all .3s}
+.yt-sub-btn:hover{background:var(--gold);color:var(--dark)}
+/* ── YOUTUBE MODAL ──────────────────────────────────────── */
+#yt-modal{position:fixed;inset:0;z-index:9000;display:flex;align-items:center;justify-content:center;background:rgba(4,5,3,.92);opacity:0;pointer-events:none;transition:opacity .3s}
+#yt-modal.open{opacity:1;pointer-events:all}
+#yt-modal-inner{position:relative;width:min(88vw,1100px);aspect-ratio:16/9;background:#000;box-shadow:0 32px 96px rgba(0,0,0,.9)}
+#yt-modal iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+#yt-modal-close{position:absolute;top:-40px;right:0;background:none;border:none;color:rgba(240,234,214,.55);font-size:22px;cursor:pointer;line-height:1;padding:4px;transition:color .2s}
+#yt-modal-close:hover{color:var(--gold)}
+/* ── INSTAGRAM GRID ─────────────────────────────────────── */
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;max-width:900px;margin:0 auto}
+.ig-card{position:relative;overflow:hidden;aspect-ratio:1;background:#0a100a;cursor:pointer}
+.ig-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease),filter .4s;filter:brightness(.82) saturate(1.1)}
+.ig-card:hover img{transform:scale(1.06);filter:brightness(.96)}
+.ig-card-ov{position:absolute;inset:0;background:rgba(8,11,6,.0);display:flex;align-items:center;justify-content:center;transition:background .3s}
+.ig-card:hover .ig-card-ov{background:rgba(8,11,6,.44)}
+.ig-card-ov svg{opacity:0;transform:scale(.8);transition:opacity .3s,transform .3s}
+.ig-card:hover .ig-card-ov svg{opacity:1;transform:scale(1)}
+.ig-follow-cta{display:flex;justify-content:center;margin-top:40px}
+.ig-follow-btn{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(201,168,76,.35);color:var(--gold);padding:12px 32px;font-size:9px;letter-spacing:3px;text-transform:uppercase;font-family:'Montserrat',sans-serif;font-weight:600;border-radius:9999px;transition:all .3s}
+.ig-follow-btn:hover{background:var(--gold);color:var(--dark)}
+@media(max-width:1024px){.yt-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.media-sec{padding:60px 24px}.yt-grid{grid-template-columns:1fr}.ig-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.ig-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
-<section class="elfsight-wrap" aria-labelledby="ig-h2">
-  <div class="media-strip-eye rev">Follow Us</div>
-  <h2 id="ig-h2" class="media-strip-h2 rev" style="margin-bottom:40px">Instagram</h2>
-  <script src="https://static.elfsight.com/platform/platform.js" async></script>
-  <div class="elfsight-app-02c09a2a-9418-4bf8-8eea-b60cc31ce0c7" data-elfsight-app-lazy></div>
+
+<!-- YOUTUBE -->
+<section class="media-sec" aria-labelledby="yt-h2">
+  <div class="media-sec-eye rev">Watch &amp; Subscribe</div>
+  <h2 id="yt-h2" class="media-sec-h2 rev">YouTube</h2>
+  <div id="yt-grid" class="yt-grid"><p class="yt-loading">Loading videos&hellip;</p></div>
+  <div class="yt-sub-cta rev">
+    <a href="https://www.youtube.com/@redagavelawnandlandscape3227" target="_blank" rel="noopener" class="yt-sub-btn">&#9654;&nbsp; Subscribe on YouTube</a>
+  </div>
 </section>
-<section class="elfsight-wrap" aria-labelledby="yt-h2">
-  <div class="media-strip-eye rev">Watch &amp; Subscribe</div>
-  <h2 id="yt-h2" class="media-strip-h2 rev" style="margin-bottom:40px">YouTube</h2>
-  <div class="elfsight-app-b490fe87-2e95-4e02-8384-408e8819d397" data-elfsight-app-lazy></div>
+
+<!-- INSTAGRAM -->
+<section class="media-sec" aria-labelledby="ig-h2">
+  <div class="media-sec-eye rev">Follow Us</div>
+  <h2 id="ig-h2" class="media-sec-h2 rev">Instagram</h2>
+  <div id="ig-grid" class="ig-grid"></div>
+  <div class="ig-follow-cta rev">
+    <a href="https://www.instagram.com/redagavelandscaping/" target="_blank" rel="noopener" class="ig-follow-btn">&#9654;&nbsp; Follow @redagavelandscaping</a>
+  </div>
 </section>
+
+<!-- YOUTUBE MODAL -->
+<div id="yt-modal" role="dialog" aria-modal="true" aria-label="Video player">
+  <div id="yt-modal-inner">
+    <button id="yt-modal-close" aria-label="Close video">&times;</button>
+    <iframe id="yt-modal-iframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script>
+(function(){
+  var YT_CHANNEL = 'UCW_zBL9s7D1fptQC2cwLF4g';
+  // Piped is an open YouTube API — no key needed, full CORS support
+  var PIPED = 'https://pipedapi.kavin.rocks/channels/' + YT_CHANNEL;
+
+  // ── Instagram: gallery photos link to @redagavelandscaping ──
+  // Replace img paths with real Instagram post image URLs when available
+  var IG_POSTS = [
+    { img: 'images/gallery/DSC03875.webp',  url: 'https://www.instagram.com/redagavelandscaping/' },
+    { img: 'images/gallery/IMG_8182.webp',  url: 'https://www.instagram.com/redagavelandscaping/' },
+    { img: 'images/gallery/DSC04001.webp',  url: 'https://www.instagram.com/redagavelandscaping/' },
+    { img: 'images/gallery/IMG_0990.webp',  url: 'https://www.instagram.com/redagavelandscaping/' },
+    { img: 'images/gallery/IMG_2706.webp',  url: 'https://www.instagram.com/redagavelandscaping/' },
+    { img: 'images/gallery/IMG_6284.webp',  url: 'https://www.instagram.com/redagavelandscaping/' },
+    { img: 'images/gallery/IMG_3861.webp',  url: 'https://www.instagram.com/redagavelandscaping/' },
+    { img: 'images/gallery/DSC04042.webp',  url: 'https://www.instagram.com/redagavelandscaping/' },
+    { img: 'images/gallery/IMG_5448.webp',  url: 'https://www.instagram.com/redagavelandscaping/' },
+  ];
+
+  // ── YouTube ──────────────────────────────────────────────
+  var grid = document.getElementById('yt-grid');
+  var modal = document.getElementById('yt-modal');
+  var modalIframe = document.getElementById('yt-modal-iframe');
+  var modalClose = document.getElementById('yt-modal-close');
+
+  function openModal(id) {
+    modalIframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    modalIframe.src = '';
+    document.body.style.overflow = '';
+  }
+  if (modalClose) modalClose.addEventListener('click', closeModal);
+  if (modal) modal.addEventListener('click', function(e){ if(e.target===modal) closeModal(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+
+  function fmtDate(str) {
+    var d = new Date(str);
+    return d.toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'});
+  }
+  function extractId(link) {
+    var m = link.match(/[?&]v=([^&]+)/);
+    return m ? m[1] : null;
+  }
+
+  function buildCard(id, title, uploaded) {
+    var thumb = 'https://img.youtube.com/vi/' + id + '/maxresdefault.jpg';
+    var safeTitle = title.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+    var card = document.createElement('article');
+    card.className = 'yt-card';
+    card.setAttribute('tabindex','0');
+    card.setAttribute('aria-label', title);
+    card.innerHTML = '<div class="yt-thumb">'
+      +'<img src="'+thumb+'" alt="'+safeTitle+'" loading="lazy" onerror="this.src=\'https://img.youtube.com/vi/'+id+'/hqdefault.jpg\'">'
+      +'<div class="yt-play"><svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="35" stroke="rgba(201,168,76,0.7)" stroke-width="1.5"/><polygon points="28,20 56,36 28,52" fill="#c9a84c"/></svg></div>'
+      +'</div>'
+      +'<div class="yt-info"><p class="yt-info-title">'+safeTitle+'</p>'
+      +(uploaded ? '<span class="yt-info-meta">'+uploaded+'</span>' : '')
+      +'</div>';
+    card.addEventListener('click', function(){ openModal(id); });
+    card.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' ') openModal(id); });
+    return card;
+  }
+
+  // Hardcoded fallback — update when new videos are published
+  var FALLBACK = [
+    { id: 'qGY8gIJ1hH0', title: 'Floating Boulder Fire Pit',                              date: 'Mar 2026' },
+    { id: 'Hr_-i-GtBMo', title: 'Cantilevered Planters, Bench & Two Boulder Fire Pits',   date: 'Dec 2025' },
+    { id: 'g2Y4fiDTbSI', title: 'Shipping Container Pool — Austin, TX',                   date: 'Dec 2025' },
+    { id: 'iZxHhxtEudA', title: 'Fire Pit & Outdoor Living Build — Austin, TX',           date: 'Dec 2025' },
+    { id: 'E21JFsUyA7w', title: 'Outdoor LED Diffused Light Box — Austin, TX',            date: 'Oct 2024' },
+    { id: 'URl9wesdyVY', title: 'Ranch Pool, Custom Welded Fire Pit & Fountain',          date: 'Oct 2024' },
+  ];
+
+  function renderFallback() {
+    grid.innerHTML = '';
+    FALLBACK.forEach(function(v){ grid.appendChild(buildCard(v.id, v.title, v.date)); });
+  }
+
+  fetch(PIPED)
+    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function(data) {
+      var streams = (data.relatedStreams || []).slice(0, 6);
+      if (!streams.length) throw new Error('No videos');
+      grid.innerHTML = '';
+      streams.forEach(function(v) {
+        var id = extractId('https://www.youtube.com' + v.url);
+        if (!id) return;
+        grid.appendChild(buildCard(id, v.title || 'Red Agave Landscaping', v.uploadedDate || ''));
+      });
+      if (!grid.querySelector('.yt-card')) renderFallback();
+    })
+    .catch(renderFallback);
+
+  // ── Instagram ────────────────────────────────────────────
+  var igGrid = document.getElementById('ig-grid');
+  if (igGrid) {
+    IG_POSTS.forEach(function(post) {
+      var a = document.createElement('a');
+      a.href = post.url;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.className = 'ig-card';
+      a.setAttribute('aria-label', 'View on Instagram');
+      a.innerHTML = '<img src="'+post.img+'" alt="Red Agave Landscaping" loading="lazy">'
+        +'<div class="ig-card-ov">'
+        +'<svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="1" y="1" width="30" height="30" rx="7" stroke="rgba(240,234,214,0.8)" stroke-width="1.5"/><rect x="8" y="8" width="16" height="16" rx="4" stroke="rgba(240,234,214,0.8)" stroke-width="1.5"/><circle cx="16" cy="16" r="4" stroke="rgba(240,234,214,0.8)" stroke-width="1.5"/><circle cx="23" cy="9" r="1.2" fill="rgba(240,234,214,0.8)"/></svg>'
+        +'</div>';
+      igGrid.appendChild(a);
+    });
+  }
+})();
+</script>
 </main>
 
 <footer>
