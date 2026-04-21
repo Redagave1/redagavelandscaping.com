@@ -1293,11 +1293,13 @@ a{text-decoration:none;color:inherit}
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 0.7fr 1fr;
+  grid-template-columns: 1fr 0.77fr 1fr;
   gap: 7vw;
   height: 101vh;
   min-height: 704px;
   align-items: center;
+  margin-left: -48px;
+  margin-right: -48px;
 }
 .dc-col {
   position: relative;
@@ -1392,7 +1394,7 @@ a{text-decoration:none;color:inherit}
 .dl2 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
-  font-size: clamp(52px, 8vw, 128px);
+  font-size: clamp(42px, 6.4vw, 102px);
   letter-spacing: 5px;
   text-transform: uppercase;
   color: #f0ead6;
@@ -1465,14 +1467,13 @@ a{text-decoration:none;color:inherit}
 
 @media (max-width: 1100px) {
   .diff { padding: 60px 28px 100px; }
-  .diff-collage { gap: 5vw; grid-template-columns: 1fr 0.7fr 1fr; height: 84vh; min-height: 540px; }
+  .diff-collage { gap: 5vw; grid-template-columns: 1fr 0.77fr 1fr; height: 84vh; min-height: 540px; margin-left: -28px; margin-right: -28px; }
   .dc-col--left, .dc-col--right { height: 50%; }
-  .dl2, .dl3 { font-size: clamp(38px, 7.5vw, 100px); }
+  .dl2, .dl3 { font-size: clamp(32px, 6.5vw, 90px); }
 }
 @media (max-width: 720px) {
   .diff { padding: 40px 18px 80px; }
-  .diff-eyebrow { margin-bottom: 24px; }
-  .diff-collage { grid-template-columns: 1fr; height: 70vh; min-height: 400px; gap: 10px; }
+  .diff-collage { grid-template-columns: 1fr; height: 70vh; min-height: 400px; gap: 10px; margin-left: -18px; margin-right: -18px; }
   .dc-col--left, .dc-col--right { display: none; }
   .dc-col--center { transform: scale(1); }
   .diff-title-wrap { top: 5%; padding: 0 12px; }
@@ -2150,8 +2151,6 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 
 <!-- THE RED AGAVE DIFFERENCE — 3-photo collage + scroll parallax -->
 <section id="difference" class="diff" aria-label="The Red Agave Difference">
-  <div class="diff-eyebrow">(our work)</div>
-
   <div class="diff-collage">
     <div class="dc-col dc-col--left"><div class="dc-img" data-diff="img" style="background-image:url('images/gallery/diffleft.webp')"></div></div>
     <div class="dc-col dc-col--center"><div class="dc-img" data-diff="img" style="background-image:url('images/gallery/diffcenter.webp')"></div></div>
@@ -2167,7 +2166,6 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   </div>
 
   <div class="diff-foot" data-diff="content">
-    <p class="diff-sub">Every project earns this title. Bespoke design, artisan craftsmanship, zero shortcuts &mdash; outdoor spaces transformed across Austin and beyond.</p>
     <div class="btn-huly-wrap">
       <div class="btn-huly-blob-1"></div>
       <div class="btn-huly-blob-2"></div>
@@ -3040,10 +3038,10 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     }
   );
 
-  // Title parallax drift — same scrub for coherent motion
+  // Title drifts DOWN as you scroll — subtle depth effect
   gsap.fromTo('#difference [data-diff="title"]',
-    { yPercent: 10 },
-    { yPercent: -28, ease: 'none',
+    { yPercent: -6 },
+    { yPercent: 18, ease: 'none',
       scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: 1.2 }
     }
   );
