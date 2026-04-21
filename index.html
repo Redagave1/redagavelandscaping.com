@@ -1293,10 +1293,10 @@ a{text-decoration:none;color:inherit}
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 0.65fr 1fr 0.65fr;
-  gap: 22px;
-  height: 88vh;
-  min-height: 600px;
+  grid-template-columns: 0.62fr 1fr 0.62fr;
+  gap: 28px;
+  height: 92vh;
+  min-height: 640px;
   align-items: center;
 }
 .dc-col {
@@ -1305,6 +1305,7 @@ a{text-decoration:none;color:inherit}
   border-radius: 2px;
   will-change: transform;
   transform-origin: center center;
+  background: #080b06;
 }
 /* Center: full grid height — taller, breaks visual top/bottom of sides */
 .dc-col--center {
@@ -1312,11 +1313,11 @@ a{text-decoration:none;color:inherit}
   height: 100%;
   align-self: stretch;
 }
-/* Sides: shorter, vertically centered — equal dark gap above and below */
+/* Sides: ~half center height — strong breakout of center top AND bottom */
 .dc-col--left,
 .dc-col--right {
   z-index: 1;
-  height: 58%;
+  height: 52%;
 }
 .dc-img {
   position: absolute;
@@ -1325,6 +1326,13 @@ a{text-decoration:none;color:inherit}
   background-position: center;
   will-change: transform;
   filter: brightness(0.88) saturate(0.98);
+}
+/* Center image: zoom out — shorter near-square source, show full subject */
+.dc-col--center .dc-img {
+  inset: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .dc-col::after {
   content: '';
