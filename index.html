@@ -1444,18 +1444,46 @@ a{text-decoration:none;color:inherit}
   margin: 0;
 }
 .diff-body {
+  position: absolute;
+  top: 6%;
+  left: 3%;
+  width: 26vw;
+  max-width: 340px;
+  z-index: 3;
+  pointer-events: none;
   font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 300;
   letter-spacing: 0.3px;
   color: rgba(240,234,214,0.62);
   line-height: 2.2;
-  max-width: 400px;
   border-left: 1px solid rgba(201,168,76,0.32);
-  padding-left: 22px;
-  margin: 0 0 36px 0;
-  position: relative;
-  z-index: 4;
+  padding-left: 20px;
+  margin: 0;
+  will-change: opacity, transform;
+  opacity: 0;
+}
+.diff-tagline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  color: rgba(232,160,32,0.7);
+  margin-bottom: 10px;
+}
+.diff-tagline::before,
+.diff-tagline::after {
+  content: '';
+  width: 44px;
+  height: 1px;
+  background: var(--gold);
+  opacity: .55;
+  flex-shrink: 0;
 }
 .diff-seo {
   position: relative;
@@ -2165,20 +2193,21 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 
 <!-- THE RED AGAVE DIFFERENCE — 3-photo collage + scroll parallax -->
 <section id="difference" class="diff" aria-label="The Red Agave Difference">
-  <p class="diff-body rev">At Red Agave, we don't just landscape; we engineer luxury outdoor living environments. As Austin's premier design-build studio, we craft bespoke exterior spaces across Westlake, Barton Creek, Tarrytown, Circle C, and the Texas Hill Country. From resort-scale pool surrounds and architectural hardscaping to custom fire features and cedar pergolas, our work is defined by precision. By managing every phase entirely in-house&mdash;from the initial 3D conceptualization to the final installation&mdash;we eliminate the friction of multiple contractors. We deliver a seamless experience and an uncompromising level of craftsmanship. That is the Red Agave difference.</p>
-
   <div class="diff-collage">
     <div class="dc-col dc-col--left"><div class="dc-img" data-diff="img" style="background-image:url('images/gallery/diffleft.webp')"></div></div>
     <div class="dc-col dc-col--center"><div class="dc-img" data-diff="img" style="background-image:url('images/gallery/diffcenter.webp')"></div></div>
     <div class="dc-col dc-col--right"><div class="dc-img" data-diff="img" style="background-image:url('images/gallery/diffright.webp')"></div></div>
 
     <div class="diff-title-wrap" data-diff="title">
+      <div class="diff-tagline">Experience the difference of cutting edge design coupled with quality craftsmanship</div>
       <h2 class="diff-title">
         <span class="dtl"><span class="dtw dl1">THE</span></span>
         <span class="dtl"><span class="dtw dl2">RED AGAVE</span></span>
         <span class="dtl"><span class="dtw dl3">DIFFERENCE</span></span>
       </h2>
     </div>
+
+    <p class="diff-body">At Red Agave, we don't just landscape; we engineer luxury outdoor living environments. As Austin's premier design-build studio, we craft bespoke exterior spaces across Westlake, Barton Creek, Tarrytown, Circle C, and the Texas Hill Country. From resort-scale pool surrounds and architectural hardscaping to custom fire features and cedar pergolas, our work is defined by precision. By managing every phase entirely in-house&mdash;from the initial 3D conceptualization to the final installation&mdash;we eliminate the friction of multiple contractors. We deliver a seamless experience and an uncompromising level of craftsmanship. That is the Red Agave difference.</p>
   </div>
 
   <div class="diff-foot" data-diff="content">
@@ -3056,6 +3085,14 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     { yPercent: -6 },
     { yPercent: 18, ease: 'none',
       scrollTrigger: { trigger: section, start: 'top bottom', end: 'bottom top', scrub: 1.2 }
+    }
+  );
+
+  // Left body text — hidden, fades in from left as section scrolls into view
+  gsap.fromTo('#difference .diff-body',
+    { opacity: 0, x: -18 },
+    { opacity: 1, x: 0, duration: 1.1, ease: 'power2.out',
+      scrollTrigger: { trigger: section, start: 'top 52%', toggleActions: 'play none none none' }
     }
   );
 
