@@ -1265,7 +1265,7 @@ a{text-decoration:none;color:inherit}
   position: relative;
   width: 100%;
   background: var(--dark);
-  padding: 140px 48px 160px;
+  padding: 80px 48px 120px;
   overflow: hidden;
   border-top: 1px solid rgba(201,168,76,0.08);
   border-bottom: 1px solid rgba(201,168,76,0.08);
@@ -1295,9 +1295,8 @@ a{text-decoration:none;color:inherit}
   display: grid;
   grid-template-columns: 0.72fr 1fr 0.72fr;
   gap: 22px;
-  height: 68vh;
-  min-height: 520px;
-  pointer-events: none;
+  height: 80vh;
+  min-height: 580px;
 }
 .dc-col {
   position: relative;
@@ -1329,68 +1328,78 @@ a{text-decoration:none;color:inherit}
   background: linear-gradient(180deg, rgba(8,11,6,0) 0%, rgba(8,11,6,0) 55%, rgba(8,11,6,0.42) 100%);
 }
 
-/* Floating title — hero-style stack centered over collage */
+/* Floating title — anchored to TOP of collage like Elyse */
 .diff-title-wrap {
   position: absolute;
-  top: 50%;
+  top: 6%;
   left: 0;
   right: 0;
-  transform: translateY(-50%);
   text-align: center;
   z-index: 3;
   pointer-events: none;
-  padding: 0 48px;
+  padding: 0 32px;
   will-change: transform, opacity;
 }
 .diff-title-wrap::before {
   content: '';
   position: absolute;
-  inset: -20px -10%;
-  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(8,11,6,0.52) 0%, rgba(8,11,6,0.15) 55%, rgba(8,11,6,0) 100%);
+  inset: -10px -10% -30% -10%;
+  background: radial-gradient(ellipse 70% 55% at 50% 30%, rgba(8,11,6,0.48) 0%, rgba(8,11,6,0.12) 55%, rgba(8,11,6,0) 100%);
   pointer-events: none;
   z-index: -1;
 }
 .diff-title {
-  font-family: 'Bebas Neue', cursive;
-  line-height: .90;
-  letter-spacing: 2px;
+  line-height: .92;
   text-align: center;
   margin: 0;
 }
-.dtl { display: block; padding-bottom: 0.04em; margin-bottom: -0.02em; }
+.dtl { display: block; padding-bottom: 0.02em; }
 .dtw { display: inline-block; }
 
-/* Line 1: THE — spaced small Bebas, cream dim */
-.dl1 {
-  font-family: 'Bebas Neue', cursive;
-  font-size: clamp(22px, 2.2vw, 36px);
-  letter-spacing: 16px;
-  color: rgba(240,234,214,0.6);
-  text-shadow: 0 2px 8px rgba(0,0,0,0.85);
+@keyframes creamPulse {
+  0%,100% { text-shadow: 0 0 24px rgba(240,234,214,0.42), 0 0 48px rgba(240,230,200,0.16), 0 4px 22px rgba(0,0,0,0.85); }
+  50%      { text-shadow: 0 0 40px rgba(240,234,214,0.65), 0 0 90px rgba(240,230,200,0.28), 0 4px 22px rgba(0,0,0,0.85); }
 }
-/* Line 2: RED AGAVE — gold Montserrat medium, warm glow (like hl2) */
+
+/* Line 1: THE — small Montserrat, spaced, cream at half-opacity */
+.dl1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: clamp(14px, 1.4vw, 22px);
+  letter-spacing: 14px;
+  text-transform: uppercase;
+  color: rgba(240,234,214,0.55);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.85);
+  margin-bottom: 4px;
+}
+/* Line 2: RED AGAVE — Montserrat 500 cream, pulse glow */
 .dl2 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
-  font-size: clamp(34px, 4.8vw, 72px);
+  font-size: clamp(36px, 5.5vw, 88px);
   letter-spacing: 5px;
-  color: #e8c96a;
   text-transform: uppercase;
-  text-shadow:
-    0 0 28px rgba(232,196,90,0.42),
-    0 0 64px rgba(201,168,76,0.18),
-    0 4px 14px rgba(0,0,0,0.85);
-}
-/* Line 3: DIFFERENCE — massive cream Bebas (like hl1/hl4) */
-.dl3 {
-  font-family: 'Bebas Neue', cursive;
-  font-size: clamp(64px, 9.5vw, 156px);
   color: #f0ead6;
-  letter-spacing: 3px;
   text-shadow:
-    0 4px 22px rgba(0,0,0,0.85),
-    0 2px 6px rgba(0,0,0,0.95),
-    0 0 42px rgba(240,234,214,0.08);
+    0 0 24px rgba(240,234,214,0.42),
+    0 0 48px rgba(240,230,200,0.16),
+    0 4px 22px rgba(0,0,0,0.85);
+  animation: creamPulse 4.2s ease-in-out infinite;
+}
+/* Line 3: DIFFERENCE — Montserrat 500 cream, same pulse, largest */
+.dl3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: clamp(52px, 9vw, 148px);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #f0ead6;
+  text-shadow:
+    0 0 24px rgba(240,234,214,0.42),
+    0 0 48px rgba(240,230,200,0.16),
+    0 4px 22px rgba(0,0,0,0.85);
+  animation: creamPulse 4.2s ease-in-out infinite;
+  animation-delay: 0.6s;
 }
 
 /* Footer strip — sub + CTA */
@@ -1418,21 +1427,22 @@ a{text-decoration:none;color:inherit}
 }
 
 @media (max-width: 1100px) {
-  .diff { padding: 100px 28px 120px; }
-  .diff-collage { gap: 14px; grid-template-columns: 0.8fr 1fr 0.8fr; height: 60vh; min-height: 460px; }
-  .dl3 { font-size: clamp(56px, 10vw, 120px); }
+  .diff { padding: 60px 28px 100px; }
+  .diff-collage { gap: 14px; grid-template-columns: 0.8fr 1fr 0.8fr; height: 70vh; min-height: 480px; }
+  .dl2 { font-size: clamp(30px, 6vw, 72px); }
+  .dl3 { font-size: clamp(44px, 9.5vw, 110px); }
 }
 @media (max-width: 720px) {
-  .diff { padding: 80px 18px 90px; }
-  .diff-eyebrow { margin-bottom: 32px; }
-  .diff-collage { grid-template-columns: 1fr; height: 58vh; min-height: 360px; gap: 10px; }
+  .diff { padding: 40px 18px 80px; }
+  .diff-eyebrow { margin-bottom: 24px; }
+  .diff-collage { grid-template-columns: 1fr; height: 70vh; min-height: 400px; gap: 10px; }
   .dc-col--left, .dc-col--right { display: none; }
   .dc-col--center { transform: scale(1); }
-  .diff-title-wrap { padding: 0 18px; }
-  .dl1 { font-size: 18px; letter-spacing: 10px; }
-  .dl2 { font-size: clamp(28px, 9vw, 42px); letter-spacing: 3px; }
-  .dl3 { font-size: clamp(52px, 14vw, 84px); letter-spacing: 2px; }
-  .diff-foot { grid-template-columns: 1fr; gap: 22px; margin-top: 44px; }
+  .diff-title-wrap { top: 5%; padding: 0 12px; }
+  .dl1 { font-size: 12px; letter-spacing: 8px; }
+  .dl2 { font-size: clamp(26px, 8vw, 44px); letter-spacing: 3px; }
+  .dl3 { font-size: clamp(42px, 12vw, 72px); letter-spacing: 2px; }
+  .diff-foot { grid-template-columns: 1fr; gap: 22px; margin-top: 32px; }
   .diff-sub { max-width: 100%; padding-left: 14px; }
 }
 
@@ -2105,18 +2115,18 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 <section id="difference" class="diff" aria-label="The Red Agave Difference">
   <div class="diff-eyebrow">(our work)</div>
 
-  <div class="diff-collage" aria-hidden="true">
+  <div class="diff-collage">
     <div class="dc-col dc-col--left"><div class="dc-img" data-diff="img" style="background-image:url('images/gallery/IMG_9652.webp')"></div></div>
     <div class="dc-col dc-col--center"><div class="dc-img" data-diff="img" style="background-image:url('images/gallery/IMG_8667.webp')"></div></div>
     <div class="dc-col dc-col--right"><div class="dc-img" data-diff="img" style="background-image:url('images/gallery/IMG_5491.webp')"></div></div>
-  </div>
 
-  <div class="diff-title-wrap" data-diff="title">
-    <h2 class="diff-title">
-      <span class="dtl"><span class="dtw dl1">THE</span></span>
-      <span class="dtl"><span class="dtw dl2">RED AGAVE</span></span>
-      <span class="dtl"><span class="dtw dl3">DIFFERENCE</span></span>
-    </h2>
+    <div class="diff-title-wrap" data-diff="title">
+      <h2 class="diff-title">
+        <span class="dtl"><span class="dtw dl1">THE</span></span>
+        <span class="dtl"><span class="dtw dl2">RED AGAVE</span></span>
+        <span class="dtl"><span class="dtw dl3">DIFFERENCE</span></span>
+      </h2>
+    </div>
   </div>
 
   <div class="diff-foot" data-diff="content">
