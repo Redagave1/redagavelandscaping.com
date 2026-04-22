@@ -172,7 +172,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   <div class="page-header-ov"></div>
   <div class="page-header-inner">
     <div class="page-eyebrow rev">Red Agave Landscaping &nbsp;&middot;&nbsp; Austin, TX</div>
-    <h1 class="page-title rev">Media <span class="gold-pulse-word">+ Insta</span></h1>
+    <h1 class="page-title rev">Youtube <span class="gold-pulse-word">+ Insta</span></h1>
   </div>
 </div>
 <div class="ticker" aria-hidden="true"><div class="t-track">
@@ -198,7 +198,10 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 .media-sec+.media-sec{background:var(--dark)}
 .media-sec-eye{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(240,234,214,.32);text-align:center;margin-bottom:10px}
 .media-sec-h2{font-family:'Bebas Neue',cursive;font-size:clamp(38px,4vw,60px);letter-spacing:3px;color:var(--gold);text-align:center;margin:0 auto 48px;text-shadow:0 0 22px rgba(201,168,76,.25)}
-/* ── YOUTUBE GRID ───────────────────────────────────────── */
+/* ── YOUTUBE SHORTS GRID (6 portrait cards) ─────────────── */
+.yt-shorts-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;max-width:1320px;margin:0 auto}
+.yt-shorts-grid .yt-thumb{padding-bottom:177.78%}
+/* ── YOUTUBE GRID (3 landscape cards) ──────────────────── */
 .yt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1320px;margin:0 auto}
 .yt-card{position:relative;overflow:hidden;border-radius:3px;background:#0a100a;border:1px solid rgba(201,168,76,.08);cursor:pointer;transition:border-color .3s,transform .3s,box-shadow .3s}
 .yt-card:hover{border-color:rgba(201,168,76,.28);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.6),0 0 0 1px rgba(201,168,76,.12)}
@@ -235,16 +238,26 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 .ig-follow-cta{display:flex;justify-content:center;margin-top:40px}
 .ig-follow-btn{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(201,168,76,.35);color:var(--gold);padding:12px 32px;font-size:9px;letter-spacing:3px;text-transform:uppercase;font-family:'Montserrat',sans-serif;font-weight:600;border-radius:9999px;transition:all .3s}
 .ig-follow-btn:hover{background:var(--gold);color:var(--dark)}
+@media(max-width:1200px){.yt-shorts-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.yt-shorts-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:1024px){.yt-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){.media-sec{padding:60px 24px}.yt-grid{grid-template-columns:1fr}.ig-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.ig-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 
 <!-- YOUTUBE -->
+<!-- YOUTUBE SHORTS -->
+<section class="media-sec" aria-labelledby="yt-shorts-h2">
+  <div class="media-sec-eye rev">Quick Clips</div>
+  <h2 id="yt-shorts-h2" class="media-sec-h2 rev">YouTube Shorts</h2>
+  <div id="yt-shorts-grid" class="yt-shorts-grid"></div>
+</section>
+
+<!-- YOUTUBE VIDEOS -->
 <section class="media-sec" aria-labelledby="yt-h2">
   <div class="media-sec-eye rev">Watch &amp; Subscribe</div>
   <h2 id="yt-h2" class="media-sec-h2 rev">YouTube</h2>
-  <div id="yt-grid" class="yt-grid"><p class="yt-loading">Loading videos&hellip;</p></div>
+  <div id="yt-grid" class="yt-grid"></div>
   <div class="yt-sub-cta rev">
     <a href="https://www.youtube.com/@redagavelawnandlandscape3227" target="_blank" rel="noopener" class="yt-sub-btn">&#9654;&nbsp; Subscribe on YouTube</a>
   </div>
@@ -318,53 +331,56 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   }
 
   function buildCard(id, title, uploaded) {
-    var thumb = 'https://img.youtube.com/vi/' + id + '/maxresdefault.jpg';
     var safeTitle = title.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
     var card = document.createElement('article');
     card.className = 'yt-card';
     card.setAttribute('tabindex','0');
     card.setAttribute('aria-label', title);
-    card.innerHTML = '<div class="yt-thumb">'
-      +'<img src="'+thumb+'" alt="'+safeTitle+'" loading="lazy" onerror="this.src=\'https://img.youtube.com/vi/'+id+'/hqdefault.jpg\'">'
-      +'<div class="yt-play"><svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="35" stroke="rgba(201,168,76,0.7)" stroke-width="1.5"/><polygon points="28,20 56,36 28,52" fill="#c9a84c"/></svg></div>'
-      +'</div>'
-      +'<div class="yt-info"><p class="yt-info-title">'+safeTitle+'</p>'
-      +(uploaded ? '<span class="yt-info-meta">'+uploaded+'</span>' : '')
-      +'</div>';
+    var img = document.createElement('img');
+    img.alt = safeTitle;
+    img.loading = 'lazy';
+    // thumbnail fallback chain: maxres → hq → mq → gallery image
+    var thumbSteps = [
+      'https://img.youtube.com/vi/'+id+'/maxresdefault.jpg',
+      'https://img.youtube.com/vi/'+id+'/hqdefault.jpg',
+      'https://img.youtube.com/vi/'+id+'/mqdefault.jpg',
+      'images/gallery/DSC03875.webp'
+    ];
+    var thumbIdx = 0;
+    img.src = thumbSteps[thumbIdx];
+    img.onerror = function() { if (++thumbIdx < thumbSteps.length) this.src = thumbSteps[thumbIdx]; };
+    var thumbDiv = document.createElement('div'); thumbDiv.className = 'yt-thumb';
+    var playDiv = document.createElement('div'); playDiv.className = 'yt-play';
+    playDiv.innerHTML = '<svg viewBox="0 0 72 72" fill="none"><circle cx="36" cy="36" r="35" stroke="rgba(201,168,76,0.7)" stroke-width="1.5"/><polygon points="28,20 56,36 28,52" fill="#c9a84c"/></svg>';
+    thumbDiv.appendChild(img); thumbDiv.appendChild(playDiv);
+    var infoDiv = document.createElement('div'); infoDiv.className = 'yt-info';
+    infoDiv.innerHTML = '<p class="yt-info-title">'+safeTitle+'</p>'+(uploaded?'<span class="yt-info-meta">'+uploaded+'</span>':'');
+    card.appendChild(thumbDiv); card.appendChild(infoDiv);
     card.addEventListener('click', function(){ openModal(id); });
     card.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' ') openModal(id); });
     return card;
   }
 
-  // Hardcoded fallback — update when new videos are published
-  var FALLBACK = [
-    { id: 'qGY8gIJ1hH0', title: 'Floating Boulder Fire Pit',                              date: 'Mar 2026' },
-    { id: 'Hr_-i-GtBMo', title: 'Cantilevered Planters, Bench & Two Boulder Fire Pits',   date: 'Dec 2025' },
-    { id: 'g2Y4fiDTbSI', title: 'Shipping Container Pool — Austin, TX',                   date: 'Dec 2025' },
-    { id: 'iZxHhxtEudA', title: 'Fire Pit & Outdoor Living Build — Austin, TX',           date: 'Dec 2025' },
-    { id: 'E21JFsUyA7w', title: 'Outdoor LED Diffused Light Box — Austin, TX',            date: 'Oct 2024' },
-    { id: 'URl9wesdyVY', title: 'Ranch Pool, Custom Welded Fire Pit & Fountain',          date: 'Oct 2024' },
+  // ── YouTube Shorts (6 portrait slots) — swap IDs as new Shorts are published ──
+  var FALLBACK_SHORTS = [
+    { id: 'qGY8gIJ1hH0', title: 'Floating Boulder Fire Pit',                            date: 'Mar 2026' },
+    { id: 'Hr_-i-GtBMo', title: 'Cantilevered Planters & Boulder Fire Pits',            date: 'Dec 2025' },
+    { id: 'E21JFsUyA7w', title: 'Outdoor LED Diffused Light Box',                       date: 'Oct 2024' },
+    { id: 'g2Y4fiDTbSI', title: 'Shipping Container Pool',                              date: 'Dec 2025' },
+    { id: 'iZxHhxtEudA', title: 'Fire Pit & Outdoor Living Build',                      date: 'Dec 2025' },
+    { id: 'URl9wesdyVY', title: 'Ranch Pool, Fire Pit & Fountain',                      date: 'Oct 2024' },
   ];
 
-  function renderFallback() {
-    grid.innerHTML = '';
-    FALLBACK.forEach(function(v){ grid.appendChild(buildCard(v.id, v.title, v.date)); });
-  }
+  // ── Regular YouTube videos (3 landscape slots) ──
+  var FALLBACK_REGULAR = [
+    { id: 'g2Y4fiDTbSI', title: 'Shipping Container Pool — Austin, TX',                date: 'Dec 2025' },
+    { id: 'iZxHhxtEudA', title: 'Fire Pit & Outdoor Living Build — Austin, TX',        date: 'Dec 2025' },
+    { id: 'URl9wesdyVY', title: 'Ranch Pool, Custom Welded Fire Pit & Fountain',       date: 'Oct 2024' },
+  ];
 
-  fetch(PIPED)
-    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function(data) {
-      var streams = (data.relatedStreams || []).slice(0, 6);
-      if (!streams.length) throw new Error('No videos');
-      grid.innerHTML = '';
-      streams.forEach(function(v) {
-        var id = extractId('https://www.youtube.com' + v.url);
-        if (!id) return;
-        grid.appendChild(buildCard(id, v.title || 'Red Agave Landscaping', v.uploadedDate || ''));
-      });
-      if (!grid.querySelector('.yt-card')) renderFallback();
-    })
-    .catch(renderFallback);
+  var shortsGrid = document.getElementById('yt-shorts-grid');
+  FALLBACK_SHORTS.forEach(function(v){ shortsGrid.appendChild(buildCard(v.id, v.title, v.date)); });
+  FALLBACK_REGULAR.forEach(function(v){ grid.appendChild(buildCard(v.id, v.title, v.date)); });
 
   // ── Instagram ────────────────────────────────────────────
   var igGrid = document.getElementById('ig-grid');
