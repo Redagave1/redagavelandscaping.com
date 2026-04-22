@@ -803,6 +803,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
       img.src = 'images/gallery/' + IMAGES[i];
       img.alt = altFor(IMAGES[i], i);
       img.loading = 'lazy';
+      img.onerror = function() { var p = this.closest('.g-item'); if (p) p.style.display = 'none'; };
       var ov = document.createElement('div');
       ov.className = 'g-item-ov';
       var gold = document.createElement('div');
