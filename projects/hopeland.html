@@ -10,16 +10,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
 <style>
-:root{--gold:#c9a84c;--gold-light:#e8c96a;--gold-glow:rgba(201,168,76,0.45);--dark:#080b06;--dark2:#0d120a;--dark3:#0a1208;--cream:#f0ead6;--cream60:rgba(240,234,214,0.6);--cream30:rgba(240,234,214,0.3);--cream20:rgba(240,234,214,0.1);--ease:cubic-bezier(0.16,1,0.3,1)}
+:root{--gold:#c9a84c;--gold-light:#e8c96a;--dark:#080b06;--dark2:#0d120a;--cream:#f0ead6;--cream60:rgba(240,234,214,0.6);--cream30:rgba(240,234,214,0.3);--ease:cubic-bezier(0.16,1,0.3,1)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{overflow-x:hidden;scroll-behavior:smooth}
 body{background:var(--dark);color:var(--cream);font-family:'Montserrat',sans-serif;overflow-x:hidden}
-img{display:block;width:100%;object-fit:cover}
+img{display:block}
 a{text-decoration:none;color:inherit}
 ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--gold)}
 @media(hover:hover){body{cursor:none}}
-#cur{position:fixed;width:10px;height:10px;background:var(--gold);pointer-events:none;z-index:9999;transform:translate(-50%,-50%) rotate(45deg);transition:width .15s,height .15s,background .15s;box-shadow:0 0 6px rgba(201,168,76,0.4)}
-#cur-ring{position:fixed;width:22px;height:22px;border:1.5px solid rgba(201,168,76,0.55);pointer-events:none;z-index:9998;transform:translate(-50%,-50%) rotate(45deg);transition:width .1s,height .1s,border-color .1s}
+#cur{position:fixed;width:10px;height:10px;background:var(--gold);pointer-events:none;z-index:9999;transform:translate(-50%,-50%) rotate(45deg);transition:width .15s,height .15s;box-shadow:0 0 6px rgba(201,168,76,0.4)}
+#cur-ring{position:fixed;width:22px;height:22px;border:1.5px solid rgba(201,168,76,0.55);pointer-events:none;z-index:9998;transform:translate(-50%,-50%) rotate(45deg);transition:width .1s,height .1s}
 /* NAV */
 #nav{position:fixed;top:0;left:0;right:0;z-index:800;padding:0 60px;transition:all .4s}
 #nav.scrolled{background:rgba(8,11,6,0.94);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,0.1)}
@@ -81,24 +81,91 @@ a{text-decoration:none;color:inherit}
 .proj-meta-label{font-size:7px;letter-spacing:4px;text-transform:uppercase;color:rgba(201,168,76,0.5)}
 .proj-meta-val{font-size:11px;letter-spacing:1px;color:var(--cream60)}
 .proj-meta-div{width:1px;height:28px;background:rgba(201,168,76,0.12);flex-shrink:0}
-/* PHOTO GRID */
-.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:4px;background:rgba(0,0,0,.5)}
-.proj-photo{position:relative;overflow:hidden;aspect-ratio:4/3}
-.proj-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.88);transition:filter .6s var(--ease),transform .8s var(--ease)}
-.proj-photo:hover img{filter:brightness(1);transform:scale(1.04)}
-/* REVEAL */
-.rev{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
-.rev.in{opacity:1;transform:translateY(0)}
+
+/* ─────────────────────────────────────
+   EDITORIAL GALLERY
+───────────────────────────────────── */
+.editorial{background:#030303;position:relative;padding-bottom:120px;overflow:hidden}
+
+/* Scene containers — absolutely positioned photos live inside these */
+.scene{position:relative;overflow:visible}
+.scene-1{height:170vh}
+.scene-2{height:140vh}
+.scene-3{height:150vh}
+.scene-4{height:130vh}
+.scene-5{height:155vh}
+.scene-6{height:110vh}
+
+/* Divider labels between scenes */
+.ed-label{display:flex;align-items:center;gap:20px;padding:0 7vw;height:14vh;pointer-events:none}
+.ed-label span{font-size:7px;letter-spacing:6px;text-transform:uppercase;color:rgba(201,168,76,0.2)}
+.ed-label::before,.ed-label::after{content:'';flex:1;height:1px;background:rgba(201,168,76,0.06)}
+
+/* Editorial photo base */
+.ep{position:absolute;margin:0;will-change:transform}
+.ep-inner{
+  transform:rotate(var(--rot,0deg));
+  transform-origin:center;
+  transform-style:preserve-3d;
+  transition:box-shadow .4s ease;
+  box-shadow:0 18px 72px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.04);
+}
+.ep-inner:hover{box-shadow:0 28px 100px rgba(0,0,0,.85),0 0 0 1px rgba(201,168,76,.12),0 0 40px rgba(201,168,76,.06)}
+.ep-inner img{display:block;width:100%;height:auto}
+/* Photo number badge */
+.ep-n{position:absolute;bottom:10px;right:12px;font-family:'Bebas Neue',cursive;font-size:11px;letter-spacing:2px;color:rgba(201,168,76,0.55);z-index:2;pointer-events:none}
+/* Grayscale photo */
+.ep--bw .ep-inner img{filter:grayscale(1) brightness(.8);transition:filter 1.4s ease}
+/* Wipe reveal — clip-path driven by GSAP */
+.ep--wipe .ep-inner{clip-path:inset(0 100% 0 0);transition:none}
+
+/* ─── SCENE 1: Arrival — large overlap duo ─── */
+.ep-1a{width:54vw;left:4vw;top:7vh;z-index:2}
+.ep-1b{width:38vw;right:3vw;top:26vh;z-index:3}
+
+/* ─── SCENE 2: Trio at staggered heights ─── */
+.ep-2a{width:31vw;left:5vw;top:16vh;z-index:2}
+.ep-2b{width:34vw;left:32vw;top:4vh;z-index:3}
+.ep-2c{width:27vw;right:4vw;top:32vh;z-index:1}
+
+/* ─── SCENE 3: Grayscale reveal + small overlap ─── */
+.ep-3a{width:60vw;right:3vw;top:8vh;z-index:1}
+.ep-3b{width:26vw;left:4vw;top:5vh;z-index:3}
+
+/* ─── SCENE 4: Scattered pair ─── */
+.ep-4a{width:44vw;left:7vw;top:10vh;z-index:2}
+.ep-4b{width:24vw;right:7vw;bottom:12vh;z-index:3}
+
+/* ─── SCENE 5: Three floating ─── */
+.ep-5a{width:50vw;left:4vw;top:8vh;z-index:1}
+.ep-5b{width:36vw;right:3vw;top:22vh;z-index:3}
+.ep-5c{width:19vw;left:43vw;bottom:7vh;z-index:2}
+
+/* ─── SCENE 6: Wide exit ─── */
+.ep-6a{width:48vw;left:26vw;top:8vh;z-index:1}
+
+/* ─── MOBILE ─── */
+@media(max-width:768px){
+  .scene{height:auto!important;display:flex;flex-direction:column;gap:0;padding:30px 0}
+  .ep{position:relative!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:80vw!important;margin-bottom:-12px}
+  .ep:nth-child(odd){align-self:flex-start;margin-left:6vw}
+  .ep:nth-child(even){align-self:flex-end;margin-right:6vw}
+  .ep-inner{transform:rotate(var(--rot,0deg))!important}
+  .ep--wipe .ep-inner{clip-path:none!important}
+  .proj-hero-inner{padding:40px 24px 48px}
+  .proj-meta-inner{padding:18px 24px;gap:24px}
+  .proj-cta{padding:60px 24px}
+}
+
 /* CTA */
 .proj-cta{background:var(--gold);text-align:center;padding:80px 60px}
 .proj-cta h2{font-family:'Bebas Neue',cursive;font-size:clamp(44px,6vw,80px);color:var(--dark);line-height:.9;margin-bottom:18px}
 .proj-cta p{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(8,11,6,.5);margin-bottom:32px}
-.proj-cta a{display:inline-block;background:var(--dark);color:var(--gold);padding:0 44px;height:44px;line-height:44px;font-size:9px;letter-spacing:3.5px;text-transform:uppercase;font-weight:700;font-family:'Montserrat',sans-serif;border-radius:9999px;transition:background .3s}
-.proj-cta a:hover{background:#1a2214}
+.proj-cta a{display:inline-block;background:var(--dark);color:var(--gold);padding:0 44px;height:44px;line-height:44px;font-size:9px;letter-spacing:3.5px;text-transform:uppercase;font-weight:700;font-family:'Montserrat',sans-serif;border-radius:9999px}
 /* FOOTER */
 footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,168,76,0.06)}
 .ft-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:44px;margin-bottom:52px}
-.ft-brand{font-family:'Bebas Neue',cursive;font-size:34px;letter-spacing:6px;color:var(--gold);text-shadow:0 0 18px rgba(201,168,76,0.18);margin-bottom:10px}
+.ft-brand{font-family:'Bebas Neue',cursive;font-size:34px;letter-spacing:6px;color:var(--gold);margin-bottom:10px}
 .ft-tag{font-size:10px;color:rgba(240,234,214,0.15);letter-spacing:2px;text-transform:uppercase;line-height:1.9}
 .ft-info{margin-top:18px;font-size:11px;color:rgba(240,234,214,0.24);line-height:2;font-style:normal}
 .ft-info a{color:var(--gold)}
@@ -108,8 +175,11 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 .ft-bot{border-top:1px solid rgba(240,234,214,0.04);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
 .ft-copy{font-size:9px;color:rgba(240,234,214,0.12);letter-spacing:1px}
 .ft-phone{font-family:'Bebas Neue',cursive;font-size:22px;color:rgba(232,160,32,0.24);letter-spacing:3px}
-@media(max-width:768px){.ft-grid{grid-template-columns:1fr 1fr}.proj-hero-inner{padding:40px 24px 48px}.proj-meta-inner{padding:18px 24px;gap:24px}.proj-grid{grid-template-columns:1fr}.proj-cta{padding:60px 24px}}
+@media(max-width:768px){.ft-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){.ft-grid{grid-template-columns:1fr}}
+/* Reveal */
+.rev{opacity:0;transform:translateY(20px);transition:opacity .8s,transform .8s}
+.rev.in{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body>
@@ -157,7 +227,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 <main>
 <!-- HERO -->
 <div class="proj-hero">
-  <img class="proj-hero-img" src="../images/projects/hopeland/IMG_9628.webp" alt="Hopeland project hero — Red Agave Landscaping Austin TX">
+  <img class="proj-hero-img" src="../images/projects/hopeland/IMG_9628.webp" alt="Hopeland — Red Agave Landscaping Austin TX">
   <div class="proj-hero-ov"></div>
   <div class="proj-hero-inner">
     <a href="../featured.html" class="proj-back rev">Featured Jobs</a>
@@ -169,45 +239,132 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 <!-- META BAR -->
 <div class="proj-meta">
   <div class="proj-meta-inner">
-    <div class="proj-meta-item">
-      <span class="proj-meta-label">Location</span>
-      <span class="proj-meta-val">Austin, TX</span>
-    </div>
+    <div class="proj-meta-item"><span class="proj-meta-label">Location</span><span class="proj-meta-val">Austin, TX</span></div>
     <div class="proj-meta-div"></div>
-    <div class="proj-meta-item">
-      <span class="proj-meta-label">Services</span>
-      <span class="proj-meta-val">Pergola &nbsp;&middot;&nbsp; Deck &nbsp;&middot;&nbsp; Outdoor Living</span>
-    </div>
+    <div class="proj-meta-item"><span class="proj-meta-label">Services</span><span class="proj-meta-val">Pergola &nbsp;&middot;&nbsp; Deck &nbsp;&middot;&nbsp; Outdoor Living</span></div>
     <div class="proj-meta-div"></div>
-    <div class="proj-meta-item">
-      <span class="proj-meta-label">Photos</span>
-      <span class="proj-meta-val">15 Images</span>
-    </div>
+    <div class="proj-meta-item"><span class="proj-meta-label">Photos</span><span class="proj-meta-val">15 Images</span></div>
     <div class="proj-meta-div"></div>
-    <div class="proj-meta-item">
-      <span class="proj-meta-label">Builder</span>
-      <span class="proj-meta-val">Red Agave Landscaping</span>
-    </div>
+    <div class="proj-meta-item"><span class="proj-meta-label">Builder</span><span class="proj-meta-val">Red Agave Landscaping</span></div>
   </div>
 </div>
 
-<!-- PHOTO GRID -->
-<div class="proj-grid">
-  <div class="proj-photo rev"><img src="../images/projects/hopeland/IMG_9566.webp" alt="Hopeland project Austin TX" loading="lazy"></div>
-  <div class="proj-photo rev"><img src="../images/projects/hopeland/IMG_9584.webp" alt="Hopeland project Austin TX" loading="lazy"></div>
-  <div class="proj-photo rev"><img src="../images/projects/hopeland/IMG_9597.webp" alt="Hopeland project Austin TX" loading="lazy"></div>
-  <div class="proj-photo rev"><img src="../images/projects/hopeland/IMG_9613.webp" alt="Hopeland project Austin TX" loading="lazy"></div>
-  <div class="proj-photo rev"><img src="../images/projects/hopeland/IMG_9622.webp" alt="Hopeland project Austin TX" loading="lazy"></div>
-  <div class="proj-photo rev"><img src="../images/projects/hopeland/IMG_9638.webp" alt="Hopeland project Austin TX" loading="lazy"></div>
-  <div class="proj-photo rev"><img src="../images/projects/hopeland/IMG_9645.webp" alt="Hopeland project Austin TX" loading="lazy"></div>
-  <div class="proj-photo rev"><img src="../images/projects/hopeland/IMG_9652.webp" alt="Hopeland project Austin TX" loading="lazy"></div>
-  <div class="proj-photo rev"><img src="../images/projects/hopeland/IMG_9667.webp" alt="Hopeland project Austin TX" loading="lazy"></div>
-  <div class="proj-photo rev"><img src="../images/projects/hopeland/IMG_9669.webp" alt="Hopeland project Austin TX" loading="lazy"></div>
-  <div class="proj-photo rev"><img src="../images/projects/hopeland/IMG_9678.webp" alt="Hopeland project Austin TX" loading="lazy"></div>
-  <div class="proj-photo rev"><img src="../images/projects/hopeland/IMG_9683.webp" alt="Hopeland project Austin TX" loading="lazy"></div>
-  <div class="proj-photo rev"><img src="../images/projects/hopeland/IMG_9687.webp" alt="Hopeland project Austin TX" loading="lazy"></div>
-  <div class="proj-photo rev"><img src="../images/projects/hopeland/IMG_9712.webp" alt="Hopeland project Austin TX" loading="lazy"></div>
-</div>
+<!-- EDITORIAL GALLERY -->
+<div class="editorial">
+
+  <!-- ── SCENE 1: Large overlapping arrival ───────────── -->
+  <div class="scene scene-1">
+    <figure class="ep ep-1a" data-parallax="-0.18">
+      <div class="ep-inner ep--tilt" style="--rot:-2deg">
+        <img src="../images/projects/hopeland/IMG_9652.webp" alt="Hopeland Austin TX">
+        <span class="ep-n">01</span>
+      </div>
+    </figure>
+    <figure class="ep ep-1b" data-parallax="0.12">
+      <div class="ep-inner ep--tilt ep--wipe" style="--rot:2.5deg">
+        <img src="../images/projects/hopeland/IMG_9667.webp" alt="Hopeland Austin TX">
+        <span class="ep-n">02</span>
+      </div>
+    </figure>
+  </div>
+
+  <div class="ed-label"><span>Details</span></div>
+
+  <!-- ── SCENE 2: Trio at staggered heights ───────────── -->
+  <div class="scene scene-2">
+    <figure class="ep ep-2a" data-parallax="-0.14">
+      <div class="ep-inner ep--tilt" style="--rot:-1deg">
+        <img src="../images/projects/hopeland/IMG_9678.webp" alt="Hopeland Austin TX">
+        <span class="ep-n">03</span>
+      </div>
+    </figure>
+    <figure class="ep ep-2b">
+      <div class="ep-inner ep--tilt" style="--rot:1.5deg">
+        <img src="../images/projects/hopeland/IMG_9683.webp" alt="Hopeland Austin TX">
+        <span class="ep-n">04</span>
+      </div>
+    </figure>
+    <figure class="ep ep-2c" data-parallax="0.16">
+      <div class="ep-inner ep--tilt" style="--rot:-2.5deg">
+        <img src="../images/projects/hopeland/IMG_9687.webp" alt="Hopeland Austin TX">
+        <span class="ep-n">05</span>
+      </div>
+    </figure>
+  </div>
+
+  <div class="ed-label"><span>Study</span></div>
+
+  <!-- ── SCENE 3: Grayscale reveal + overlap ──────────── -->
+  <div class="scene scene-3">
+    <figure class="ep ep-3a ep--bw" data-parallax="-0.1">
+      <div class="ep-inner ep--tilt" style="--rot:-1.5deg">
+        <img src="../images/projects/hopeland/IMG_9712.webp" alt="Hopeland Austin TX">
+        <span class="ep-n">06</span>
+      </div>
+    </figure>
+    <figure class="ep ep-3b" data-parallax="0.08">
+      <div class="ep-inner ep--tilt" style="--rot:3deg">
+        <img src="../images/projects/hopeland/IMG_9566.webp" alt="Hopeland Austin TX">
+        <span class="ep-n">07</span>
+      </div>
+    </figure>
+  </div>
+
+  <div class="ed-label"><span>Craft</span></div>
+
+  <!-- ── SCENE 4: Clip-path wipe pair ─────────────────── -->
+  <div class="scene scene-4">
+    <figure class="ep ep-4a ep--wipe" data-parallax="-0.08">
+      <div class="ep-inner ep--tilt" style="--rot:-2.5deg">
+        <img src="../images/projects/hopeland/IMG_9584.webp" alt="Hopeland Austin TX">
+        <span class="ep-n">08</span>
+      </div>
+    </figure>
+    <figure class="ep ep-4b" data-parallax="0.12">
+      <div class="ep-inner ep--tilt" style="--rot:4deg">
+        <img src="../images/projects/hopeland/IMG_9597.webp" alt="Hopeland Austin TX">
+        <span class="ep-n">09</span>
+      </div>
+    </figure>
+  </div>
+
+  <div class="ed-label"><span>Space</span></div>
+
+  <!-- ── SCENE 5: Three floating layers ───────────────── -->
+  <div class="scene scene-5">
+    <figure class="ep ep-5a" data-parallax="-0.15">
+      <div class="ep-inner ep--tilt ep--bw" style="--rot:-1deg">
+        <img src="../images/projects/hopeland/IMG_9613.webp" alt="Hopeland Austin TX">
+        <span class="ep-n">10</span>
+      </div>
+    </figure>
+    <figure class="ep ep-5b ep--wipe" data-parallax="0.1">
+      <div class="ep-inner ep--tilt" style="--rot:2deg">
+        <img src="../images/projects/hopeland/IMG_9622.webp" alt="Hopeland Austin TX">
+        <span class="ep-n">11</span>
+      </div>
+    </figure>
+    <figure class="ep ep-5c" data-parallax="-0.22">
+      <div class="ep-inner ep--tilt" style="--rot:-3.5deg">
+        <img src="../images/projects/hopeland/IMG_9638.webp" alt="Hopeland Austin TX">
+        <span class="ep-n">12</span>
+      </div>
+    </figure>
+  </div>
+
+  <div class="ed-label"><span>Finish</span></div>
+
+  <!-- ── SCENE 6: Closing wide shot ───────────────────── -->
+  <div class="scene scene-6">
+    <figure class="ep ep-6a" data-parallax="-0.08">
+      <div class="ep-inner ep--tilt ep--wipe" style="--rot:0deg">
+        <img src="../images/projects/hopeland/IMG_9645.webp" alt="Hopeland Austin TX">
+        <span class="ep-n">13</span>
+      </div>
+    </figure>
+  </div>
+
+</div><!-- /editorial -->
 
 <!-- CTA -->
 <div class="proj-cta">
@@ -238,20 +395,108 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     <span class="ft-phone">512-695-7566</span>
   </div>
 </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
 (function(){
-  var cur=document.getElementById('cur'), ring=document.getElementById('cur-ring');
+  /* Cursor */
+  var cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
   if(cur&&ring&&window.matchMedia('(hover:hover)').matches){
     var mx=0,my=0,rx=0,ry=0;
     document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
     (function t(){rx+=(mx-rx)*.55;ry+=(my-ry)*.55;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(t)})();
   }
+  /* Nav */
   var nav=document.getElementById('nav');
   window.addEventListener('scroll',function(){nav&&nav.classList.toggle('scrolled',scrollY>60)},{passive:true});
+  /* Mobile menu */
   var hbg=document.getElementById('hbg'),mob=document.getElementById('mob-menu');
   if(hbg&&mob){hbg.addEventListener('click',function(){var o=mob.classList.toggle('open');hbg.classList.toggle('open',o)});mob.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){mob.classList.remove('open');hbg.classList.remove('open')})})}
+  /* Scroll reveal (hero, meta bar) */
   var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('in')})},{threshold:0.08});
   document.querySelectorAll('.rev').forEach(function(el){obs.observe(el)});
+
+  /* ── 3D hover tilt ───────────────────────────── */
+  document.querySelectorAll('.ep--tilt').forEach(function(el){
+    el.addEventListener('mousemove',function(e){
+      var r=el.getBoundingClientRect();
+      var cx=(e.clientX-r.left)/r.width-.5;
+      var cy=(e.clientY-r.top)/r.height-.5;
+      var rot=parseFloat(el.style.getPropertyValue('--rot'))||0;
+      el.style.transform='rotate('+rot+'deg) perspective(700px) rotateY('+(cx*14)+'deg) rotateX('+(-cy*10)+'deg) scale(1.025)';
+    });
+    el.addEventListener('mouseleave',function(){
+      var rot=el.style.getPropertyValue('--rot')||'0deg';
+      el.style.transform='rotate('+rot+')';
+    });
+  });
+
+  /* ── GSAP effects (desktop only) ────────────── */
+  if(typeof gsap!=='undefined'&&typeof ScrollTrigger!=='undefined'&&window.innerWidth>768){
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* Parallax — each .ep[data-parallax] moves at its own speed */
+    document.querySelectorAll('.ep[data-parallax]').forEach(function(el){
+      var speed=parseFloat(el.dataset.parallax);
+      var scene=el.closest('.scene');
+      gsap.to(el,{
+        y:function(){return speed*(scene?scene.offsetHeight:window.innerHeight);},
+        ease:'none',
+        scrollTrigger:{trigger:scene||el,start:'top bottom',end:'bottom top',scrub:1.2}
+      });
+    });
+
+    /* Grayscale → color on scroll */
+    document.querySelectorAll('.ep--bw').forEach(function(el){
+      gsap.to(el.querySelector('img'),{
+        filter:'grayscale(0) brightness(1)',
+        ease:'none',
+        scrollTrigger:{trigger:el,start:'top 80%',end:'center 30%',scrub:true}
+      });
+    });
+
+    /* Clip-path wipe reveal */
+    document.querySelectorAll('.ep--wipe .ep-inner').forEach(function(el){
+      gsap.fromTo(el,
+        {clipPath:'inset(0 100% 0 0)'},
+        {clipPath:'inset(0 0% 0 0)',ease:'power2.out',duration:1.5,
+          scrollTrigger:{trigger:el,start:'top 78%',toggleActions:'play none none none'}
+        }
+      );
+    });
+
+    /* Subtle scale-in on all ep figures */
+    document.querySelectorAll('.ep').forEach(function(el,i){
+      if(el.dataset.parallax) return; /* already has animation */
+      gsap.from(el,{
+        opacity:0,scale:.94,
+        duration:1.1,ease:'power2.out',
+        scrollTrigger:{trigger:el,start:'top 85%',toggleActions:'play none none none'}
+      });
+    });
+  } else {
+    /* Fallback: simple IntersectionObserver fade-in for all ep */
+    var epObs=new IntersectionObserver(function(entries){
+      entries.forEach(function(x){
+        if(x.isIntersecting){
+          x.target.style.transition='opacity .8s ease, transform .8s ease';
+          x.target.style.opacity='1';
+          x.target.style.transform='translateY(0)';
+          /* Also reveal clips */
+          var inner=x.target.querySelector('.ep--wipe');
+          if(inner) inner.style.clipPath='inset(0 0% 0 0)';
+          var img=x.target.querySelector('.ep--bw img');
+          if(img) img.style.filter='grayscale(0) brightness(1)';
+        }
+      });
+    },{threshold:0.1});
+    document.querySelectorAll('.ep').forEach(function(el){
+      el.style.opacity='0';
+      el.style.transform='translateY(20px)';
+      epObs.observe(el);
+    });
+  }
 })();
 </script>
 </body>
