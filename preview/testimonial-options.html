@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red Agave — Testimonial Options (3 Versions)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dark:#0a0a0a;
+  --dark2:#141311;
+  --dark3:#111;
+  --cream:#f0ead6;
+  --cream60:rgba(240,234,214,.6);
+  --gold:#c9a84c;
+  --gold-pulse:#e8c96a;
+  --gold-soft:rgba(232,160,32,.7);
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#000;color:var(--cream);font-family:'Montserrat',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--gold)}
+@keyframes goldPulse{0%,100%{text-shadow:0 0 24px rgba(232,196,90,.45),0 0 48px rgba(201,168,76,.18)}50%{text-shadow:0 0 36px rgba(232,196,90,.62),0 0 90px rgba(201,168,76,.30)}}
+
+/* ── Nav bar ── */
+.cmp-bar{position:fixed;top:0;left:0;right:0;height:56px;z-index:90;background:rgba(8,8,8,.94);backdrop-filter:blur(18px);border-bottom:1px solid rgba(201,168,76,.18);display:flex;align-items:center;padding:0 28px;gap:32px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:5px;text-transform:uppercase}
+.cmp-brand{color:var(--gold-pulse);text-shadow:0 0 18px rgba(232,196,90,.4)}
+.cmp-jump{display:flex;gap:18px;flex-wrap:wrap}
+.cmp-jump a{color:rgba(240,234,214,.55);transition:color .25s,letter-spacing .25s}
+.cmp-jump a:hover{color:var(--gold-pulse);letter-spacing:6px}
+.opt-tag{position:sticky;top:56px;z-index:80;background:rgba(8,8,8,.94);backdrop-filter:blur(18px);border-bottom:1px solid rgba(201,168,76,.18);padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(240,234,214,.65)}
+.opt-tag em{font-style:normal;color:var(--gold-pulse);text-shadow:0 0 14px rgba(232,196,90,.35);margin-right:6px}
+.opt-tag-r{font-size:9px;color:rgba(240,234,214,.45);letter-spacing:2px}
+
+/* =====================================================================
+   OPTION A — CINEMATIC AUTO-ROTATE
+   Full-width, one testimonial at a time, background photo dimmed,
+   large quote, auto-rotates every 7s, gold progress bar + dots
+===================================================================== */
+.testi-a{position:relative;overflow:hidden;background:#000;min-height:600px;display:flex;flex-direction:column;justify-content:center}
+.ta-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:grayscale(.85) brightness(.32) contrast(1.1);opacity:0;transition:opacity 1.2s var(--ease),transform 2s var(--ease);transform:scale(1.05);z-index:0}
+.ta-bg.is-on{opacity:1;transform:scale(1)}
+.ta-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(105deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.5) 60%,rgba(0,0,0,.72) 100%)}
+.ta-inner{position:relative;z-index:2;max-width:1120px;margin:0 auto;padding:100px 80px;display:flex;flex-direction:column;gap:0}
+.ta-quote-wrap{position:relative;min-height:260px}
+.ta-quote{position:absolute;left:0;top:0;display:flex;flex-direction:column;gap:24px;opacity:0;transform:translateY(18px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.ta-quote.is-on{opacity:1;transform:translateY(0)}
+.ta-mark{font-family:'Bebas Neue',cursive;font-size:clamp(100px,12vw,160px);line-height:.7;color:rgba(232,196,90,.12);pointer-events:none;margin-bottom:-20px}
+.ta-stars{display:flex;gap:4px;margin-bottom:4px}
+.ta-star{color:var(--gold-pulse);font-size:12px;text-shadow:0 0 8px rgba(201,168,76,.5)}
+.ta-text{font-family:'Montserrat',sans-serif;font-size:clamp(16px,2.2vw,24px);font-style:italic;font-weight:300;line-height:1.7;color:var(--cream);max-width:780px}
+.ta-attr{display:flex;align-items:center;gap:18px;margin-top:20px}
+.ta-line{width:36px;height:1px;background:var(--gold);opacity:.6}
+.ta-name{font-family:'Bebas Neue',cursive;font-size:18px;letter-spacing:2px;color:var(--gold-pulse)}
+.ta-loc{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(240,234,214,.4)}
+/* Bottom controls */
+.ta-controls{position:relative;z-index:2;display:flex;align-items:center;gap:24px;padding:0 80px 40px;max-width:1120px;margin:0 auto;width:100%}
+.ta-dot{width:8px;height:8px;border-radius:50%;border:1px solid rgba(232,196,90,.4);background:transparent;cursor:pointer;transition:background .3s,transform .3s,box-shadow .3s}
+.ta-dot.is-on{background:var(--gold-pulse);box-shadow:0 0 12px rgba(232,196,90,.7);transform:scale(1.35)}
+.ta-progress{flex:1;height:1px;background:rgba(232,196,90,.1);position:relative;overflow:hidden}
+.ta-bar{position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,var(--gold-pulse),var(--gold));width:0%;transition:width .1s linear}
+.ta-count{font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(240,234,214,.3)}
+
+/* =====================================================================
+   OPTION B — ASYMMETRIC EDITORIAL GRID
+   Featured large quote left (2/3), two stacked smaller right (1/3)
+   Gold left-border accent on the featured. Very magazine.
+===================================================================== */
+.testi-b{background:var(--dark2);padding:100px 60px;border-top:1px solid rgba(201,168,76,.08)}
+.tb-eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:var(--gold-soft);margin-bottom:20px}
+.tb-eyebrow::before{content:'';width:44px;height:1px;background:var(--gold);opacity:.55}
+.tb-title{font-family:'Bebas Neue',cursive;font-size:clamp(40px,5vw,72px);letter-spacing:2px;line-height:.92;color:var(--cream);margin-bottom:56px}
+.tb-title em{font-style:normal;color:var(--gold-pulse);text-shadow:0 0 28px rgba(232,196,90,.35);animation:goldPulse 4.2s ease-in-out infinite}
+.tb-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:3px;background:rgba(201,168,76,.06)}
+.tb-featured{background:var(--dark);padding:52px 48px;position:relative;border-left:2px solid var(--gold);display:flex;flex-direction:column;justify-content:space-between}
+.tb-bigmark{font-family:'Bebas Neue',cursive;font-size:clamp(120px,14vw,200px);line-height:.7;color:rgba(232,196,90,.07);position:absolute;top:20px;left:40px;pointer-events:none;z-index:0}
+.tb-featured .tb-content{position:relative;z-index:1;display:flex;flex-direction:column;gap:20px}
+.tb-featured-stars{display:flex;gap:4px}
+.tb-featured-star{color:var(--gold-pulse);font-size:13px;text-shadow:0 0 8px rgba(201,168,76,.45)}
+.tb-featured-q{font-family:'Montserrat',sans-serif;font-size:clamp(15px,1.8vw,20px);font-style:italic;font-weight:300;line-height:1.75;color:rgba(240,234,214,.88)}
+.tb-featured-attr{display:flex;align-items:center;gap:16px;margin-top:12px}
+.tb-featured-line{width:32px;height:1px;background:var(--gold);opacity:.65}
+.tb-featured-name{font-family:'Bebas Neue',cursive;font-size:20px;letter-spacing:2px;color:var(--gold-pulse)}
+.tb-featured-loc{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,234,214,.35)}
+/* Right stacked cards */
+.tb-stack{display:flex;flex-direction:column;gap:3px}
+.tb-card{background:var(--dark);padding:40px 36px;display:flex;flex-direction:column;gap:14px;transition:background .35s}
+.tb-card:hover{background:rgba(201,168,76,.03)}
+.tb-card-stars{display:flex;gap:3px}
+.tb-card-star{color:var(--gold);font-size:11px}
+.tb-card-q{font-size:12px;font-style:italic;font-weight:300;line-height:1.85;color:rgba(240,234,214,.6)}
+.tb-card-name{font-family:'Bebas Neue',cursive;font-size:15px;letter-spacing:2px;color:var(--cream)}
+.tb-card-loc{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,234,214,.3)}
+.tb-see{display:inline-flex;align-items:center;gap:10px;margin-top:32px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:500;letter-spacing:5px;text-transform:uppercase;color:var(--gold);transition:gap .3s,color .3s}
+.tb-see::after{content:'→';font-size:13px}
+.tb-see:hover{gap:16px;color:var(--gold-pulse)}
+
+/* =====================================================================
+   OPTION C — DARK GLASS CARD GRID
+   Three equal cards. Dark glass backdrop, gold top-line on hover,
+   large decorative quote marks, italic Montserrat quote, Bebas name.
+===================================================================== */
+.testi-c{background:var(--dark3);padding:110px 60px;border-top:1px solid rgba(201,168,76,.08)}
+.tc-eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:var(--gold-soft);margin-bottom:20px}
+.tc-eyebrow::before{content:'';width:44px;height:1px;background:var(--gold);opacity:.55}
+.tc-title{font-family:'Bebas Neue',cursive;font-size:clamp(40px,5vw,72px);letter-spacing:2px;line-height:.92;color:var(--cream);margin-bottom:56px}
+.tc-title em{font-style:normal;color:var(--gold-pulse);text-shadow:0 0 28px rgba(232,196,90,.35);animation:goldPulse 4.2s ease-in-out infinite}
+.tc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(201,168,76,.04)}
+.tc-card{background:rgba(201,168,76,.016);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border:1px solid rgba(201,168,76,.08);padding:48px 40px;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:0;transition:background .4s,border-color .4s,box-shadow .4s}
+.tc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--gold-pulse),transparent);transform:scaleX(0);transform-origin:center;transition:transform .55s var(--ease)}
+.tc-card:hover{background:rgba(201,168,76,.038);border-color:rgba(201,168,76,.2);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 40px rgba(201,168,76,.06)}
+.tc-card:hover::before{transform:scaleX(1)}
+.tc-qmark{font-family:'Bebas Neue',cursive;font-size:clamp(80px,9vw,130px);line-height:.75;color:rgba(232,196,90,.08);pointer-events:none;margin-bottom:-10px}
+.tc-stars{display:flex;gap:3px;margin-bottom:18px}
+.tc-star{color:var(--gold-pulse);font-size:12px;text-shadow:0 0 8px rgba(201,168,76,.4)}
+.tc-q{font-family:'Montserrat',sans-serif;font-size:13px;font-style:italic;font-weight:300;line-height:1.9;color:rgba(240,234,214,.72);margin-bottom:28px;flex:1}
+.tc-divider{width:30px;height:1px;background:rgba(201,168,76,.35);margin-bottom:18px}
+.tc-name{font-family:'Bebas Neue',cursive;font-size:17px;letter-spacing:2px;color:var(--cream);margin-bottom:4px}
+.tc-loc{font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,234,214,.3)}
+/* Center card slight elevation */
+.tc-card:nth-child(2){background:rgba(201,168,76,.028);border-color:rgba(201,168,76,.14);box-shadow:0 32px 80px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.05)}
+.tc-card:nth-child(2)::before{transform:scaleX(0.6);opacity:.6}
+
+/* ── footer note ── */
+.foot-note{background:#050504;padding:50px 30px;text-align:center;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:rgba(232,160,32,.55);border-top:1px solid rgba(232,196,90,.1)}
+
+@media(max-width:900px){
+  .ta-inner,.ta-controls{padding-left:22px;padding-right:22px}
+  .ta-text{font-size:16px}
+  .testi-b,.testi-c{padding:80px 22px}
+  .tb-grid{grid-template-columns:1fr}
+  .tb-featured{border-left-width:2px}
+  .tc-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="cmp-bar">
+  <div class="cmp-brand">RED AGAVE · TESTIMONIAL OPTIONS</div>
+  <nav class="cmp-jump">
+    <a href="#testi-a">A · Cinematic Auto-Rotate</a>
+    <a href="#testi-b">B · Asymmetric Editorial</a>
+    <a href="#testi-c">C · Dark Glass Grid</a>
+  </nav>
+</div>
+
+<!-- ═══ OPTION A — CINEMATIC AUTO-ROTATE ═══ -->
+<div class="opt-tag" id="testi-a">
+  <div>Option <em>A</em> — Cinematic Auto-Rotate</div>
+  <div class="opt-tag-r">full-width · 1 quote at a time · background photo fades · auto-rotates 7s · gold progress bar</div>
+</div>
+<section class="testi-a" id="testi-a-section">
+  <!-- Background photos, one per testimonial -->
+  <div class="ta-bg is-on" style="background-image:url('../images/gallery/IMG_9652.webp')"></div>
+  <div class="ta-bg"        style="background-image:url('../images/gallery/IMG_8667.webp')"></div>
+  <div class="ta-bg"        style="background-image:url('../images/gallery/IMG_9107.webp')"></div>
+  <div class="ta-scrim"></div>
+
+  <div class="ta-inner">
+    <div class="ta-quote-wrap">
+      <!-- Quote 0 -->
+      <div class="ta-quote is-on" data-idx="0">
+        <div class="ta-mark">&ldquo;</div>
+        <div class="ta-stars">
+          <span class="ta-star">&#9733;</span><span class="ta-star">&#9733;</span><span class="ta-star">&#9733;</span><span class="ta-star">&#9733;</span><span class="ta-star">&#9733;</span>
+        </div>
+        <p class="ta-text">Red Agave completely transformed our backyard in Westlake. From the first site visit to the final walkthrough, every single detail was handled with an expertise and professionalism we had never seen from a landscaper before. The finished space looks better than the 3D rendering &mdash; and that rendering was already stunning.</p>
+        <div class="ta-attr">
+          <span class="ta-line"></span>
+          <span class="ta-name">Sarah M.</span>
+          <span class="ta-loc">Westlake Hills, TX</span>
+        </div>
+      </div>
+      <!-- Quote 1 -->
+      <div class="ta-quote" data-idx="1">
+        <div class="ta-mark">&ldquo;</div>
+        <div class="ta-stars">
+          <span class="ta-star">&#9733;</span><span class="ta-star">&#9733;</span><span class="ta-star">&#9733;</span><span class="ta-star">&#9733;</span><span class="ta-star">&#9733;</span>
+        </div>
+        <p class="ta-text">We interviewed four design-build companies before choosing Red Agave. No one else came close to the level of detail in their proposal or the quality of their crew. The pergola and outdoor kitchen they built is the most-used room in our house. Worth every penny and then some.</p>
+        <div class="ta-attr">
+          <span class="ta-line"></span>
+          <span class="ta-name">James &amp; Lauren T.</span>
+          <span class="ta-loc">Barton Creek, TX</span>
+        </div>
+      </div>
+      <!-- Quote 2 -->
+      <div class="ta-quote" data-idx="2">
+        <div class="ta-mark">&ldquo;</div>
+        <div class="ta-stars">
+          <span class="ta-star">&#9733;</span><span class="ta-star">&#9733;</span><span class="ta-star">&#9733;</span><span class="ta-star">&#9733;</span><span class="ta-star">&#9733;</span>
+        </div>
+        <p class="ta-text">The xeriscape design they created for our Circle C property is genuinely breathtaking &mdash; and our water bill dropped by 40% compared to our old lawn. The in-house crew is meticulous. I received daily photos throughout the build and never once felt out of the loop. Red Agave delivered on every single promise.</p>
+        <div class="ta-attr">
+          <span class="ta-line"></span>
+          <span class="ta-name">Lisa K.</span>
+          <span class="ta-loc">Circle C Ranch, TX</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ta-controls">
+    <button class="ta-dot is-on" data-idx="0" aria-label="Quote 1"></button>
+    <button class="ta-dot" data-idx="1" aria-label="Quote 2"></button>
+    <button class="ta-dot" data-idx="2" aria-label="Quote 3"></button>
+    <div class="ta-progress"><div class="ta-bar" id="ta-bar"></div></div>
+    <span class="ta-count" id="ta-count">01 / 03</span>
+  </div>
+</section>
+
+<!-- ═══ OPTION B — ASYMMETRIC EDITORIAL GRID ═══ -->
+<div class="opt-tag" id="testi-b">
+  <div>Option <em>B</em> — Asymmetric Editorial Grid</div>
+  <div class="opt-tag-r">featured large quote left (2/3) · two stacked smaller right · gold left-border accent · magazine layout</div>
+</div>
+<section class="testi-b" id="testi-b-section">
+  <div class="tb-eyebrow">Client Stories</div>
+  <h2 class="tb-title">What Our Clients <em>Say</em></h2>
+  <div class="tb-grid">
+    <!-- Featured left -->
+    <div class="tb-featured">
+      <div class="tb-bigmark">&ldquo;</div>
+      <div class="tb-content">
+        <div class="tb-featured-stars">
+          <span class="tb-featured-star">&#9733;</span><span class="tb-featured-star">&#9733;</span><span class="tb-featured-star">&#9733;</span><span class="tb-featured-star">&#9733;</span><span class="tb-featured-star">&#9733;</span>
+        </div>
+        <p class="tb-featured-q">Red Agave completely transformed our backyard in Westlake. From the first site visit to the final walkthrough, every single detail was handled with an expertise and professionalism we had never seen from a landscaper before. The finished space looks better than the 3D rendering &mdash; and that rendering was already stunning. I've recommended them to every neighbor on our street.</p>
+        <div class="tb-featured-attr">
+          <span class="tb-featured-line"></span>
+          <span class="tb-featured-name">Sarah M.</span>
+          <span class="tb-featured-loc">Westlake Hills, TX</span>
+        </div>
+      </div>
+    </div>
+    <!-- Stacked right -->
+    <div class="tb-stack">
+      <div class="tb-card">
+        <div class="tb-card-stars">
+          <span class="tb-card-star">&#9733;</span><span class="tb-card-star">&#9733;</span><span class="tb-card-star">&#9733;</span><span class="tb-card-star">&#9733;</span><span class="tb-card-star">&#9733;</span>
+        </div>
+        <p class="tb-card-q">We interviewed four companies before choosing Red Agave. No one else came close to the detail in their proposal or the quality of their crew. The pergola and outdoor kitchen they built is the most-used room in our house.</p>
+        <div class="tb-card-name">James &amp; Lauren T.</div>
+        <div class="tb-card-loc">Barton Creek, TX</div>
+      </div>
+      <div class="tb-card">
+        <div class="tb-card-stars">
+          <span class="tb-card-star">&#9733;</span><span class="tb-card-star">&#9733;</span><span class="tb-card-star">&#9733;</span><span class="tb-card-star">&#9733;</span><span class="tb-card-star">&#9733;</span>
+        </div>
+        <p class="tb-card-q">Our xeriscape is breathtaking and our water bill dropped 40%. The in-house crew is meticulous &mdash; I received daily photos throughout and never once felt out of the loop. Red Agave delivered on every promise.</p>
+        <div class="tb-card-name">Lisa K.</div>
+        <div class="tb-card-loc">Circle C Ranch, TX</div>
+      </div>
+    </div>
+  </div>
+  <a href="gallery.html" class="tb-see">View All Projects</a>
+</section>
+
+<!-- ═══ OPTION C — DARK GLASS CARD GRID ═══ -->
+<div class="opt-tag" id="testi-c">
+  <div>Option <em>C</em> — Dark Glass Card Grid</div>
+  <div class="opt-tag-r">3 equal glass cards · gold top-line on hover · large decorative quotemark · center card elevated</div>
+</div>
+<section class="testi-c" id="testi-c-section">
+  <div class="tc-eyebrow">Client Stories</div>
+  <h2 class="tc-title">What Our Clients <em>Say</em></h2>
+  <div class="tc-grid">
+    <div class="tc-card">
+      <div class="tc-qmark">&ldquo;</div>
+      <div class="tc-stars">
+        <span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span>
+      </div>
+      <p class="tc-q">Red Agave completely transformed our backyard in Westlake. From the first site visit to the final walkthrough, every single detail was handled with an expertise and professionalism we had never seen from a landscaper before. The finished space looks better than the 3D rendering.</p>
+      <div class="tc-divider"></div>
+      <div class="tc-name">Sarah M.</div>
+      <div class="tc-loc">Westlake Hills, TX</div>
+    </div>
+    <div class="tc-card">
+      <div class="tc-qmark">&ldquo;</div>
+      <div class="tc-stars">
+        <span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span>
+      </div>
+      <p class="tc-q">We interviewed four companies before choosing Red Agave. No one else came close to the level of detail in their proposal or the quality of their crew. The pergola and outdoor kitchen they built is the most-used room in our house. Worth every penny and then some.</p>
+      <div class="tc-divider"></div>
+      <div class="tc-name">James &amp; Lauren T.</div>
+      <div class="tc-loc">Barton Creek, TX</div>
+    </div>
+    <div class="tc-card">
+      <div class="tc-qmark">&ldquo;</div>
+      <div class="tc-stars">
+        <span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span>
+      </div>
+      <p class="tc-q">Our xeriscape is breathtaking and our water bill dropped by 40%. The in-house crew is meticulous &mdash; I received daily photos throughout the entire build. Red Agave delivered on every single promise. They are the only landscaper in Austin worth calling.</p>
+      <div class="tc-divider"></div>
+      <div class="tc-name">Lisa K.</div>
+      <div class="tc-loc">Circle C Ranch, TX</div>
+    </div>
+  </div>
+</section>
+
+<div class="foot-note">3 testimonial options — tell me which one and I'll wire it into index.html</div>
+
+<script>
+/* ═══ OPTION A — Auto-rotate every 7 seconds ═══ */
+(function(){
+  var section = document.getElementById('testi-a-section');
+  if (!section) return;
+  var quotes = section.querySelectorAll('.ta-quote');
+  var bgs    = section.querySelectorAll('.ta-bg');
+  var dots   = section.querySelectorAll('.ta-dot');
+  var bar    = document.getElementById('ta-bar');
+  var countEl= document.getElementById('ta-count');
+  var total  = quotes.length;
+  var current= 0;
+  var dur    = 7000; // ms per slide
+  var start  = performance.now();
+  var raf;
+
+  function go(idx){
+    quotes.forEach(function(q,i){ q.classList.toggle('is-on', i===idx); });
+    bgs.forEach(function(b,i){ b.classList.toggle('is-on', i===idx); });
+    dots.forEach(function(d,i){ d.classList.toggle('is-on', i===idx); });
+    if (countEl) countEl.textContent = String(idx+1).padStart(2,'0') + ' / 0' + total;
+    current = idx;
+    start = performance.now();
+  }
+
+  dots.forEach(function(d){
+    d.addEventListener('click', function(){
+      go(parseInt(this.getAttribute('data-idx'),10));
+    });
+  });
+
+  function tick(now){
+    var elapsed = (now - start) % dur;
+    var pct = (elapsed / dur) * 100;
+    if (bar) bar.style.width = pct.toFixed(2) + '%';
+    var shouldBe = Math.floor((now - start) / dur) % total;
+    if (shouldBe !== current) go(shouldBe);
+    raf = requestAnimationFrame(tick);
+  }
+  raf = requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
