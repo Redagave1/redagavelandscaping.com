@@ -1709,22 +1709,22 @@ a{text-decoration:none;color:inherit}
 /* ══ PATH TOWARDS YOUR DREAM LANDSCAPE ══ */
 .path{position:relative;height:360vh;background:#000}
 .path-pin{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;background:#000}
-.path-photo{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.06);filter:grayscale(.85) brightness(.42) contrast(1.1);will-change:transform,opacity;transition:opacity 1.0s var(--ease),transform 1.6s var(--ease),filter 1.0s var(--ease)}
-.path-photo.is-on{opacity:1;transform:scale(1.0);filter:grayscale(.7) brightness(.5) contrast(1.1)}
-.path-pin::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.55) 35%,rgba(0,0,0,.20) 70%,rgba(0,0,0,.65) 100%),linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 78%,rgba(0,0,0,.55) 100%)}
+.path-photo{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.06);filter:grayscale(.6) brightness(.6) contrast(1.05);will-change:transform,opacity;transition:opacity 1.0s var(--ease),transform 1.6s var(--ease),filter 1.0s var(--ease)}
+.path-photo.is-on{opacity:1;transform:scale(1.0);filter:grayscale(.4) brightness(.72) contrast(1.05)}
+.path-pin::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.38) 35%,rgba(0,0,0,.10) 70%,rgba(0,0,0,.45) 100%),linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 78%,rgba(0,0,0,.40) 100%)}
 .path-eb{position:absolute;left:48px;top:48px;z-index:5;display:inline-flex;align-items:center;gap:14px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:var(--gold-soft)}
 .path-eb::before{content:'';width:44px;height:1px;background:var(--gold);opacity:.55}
-.path-section-title{position:absolute;left:48px;top:74px;z-index:5;font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:3px;color:rgba(240,234,214,.55)}
+.path-section-title{position:absolute;left:48px;top:74px;z-index:5;font-family:'Bebas Neue',cursive;font-size:clamp(26px,3vw,38px);letter-spacing:4px;color:rgba(240,234,214,.7)}
 .path-inner{position:relative;z-index:2;height:100%;max-width:1480px;margin:0 auto;padding:0 60px;display:grid;grid-template-columns:0.85fr 1fr;gap:80px;align-items:center}
 .path-numwrap{position:relative;height:clamp(180px,22vw,340px)}
 .path-num{position:absolute;left:0;top:0;font-family:'Bebas Neue',cursive;font-size:clamp(180px,22vw,320px);line-height:.84;letter-spacing:2px;color:var(--cream);text-shadow:0 2px 8px rgba(0,0,0,.7),0 0 18px rgba(240,234,214,.05);opacity:0;transform:translateX(-30px);transition:opacity 1.0s var(--ease),transform 1.0s var(--ease);will-change:transform,opacity}
 .path-num.is-on{opacity:1;transform:translateX(0)}
-.path-content-wrap{position:relative;min-height:280px}
-.path-content{position:absolute;left:0;top:0;display:flex;flex-direction:column;gap:18px;opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease) .1s,transform .9s var(--ease) .1s;will-change:transform,opacity;max-width:620px}
+.path-content-wrap{position:relative;min-height:300px}
+.path-content{position:absolute;left:0;top:0;display:flex;flex-direction:column;gap:20px;opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease) .1s,transform .9s var(--ease) .1s;will-change:transform,opacity;max-width:640px}
 .path-content.is-on{opacity:1;transform:translateY(0)}
 .path-content .pulse{font-family:'Montserrat',sans-serif;font-weight:500;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-pulse);text-shadow:0 0 24px rgba(232,196,90,.45),0 0 48px rgba(201,168,76,.18);animation:goldPulse 4.2s ease-in-out infinite}
-.path-content h3{font-family:'Bebas Neue',cursive;font-size:clamp(40px,5vw,72px);line-height:.95;letter-spacing:2px;color:var(--cream);text-shadow:0 2px 8px rgba(0,0,0,.6)}
-.path-content p{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:300;line-height:1.82;color:rgba(240,234,214,.78);max-width:520px}
+.path-content h3{font-family:'Bebas Neue',cursive;font-size:clamp(52px,6.5vw,96px);line-height:.92;letter-spacing:2px;color:var(--cream);text-shadow:0 2px 12px rgba(0,0,0,.7)}
+.path-content p{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:300;line-height:1.82;color:rgba(240,234,214,.82);max-width:540px;letter-spacing:.2px}
 .path-rail{position:absolute;right:36px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:42px;z-index:5;align-items:flex-end}
 .path-rail::before{content:'';position:absolute;right:4px;top:-26px;bottom:-26px;width:1px;background:linear-gradient(180deg,transparent,rgba(232,196,90,.18),transparent)}
 .path-rail-row{display:flex;align-items:center;gap:14px}
@@ -3338,53 +3338,72 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   var photos   = section.querySelectorAll('.path-photo');
   var rails    = section.querySelectorAll('.path-rail-row');
   var progBar  = document.getElementById('path-progressbar');
+  var lastActive = 0;
 
   function setActive(idx){
+    if (idx === lastActive) return;
+    lastActive = idx;
     nums.forEach(function(n,i){ n.classList.toggle('is-on', i===idx); });
     contents.forEach(function(n,i){ n.classList.toggle('is-on', i===idx); });
     photos.forEach(function(n,i){ n.classList.toggle('is-on', i===idx); });
     rails.forEach(function(n,i){ n.classList.toggle('is-on', i===idx); });
   }
+  function getOffsetTop(el){
+    var t = 0;
+    while(el){ t += el.offsetTop; el = el.offsetParent; }
+    return t;
+  }
   function onScroll(){
-    var r = section.getBoundingClientRect();
-    var vh = window.innerHeight;
-    var totalScroll = section.offsetHeight - vh;
+    var sTop = getOffsetTop(section);
+    var scrolled = window.scrollY - sTop;
+    var totalScroll = section.offsetHeight - window.innerHeight;
     if (totalScroll <= 0) return;
-    var p = Math.max(0, Math.min(1, -r.top / totalScroll));
+    var p = Math.max(0, Math.min(1, scrolled / totalScroll));
     setActive(Math.min(totalSteps - 1, Math.floor(p * totalSteps)));
     if (progBar) progBar.style.setProperty('--p', (p * 100).toFixed(2) + '%');
   }
   window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
+  window.addEventListener('resize', onScroll, {passive:true});
+  // Run after page fully laid out so offsetTop is accurate
+  if (document.readyState === 'complete') { onScroll(); }
+  else { window.addEventListener('load', onScroll); }
 })();
 
 // ══ BANNER 2 — count-up on viewport entry ══
 (function(){
-  function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+  function easeOutCubic(t){ return 1 - Math.pow(1-t,3); }
   function animateCount(el){
-    var target = parseInt(el.getAttribute('data-count'), 10);
+    var target = parseInt(el.getAttribute('data-count'),10);
     if (isNaN(target)) return;
     var suffix = el.getAttribute('data-suffix') || '';
     var duration = 1700;
-    var start = performance.now();
-    (function frame(now){
-      var t = Math.min(1, (now - start) / duration);
+    var startTs = null;
+    function step(ts){
+      if (!startTs) startTs = ts;
+      var elapsed = ts - startTs;
+      var t = Math.min(1, elapsed / duration);
       el.textContent = Math.round(target * easeOutCubic(t)) + suffix;
-      if (t < 1) requestAnimationFrame(frame);
-    })(performance.now());
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
   }
   var bnr2 = document.getElementById('bnr2-section');
-  if (bnr2){
-    var fired = false;
-    new IntersectionObserver(function(entries){
-      if (entries[0].isIntersecting && !fired){
-        fired = true;
-        bnr2.querySelectorAll('.bnr2-num[data-count]').forEach(function(n, i){
-          setTimeout(function(){ animateCount(n); }, i * 140);
-        });
-      }
-    }, {threshold:0.4}).observe(bnr2);
+  if (!bnr2) return;
+  var fired = false;
+  function checkBnr2(){
+    if (fired) return;
+    var r = bnr2.getBoundingClientRect();
+    if (r.top < window.innerHeight * 0.9){
+      fired = true;
+      bnr2.querySelectorAll('.bnr2-num[data-count]').forEach(function(n,i){
+        setTimeout(function(){ animateCount(n); }, i * 140);
+      });
+    }
   }
+  window.addEventListener('scroll', checkBnr2, {passive:true});
+  // Also try immediately in case already in view
+  if (document.readyState === 'complete') { checkBnr2(); }
+  else { window.addEventListener('load', checkBnr2); }
 })();
 
 // ══ HERO TITLE: scale up on scroll, then fade ══
