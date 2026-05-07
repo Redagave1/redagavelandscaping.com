@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red Agave — Testimonial Options Dynamic (D · E · F)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dark:#0a0a0a;
+  --dark2:#141311;
+  --dark3:#111;
+  --cream:#f0ead6;
+  --gold:#c9a84c;
+  --gold-pulse:#e8c96a;
+  --gold-soft:rgba(232,160,32,.7);
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#000;color:var(--cream);font-family:'Montserrat',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--gold)}
+@keyframes goldPulse{0%,100%{text-shadow:0 0 24px rgba(232,196,90,.45),0 0 48px rgba(201,168,76,.18)}50%{text-shadow:0 0 36px rgba(232,196,90,.62),0 0 90px rgba(201,168,76,.30)}}
+@keyframes goldLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* ── Nav ── */
+.cmp-bar{position:fixed;top:0;left:0;right:0;height:56px;z-index:200;background:rgba(8,8,8,.95);backdrop-filter:blur(18px);border-bottom:1px solid rgba(201,168,76,.18);display:flex;align-items:center;padding:0 28px;gap:32px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:5px;text-transform:uppercase}
+.cmp-brand{color:var(--gold-pulse);text-shadow:0 0 18px rgba(232,196,90,.4)}
+.cmp-jump{display:flex;gap:18px;flex-wrap:wrap}
+.cmp-jump a{color:rgba(240,234,214,.55);transition:color .25s,letter-spacing .25s}
+.cmp-jump a:hover{color:var(--gold-pulse);letter-spacing:6px}
+.opt-tag{position:sticky;top:56px;z-index:180;background:rgba(8,8,8,.95);backdrop-filter:blur(18px);border-bottom:1px solid rgba(201,168,76,.18);padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(240,234,214,.65)}
+.opt-tag em{font-style:normal;color:var(--gold-pulse);margin-right:6px}
+.opt-tag-r{font-size:9px;color:rgba(240,234,214,.45);letter-spacing:2px}
+
+/* =============================================================
+   OPTION D — 3D PERSPECTIVE CARD CAROUSEL
+   Cards sit in a perspective stage. Active center card faces
+   forward; adjacent cards recede in 3D space with rotateY.
+   Auto-advances every 6s. Click dots or cards to navigate.
+============================================================= */
+/* Option D wrapper — full bleed photo bg, blurred heavy */
+.testi-d{position:relative;padding:100px 0 80px;overflow:hidden;border-top:1px solid rgba(201,168,76,.08)}
+.td-bg{position:absolute;inset:0;background-image:url('../images/gallery/IMG_9652.webp');background-size:cover;background-position:center;filter:grayscale(.7) brightness(.28) blur(18px);transform:scale(1.08);z-index:0}
+.td-bg-ov{position:absolute;inset:0;z-index:1;background:rgba(8,7,5,.72)}
+.td-head{position:relative;z-index:3;text-align:center;padding:0 60px 60px}
+.td-eye{display:inline-flex;align-items:center;gap:14px;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:var(--gold-soft);margin-bottom:16px}
+.td-eye::before{content:'';width:44px;height:1px;background:var(--gold);opacity:.55}
+.td-title{font-family:'Bebas Neue',cursive;font-size:clamp(42px,5.5vw,80px);letter-spacing:2px;line-height:.92;color:var(--cream)}
+.td-title em{font-style:normal;color:var(--gold-pulse);animation:goldPulse 4.2s ease-in-out infinite}
+
+/* Stage */
+.td-stage{position:relative;z-index:3;perspective:1400px;perspective-origin:50% 50%;height:420px;display:flex;align-items:center;justify-content:center}
+.td-card{
+  position:absolute;
+  width:clamp(300px,32vw,480px);
+  background:rgba(14,13,11,.92);
+  border:1px solid rgba(201,168,76,.1);
+  padding:44px 40px;
+  display:flex;flex-direction:column;gap:16px;
+  cursor:pointer;
+  will-change:transform,opacity,filter;
+  transition:transform .8s var(--ease),opacity .7s var(--ease),filter .7s var(--ease),box-shadow .7s var(--ease),border-color .7s var(--ease);
+  transform-style:preserve-3d;
+  user-select:none;
+}
+/* Positions: -2 far-left, -1 left, 0 center, 1 right, 2 far-right */
+.td-card[data-pos="-2"]{transform:translateX(-88%) translateZ(-380px) rotateY(22deg);opacity:.08;pointer-events:none;filter:blur(6px)}
+.td-card[data-pos="-1"]{transform:translateX(-56%) translateZ(-200px) rotateY(16deg);opacity:.22;filter:blur(3px)}
+.td-card[data-pos="0"] {transform:translateX(0)     translateZ(0)      rotateY(0deg);opacity:1;filter:blur(0px);box-shadow:0 0 0 1px rgba(232,196,90,.4),0 40px 100px rgba(0,0,0,.85),0 0 80px rgba(201,168,76,.18);border-color:rgba(232,196,90,.4)}
+.td-card[data-pos="1"] {transform:translateX(56%)  translateZ(-200px) rotateY(-16deg);opacity:.22;filter:blur(3px)}
+.td-card[data-pos="2"] {transform:translateX(88%)  translateZ(-380px) rotateY(-22deg);opacity:.08;pointer-events:none;filter:blur(6px)}
+.td-card[data-pos="0"]:hover{box-shadow:0 0 0 1px rgba(232,196,90,.55),0 40px 120px rgba(0,0,0,.8),0 0 80px rgba(201,168,76,.2)}
+
+/* Card interior */
+.td-card-mark{font-family:'Bebas Neue',cursive;font-size:60px;line-height:.7;color:rgba(232,196,90,.18);margin-bottom:-4px;transition:color .6s}
+.td-card[data-pos="0"] .td-card-mark{color:rgba(232,196,90,.35)}
+.td-stars{display:flex;gap:3px;margin-bottom:4px}
+.td-star{color:var(--gold);font-size:11px;transition:color .4s}
+.td-card[data-pos="0"] .td-star{color:var(--gold-pulse);text-shadow:0 0 8px rgba(232,196,90,.5)}
+.td-q{font-size:13px;font-style:italic;font-weight:300;line-height:1.85;color:rgba(240,234,214,.6);transition:color .6s}
+.td-card[data-pos="0"] .td-q{color:rgba(240,234,214,.85)}
+.td-divider{width:28px;height:1px;background:rgba(201,168,76,.4);transition:width .6s var(--ease),background .6s}
+.td-card[data-pos="0"] .td-divider{width:44px;background:var(--gold-pulse)}
+.td-name{font-family:'Bebas Neue',cursive;font-size:18px;letter-spacing:2px;color:var(--cream)}
+.td-loc{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,234,214,.3)}
+
+/* Dots */
+.td-dots{position:relative;z-index:3;display:flex;justify-content:center;gap:14px;padding-top:44px}
+.td-dot{width:7px;height:7px;border-radius:50%;border:1px solid rgba(232,196,90,.4);background:transparent;cursor:pointer;transition:background .3s,transform .3s,box-shadow .3s}
+.td-dot.is-on{background:var(--gold-pulse);box-shadow:0 0 12px rgba(232,196,90,.7);transform:scale(1.4)}
+
+/* Progress line */
+.td-prog{position:relative;z-index:3;height:1px;background:rgba(232,196,90,.08);margin:24px 60px 0;overflow:hidden}
+.td-prog-bar{position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,var(--gold-pulse),var(--gold));box-shadow:0 0 10px rgba(232,196,90,.6);width:0%;transition:width .15s linear}
+
+
+/* =============================================================
+   OPTION E — SCROLL-DRIVEN STICKY TESTIMONIAL
+   Like the path section — 300vh sticky pin. Each testimonial
+   occupies one stage. Huge number left, quote right. Photo bg.
+============================================================= */
+.testi-e{position:relative;height:300vh;background:#000}
+.te-pin{position:sticky;top:0;height:100vh;overflow:hidden}
+
+/* Photo bg per stage */
+.te-photo{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.05);filter:grayscale(.5) brightness(.65) contrast(1.05);will-change:opacity,transform;transition:opacity 1.0s var(--ease),transform 1.8s var(--ease)}
+.te-photo.is-on{opacity:1;transform:scale(1)}
+.te-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.45) 50%,rgba(0,0,0,.68) 100%),linear-gradient(180deg,rgba(0,0,0,.4) 0%,transparent 25%,transparent 75%,rgba(0,0,0,.4) 100%)}
+
+/* Top label */
+.te-eb{position:absolute;left:60px;top:52px;z-index:5;display:inline-flex;align-items:center;gap:14px;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:var(--gold-soft)}
+.te-eb::before{content:'';width:44px;height:1px;background:var(--gold);opacity:.55}
+.te-section-label{position:absolute;left:60px;top:78px;z-index:5;font-family:'Bebas Neue',cursive;font-size:clamp(24px,3vw,40px);letter-spacing:4px;color:rgba(240,234,214,.6)}
+
+/* Grid: huge number left, content right */
+.te-inner{position:relative;z-index:2;height:100%;max-width:1480px;margin:0 auto;padding:0 60px;display:grid;grid-template-columns:auto 1fr;gap:80px;align-items:center}
+.te-numwrap{position:relative;width:clamp(160px,20vw,300px);height:clamp(160px,20vw,300px);flex-shrink:0}
+.te-num{
+  position:absolute;inset:0;
+  font-family:'Bebas Neue',cursive;font-size:clamp(160px,20vw,300px);
+  line-height:1;letter-spacing:0px;
+  color:transparent;
+  -webkit-text-stroke:1px rgba(232,196,90,.25);
+  opacity:0;transform:scale(.88);
+  transition:opacity .9s var(--ease),transform .9s var(--ease),-webkit-text-stroke .9s;
+  will-change:opacity,transform;
+}
+.te-num.is-on{opacity:1;transform:scale(1);-webkit-text-stroke:1px rgba(232,196,90,.6)}
+
+/* Content right */
+.te-content-wrap{position:relative;min-height:260px}
+.te-content{
+  position:absolute;left:0;top:0;
+  display:flex;flex-direction:column;gap:22px;
+  opacity:0;transform:translateY(28px);
+  transition:opacity .85s var(--ease) .15s,transform .85s var(--ease) .15s;
+  will-change:opacity,transform;
+  max-width:660px;
+}
+.te-content.is-on{opacity:1;transform:translateY(0)}
+.te-pulse{font-weight:500;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-pulse);animation:goldPulse 4.2s ease-in-out infinite}
+.te-q{font-family:'Montserrat',sans-serif;font-size:clamp(17px,2vw,24px);font-style:italic;font-weight:300;line-height:1.72;color:rgba(240,234,214,.88)}
+.te-attr{display:flex;align-items:center;gap:16px}
+.te-line{width:0;height:1px;background:var(--gold-pulse);transition:width 1.1s var(--ease) .4s}
+.te-content.is-on .te-line{width:44px}
+.te-name{font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:2px;color:var(--gold-pulse)}
+.te-loc{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,234,214,.4)}
+
+/* Rail + progress same as path section */
+.te-rail{position:absolute;right:40px;top:50%;transform:translateY(-50%);z-index:5;display:flex;flex-direction:column;gap:36px;align-items:flex-end}
+.te-rail-row{display:flex;align-items:center;gap:12px}
+.te-rail-dot{width:8px;height:8px;border-radius:50%;border:1px solid rgba(232,196,90,.4);background:transparent;transition:background .35s,box-shadow .35s,transform .35s}
+.te-rail-row.is-on .te-rail-dot{background:var(--gold-pulse);box-shadow:0 0 12px rgba(232,196,90,.7);transform:scale(1.35)}
+.te-rail-num{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(240,234,214,.35);opacity:0;transition:opacity .4s,color .4s}
+.te-rail-row.is-on .te-rail-num{opacity:1;color:var(--gold-pulse)}
+.te-progressbar{position:absolute;left:0;bottom:0;height:2px;width:100%;z-index:5;background:rgba(232,196,90,.07)}
+.te-progressbar::before{content:'';position:absolute;left:0;top:0;height:100%;width:var(--p,0%);background:linear-gradient(90deg,var(--gold-pulse),var(--gold));box-shadow:0 0 12px rgba(232,196,90,.55);transition:width .12s linear}
+
+
+/* =============================================================
+   OPTION F — WORD-BY-WORD SCROLL REVEAL
+   Each testimonial stacks vertically. On scroll entry, words
+   fly in with a dramatic staggered cascade. Huge ghost Bebas
+   number sits behind each block. Very editorial.
+============================================================= */
+.testi-f{background:var(--dark3);padding:100px 0;border-top:1px solid rgba(201,168,76,.08)}
+.tf-head{padding:0 60px 72px;max-width:1100px;margin:0 auto}
+.tf-eye{display:inline-flex;align-items:center;gap:14px;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:var(--gold-soft);margin-bottom:16px}
+.tf-eye::before{content:'';width:44px;height:1px;background:var(--gold);opacity:.55}
+.tf-title{font-family:'Bebas Neue',cursive;font-size:clamp(44px,5.8vw,82px);letter-spacing:2px;line-height:.92;color:var(--cream)}
+.tf-title em{font-style:normal;color:var(--gold-pulse);animation:goldPulse 4.2s ease-in-out infinite}
+
+.tf-block{position:relative;padding:80px 60px;max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:28px;overflow:hidden}
+.tf-block+.tf-block{border-top:1px solid rgba(201,168,76,.08)}
+
+/* Ghost number behind each block */
+.tf-ghost{
+  position:absolute;right:-20px;top:50%;transform:translateY(-50%);
+  font-family:'Bebas Neue',cursive;font-size:clamp(200px,28vw,400px);
+  line-height:1;color:transparent;
+  -webkit-text-stroke:1px rgba(232,196,90,.06);
+  pointer-events:none;z-index:0;
+  transition:-webkit-text-stroke 1.2s var(--ease);
+}
+.tf-block.revealed .tf-ghost{-webkit-text-stroke:1px rgba(232,196,90,.12)}
+
+/* Stage number + eyebrow */
+.tf-top{position:relative;z-index:1;display:flex;align-items:center;gap:22px}
+.tf-stage-num{font-family:'Bebas Neue',cursive;font-size:14px;letter-spacing:4px;color:rgba(232,196,90,.5)}
+.tf-stage-pulse{font-size:9px;font-weight:500;letter-spacing:5px;text-transform:uppercase;color:var(--gold-pulse);animation:goldPulse 4.2s ease-in-out infinite}
+
+/* The big quote text — each word is a span that flies in */
+.tf-quote{position:relative;z-index:1;font-family:'Montserrat',sans-serif;font-size:clamp(20px,2.8vw,36px);font-style:italic;font-weight:300;line-height:1.6;color:rgba(240,234,214,.88)}
+.tf-quote .word{display:inline-block;opacity:0;transform:translateY(32px) scale(.95);transition:opacity .55s var(--ease),transform .55s var(--ease);margin-right:.3em}
+.tf-block.revealed .tf-quote .word{opacity:1;transform:translateY(0) scale(1)}
+
+/* Attribution — slides in from left after words */
+.tf-attr{position:relative;z-index:1;display:flex;align-items:center;gap:18px;opacity:0;transform:translateX(-20px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.tf-block.revealed .tf-attr{opacity:1;transform:translateX(0)}
+.tf-attr-line{height:1px;background:linear-gradient(90deg,var(--gold-pulse),transparent);transform:scaleX(0);transform-origin:left;transition:transform 1.0s var(--ease)}
+.tf-block.revealed .tf-attr-line{transform:scaleX(1);width:48px}
+.tf-attr-name{font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:2px;color:var(--gold-pulse)}
+.tf-attr-loc{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,234,214,.35)}
+
+/* Gold rule at bottom of each revealed block */
+.tf-block::after{content:'';position:absolute;bottom:0;left:60px;right:60px;height:1px;background:linear-gradient(90deg,transparent,rgba(232,196,90,.18),transparent);opacity:0;transition:opacity 1.2s}
+.tf-block.revealed::after{opacity:1}
+
+.foot-note{background:#050504;padding:50px 30px;text-align:center;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:rgba(232,160,32,.55);border-top:1px solid rgba(232,196,90,.1)}
+
+@media(max-width:900px){
+  .td-stage{perspective:800px;height:auto;padding:0 16px;display:block;position:relative}
+  .td-card{position:relative;width:100%;margin:0 auto;max-width:420px}
+  .td-card[data-pos="-2"],.td-card[data-pos="-1"],.td-card[data-pos="1"],.td-card[data-pos="2"]{display:none}
+  .td-card[data-pos="0"]{transform:none}
+  .testi-e{height:auto}.te-pin{position:relative;height:auto}
+  .te-inner{grid-template-columns:1fr;padding:110px 22px 80px;gap:28px}
+  .te-numwrap{width:120px;height:120px}.te-num{font-size:100px}
+  .te-rail{display:none}.te-eb,.te-section-label{left:22px}
+  .testi-f{padding:60px 0}
+  .tf-block{padding:60px 22px}
+  .tf-ghost{right:-40px}
+  .tf-head{padding:0 22px 52px}
+}
+</style>
+</head>
+<body>
+
+<div class="cmp-bar">
+  <div class="cmp-brand">RED AGAVE · TESTIMONIALS — MORE DYNAMIC</div>
+  <nav class="cmp-jump">
+    <a href="#testi-d">D · 3D Carousel</a>
+    <a href="#testi-e">E · Scroll-Driven</a>
+    <a href="#testi-f">F · Word Reveal</a>
+  </nav>
+</div>
+
+<!-- ═══ OPTION D — 3D PERSPECTIVE CARD CAROUSEL ═══ -->
+<div class="opt-tag" id="testi-d">
+  <div>Option <em>D</em> — 3D Perspective Carousel</div>
+  <div class="opt-tag-r">cards recede in 3D · active card faces forward with gold glow · auto-advances 6s · click to navigate</div>
+</div>
+<section class="testi-d">
+  <div class="td-bg" aria-hidden="true"></div>
+  <div class="td-bg-ov" aria-hidden="true"></div>
+  <div class="td-head">
+    <div class="td-eye">Client Stories</div>
+    <h2 class="td-title">What Our Clients <em>Say</em></h2>
+  </div>
+  <div class="td-stage" id="td-stage">
+    <div class="td-card" data-pos="-1" data-idx="2">
+      <div class="td-card-mark">&ldquo;</div>
+      <div class="td-stars"><span class="td-star">★</span><span class="td-star">★</span><span class="td-star">★</span><span class="td-star">★</span><span class="td-star">★</span></div>
+      <p class="td-q">Our xeriscape is breathtaking and our water bill dropped by 40%. I received daily photos throughout the entire build and never felt out of the loop. Red Agave delivered on every single promise.</p>
+      <div class="td-divider"></div>
+      <div class="td-name">Lisa K.</div>
+      <div class="td-loc">Circle C Ranch, TX</div>
+    </div>
+    <div class="td-card" data-pos="0" data-idx="0">
+      <div class="td-card-mark">&ldquo;</div>
+      <div class="td-stars"><span class="td-star">★</span><span class="td-star">★</span><span class="td-star">★</span><span class="td-star">★</span><span class="td-star">★</span></div>
+      <p class="td-q">Red Agave completely transformed our backyard in Westlake. From the first site visit to the final walkthrough, every detail was handled with expertise we had never seen. The finished space looks better than the 3D rendering &mdash; and that rendering was already stunning.</p>
+      <div class="td-divider"></div>
+      <div class="td-name">Sarah M.</div>
+      <div class="td-loc">Westlake Hills, TX</div>
+    </div>
+    <div class="td-card" data-pos="1" data-idx="1">
+      <div class="td-card-mark">&ldquo;</div>
+      <div class="td-stars"><span class="td-star">★</span><span class="td-star">★</span><span class="td-star">★</span><span class="td-star">★</span><span class="td-star">★</span></div>
+      <p class="td-q">We interviewed four companies before choosing Red Agave. No one else came close to the detail in their proposal. The pergola and outdoor kitchen they built is the most-used room in our house. Worth every penny.</p>
+      <div class="td-divider"></div>
+      <div class="td-name">James &amp; Lauren T.</div>
+      <div class="td-loc">Barton Creek, TX</div>
+    </div>
+  </div>
+  <div class="td-dots" id="td-dots">
+    <button class="td-dot is-on" data-idx="0"></button>
+    <button class="td-dot" data-idx="1"></button>
+    <button class="td-dot" data-idx="2"></button>
+  </div>
+  <div class="td-prog"><div class="td-prog-bar" id="td-prog-bar"></div></div>
+</section>
+
+<!-- ═══ OPTION E — SCROLL-DRIVEN STICKY TESTIMONIAL ═══ -->
+<div class="opt-tag" id="testi-e">
+  <div>Option <em>E</em> — Scroll-Driven Sticky</div>
+  <div class="opt-tag-r">300vh sticky pin · same DNA as the path section · photo crossfade · outline number left · large quote right</div>
+</div>
+<section class="testi-e" id="te-section">
+  <div class="te-pin">
+    <div class="te-photo is-on" style="background-image:url('../images/gallery/IMG_9652.webp')"></div>
+    <div class="te-photo"        style="background-image:url('../images/gallery/IMG_9107.webp')"></div>
+    <div class="te-photo"        style="background-image:url('../images/gallery/DSC04001.webp')"></div>
+    <div class="te-scrim"></div>
+
+    <span class="te-eb">Client Stories</span>
+    <span class="te-section-label">What Our Clients Say.</span>
+
+    <div class="te-inner">
+      <div class="te-numwrap">
+        <div class="te-num is-on" data-step="0">1</div>
+        <div class="te-num"        data-step="1">2</div>
+        <div class="te-num"        data-step="2">3</div>
+      </div>
+      <div class="te-content-wrap">
+        <div class="te-content is-on" data-step="0">
+          <span class="te-pulse">Westlake Hills</span>
+          <p class="te-q">&ldquo;Red Agave completely transformed our backyard. From the first site visit to the final walkthrough, every detail was handled with an expertise we had never seen. The finished space looks better than the 3D rendering &mdash; and that rendering was already stunning.&rdquo;</p>
+          <div class="te-attr">
+            <span class="te-line"></span>
+            <span class="te-name">Sarah M.</span>
+            <span class="te-loc">Westlake Hills, TX</span>
+          </div>
+        </div>
+        <div class="te-content" data-step="1">
+          <span class="te-pulse">Barton Creek</span>
+          <p class="te-q">&ldquo;We interviewed four companies before choosing Red Agave. No one else came close to the level of detail in their proposal or the quality of their crew. The pergola and outdoor kitchen they built is the most-used room in our house. Worth every penny and then some.&rdquo;</p>
+          <div class="te-attr">
+            <span class="te-line"></span>
+            <span class="te-name">James &amp; Lauren T.</span>
+            <span class="te-loc">Barton Creek, TX</span>
+          </div>
+        </div>
+        <div class="te-content" data-step="2">
+          <span class="te-pulse">Circle C Ranch</span>
+          <p class="te-q">&ldquo;Our xeriscape is breathtaking and our water bill dropped by 40%. I received daily progress photos throughout the entire build and never once felt out of the loop. Red Agave delivered on every single promise. They are the only landscaper in Austin worth calling.&rdquo;</p>
+          <div class="te-attr">
+            <span class="te-line"></span>
+            <span class="te-name">Lisa K.</span>
+            <span class="te-loc">Circle C Ranch, TX</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="te-rail">
+      <div class="te-rail-row is-on" data-step="0"><span class="te-rail-num">01</span><span class="te-rail-dot"></span></div>
+      <div class="te-rail-row"        data-step="1"><span class="te-rail-num">02</span><span class="te-rail-dot"></span></div>
+      <div class="te-rail-row"        data-step="2"><span class="te-rail-num">03</span><span class="te-rail-dot"></span></div>
+    </div>
+    <div class="te-progressbar" id="te-progressbar"></div>
+  </div>
+</section>
+
+<!-- ═══ OPTION F — WORD-BY-WORD SCROLL REVEAL ═══ -->
+<div class="opt-tag" id="testi-f">
+  <div>Option <em>F</em> — Word-by-Word Scroll Reveal</div>
+  <div class="opt-tag-r">words cascade in on scroll · giant ghost number behind each block · gold line draws itself in</div>
+</div>
+<section class="testi-f">
+  <div class="tf-head">
+    <div class="tf-eye">Client Stories</div>
+    <h2 class="tf-title">What Our Clients <em>Say</em></h2>
+  </div>
+
+  <div class="tf-block" id="tf-0">
+    <div class="tf-ghost" aria-hidden="true">1</div>
+    <div class="tf-top">
+      <span class="tf-stage-num">01 /</span>
+      <span class="tf-stage-pulse">Westlake Hills</span>
+    </div>
+    <p class="tf-quote" id="tf-q0"></p>
+    <div class="tf-attr">
+      <span class="tf-attr-line"></span>
+      <span class="tf-attr-name">Sarah M.</span>
+      <span class="tf-attr-loc">Westlake Hills, TX</span>
+    </div>
+  </div>
+
+  <div class="tf-block" id="tf-1">
+    <div class="tf-ghost" aria-hidden="true">2</div>
+    <div class="tf-top">
+      <span class="tf-stage-num">02 /</span>
+      <span class="tf-stage-pulse">Barton Creek</span>
+    </div>
+    <p class="tf-quote" id="tf-q1"></p>
+    <div class="tf-attr">
+      <span class="tf-attr-line"></span>
+      <span class="tf-attr-name">James &amp; Lauren T.</span>
+      <span class="tf-attr-loc">Barton Creek, TX</span>
+    </div>
+  </div>
+
+  <div class="tf-block" id="tf-2">
+    <div class="tf-ghost" aria-hidden="true">3</div>
+    <div class="tf-top">
+      <span class="tf-stage-num">03 /</span>
+      <span class="tf-stage-pulse">Circle C Ranch</span>
+    </div>
+    <p class="tf-quote" id="tf-q2"></p>
+    <div class="tf-attr">
+      <span class="tf-attr-line"></span>
+      <span class="tf-attr-name">Lisa K.</span>
+      <span class="tf-attr-loc">Circle C Ranch, TX</span>
+    </div>
+  </div>
+</section>
+
+<div class="foot-note">Options D · E · F — tell me which one and I'll wire it into index.html</div>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   OPTION D — 3D Carousel
+═══════════════════════════════════════════════════ */
+(function(){
+  var stage   = document.getElementById('td-stage');
+  var dots    = document.querySelectorAll('.td-dot');
+  var progBar = document.getElementById('td-prog-bar');
+  if (!stage) return;
+
+  var cards   = Array.from(stage.querySelectorAll('.td-card'));
+  var total   = cards.length; // 3
+  var current = 0;
+  var dur     = 6000;
+  var startTs = null;
+  var raf;
+
+  // position map: index relative to current → pos attribute
+  // positions: -2,-1,0,1,2
+  function posFor(idx){
+    var diff = idx - current;
+    // wrap
+    if (diff >  Math.floor(total/2)) diff -= total;
+    if (diff < -Math.floor(total/2)) diff += total;
+    return diff;
+  }
+
+  function render(){
+    cards.forEach(function(card){
+      var idx = parseInt(card.getAttribute('data-idx'),10);
+      var pos = posFor(idx);
+      // clamp to -2..2
+      pos = Math.max(-2, Math.min(2, pos));
+      card.setAttribute('data-pos', pos);
+    });
+    dots.forEach(function(d,i){ d.classList.toggle('is-on', i===current); });
+  }
+
+  function goTo(idx){
+    current = ((idx % total) + total) % total;
+    render();
+    startTs = null; // reset timer
+  }
+
+  dots.forEach(function(d){
+    d.addEventListener('click', function(){ goTo(parseInt(this.getAttribute('data-idx'),10)); });
+  });
+
+  cards.forEach(function(card){
+    card.addEventListener('click', function(){
+      var pos = parseInt(card.getAttribute('data-pos'),10);
+      if (pos === 1) goTo(current + 1);
+      else if (pos === -1) goTo(current - 1);
+    });
+  });
+
+  function tick(ts){
+    if (!startTs) startTs = ts;
+    var elapsed = (ts - startTs) % dur;
+    var pct = (elapsed / dur) * 100;
+    if (progBar) progBar.style.width = pct.toFixed(2) + '%';
+    var shouldBe = Math.floor((ts - startTs) / dur) % total;
+    if (shouldBe !== current){ current = shouldBe; render(); }
+    raf = requestAnimationFrame(tick);
+  }
+  raf = requestAnimationFrame(tick);
+  render();
+})();
+
+/* ═══════════════════════════════════════════════════
+   OPTION E — Scroll-Driven Sticky
+═══════════════════════════════════════════════════ */
+(function(){
+  var section = document.getElementById('te-section');
+  if (!section) return;
+  var totalSteps = 3;
+  var nums     = section.querySelectorAll('.te-num');
+  var contents = section.querySelectorAll('.te-content');
+  var photos   = section.querySelectorAll('.te-photo');
+  var rails    = section.querySelectorAll('.te-rail-row');
+  var progBar  = document.getElementById('te-progressbar');
+  var last     = -1;
+
+  function setActive(idx){
+    if (idx === last) return;
+    last = idx;
+    nums.forEach(function(n,i){ n.classList.toggle('is-on', i===idx); });
+    contents.forEach(function(n,i){ n.classList.toggle('is-on', i===idx); });
+    photos.forEach(function(n,i){ n.classList.toggle('is-on', i===idx); });
+    rails.forEach(function(n,i){ n.classList.toggle('is-on', i===idx); });
+  }
+  function getOffsetTop(el){
+    var t = 0; while(el){ t += el.offsetTop; el = el.offsetParent; } return t;
+  }
+  function onScroll(){
+    var sTop      = getOffsetTop(section);
+    var scrolled  = window.scrollY - sTop;
+    var total     = section.offsetHeight - window.innerHeight;
+    if (total <= 0) return;
+    var p = Math.max(0, Math.min(1, scrolled / total));
+    setActive(Math.min(totalSteps - 1, Math.floor(p * totalSteps)));
+    if (progBar) progBar.style.setProperty('--p', (p*100).toFixed(2)+'%');
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  if (document.readyState==='complete') onScroll();
+  else window.addEventListener('load', onScroll);
+})();
+
+/* ═══════════════════════════════════════════════════
+   OPTION F — Word-by-Word Reveal
+═══════════════════════════════════════════════════ */
+(function(){
+  var quotes = [
+    "Red Agave completely transformed our backyard in Westlake. From the first site visit to the final walkthrough, every single detail was handled with an expertise and professionalism we had never seen from a landscaper. The finished space looks better than the 3D rendering — and that rendering was already stunning.",
+    "We interviewed four companies before choosing Red Agave. No one else came close to the level of detail in their proposal or the quality of their crew. The pergola and outdoor kitchen they built is the most-used room in our house. Worth every penny and then some.",
+    "Our xeriscape is breathtaking and our water bill dropped by 40%. I received daily progress photos throughout the entire build and never once felt out of the loop. Red Agave delivered on every single promise. They are the only landscaper in Austin worth calling."
+  ];
+
+  // Build word spans
+  [0,1,2].forEach(function(i){
+    var el = document.getElementById('tf-q' + i);
+    if (!el) return;
+    var words = quotes[i].split(' ');
+    el.innerHTML = words.map(function(w,wi){
+      return '<span class="word" style="transition-delay:' + (wi * 42) + 'ms">' + w + '</span>';
+    }).join('');
+  });
+
+  // IntersectionObserver to trigger each block
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){
+        e.target.classList.add('revealed');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.tf-block').forEach(function(b){ obs.observe(b); });
+})();
+</script>
+</body>
+</html>
