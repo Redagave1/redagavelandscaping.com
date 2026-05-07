@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red Agave — Path Hybrid (A movement + C look) + Banners 1 & 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dark:#0a0a0a;
+  --dark2:#141311;
+  --cream:#f0ead6;
+  --cream60:rgba(240,234,214,.6);
+  --gold:#c9a84c;
+  --gold-pulse:#e8c96a;
+  --gold-soft:rgba(232,160,32,.7);
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#000;color:var(--cream);font-family:'Montserrat',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--gold)}
+
+@keyframes goldPulse{0%,100%{text-shadow:0 0 24px rgba(232,196,90,.45),0 0 48px rgba(201,168,76,.18)}50%{text-shadow:0 0 36px rgba(232,196,90,.62),0 0 90px rgba(201,168,76,.30)}}
+
+/* ── Top jump nav ── */
+.cmp-bar{position:fixed;top:0;left:0;right:0;height:56px;z-index:90;background:rgba(8,8,8,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(201,168,76,.18);display:flex;align-items:center;padding:0 28px;gap:32px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:5px;text-transform:uppercase}
+.cmp-brand{color:var(--gold-pulse);text-shadow:0 0 18px rgba(232,196,90,.4)}
+.cmp-jump{display:flex;gap:18px;flex-wrap:wrap}
+.cmp-jump a{color:rgba(240,234,214,.55);transition:color .25s,letter-spacing .25s}
+.cmp-jump a:hover{color:var(--gold-pulse);letter-spacing:6px}
+.opt-tag{position:sticky;top:56px;z-index:80;background:rgba(8,8,8,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(201,168,76,.18);padding:14px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(240,234,214,.65)}
+.opt-tag em{font-style:normal;color:var(--gold-pulse);text-shadow:0 0 14px rgba(232,196,90,.35);margin-right:6px}
+.opt-tag-r{font-size:9px;color:rgba(240,234,214,.45);letter-spacing:2px}
+
+/* shared eyebrow + section headings */
+.s-eye{display:inline-flex;align-items:center;gap:14px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:var(--gold-soft);margin-bottom:22px}
+.s-eye::before{content:'';width:44px;height:1px;background:var(--gold);opacity:.55}
+
+/* =====================================================================
+   PATH HYBRID — Option A movement (sticky pinned, scroll cycles 4 stages)
+                + Option C look (full-bleed B&W photo bg, big number left)
+===================================================================== */
+.path{position:relative;height:360vh;background:#000}
+.path-pin{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;background:#000}
+
+/* Photo crossfade — full-bleed background like option C */
+.path-photo{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  opacity:0;transform:scale(1.06);
+  filter:grayscale(.85) brightness(.42) contrast(1.1);
+  will-change:transform,opacity;
+  transition:opacity 1.0s var(--ease),transform 1.6s var(--ease),filter 1.0s var(--ease);
+}
+.path-photo.is-on{opacity:1;transform:scale(1.0);filter:grayscale(.7) brightness(.5) contrast(1.1)}
+
+/* Scrim — left-weighted so the cream number reads, plus top/bottom feathering */
+.path-pin::after{
+  content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.55) 35%,rgba(0,0,0,.20) 70%,rgba(0,0,0,.65) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 78%,rgba(0,0,0,.55) 100%);
+}
+
+/* Section title pinned at top of viewport — small, low-key */
+.path-eb{
+  position:absolute;left:48px;top:48px;z-index:5;
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;
+  color:var(--gold-soft);
+}
+.path-eb::before{content:'';width:44px;height:1px;background:var(--gold);opacity:.55}
+.path-section-title{
+  position:absolute;left:48px;top:74px;z-index:5;
+  font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:3px;
+  color:rgba(240,234,214,.55);
+}
+
+/* Editorial grid — option C layout */
+.path-inner{position:relative;z-index:2;height:100%;max-width:1480px;margin:0 auto;padding:0 60px;display:grid;grid-template-columns:0.85fr 1fr;gap:80px;align-items:center}
+
+/* Huge Bebas number on the left — crossfades between 01-04 */
+.path-numwrap{position:relative;height:clamp(180px,22vw,340px)}
+.path-num{
+  position:absolute;left:0;top:0;
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(180px,22vw,320px);
+  line-height:.84;letter-spacing:2px;
+  color:var(--cream);
+  text-shadow:0 2px 8px rgba(0,0,0,.7),0 0 18px rgba(240,234,214,.05);
+  opacity:0;transform:translateX(-30px);
+  transition:opacity 1.0s var(--ease),transform 1.0s var(--ease);
+  will-change:transform,opacity;
+}
+.path-num.is-on{opacity:1;transform:translateX(0)}
+
+/* Right side content — gold-pulse eyebrow + Bebas h3 + Montserrat p */
+.path-content-wrap{position:relative;min-height:280px}
+.path-content{
+  position:absolute;left:0;top:0;
+  display:flex;flex-direction:column;gap:18px;
+  opacity:0;transform:translateY(24px);
+  transition:opacity .9s var(--ease) .1s,transform .9s var(--ease) .1s;
+  will-change:transform,opacity;max-width:620px;
+}
+.path-content.is-on{opacity:1;transform:translateY(0)}
+.path-content .pulse{
+  font-family:'Montserrat',sans-serif;font-weight:500;
+  font-size:11px;letter-spacing:5px;text-transform:uppercase;
+  color:var(--gold-pulse);
+  text-shadow:0 0 24px rgba(232,196,90,.45),0 0 48px rgba(201,168,76,.18);
+  animation:goldPulse 4.2s ease-in-out infinite;
+}
+.path-content h3{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(40px,5vw,72px);line-height:.95;letter-spacing:2px;
+  color:var(--cream);text-shadow:0 2px 8px rgba(0,0,0,.6);
+}
+.path-content p{
+  font-family:'Montserrat',sans-serif;
+  font-size:13px;font-weight:300;line-height:1.82;
+  color:rgba(240,234,214,.78);
+  max-width:520px;
+}
+
+/* Right-edge progress rail — 4 dots ticking down */
+.path-rail{
+  position:absolute;right:36px;top:50%;
+  transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:42px;
+  z-index:5;align-items:flex-end;
+}
+.path-rail::before{
+  content:'';position:absolute;right:4px;top:-26px;bottom:-26px;
+  width:1px;background:linear-gradient(180deg,transparent,rgba(232,196,90,.18),transparent);
+}
+.path-rail-row{display:flex;align-items:center;gap:14px}
+.path-rail-num{
+  font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:4px;text-transform:uppercase;
+  color:rgba(240,234,214,.4);white-space:nowrap;opacity:0;
+  transition:opacity .4s,letter-spacing .4s,color .4s;
+}
+.path-rail-dot{
+  width:9px;height:9px;border-radius:50%;
+  border:1px solid rgba(232,196,90,.5);
+  background:transparent;
+  transition:background .35s,box-shadow .35s,transform .35s;
+}
+.path-rail-row.is-on .path-rail-dot{background:var(--gold-pulse);box-shadow:0 0 14px rgba(232,196,90,.7),0 0 28px rgba(232,196,90,.3);transform:scale(1.3)}
+.path-rail-row.is-on .path-rail-num{opacity:1;color:var(--gold-pulse);letter-spacing:5px}
+
+/* Bottom progress bar — tiny gold sliver showing scroll position through the section */
+.path-progressbar{
+  position:absolute;left:0;bottom:0;
+  height:2px;width:100%;z-index:5;
+  background:rgba(232,196,90,.08);
+}
+.path-progressbar::before{
+  content:'';position:absolute;left:0;top:0;height:100%;
+  width:var(--p,0%);
+  background:linear-gradient(90deg,var(--gold-pulse),var(--gold));
+  box-shadow:0 0 14px rgba(232,196,90,.6);
+  transition:width .15s linear;
+}
+
+/* =====================================================================
+   BANNER PREVIEW HEADER + SECTIONS
+===================================================================== */
+.bnr-head{padding:80px 60px 32px;max-width:1480px;margin:0 auto;text-align:center}
+.bnr-head h2{font-family:'Bebas Neue',cursive;font-size:clamp(40px,4.4vw,68px);letter-spacing:2px;color:var(--cream);margin-bottom:8px}
+.bnr-head .lead{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gold-soft)}
+
+/* ── BANNER 1 — Dual Counter-Scroll Thin Strip ── */
+.bnr1{background:var(--dark2);border-top:1px solid rgba(232,196,90,.12);border-bottom:1px solid rgba(232,196,90,.12);padding:10px 0;display:flex;flex-direction:column;gap:2px}
+.bnr1-row{overflow:hidden;height:32px;display:flex;align-items:center}
+.bnr1-track{display:flex;white-space:nowrap;will-change:transform}
+.bnr1-track.left{animation:bnr1Left 60s linear infinite}
+.bnr1-track.right{animation:bnr1Right 60s linear infinite}
+@keyframes bnr1Left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes bnr1Right{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.bnr1-w{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:rgba(240,234,214,.55);padding:0 22px;flex-shrink:0}
+.bnr1-w.gold{color:var(--gold-pulse)}
+.bnr1-sep{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:5px;color:rgba(232,196,90,.35);padding:0 4px;flex-shrink:0}
+
+/* ── BANNER 2 — Static Stat Bar w/ count-up animation ── */
+.bnr2{background:var(--dark2);position:relative;padding:60px 60px;border-top:1px solid rgba(232,196,90,.18);border-bottom:1px solid rgba(232,196,90,.18)}
+.bnr2::before,.bnr2::after{content:'';position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(232,196,90,.45) 50%,transparent 100%)}
+.bnr2::before{top:8px}
+.bnr2::after{bottom:8px}
+.bnr2-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.bnr2-cell{display:flex;flex-direction:column;align-items:center;gap:8px;padding:0 18px;position:relative}
+.bnr2-cell+.bnr2-cell::before{content:'';position:absolute;left:0;top:18%;bottom:18%;width:1px;background:linear-gradient(180deg,transparent,rgba(232,196,90,.25),transparent)}
+.bnr2-eb{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:300;letter-spacing:6px;text-transform:uppercase;color:var(--gold-soft)}
+.bnr2-num{
+  font-family:'Bebas Neue',cursive;
+  font-size:clamp(48px,5.5vw,82px);line-height:1;letter-spacing:2px;
+  color:var(--gold-pulse);
+  text-shadow:0 0 28px rgba(232,196,90,.45),0 0 64px rgba(201,168,76,.22),0 0 120px rgba(232,196,90,.12);
+  animation:goldPulse 4.2s ease-in-out infinite;
+  /* Reserve space so the count animation doesn't reflow neighbors */
+  font-variant-numeric:tabular-nums;
+}
+.bnr2-sub{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:rgba(240,234,214,.45);text-align:center}
+
+/* footer note */
+.foot-note{background:#050504;padding:50px 30px;text-align:center;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:rgba(232,160,32,.55);border-top:1px solid rgba(232,196,90,.1)}
+
+@media(max-width:900px){
+  .cmp-bar{padding:0 16px;gap:14px;font-size:8px;letter-spacing:3px}
+  .opt-tag{padding:10px 16px}
+  .path{height:auto}
+  .path-pin{position:relative;height:auto}
+  .path-inner{grid-template-columns:1fr;padding:120px 22px 80px;gap:32px}
+  .path-numwrap{height:140px}
+  .path-num{font-size:120px}
+  .path-rail{display:none}
+  .path-eb,.path-section-title{left:22px}
+  .bnr2-grid{grid-template-columns:repeat(2,1fr);gap:24px 0}
+  .bnr2-cell+.bnr2-cell:nth-child(odd)::before{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="cmp-bar">
+  <div class="cmp-brand">RED AGAVE · PATH HYBRID + BANNERS</div>
+  <nav class="cmp-jump">
+    <a href="#path">Path Hybrid</a>
+    <a href="#bnr1">Banner 1 · Counter-Scroll</a>
+    <a href="#bnr2">Banner 2 · Stat Bar (count-up)</a>
+  </nav>
+</div>
+
+<!-- ═══ PATH HYBRID ═══ -->
+<div class="opt-tag" id="path">
+  <div>Path — Hybrid: <em>A</em> movement + <em>C</em> look</div>
+  <div class="opt-tag-r">sticky pinned 360vh · full-bleed photo bg crossfades · big Bebas number left · editorial content right</div>
+</div>
+<section class="path" id="path-section">
+  <div class="path-pin">
+    <!-- Bg photos crossfading -->
+    <div class="path-photo is-on" data-step="0" style="background-image:url('../images/projects/hopeland/IMG_9712.webp')"></div>
+    <div class="path-photo"        data-step="1" style="background-image:url('../images/projects/hopeland/IMG_9683.webp')"></div>
+    <div class="path-photo"        data-step="2" style="background-image:url('../images/projects/hopeland/IMG_9678.webp')"></div>
+    <div class="path-photo"        data-step="3" style="background-image:url('../images/projects/hopeland/IMG_9645.webp')"></div>
+
+    <!-- Section title (small, top-left) -->
+    <span class="path-eb">How It Works</span>
+    <span class="path-section-title">The Path Towards Your Dream Landscape.</span>
+
+    <!-- Editorial grid: huge number left, content right -->
+    <div class="path-inner">
+      <div class="path-numwrap">
+        <div class="path-num is-on" data-step="0">01</div>
+        <div class="path-num"        data-step="1">02</div>
+        <div class="path-num"        data-step="2">03</div>
+        <div class="path-num"        data-step="3">04</div>
+      </div>
+      <div class="path-content-wrap">
+        <div class="path-content is-on" data-step="0">
+          <span class="pulse">Free Consultation</span>
+          <h3>We walk your property before we sketch a single line.</h3>
+          <p>Your dedicated Red Agave designer comes to you &mdash; not the other way around. We study the grade, trace the shade lines at peak summer, photograph the sightlines from inside the house, and ask the questions most designers never think to ask: where you sit with a drink at dusk, whether the kids cut across the lawn, how much of your budget you want reserved for planting versus stone. Every lot in Westlake, Circle C, and the Hill Country is different. We treat it that way. The consultation is free, the conversation is frank, and nothing gets drawn until we understand exactly how you live outside.</p>
+        </div>
+        <div class="path-content" data-step="1">
+          <span class="pulse">CAD &middot; 2D Plan &middot; Itemized Pricing</span>
+          <h3>Every square foot rendered before we break ground.</h3>
+          <p>You receive a complete design packet: a fully dimensioned 2D CAD plan, a custom 3D rendering so you can visualize materials and elevations, and an itemized cost breakdown down to the square foot of limestone and the individual light fixture. Nothing is a range or an estimate &mdash; you know exactly what you are getting and exactly what it costs. Revisions are included. We go back and forth until the plan fits the lot, the budget, and the specific way your family uses the outdoors. You approve every detail in writing before a single shovel enters the ground.</p>
+        </div>
+        <div class="path-content" data-step="2">
+          <span class="pulse">In-House Build &middot; Never Subcontracted</span>
+          <h3>Same hands on day one are the hands that finish it.</h3>
+          <p>Every person who builds your outdoor space &mdash; stonemason, carpenter, horticulturist, irrigation specialist, WLED lighting technician &mdash; is a full-time Red Agave employee. We have never subcontracted a single trade. That means the standard of craft stays consistent from foundation to final plant, and the accountability is ours alone. You receive daily progress photos and a weekly walkthrough with your project lead. If something shifts during the build, you hear it from us directly &mdash; not from a third-party crew you have never met. The result is tighter work, tighter schedules, and a finished yard that looks exactly like the rendering you approved.</p>
+        </div>
+        <div class="path-content" data-step="3">
+          <span class="pulse">Final Walkthrough &middot; Ongoing Care</span>
+          <h3>Signed off, documented, and yours &mdash; permanently.</h3>
+          <p>Before we consider a project complete, we walk every inch of the yard together with a formal punch list. Each item &mdash; grout joints, drainage grade, plant health, lighting zones &mdash; is documented and signed off by both you and your project lead. You receive a full care packet covering irrigation schedules, seasonal planting guidance, and material maintenance for every surface we installed. For clients who want it, Red Agave offers a continuing maintenance program &mdash; the same designer, the same crew, on a schedule that keeps your investment looking the way it did on day one, for as long as you own the property.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right-edge progress rail -->
+    <div class="path-rail">
+      <div class="path-rail-row is-on" data-step="0"><span class="path-rail-num">01 / Consult</span><span class="path-rail-dot"></span></div>
+      <div class="path-rail-row"        data-step="1"><span class="path-rail-num">02 / Design</span><span class="path-rail-dot"></span></div>
+      <div class="path-rail-row"        data-step="2"><span class="path-rail-num">03 / Build</span><span class="path-rail-dot"></span></div>
+      <div class="path-rail-row"        data-step="3"><span class="path-rail-num">04 / Deliver</span><span class="path-rail-dot"></span></div>
+    </div>
+
+    <!-- Bottom scroll progress bar -->
+    <div class="path-progressbar" id="path-progressbar"></div>
+  </div>
+</section>
+
+<!-- ═══ BANNER 1 — Dual Counter-Scroll Thin Strip ═══ -->
+<div class="opt-tag" id="bnr1">
+  <div>Banner <em>1</em> — Dual Counter-Scroll Thin Strip</div>
+  <div class="opt-tag-r">two thin rows · counter-direction · tiny Montserrat caps · em-dash separators</div>
+</div>
+<div class="bnr1">
+  <div class="bnr1-row">
+    <div class="bnr1-track left">
+      <span class="bnr1-w">Austin&apos;s Premier Design + Build</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w gold">Never Subcontracted</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w">Westlake · Tarrytown · Circle C</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w">12+ Years In House</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w">CAD + 2D Plans · Free Consultation</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w gold">Licensed &amp; Insured</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w">Austin&apos;s Premier Design + Build</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w gold">Never Subcontracted</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w">Westlake · Tarrytown · Circle C</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w">12+ Years In House</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w">CAD + 2D Plans · Free Consultation</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w gold">Licensed &amp; Insured</span><span class="bnr1-sep">—</span>
+    </div>
+  </div>
+  <div class="bnr1-row">
+    <div class="bnr1-track right">
+      <span class="bnr1-w">WLED Lighting</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w">Custom Decks &amp; Pergolas</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w gold">Stone &amp; Limestone Hardscape</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w">Fire + Water Features</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w">Native Texas Planting</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w gold">Pool Surrounds</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w">WLED Lighting</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w">Custom Decks &amp; Pergolas</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w gold">Stone &amp; Limestone Hardscape</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w">Fire + Water Features</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w">Native Texas Planting</span><span class="bnr1-sep">—</span>
+      <span class="bnr1-w gold">Pool Surrounds</span><span class="bnr1-sep">—</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BANNER 2 — Static Stat Bar (numbers count up on entry) ═══ -->
+<div class="opt-tag" id="bnr2">
+  <div>Banner <em>2</em> — Static Stat Bar w/ count-up</div>
+  <div class="opt-tag-r">numbers animate 0 → target on viewport entry · gold-pulse Bebas · ATX fades in</div>
+</div>
+<div class="bnr2" id="bnr2-section">
+  <div class="bnr2-grid">
+    <div class="bnr2-cell">
+      <span class="bnr2-eb">Founded</span>
+      <span class="bnr2-num" data-count="12" data-suffix="+">0+</span>
+      <span class="bnr2-sub">Years in Austin</span>
+    </div>
+    <div class="bnr2-cell">
+      <span class="bnr2-eb">Delivered</span>
+      <span class="bnr2-num" data-count="200" data-suffix="+">0+</span>
+      <span class="bnr2-sub">Projects Completed</span>
+    </div>
+    <div class="bnr2-cell">
+      <span class="bnr2-eb">Crew</span>
+      <span class="bnr2-num" data-count="100" data-suffix="%">0%</span>
+      <span class="bnr2-sub">In-House · No Subs</span>
+    </div>
+    <div class="bnr2-cell">
+      <span class="bnr2-eb">Service Area</span>
+      <span class="bnr2-num" data-text="ATX">ATX</span>
+      <span class="bnr2-sub">Westlake · Circle C · Hill Country</span>
+    </div>
+  </div>
+</div>
+
+<div class="foot-note">
+  Hybrid path · Banner 1 + Banner 2 with count-up · Tell me to wire into index.html when ready.
+</div>
+
+<script>
+(function(){
+  /* ════════════════════════════════════════════════
+     PATH HYBRID — sticky-pinned scroll-driven step cycle
+     (option A movement) with full-bleed photo + editorial layout
+     (option C look)
+  ════════════════════════════════════════════════ */
+  var section = document.getElementById('path-section');
+  if (section){
+    var totalSteps = 4;
+    var nums    = section.querySelectorAll('.path-num');
+    var contents = section.querySelectorAll('.path-content');
+    var photos  = section.querySelectorAll('.path-photo');
+    var rails   = section.querySelectorAll('.path-rail-row');
+    var progBar = document.getElementById('path-progressbar');
+
+    function setActive(idx){
+      nums.forEach(function(n,i){ n.classList.toggle('is-on', i===idx); });
+      contents.forEach(function(n,i){ n.classList.toggle('is-on', i===idx); });
+      photos.forEach(function(n,i){ n.classList.toggle('is-on', i===idx); });
+      rails.forEach(function(n,i){ n.classList.toggle('is-on', i===idx); });
+    }
+    function onScroll(){
+      var r = section.getBoundingClientRect();
+      var vh = window.innerHeight;
+      var totalScroll = section.offsetHeight - vh;
+      if (totalScroll <= 0) return;
+      var scrolled = -r.top;
+      var p = Math.max(0, Math.min(1, scrolled / totalScroll));
+      var active = Math.min(totalSteps - 1, Math.floor(p * totalSteps));
+      setActive(active);
+      if (progBar) progBar.style.setProperty('--p', (p * 100).toFixed(2) + '%');
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  }
+
+  /* ════════════════════════════════════════════════
+     BANNER 2 — count-up animation on viewport entry
+  ════════════════════════════════════════════════ */
+  function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+  function animateCount(el){
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    if (isNaN(target)) return;
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1700;
+    var start = performance.now();
+    function frame(now){
+      var t = Math.min(1, (now - start) / duration);
+      var v = Math.round(target * easeOutCubic(t));
+      el.textContent = v + suffix;
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  var bnr2 = document.getElementById('bnr2-section');
+  if (bnr2){
+    var counted = false;
+    var bObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting && !counted){
+          counted = true;
+          // Stagger the four numbers slightly
+          var nums = bnr2.querySelectorAll('.bnr2-num[data-count]');
+          nums.forEach(function(n, i){
+            setTimeout(function(){ animateCount(n); }, i * 140);
+          });
+          bObs.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+    bObs.observe(bnr2);
+  }
+})();
+</script>
+
+</body>
+</html>
