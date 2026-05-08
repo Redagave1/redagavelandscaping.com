@@ -725,6 +725,9 @@ a{text-decoration:none;color:inherit}
 
 .hero-sub{font-size:11px;letter-spacing:.5px;color:rgba(240,234,214,0.42);margin-top:28px;max-width:500px;line-height:2.2;border-left:1px solid rgba(201,168,76,0.32);padding-left:20px;font-weight:300;font-style:italic;opacity:0;transform:translateY(16px)}
 .hero-ctas{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;opacity:0;transform:translateY(16px)}
+.hero-stat{display:flex;align-items:center;gap:18px;margin-top:32px;opacity:0;transform:translateY(14px)}
+.hero-stat-num{font-family:'Bebas Neue',cursive;font-size:clamp(38px,4vw,54px);line-height:1;color:var(--gold);letter-spacing:2px}
+.hero-stat-label{font-size:8.5px;letter-spacing:5px;text-transform:uppercase;color:rgba(240,234,214,0.45);line-height:1.7;border-left:1px solid rgba(201,168,76,0.35);padding-left:14px;font-weight:300}
 .scroll-hint{position:absolute;bottom:32px;right:60px;z-index:3;display:flex;align-items:center;gap:10px;opacity:0}
 .scroll-hint span{font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(240,234,214,0.25)}
 .s-line{width:1px;height:44px;background:linear-gradient(to bottom,var(--gold),transparent);animation:sPulse 2s ease-in-out infinite}
@@ -2181,6 +2184,10 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
           <a href="contact.html" class="btn-huly">Let's Get In Touch</a>
         </div>
       </div>
+      <div class="hero-stat" id="hero-stat" style="opacity:0;transform:translateY(14px)">
+        <div class="hero-stat-num">750+</div>
+        <div class="hero-stat-label">Jobs<br>Completed</div>
+      </div>
     </div>
     <div class="scroll-hint" id="s-hint" style="opacity:0">
     <div class="s-line"></div>
@@ -2837,6 +2844,11 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
         { opacity: 0, y: 16 },
         { opacity: 1, y: 0, duration: .7, ease: 'power3.out' },
         0.88
+      )
+      .fromTo('#hero-stat',
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: .7, ease: 'power3.out' },
+        1.0
       )
       .fromTo('#s-hint',
         { opacity: 0 },
