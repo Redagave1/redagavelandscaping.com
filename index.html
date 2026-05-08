@@ -1314,11 +1314,11 @@ a{text-decoration:none;color:inherit}
   z-index: 2;
   height: 85%;
 }
-/* Sides: ~half center height — strong breakout of center top AND bottom */
+/* Sides: reduced breakout — less dramatic stagger vs center */
 .dc-col--left,
 .dc-col--right {
   z-index: 1;
-  height: 47%;
+  height: 65%;
 }
 .dc-img {
   position: absolute;
@@ -1757,6 +1757,9 @@ a{text-decoration:none;color:inherit}
 .bnr2-eb{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:300;letter-spacing:6px;text-transform:uppercase;color:var(--gold-soft)}
 .bnr2-num{font-family:'Bebas Neue',cursive;font-size:clamp(48px,5.5vw,82px);line-height:1;letter-spacing:2px;color:var(--gold-pulse);text-shadow:0 0 28px rgba(232,196,90,.45),0 0 64px rgba(201,168,76,.22),0 0 120px rgba(232,196,90,.12);animation:goldPulse 4.2s ease-in-out infinite;font-variant-numeric:tabular-nums}
 .bnr2-sub{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:rgba(240,234,214,.45);text-align:center}
+.bnr2-town{transition:opacity .45s ease,transform .45s ease;display:inline-block}
+.bnr2-town.fade-out{opacity:0;transform:translateY(-10px)}
+.bnr2-town.fade-in{opacity:1;transform:translateY(0)}
 
 /* ══ TESTIMONIALS ══ */
 .testi{background:var(--dark3);padding:110px 60px}
@@ -1773,10 +1776,10 @@ a{text-decoration:none;color:inherit}
 
 /* ══ SHOWCASE STRIP — visual break between whatmakes & process ══ */
 .showcase-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:#000}
-.ss-tile{position:relative;display:block;overflow:hidden;aspect-ratio:5/4;cursor:pointer}
-.ss-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.85) brightness(.42) contrast(1.1);transition:filter .7s var(--ease),transform .8s var(--ease)}
-.ss-tile:hover img{filter:grayscale(0) brightness(1) saturate(1) contrast(1);transform:scale(1.04)}
-.ss-tile .ss-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(8,11,6,0.7) 100%);pointer-events:none;z-index:1}
+.ss-tile{position:relative;display:block;overflow:hidden;aspect-ratio:5/4;cursor:default}
+.ss-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.92) saturate(1.05);transition:transform .8s var(--ease)}
+.ss-tile:hover img{transform:scale(1.06)}
+.ss-tile .ss-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(8,11,6,0.45) 100%);pointer-events:none;z-index:1}
 .ss-tile::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.55),transparent);opacity:0;transition:opacity .45s var(--ease);z-index:2}
 .ss-tile:hover::after{opacity:1}
 
@@ -2274,22 +2277,22 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 
 <!-- SHOWCASE STRIP -->
 <section class="showcase-strip" aria-label="Recent project highlights">
-  <a class="ss-tile rev" href="gallery.html">
+  <div class="ss-tile rev">
     <img src="images/gallery/IMG_9652.webp" alt="Custom luxury pool and outdoor living installation" loading="lazy">
     <span class="ss-ov"></span>
-  </a>
-  <a class="ss-tile rev" href="gallery.html">
+  </div>
+  <div class="ss-tile rev">
     <img src="images/gallery/IMG_8667.webp" alt="Outdoor living space with pergola and kitchen" loading="lazy">
     <span class="ss-ov"></span>
-  </a>
-  <a class="ss-tile rev" href="gallery.html">
+  </div>
+  <div class="ss-tile rev">
     <img src="images/gallery/IMG_5116.webp" alt="Native Texas xeriscape with hardscape and steel edging" loading="lazy">
     <span class="ss-ov"></span>
-  </a>
-  <a class="ss-tile rev" href="gallery.html">
+  </div>
+  <div class="ss-tile rev">
     <img src="images/gallery/IMG_5491.webp" alt="Custom fire feature with integrated water element" loading="lazy">
     <span class="ss-ov"></span>
-  </a>
+  </div>
 </section>
 
 <!-- PATH TOWARDS YOUR DREAM LANDSCAPE -->
@@ -2386,12 +2389,12 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   <div class="bnr2-grid">
     <div class="bnr2-cell">
       <span class="bnr2-eb">Founded</span>
-      <span class="bnr2-num" data-count="12" data-suffix="+">0+</span>
+      <span class="bnr2-num" data-count="15" data-suffix="+">0+</span>
       <span class="bnr2-sub">Years in Austin</span>
     </div>
     <div class="bnr2-cell">
       <span class="bnr2-eb">Delivered</span>
-      <span class="bnr2-num" data-count="200" data-suffix="+">0+</span>
+      <span class="bnr2-num" data-count="750" data-suffix="+">0+</span>
       <span class="bnr2-sub">Projects Completed</span>
     </div>
     <div class="bnr2-cell">
@@ -2401,8 +2404,8 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     </div>
     <div class="bnr2-cell">
       <span class="bnr2-eb">Service Area</span>
-      <span class="bnr2-num">ATX</span>
-      <span class="bnr2-sub">Westlake &middot; Circle C &middot; Hill Country</span>
+      <span class="bnr2-num bnr2-town" id="bnr2-town">ATX</span>
+      <span class="bnr2-sub">Austin &middot; Westlake &middot; Circle C</span>
     </div>
   </div>
 </div>
@@ -3390,6 +3393,23 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
       });
     }
   });
+})();
+
+// ══ BANNER 2 — Service Area town rotator ══
+(function(){
+  var el = document.getElementById('bnr2-town');
+  if (!el) return;
+  var towns = ['ATX','WESTLAKE','TARRYTOWN','CIRCLE C','BEE CAVE','BARTON CREEK','DRIPPING SPGS','STEINER RANCH'];
+  var idx = 0;
+  function next(){
+    el.classList.add('fade-out');
+    setTimeout(function(){
+      idx = (idx + 1) % towns.length;
+      el.textContent = towns[idx];
+      el.classList.remove('fade-out');
+    }, 460);
+  }
+  setInterval(next, 2600);
 })();
 
 // ══ HERO TITLE: scale up on scroll, then fade ══
