@@ -1757,22 +1757,43 @@ a{text-decoration:none;color:inherit}
 .bnr2-eb{font-family:'Montserrat',sans-serif;font-size:8px;font-weight:300;letter-spacing:6px;text-transform:uppercase;color:var(--gold-soft)}
 .bnr2-num{font-family:'Bebas Neue',cursive;font-size:clamp(48px,5.5vw,82px);line-height:1;letter-spacing:2px;color:var(--gold-pulse);text-shadow:0 0 28px rgba(232,196,90,.45),0 0 64px rgba(201,168,76,.22),0 0 120px rgba(232,196,90,.12);animation:goldPulse 4.2s ease-in-out infinite;font-variant-numeric:tabular-nums}
 .bnr2-sub{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:rgba(240,234,214,.45);text-align:center}
-.bnr2-town{transition:opacity .45s ease,transform .45s ease;display:inline-block}
+.bnr2-town{transition:opacity .45s ease,transform .45s ease;display:inline-block;white-space:nowrap;font-size:clamp(28px,3.5vw,52px)!important}
 .bnr2-town.fade-out{opacity:0;transform:translateY(-10px)}
-.bnr2-town.fade-in{opacity:1;transform:translateY(0)}
 
-/* ══ TESTIMONIALS ══ */
-.testi{background:var(--dark3);padding:110px 60px}
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(201,168,76,0.04);margin-top:60px}
-.tc{background:rgba(201,168,76,0.018);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);border:1px solid rgba(201,168,76,0.08);box-shadow:0 32px 80px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.06);padding:44px 36px;position:relative;transition:background .4s,border-color .4s,box-shadow .4s}
-.tc:hover{background:rgba(201,168,76,0.04);border-color:rgba(201,168,76,0.22);box-shadow:0 32px 80px rgba(0,0,0,0.6),0 0 40px rgba(201,168,76,0.06),inset 0 1px 0 rgba(255,255,255,0.08)}
-.tc::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s}
-.tc:hover::after{opacity:1}
-.tc-stars{display:flex;gap:3px;margin-bottom:18px}
-.tc-star{color:var(--gold);font-size:13px;text-shadow:0 0 8px rgba(201,168,76,0.45)}
-.tc-q{font-size:13px;color:rgba(240,234,214,0.52);line-height:1.9;font-style:italic;font-weight:300;margin-bottom:22px}
-.tc-name{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--cream);margin-bottom:3px}
-.tc-loc{font-size:9px;letter-spacing:2px;color:rgba(240,234,214,0.28);text-transform:uppercase}
+/* ══ TESTIMONIALS — Option D: 3D Perspective Carousel ══ */
+.testi-d{position:relative;padding:100px 0 80px;overflow:hidden;border-top:1px solid rgba(201,168,76,.08)}
+.td-bg{position:absolute;inset:0;background-image:url('images/gallery/IMG_9107.webp');background-size:cover;background-position:center;filter:grayscale(.5) brightness(.32) blur(16px);transform:scale(1.08);z-index:0}
+.td-bg-ov{position:absolute;inset:0;z-index:1;background:rgba(8,7,5,.78)}
+.td-head{position:relative;z-index:3;text-align:center;padding:0 60px 60px}
+.td-eye{display:inline-flex;align-items:center;gap:14px;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:var(--gold-soft);margin-bottom:16px}
+.td-eye::before{content:'';width:44px;height:1px;background:var(--gold);opacity:.55}
+.td-title{font-family:'Bebas Neue',cursive;font-size:clamp(42px,5.5vw,80px);letter-spacing:2px;line-height:.92;color:var(--cream)}
+.td-title em{font-style:normal;color:var(--gold-pulse);animation:goldPulse 4.2s ease-in-out infinite}
+.td-stage{position:relative;z-index:3;perspective:1400px;perspective-origin:50% 50%;height:420px;display:flex;align-items:center;justify-content:center}
+.td-card{position:absolute;width:clamp(300px,32vw,480px);background:rgba(14,13,11,.92);border:1px solid rgba(201,168,76,.1);padding:44px 40px;display:flex;flex-direction:column;gap:16px;cursor:pointer;will-change:transform,opacity,filter;transition:transform .8s var(--ease),opacity .7s var(--ease),filter .7s var(--ease),box-shadow .7s var(--ease),border-color .7s var(--ease);transform-style:preserve-3d;user-select:none}
+.td-card[data-pos="-2"]{transform:translateX(-88%) translateZ(-380px) rotateY(22deg);opacity:.04;pointer-events:none;filter:blur(8px)}
+.td-card[data-pos="-1"]{transform:translateX(-56%) translateZ(-200px) rotateY(16deg);opacity:.07;filter:blur(4px)}
+.td-card[data-pos="0"]{transform:translateX(0) translateZ(0) rotateY(0deg);opacity:1;filter:blur(0px);box-shadow:0 0 0 1px rgba(232,196,90,.4),0 40px 100px rgba(0,0,0,.85),0 0 80px rgba(201,168,76,.18);border-color:rgba(232,196,90,.4)}
+.td-card[data-pos="1"]{transform:translateX(56%) translateZ(-200px) rotateY(-16deg);opacity:.07;filter:blur(4px)}
+.td-card[data-pos="2"]{transform:translateX(88%) translateZ(-380px) rotateY(-22deg);opacity:.04;pointer-events:none;filter:blur(8px)}
+.td-card[data-pos="0"]:hover{box-shadow:0 0 0 1px rgba(232,196,90,.55),0 40px 120px rgba(0,0,0,.8),0 0 80px rgba(201,168,76,.2)}
+.td-card-mark{font-family:'Bebas Neue',cursive;font-size:60px;line-height:.7;color:rgba(232,196,90,.18);margin-bottom:-4px;transition:color .6s}
+.td-card[data-pos="0"] .td-card-mark{color:rgba(232,196,90,.35)}
+.td-stars{display:flex;gap:3px;margin-bottom:4px}
+.td-star{color:var(--gold);font-size:11px;transition:color .4s}
+.td-card[data-pos="0"] .td-star{color:var(--gold-pulse);text-shadow:0 0 8px rgba(232,196,90,.5)}
+.td-q{font-size:13px;font-style:italic;font-weight:300;line-height:1.85;color:rgba(240,234,214,.6);transition:color .6s}
+.td-card[data-pos="0"] .td-q{color:rgba(240,234,214,.88)}
+.td-divider{width:28px;height:1px;background:rgba(201,168,76,.4);transition:width .6s var(--ease),background .6s}
+.td-card[data-pos="0"] .td-divider{width:44px;background:var(--gold-pulse)}
+.td-name{font-family:'Bebas Neue',cursive;font-size:18px;letter-spacing:2px;color:var(--cream)}
+.td-loc{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,234,214,.3)}
+.td-dots{position:relative;z-index:3;display:flex;justify-content:center;gap:14px;padding-top:44px}
+.td-dot{width:7px;height:7px;border-radius:50%;border:1px solid rgba(232,196,90,.4);background:transparent;cursor:pointer;transition:background .3s,transform .3s,box-shadow .3s}
+.td-dot.is-on{background:var(--gold-pulse);box-shadow:0 0 12px rgba(232,196,90,.7);transform:scale(1.4)}
+.td-prog{position:relative;z-index:3;height:1px;background:rgba(232,196,90,.08);margin:24px 60px 0;overflow:hidden}
+.td-prog-bar{position:absolute;left:0;top:0;height:100%;background:linear-gradient(90deg,var(--gold-pulse),var(--gold));box-shadow:0 0 10px rgba(232,196,90,.6);width:0%;transition:width .15s linear}
+@media(max-width:768px){.td-stage{perspective:800px;height:auto;padding:0 16px;display:block}.td-card{position:relative;width:100%;margin:0 auto;max-width:420px}.td-card[data-pos="-2"],.td-card[data-pos="-1"],.td-card[data-pos="1"],.td-card[data-pos="2"]{display:none}.td-card[data-pos="0"]{transform:none}}
 
 /* ══ SHOWCASE STRIP — visual break between whatmakes & process ══ */
 .showcase-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:#000}
@@ -1783,38 +1804,68 @@ a{text-decoration:none;color:inherit}
 .ss-tile::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.55),transparent);opacity:0;transition:opacity .45s var(--ease);z-index:2}
 .ss-tile:hover::after{opacity:1}
 
-/* ══ CONVERSION ZONE — unified CTA + form, cinematic ══ */
-.conversion{background:var(--dark2);padding:120px 60px;position:relative;overflow:hidden;border-top:1px solid rgba(201,168,76,0.08)}
-.conv-bg{position:absolute;inset:0;background:url('images/gallery/IMG_8575.webp') center/cover no-repeat;opacity:.08;filter:grayscale(100%);pointer-events:none;z-index:0}
-.conv-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,11,6,.65) 0%,rgba(8,11,6,.95) 100%)}
-.conv-bgtxt{position:absolute;font-family:'Bebas Neue',cursive;font-size:clamp(80px,14vw,200px);color:rgba(201,168,76,0.035);letter-spacing:6px;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;user-select:none;z-index:0}
-.conv-inner{position:relative;z-index:1;max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 1.15fr;gap:84px;align-items:start}
-.conv-copy{padding-top:10px}
-.conv-copy .s-eye{margin-bottom:20px}
-.conv-title{font-family:'Bebas Neue',cursive;font-size:clamp(52px,6.5vw,92px);line-height:.88;color:var(--cream);margin-bottom:28px}
-.conv-title-accent{color:var(--gold);text-shadow:0 0 28px var(--gold-glow)}
-.conv-sub{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,234,214,.45);line-height:2.2;margin-bottom:24px}
-.conv-phone{display:inline-block;font-family:'Bebas Neue',cursive;font-size:clamp(28px,3vw,38px);color:var(--gold);letter-spacing:3px;text-shadow:0 0 24px rgba(201,168,76,0.28);transition:text-shadow .4s var(--ease),transform .4s var(--ease)}
-.conv-phone:hover{text-shadow:0 0 40px rgba(201,168,76,0.45);transform:translateY(-1px)}
-.conv-note{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(240,234,214,.28);margin-top:10px}
-.conv-form{max-width:none;margin:0;background:rgba(201,168,76,0.018);border:1px solid rgba(201,168,76,0.08);border-top:1px solid rgba(201,168,76,0.22);box-shadow:0 32px 80px rgba(0,0,0,0.5),inset 0 1px 0 rgba(255,255,255,0.05);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(201,168,76,0.06)}
-.ff{background:var(--dark);position:relative}
-.ff.full{grid-column:span 2}
-.fi,.ft,.fsel{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(240,234,214,0.1);color:var(--cream);font-family:'Montserrat',sans-serif;font-size:13px;padding:28px 24px 14px;outline:none;transition:border-color .3s;appearance:none}
-.fi:focus,.ft:focus,.fsel:focus{border-color:var(--gold)}
-.ft{min-height:128px;resize:vertical}
-.fl{position:absolute;top:18px;left:24px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,234,214,0.3);pointer-events:none;transition:all .28s}
-.fi:focus~.fl,.fi:not(:placeholder-shown)~.fl,.ft:focus~.fl,.ft:not(:placeholder-shown)~.fl,.fsel:focus~.fl,.fsel:valid~.fl{top:8px;font-size:7px;color:var(--gold)}
-.fi::placeholder,.ft::placeholder{color:transparent}
-.fsel option{background:var(--dark2);color:var(--cream)}
-.fs-wrap{grid-column:span 2;background:var(--dark);padding:28px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
-.fs-note{font-size:9px;letter-spacing:2px;color:rgba(240,234,214,0.3);text-transform:uppercase}
-.fs-btn{display:inline-flex;align-items:center;justify-content:center;background:transparent;color:var(--gold);padding:0 40px;height:46px;font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:700;font-family:'Montserrat',sans-serif;border:1px solid var(--gold);cursor:pointer;border-radius:9999px;position:relative;overflow:hidden;transition:color .4s var(--ease),transform .35s var(--ease);text-decoration:none}
-.fs-btn::before{content:'';position:absolute;inset:0;background:var(--gold);border-radius:9999px;transform:translateX(-101%);transition:transform .45s var(--ease);z-index:0}
-.fs-btn:hover{color:var(--dark);transform:translateY(-1px)}
-.fs-btn:hover::before{transform:translateX(0)}
-.fs-btn span{position:relative;z-index:1}
+/* ══ CONTACT / BOOKING SECTION ══ */
+.conversion{background:var(--dark2);padding:100px 60px;position:relative;overflow:hidden;border-top:1px solid rgba(201,168,76,0.08)}
+.conv-bg{position:absolute;inset:0;background:url('images/gallery/IMG_8575.webp') center/cover no-repeat;opacity:.06;filter:grayscale(100%);pointer-events:none;z-index:0}
+.conv-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,11,6,.7) 0%,rgba(8,11,6,.96) 100%)}
+.conv-bgtxt{position:absolute;font-family:'Bebas Neue',cursive;font-size:clamp(80px,14vw,200px);color:rgba(201,168,76,0.028);letter-spacing:6px;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;user-select:none;z-index:0}
+.conv-inner{position:relative;z-index:1;max-width:860px;margin:0 auto}
+.conv-head{text-align:center;margin-bottom:60px}
+.conv-head .s-eye{justify-content:center;margin-bottom:16px}
+.conv-title{font-family:'Bebas Neue',cursive;font-size:clamp(48px,6vw,88px);line-height:.88;color:var(--cream);margin-bottom:18px}
+.conv-title-accent{color:var(--gold)}
+.conv-sub{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,234,214,.38);line-height:2.2}
+/* ── Booking form (matches contact.html exactly) ── */
+.bk-section{margin-bottom:44px}
+.bk-section-label{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(201,168,76,.55);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.bk-section-label::after{content:'';flex:1;height:1px;background:rgba(201,168,76,.1)}
+.bk-row{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:2px}
+.bk-row.single{grid-template-columns:1fr}
+.bk-field{position:relative;background:rgba(240,234,214,.015)}
+.bk-field input,.bk-field textarea,.bk-field select{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(240,234,214,.12);color:var(--cream);font-family:'Montserrat',sans-serif;font-size:13px;padding:30px 0 13px;outline:none;transition:border-color .3s;-webkit-appearance:none}
+.bk-field textarea{min-height:90px;resize:vertical;line-height:1.7}
+.bk-field select option{background:var(--dark2)}
+.bk-field input:focus,.bk-field textarea:focus,.bk-field select:focus{border-color:var(--gold)}
+.bk-label{position:absolute;top:16px;left:0;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(240,234,214,.3);pointer-events:none;transition:all .25s}
+.bk-field input:focus~.bk-label,.bk-field input:not(:placeholder-shown)~.bk-label,.bk-field textarea:focus~.bk-label,.bk-field textarea:not(:placeholder-shown)~.bk-label,.bk-field select:focus~.bk-label{top:6px;font-size:8px;color:var(--gold)}
+.bk-field input::placeholder,.bk-field textarea::placeholder{color:transparent}
+.address-callout{background:rgba(201,168,76,.04);border:1px solid rgba(201,168,76,.1);border-left:2px solid rgba(201,168,76,.45);padding:16px 20px;margin-bottom:4px}
+.address-callout-t{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.address-callout-s{font-size:13px;color:rgba(240,234,214,.40);line-height:1.8}
+.slot-grid{margin-top:6px}
+.slot-week{margin-bottom:28px}
+.slot-week-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(201,168,76,.35);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid rgba(201,168,76,.08)}
+.slot-day-group{margin-bottom:16px}
+.slot-day-name{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(201,168,76,.55);margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.slot-day-name::before{content:'';width:1px;height:12px;background:rgba(201,168,76,.35)}
+.slot-date-tag{font-size:10px;letter-spacing:1px;color:rgba(240,234,214,.3);font-family:'Montserrat',sans-serif;text-transform:none;margin-left:4px}
+.slot-times{display:flex;gap:8px}
+.slot{padding:14px 18px;border:1px solid rgba(240,234,214,.1);border-radius:3px;text-align:center;cursor:pointer;transition:all .22s;position:relative;overflow:hidden;flex:1;min-width:80px}
+.slot-time{font-family:'Bebas Neue',cursive;font-size:20px;letter-spacing:1.5px;color:rgba(240,234,214,.5);line-height:1}
+.slot:hover:not(.booked):not(.selected){border-color:rgba(201,168,76,.42);background:rgba(201,168,76,.04)}
+.slot.selected{border-color:var(--gold);background:rgba(201,168,76,.09)}
+.slot.selected .slot-time{color:var(--gold)}
+.slot.booked{opacity:.22;cursor:not-allowed;background:rgba(0,0,0,.1)}
+.slot.booked::after{content:'BOOKED';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:8px;letter-spacing:3px;color:rgba(240,234,214,.28)}
+.survey-q{margin-bottom:22px}
+.survey-q-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,234,214,.42);margin-bottom:12px;display:block}
+.survey-options{display:flex;flex-wrap:wrap;gap:7px}
+.survey-opt{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:9px 18px;border:1px solid rgba(240,234,214,.12);border-radius:9999px;cursor:pointer;transition:all .22s;color:rgba(240,234,214,.38)}
+.survey-opt:hover,.survey-opt.active{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.06)}
+.upload-zone{border:1px dashed rgba(201,168,76,.18);padding:30px;text-align:center;cursor:pointer;transition:border-color .3s,background .3s;position:relative;overflow:hidden}
+.upload-zone:hover{border-color:rgba(201,168,76,.42);background:rgba(201,168,76,.025)}
+.upload-zone input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
+.upload-icon{font-size:28px;margin-bottom:10px;opacity:.35}
+.upload-title{font-family:'Bebas Neue',cursive;font-size:19px;letter-spacing:2px;color:rgba(240,234,214,.48);margin-bottom:5px}
+.upload-sub{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(240,234,214,.24)}
+.upload-preview{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;justify-content:center}
+.upload-thumb{width:64px;height:64px;object-fit:cover;border:1px solid rgba(201,168,76,.2);border-radius:2px}
+.upload-file-name{font-size:9px;letter-spacing:1px;color:rgba(201,168,76,.55);padding:4px 8px;border:1px solid rgba(201,168,76,.18)}
+.bk-submit{margin-top:10px;background:var(--gold);color:var(--dark);padding:0 44px;height:56px;font-size:10px;letter-spacing:4px;text-transform:uppercase;font-weight:700;font-family:'Montserrat',sans-serif;border:none;cursor:pointer;border-radius:9999px;position:relative;overflow:hidden;transition:transform .3s;width:100%}
+.bk-submit::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.18);border-radius:9999px;transform:translateX(-101%);transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.bk-submit:hover{transform:translateY(-2px)}.bk-submit:hover::before{transform:translateX(0)}
+.bk-submit span{position:relative;z-index:1}
+.bk-submit.sent{background:#2a5a22}
 
 /* ══ FOOTER ══ */
 footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,168,76,0.06)}
@@ -2410,39 +2461,179 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   </div>
 </div>
 
-<!-- TESTIMONIALS -->
-<section class="testi">
-  <div class="s-eye rev">Client Stories</div>
-  <h2 class="s-title rev">What Our Clients <span style="color:var(--gold)">Say</span></h2>
-  <div class="testi-grid">
-    <div class="tc rev"><div class="tc-stars"><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span></div><p class="tc-q">Red Agave completely transformed our backyard. The attention to detail was unlike anything we've experienced. Truly world-class work.</p><div class="tc-name">Sarah M.</div><div class="tc-loc">Austin, TX</div></div>
-    <div class="tc rev"><div class="tc-stars"><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span></div><p class="tc-q">From design to final walkthrough, the team was professional and results exceeded every expectation. Worth every penny.</p><div class="tc-name">James T.</div><div class="tc-loc">Westlake Hills, TX</div></div>
-    <div class="tc rev"><div class="tc-stars"><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span><span class="tc-star">&#9733;</span></div><p class="tc-q">Our xeriscape looks better than we ever imagined &mdash; and our water bill dropped 40%. Red Agave delivered on every promise.</p><div class="tc-name">Lisa K.</div><div class="tc-loc">Dripping Springs, TX</div></div>
+<!-- TESTIMONIALS — Option D: 3D Perspective Carousel -->
+<section class="testi-d">
+  <div class="td-bg" aria-hidden="true"></div>
+  <div class="td-bg-ov" aria-hidden="true"></div>
+  <div class="td-head">
+    <div class="td-eye">Client Stories</div>
+    <h2 class="td-title">What Our Clients <em>Say</em></h2>
   </div>
+  <div class="td-stage" id="td-stage">
+    <div class="td-card" data-pos="-1" data-idx="2">
+      <div class="td-card-mark">&ldquo;</div>
+      <div class="td-stars"><span class="td-star">&#9733;</span><span class="td-star">&#9733;</span><span class="td-star">&#9733;</span><span class="td-star">&#9733;</span><span class="td-star">&#9733;</span></div>
+      <p class="td-q">Our xeriscape is breathtaking and our water bill dropped by 40%. I received daily progress photos throughout the entire build and never once felt out of the loop. Red Agave delivered on every single promise.</p>
+      <div class="td-divider"></div>
+      <div class="td-name">Lisa K.</div>
+      <div class="td-loc">Circle C Ranch, TX</div>
+    </div>
+    <div class="td-card" data-pos="0" data-idx="0">
+      <div class="td-card-mark">&ldquo;</div>
+      <div class="td-stars"><span class="td-star">&#9733;</span><span class="td-star">&#9733;</span><span class="td-star">&#9733;</span><span class="td-star">&#9733;</span><span class="td-star">&#9733;</span></div>
+      <p class="td-q">Red Agave completely transformed our backyard in Westlake. From the first site visit to the final walkthrough, every detail was handled with expertise we had never seen. The finished space looks better than the 3D rendering &mdash; and that rendering was already stunning.</p>
+      <div class="td-divider"></div>
+      <div class="td-name">Sarah M.</div>
+      <div class="td-loc">Westlake Hills, TX</div>
+    </div>
+    <div class="td-card" data-pos="1" data-idx="1">
+      <div class="td-card-mark">&ldquo;</div>
+      <div class="td-stars"><span class="td-star">&#9733;</span><span class="td-star">&#9733;</span><span class="td-star">&#9733;</span><span class="td-star">&#9733;</span><span class="td-star">&#9733;</span></div>
+      <p class="td-q">We interviewed four companies before choosing Red Agave. No one else came close to the detail in their proposal. The pergola and outdoor kitchen they built is the most-used room in our house. Worth every penny.</p>
+      <div class="td-divider"></div>
+      <div class="td-name">James &amp; Lauren T.</div>
+      <div class="td-loc">Barton Creek, TX</div>
+    </div>
+  </div>
+  <div class="td-dots" id="td-dots">
+    <button class="td-dot is-on" data-idx="0" aria-label="Review 1"></button>
+    <button class="td-dot" data-idx="1" aria-label="Review 2"></button>
+    <button class="td-dot" data-idx="2" aria-label="Review 3"></button>
+  </div>
+  <div class="td-prog"><div class="td-prog-bar" id="td-prog-bar"></div></div>
 </section>
 
-<!-- CONVERSION ZONE -->
+<!-- CONTACT / BOOKING SECTION -->
 <section class="conversion" id="contact">
   <div class="conv-bg" aria-hidden="true"></div>
   <div class="conv-bgtxt" aria-hidden="true">RED AGAVE</div>
   <div class="conv-inner">
-    <div class="conv-copy rev">
-      <div class="s-eye">Start Your Project</div>
-      <h2 class="conv-title">Ready to<br>Transform<br><span class="conv-title-accent">Your Space?</span></h2>
-      <p class="conv-sub">Any Project &middot; Any Budget &middot; Complimentary Consultation</p>
-      <a href="tel:5126957566" class="conv-phone">512-695-7566</a>
-      <div class="conv-note">Text preferred &middot; 24-hour response</div>
+    <div class="conv-head rev">
+      <div class="s-eye">Reserve Your Visit</div>
+      <h2 class="conv-title">Complimentary<br>Design <span class="conv-title-accent">Consultation</span></h2>
+      <p class="conv-sub">We meet you at your property &middot; Free 2D CAD plan &middot; No pressure whatsoever</p>
     </div>
-    <form class="conv-form form-grid rev" id="cform" novalidate>
-      <div class="ff"><input class="fi" type="text" id="fn" placeholder=" " required><label class="fl" for="fn">Full Name *</label></div>
-      <div class="ff"><input class="fi" type="email" id="fe" placeholder=" " required><label class="fl" for="fe">Email Address *</label></div>
-      <div class="ff"><input class="fi" type="tel" id="fp" placeholder=" "><label class="fl" for="fp">Phone Number</label></div>
-      <div class="ff"><select class="fsel" id="fsvc" aria-label="Select a service"><option value="">Select a Service</option><option>Xeriscape &amp; Hardscape</option><option>State of the Art Lighting</option><option>Custom Built Decks</option><option>Fire &amp; Water Features</option><option>Outdoor Living Spaces</option><option>Custom Planters</option><option>Full Yard Design + Build</option></select></div>
-      <div class="ff full"><textarea class="ft" id="fm" placeholder=" "></textarea><label class="fl" for="fm">Tell Us About Your Project</label></div>
-      <div class="fs-wrap">
-        <span class="fs-note">Free consultation &middot; Austin, TX</span>
-        <a href="contact.html" class="fs-btn"><span>Start Your Project &#8594;</span></a>
+
+    <form id="bk-form" novalidate>
+
+      <!-- 01 YOUR DETAILS -->
+      <div class="bk-section">
+        <div class="bk-section-label rev">01 &nbsp; Your Details</div>
+        <div class="bk-row rev">
+          <div class="bk-field"><input type="text" id="bk-fn" name="fullname" placeholder="x" required><label class="bk-label" for="bk-fn">Full Name *</label></div>
+          <div class="bk-field"><input type="tel" id="bk-fp" name="phone" placeholder="x" required><label class="bk-label" for="bk-fp">Phone (text preferred) *</label></div>
+        </div>
+        <div class="bk-row single rev">
+          <div class="bk-field"><input type="email" id="bk-fe" name="email" placeholder="x" required><label class="bk-label" for="bk-fe">Email Address *</label></div>
+        </div>
       </div>
+
+      <!-- 02 YOUR PROPERTY -->
+      <div class="bk-section">
+        <div class="bk-section-label rev">02 &nbsp; Your Property</div>
+        <div class="address-callout rev">
+          <div class="address-callout-t">We Come to Your Home</div>
+          <div class="address-callout-s">Your consultation happens at your property — we walk the space together so every design decision fits your yard exactly.</div>
+        </div>
+        <div class="bk-row single rev" style="margin-top:4px">
+          <div class="bk-field"><input type="text" id="bk-fa" name="address" placeholder="x" required><label class="bk-label" for="bk-fa">Property Street Address *</label></div>
+        </div>
+        <div class="bk-row rev">
+          <div class="bk-field"><input type="text" id="bk-fc" name="city" placeholder="x"><label class="bk-label" for="bk-fc">City</label></div>
+          <div class="bk-field"><input type="text" id="bk-fz" name="zip" placeholder="x"><label class="bk-label" for="bk-fz">ZIP Code</label></div>
+        </div>
+      </div>
+
+      <!-- 03 CHOOSE A DATE & TIME -->
+      <div class="bk-section">
+        <div class="bk-section-label rev">03 &nbsp; Choose a Date &amp; Time</div>
+        <p class="rev" style="font-size:12px;color:rgba(240,234,214,.3);margin-bottom:20px;line-height:1.9">Select your preferred date and time. Grayed slots are already booked.</p>
+        <input type="hidden" id="bk-selected-slot" name="slot">
+        <input type="hidden" id="bk-selected-slot-key" name="slotKey">
+        <div class="slot-grid rev" id="bk-slot-grid">
+          <div style="font-size:12px;color:rgba(240,234,214,.28);letter-spacing:1px">Loading available dates...</div>
+        </div>
+      </div>
+
+      <!-- 04 YOUR PROJECT -->
+      <div class="bk-section">
+        <div class="bk-section-label rev">04 &nbsp; Your Project</div>
+        <div class="survey-q rev">
+          <span class="survey-q-label">Estimated Budget</span>
+          <div class="survey-options">
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="bk-budget">Under $10k</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="bk-budget">$10k &ndash; $25k</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="bk-budget">$25k &ndash; $50k</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="bk-budget">$50k &ndash; $100k</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="bk-budget">$100k +</div>
+          </div>
+          <input type="hidden" name="budget" id="bk-budget-val">
+        </div>
+        <div class="survey-q rev">
+          <span class="survey-q-label">Services You're Interested In <span style="color:rgba(240,234,214,.25);font-size:9px">(select all that apply)</span></span>
+          <div class="survey-options multi" role="group">
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="bk-services">Xeriscape &amp; Hardscape</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="bk-services">WLED / Custom Lighting</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="bk-services">Deck &amp; Pergola</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="bk-services">Fire &amp; Water Features</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="bk-services">Custom Planters</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="bk-services">Full Yard Design + Build</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="bk-services">Outdoor Kitchen</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="bk-services">Not Sure Yet</div>
+          </div>
+          <input type="hidden" name="services" id="bk-services-val">
+        </div>
+        <div class="survey-q rev">
+          <span class="survey-q-label">When would you like to start?</span>
+          <div class="survey-options">
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="bk-timeline">As Soon as Possible</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="bk-timeline">1 &ndash; 3 Months</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="bk-timeline">3 &ndash; 6 Months</div>
+            <div class="survey-opt" role="button" tabindex="0" aria-pressed="false" data-group="bk-timeline">Just Exploring</div>
+          </div>
+          <input type="hidden" name="timeline" id="bk-timeline-val">
+        </div>
+        <div class="bk-row single rev">
+          <div class="bk-field">
+            <textarea id="bk-fnotes" name="notes" placeholder="x"></textarea>
+            <label class="bk-label" for="bk-fnotes">Tell us about your vision</label>
+          </div>
+        </div>
+        <div class="bk-row single rev">
+          <div class="bk-field">
+            <select name="referral" id="bk-fref">
+              <option value="">How did you find us?</option>
+              <option>Google Search</option>
+              <option>Instagram</option>
+              <option>Facebook</option>
+              <option>Neighbor / Friend Referral</option>
+              <option>Saw Red Agave's work in person</option>
+              <option>Other</option>
+            </select>
+            <label class="bk-label" for="bk-fref">How You Found Us</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 PHOTOS OF YOUR SPACE -->
+      <div class="bk-section">
+        <div class="bk-section-label rev">05 &nbsp; Photos &amp; Survey <span style="color:rgba(240,234,214,.22);font-size:8px">&nbsp; optional</span></div>
+        <p class="rev" style="font-size:12px;color:rgba(240,234,214,.3);margin-bottom:18px;line-height:1.9">Upload photos of your yard and any survey documents — even rough snapshots help us prepare a stronger design before we arrive.</p>
+        <div class="upload-zone rev">
+          <input type="file" id="bk-photo-input" name="photos" multiple accept="image/*,.heic,.pdf,.doc,.docx">
+          <div class="upload-icon">&#8679;</div>
+          <div class="upload-title">Drop Photos &amp; Survey Here</div>
+          <div class="upload-sub">JPG &middot; PNG &middot; HEIC &middot; PDF &nbsp;&middot;&nbsp; Up to 10 files</div>
+          <div class="upload-preview" id="bk-photo-preview"></div>
+        </div>
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="rev">
+        <button type="submit" class="bk-submit" id="bk-submit"><span id="bk-btn-text">Request My Consultation &rarr;</span></button>
+        <p style="font-size:11px;color:rgba(240,234,214,.18);letter-spacing:2px;margin-top:16px;text-align:center">We confirm within 24 hours &nbsp;&middot;&nbsp; No obligation whatsoever</p>
+      </div>
+
     </form>
   </div>
 </section>
@@ -2709,18 +2900,6 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
           });
         }
       });
-    });
-  }
-
-  // ── FORM ────────────────────────────────
-  var form = document.getElementById('cform');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var btn = form.querySelector('.fs-btn span');
-      if (btn) btn.textContent = 'Message Sent!';
-      form.style.opacity = '0.7';
-      form.style.pointerEvents = 'none';
     });
   }
 
@@ -3409,7 +3588,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
       el.classList.remove('fade-out');
     }, 460);
   }
-  setInterval(next, 2600);
+  setInterval(next, 7800);
 })();
 
 // ══ HERO TITLE: scale up on scroll, then fade ══
@@ -3477,6 +3656,198 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   }
   window.addEventListener('resize', function(){ resize(); init(); }, {passive:true});
   resize(); init(); draw();
+})();
+
+// ══ TESTIMONIALS — Option D: 3D Perspective Carousel ══
+(function(){
+  var stage   = document.getElementById('td-stage');
+  var dots    = document.querySelectorAll('.td-dot');
+  var progBar = document.getElementById('td-prog-bar');
+  if (!stage) return;
+  var cards   = Array.from(stage.querySelectorAll('.td-card'));
+  var total   = cards.length;
+  var current = 0;
+  var dur     = 7000;
+  var startTs = null;
+  function posFor(idx){
+    var diff = idx - current;
+    if (diff >  Math.floor(total/2)) diff -= total;
+    if (diff < -Math.floor(total/2)) diff += total;
+    return diff;
+  }
+  function render(){
+    cards.forEach(function(card){
+      var idx = parseInt(card.getAttribute('data-idx'),10);
+      var pos = Math.max(-2, Math.min(2, posFor(idx)));
+      card.setAttribute('data-pos', pos);
+    });
+    dots.forEach(function(d,i){ d.classList.toggle('is-on', i===current); });
+  }
+  function goTo(idx){ current = ((idx % total) + total) % total; render(); startTs = null; }
+  dots.forEach(function(d){
+    d.addEventListener('click', function(){ goTo(parseInt(this.getAttribute('data-idx'),10)); });
+  });
+  cards.forEach(function(card){
+    card.addEventListener('click', function(){
+      var pos = parseInt(card.getAttribute('data-pos'),10);
+      if (pos === 1) goTo(current + 1);
+      else if (pos === -1) goTo(current - 1);
+    });
+  });
+  function tick(ts){
+    if (!startTs) startTs = ts;
+    var elapsed = (ts - startTs) % dur;
+    if (progBar) progBar.style.width = ((elapsed / dur) * 100).toFixed(2) + '%';
+    var shouldBe = Math.floor((ts - startTs) / dur) % total;
+    if (shouldBe !== current){ current = shouldBe; render(); }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+  render();
+})();
+
+// ══ BOOKING FORM — date slot picker + survey + file upload + submit ══
+(function(){
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwyPaQpjdyYbO_zSo9SaXIy99buqABta2Uk3ba6Tkd8vAb-nD3lry1TYQl7w5y4r74s/exec';
+  var bookedSlots = [];
+
+  function pad(n){return n<10?'0'+n:String(n)}
+  function isoDate(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
+  function fmtDate(d){
+    var months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return months[d.getMonth()]+' '+d.getDate();
+  }
+
+  function buildSlotGrid(){
+    var container = document.getElementById('bk-slot-grid');
+    if (!container) return;
+    container.innerHTML = '';
+    var today = new Date(); today.setHours(0,0,0,0);
+    var dayConfig = [{wd:2,name:'Tuesday'},{wd:3,name:'Wednesday'},{wd:4,name:'Thursday'}];
+    var times = ['10:00','11:00','12:00'];
+    var timeLabels = ['10 AM','11 AM','12 PM'];
+    for (var week = 0; week < 3; week++) {
+      var weekDiv = document.createElement('div'); weekDiv.className = 'slot-week';
+      var firstDate = null;
+      dayConfig.forEach(function(dc){
+        var d = new Date(today);
+        var diff = (dc.wd - today.getDay() + 7) % 7 || 7;
+        diff += week * 7; d.setDate(today.getDate() + diff);
+        if (!firstDate) firstDate = d;
+      });
+      if (firstDate) {
+        var wl = document.createElement('div'); wl.className = 'slot-week-label';
+        wl.textContent = week===0?'Next Available':week===1?'Following Week':'Two Weeks Out';
+        weekDiv.appendChild(wl);
+      }
+      dayConfig.forEach(function(dc){
+        var d = new Date(today);
+        var diff = (dc.wd - today.getDay() + 7) % 7 || 7;
+        diff += week * 7; d.setDate(today.getDate() + diff);
+        var iso = isoDate(d); var dateLabel = fmtDate(d);
+        var dayGroup = document.createElement('div'); dayGroup.className = 'slot-day-group';
+        var dayName = document.createElement('div'); dayName.className = 'slot-day-name';
+        dayName.innerHTML = dc.name + '<span class="slot-date-tag">' + dateLabel + '</span>';
+        dayGroup.appendChild(dayName);
+        var timesDiv = document.createElement('div'); timesDiv.className = 'slot-times';
+        times.forEach(function(t, ti){
+          var slotKey = iso + ' ' + t;
+          var el = document.createElement('div');
+          el.className = 'slot' + (bookedSlots.indexOf(slotKey) !== -1 ? ' booked' : '');
+          el.dataset.slotKey = slotKey;
+          el.innerHTML = '<div class="slot-time">' + timeLabels[ti] + '</div>';
+          if (bookedSlots.indexOf(slotKey) === -1) {
+            el.addEventListener('click', function(){
+              container.querySelectorAll('.slot').forEach(function(s){s.classList.remove('selected')});
+              el.classList.add('selected');
+              document.getElementById('bk-selected-slot').value = dc.name + ' ' + dateLabel + ' ' + timeLabels[ti];
+              document.getElementById('bk-selected-slot-key').value = slotKey;
+            });
+          }
+          timesDiv.appendChild(el);
+        });
+        dayGroup.appendChild(timesDiv);
+        weekDiv.appendChild(dayGroup);
+      });
+      container.appendChild(weekDiv);
+    }
+  }
+
+  fetch(SCRIPT_URL + '?action=getBooked')
+    .then(function(r){return r.json()})
+    .then(function(res){bookedSlots = (res.booked||[]); buildSlotGrid();})
+    .catch(function(){buildSlotGrid();});
+
+  // Survey toggle
+  document.querySelectorAll('#bk-form .survey-opt').forEach(function(opt){
+    function toggle(){
+      var group = opt.dataset.group;
+      var isMulti = !!opt.closest('.multi');
+      if (!isMulti) { document.querySelectorAll('[data-group="'+group+'"]').forEach(function(o){o.classList.remove('active');o.setAttribute('aria-pressed','false')}); }
+      var nowActive = opt.classList.toggle('active');
+      opt.setAttribute('aria-pressed', nowActive ? 'true' : 'false');
+      var vals = Array.from(document.querySelectorAll('[data-group="'+group+'"].active')).map(function(o){return o.textContent.trim()}).join(', ');
+      var map = {'bk-budget':'bk-budget-val','bk-services':'bk-services-val','bk-timeline':'bk-timeline-val'};
+      var el = document.getElementById(map[group]); if (el) el.value = vals;
+    }
+    opt.addEventListener('click', toggle);
+    opt.addEventListener('keydown', function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}});
+  });
+
+  // File upload preview
+  var photoInput = document.getElementById('bk-photo-input');
+  if (photoInput) {
+    photoInput.addEventListener('change', function(){
+      var prev = document.getElementById('bk-photo-preview'); prev.innerHTML = '';
+      Array.from(this.files).forEach(function(f){
+        if (f.type.startsWith('image/')) {
+          var r = new FileReader();
+          r.onload = function(e){ var img = document.createElement('img'); img.src = e.target.result; img.className = 'upload-thumb'; prev.appendChild(img); };
+          r.readAsDataURL(f);
+        } else {
+          var d = document.createElement('div'); d.className = 'upload-file-name'; d.textContent = f.name; prev.appendChild(d);
+        }
+      });
+    });
+  }
+
+  // Form submit
+  var bkForm = document.getElementById('bk-form');
+  if (bkForm) {
+    bkForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = document.getElementById('bk-submit');
+      var txt = document.getElementById('bk-btn-text');
+      var fn = document.getElementById('bk-fn').value.trim();
+      var fp = document.getElementById('bk-fp').value.trim();
+      var fe = document.getElementById('bk-fe').value.trim();
+      var fa = document.getElementById('bk-fa').value.trim();
+      if (!fn || !fp || !fe || !fa) { alert('Please fill in your name, phone, email, and property address.'); return; }
+      if (!document.getElementById('bk-selected-slot-key').value) { alert('Please select a consultation date and time.'); return; }
+      btn.style.opacity = '.7'; txt.textContent = 'Sending...';
+      var data = {
+        name: fn, phone: fp, email: fe,
+        address: fa + ' ' + document.getElementById('bk-fc').value + ' ' + document.getElementById('bk-fz').value,
+        slot: document.getElementById('bk-selected-slot').value,
+        slotKey: document.getElementById('bk-selected-slot-key').value,
+        budget: document.getElementById('bk-budget-val').value,
+        services: document.getElementById('bk-services-val').value,
+        timeline: document.getElementById('bk-timeline-val').value,
+        notes: document.getElementById('bk-fnotes').value,
+        referral: document.getElementById('bk-fref').value
+      };
+      fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', body:JSON.stringify(data), headers:{'Content-Type':'text/plain'} })
+        .then(function(){
+          btn.style.opacity = '1'; btn.classList.add('sent'); txt.textContent = 'Request Sent ✓';
+          var s = bkForm.querySelector('.slot.selected');
+          if (s) { s.classList.remove('selected'); s.classList.add('booked'); }
+        })
+        .catch(function(){
+          btn.style.opacity = '1'; txt.textContent = 'Request My Consultation →';
+          alert('Could not send. Please call or text: 512-695-7566');
+        });
+    });
+  }
 })();
 </script>
 </body>
