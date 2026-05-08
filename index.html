@@ -3282,6 +3282,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   if (!cv) return;
   // Override existing canvas with more particles
   var ctx = cv.getContext('2d');
+  if (!ctx) return;
   var pts = [], W, H;
   function resize() { W = cv.width = cv.offsetWidth; H = cv.height = cv.offsetHeight; }
   function init() {
@@ -3415,6 +3416,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   var cv = document.getElementById('h-canvas');
   if (!cv) return;
   var ctx = cv.getContext('2d');
+  if (!ctx) return;
   var pts = [], W, H;
   function resize() { W = cv.width = cv.offsetWidth; H = cv.height = cv.offsetHeight; }
   function init() {
