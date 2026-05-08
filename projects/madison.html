@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Madison — Red Agave Landscaping Austin TX</title>
+<meta name="description" content="Madison — Austin, TX. Blank-slate transformation with American Synthetic Ultra Real turf, terraced planes, black diamond boulder bench and fire pit, COB and low-voltage lighting. Designed and built in-house by Red Agave Landscaping.">
+<link rel="canonical" href="https://www.redagaveatx.com/projects/madison.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --dark:#0a0a0a;
+  --dark2:#141311;
+  --cream:#f0ead6;
+  --gold:#c9a84c;
+  --gold-pulse:#e8c96a;
+  --gold-soft:rgba(232,160,32,0.7);
+  --bronze:#a07a4a;
+  --line:#E0E0E0;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--dark);color:var(--cream);font-family:'Montserrat',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--gold)}
+
+/* ═══ BRAND TYPE TOKENS ═══ */
+.t-eyebrow{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:var(--gold-soft)}
+.t-eyebrow.with-line{display:inline-flex;align-items:center;gap:14px}
+.t-eyebrow.with-line::before{content:'';width:44px;height:1px;background:var(--gold);opacity:.55}
+.t-eyebrow.with-line.both::after{content:'';width:44px;height:1px;background:var(--gold);opacity:.55}
+.t-cream{font-family:'Bebas Neue',cursive;font-size:clamp(68px,8.5vw,118px);line-height:.90;letter-spacing:2px;color:var(--cream);text-shadow:0 2px 4px rgba(0,0,0,0.7),0 0 12px rgba(240,234,214,0.08)}
+.t-cream-xl{font-family:'Bebas Neue',cursive;font-size:clamp(96px,14vw,220px);line-height:.90;letter-spacing:2px;color:var(--cream);text-shadow:0 2px 4px rgba(0,0,0,0.7),0 0 12px rgba(240,234,214,0.08)}
+.t-ghost{font-family:'Bebas Neue',cursive;color:transparent;-webkit-text-stroke:1.5px rgba(255,240,180,0.7);letter-spacing:2px}
+.t-pulse{font-family:'Montserrat',sans-serif;font-weight:500;font-size:0.68em;letter-spacing:5px;text-transform:uppercase;color:var(--gold-pulse);text-shadow:0 0 24px rgba(232,196,90,0.45),0 0 48px rgba(201,168,76,0.18);animation:goldPulse 4.2s ease-in-out infinite}
+@keyframes goldPulse{0%,100%{text-shadow:0 0 24px rgba(232,196,90,0.45),0 0 48px rgba(201,168,76,0.18)}50%{text-shadow:0 0 36px rgba(232,196,90,0.62),0 0 90px rgba(201,168,76,0.30)}}
+
+/* ═══ LINE-MASK REVEAL ═══ */
+.line-mask{display:block;overflow:hidden}
+.line-mask > *{display:block;transform:translateY(100%);transition:transform 1.1s var(--ease)}
+.line-mask.in > *{transform:translateY(0)}
+.line-mask[data-delay="1"] > *{transition-delay:.05s}
+.line-mask[data-delay="2"] > *{transition-delay:.10s}
+.line-mask[data-delay="3"] > *{transition-delay:.15s}
+.line-mask[data-delay="4"] > *{transition-delay:.20s}
+.line-mask[data-delay="5"] > *{transition-delay:.25s}
+.line-mask[data-delay="6"] > *{transition-delay:.30s}
+
+/* ═══ FIXED-FRAME INTERNAL PARALLAX ═══ */
+.clip-media{position:relative;overflow:hidden;width:100%;background:#0d0d0d;border-radius:2px}
+.clip-media img{position:absolute;inset:-10%;width:120%;height:120%;object-fit:cover;will-change:transform;transform:translate3d(0,0,0);backface-visibility:hidden;filter:brightness(0.92) saturate(0.98);opacity:0;transition:opacity 1.0s var(--ease)}
+.clip-media.in img{opacity:1}
+.clip-media::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(8,11,6,0) 0%,rgba(8,11,6,0) 60%,rgba(8,11,6,0.32) 100%)}
+
+/* ═══ CUSTOM CURSOR ═══ */
+@media(hover:hover){body{cursor:none}}
+#cur{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);top:0;left:0;transition:width .35s var(--ease),height .35s var(--ease),background .25s ease,opacity .3s}
+#cur-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(201,168,76,.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);top:0;left:0;transition:width .45s var(--ease),height .45s var(--ease),opacity .3s,border-color .3s}
+#cur.cur-view{width:80px;height:80px;background:transparent;border:1px solid var(--gold);mix-blend-mode:difference}
+#cur-ring.cur-view{opacity:0}
+#cur.cur-mag{width:18px;height:18px}
+#cur-ring.cur-mag{width:58px;height:58px;border-color:rgba(232,201,106,.9)}
+
+/* ═══ HEADER ═══ */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:80;padding:22px 48px;display:flex;justify-content:space-between;align-items:center;mix-blend-mode:difference;color:#fff}
+.hdr-brand{font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:6px;color:var(--cream)}
+.hdr-nav{display:flex;gap:34px}
+.hdr-nav a{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:rgba(255,255,255,.75);transition:color .3s}
+.hdr-nav a:hover{color:var(--gold-pulse)}
+
+/* ═══ 1. THRESHOLD HERO ═══ */
+.thr{position:relative;height:100vh;min-height:680px;overflow:hidden;background:#000}
+.thr-media{position:absolute;inset:0;overflow:hidden}
+.thr-media img{width:100%;height:100%;object-fit:cover;transform:scale(1.12);animation:slowZoom 18s ease-out forwards}
+@keyframes slowZoom{to{transform:scale(1.0)}}
+.thr-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.42) 0%,rgba(10,10,10,.05) 28%,rgba(10,10,10,0) 55%,rgba(10,10,10,.88) 100%);z-index:1;pointer-events:none}
+.thr-inner{position:relative;z-index:3;height:100%;padding:120px 48px 80px;display:flex;flex-direction:column;justify-content:space-between}
+.thr-top{display:flex;justify-content:space-between;align-items:flex-start}
+.thr-locator{display:flex;flex-direction:column;gap:10px}
+.thr-num{font-family:'Bebas Neue',cursive;font-size:72px;line-height:.9;color:var(--cream);letter-spacing:2px;opacity:.85}
+.thr-bottom{display:flex;flex-direction:column;gap:26px;align-items:flex-start}
+.thr-title{font-family:'Bebas Neue',cursive;font-size:clamp(110px,17vw,260px);line-height:.88;letter-spacing:2px;color:var(--cream);text-shadow:0 2px 4px rgba(0,0,0,0.7),0 0 12px rgba(240,234,214,0.08)}
+.thr-meta{display:flex;gap:48px;flex-wrap:wrap}
+.thr-meta span{display:inline-flex;align-items:center;gap:12px}
+.thr-meta span::before{content:'';width:44px;height:1px;background:var(--gold);opacity:.55}
+.thr-scroll{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;z-index:4}
+.thr-scroll::after{content:'';width:1px;height:46px;background:linear-gradient(to bottom,var(--gold-pulse),transparent);animation:scrollTick 2.2s ease-in-out infinite}
+@keyframes scrollTick{0%,100%{transform:scaleY(.25);transform-origin:top;opacity:.4}50%{transform:scaleY(1);opacity:1}}
+.thr-back{position:absolute;top:26px;left:48px;z-index:81;display:inline-flex;align-items:center;gap:10px;color:var(--gold-soft);mix-blend-mode:difference}
+.thr-back::before{content:'←';font-size:14px}
+
+/* ═══ 2. STICKY NARRATIVE ═══ */
+.nar{position:relative;background:var(--dark);padding:180px 0 200px}
+.nar-grid{display:grid;grid-template-columns:40vw 60vw;max-width:1680px;margin:0 auto}
+.nar-left{padding:0 48px;position:relative}
+.nar-sticky{position:sticky;top:140px;display:flex;flex-direction:column;gap:28px}
+.nar-title{font-family:'Bebas Neue',cursive;font-size:clamp(56px,6.6vw,102px);line-height:.92;letter-spacing:2px;color:var(--cream);text-shadow:0 2px 4px rgba(0,0,0,0.7),0 0 12px rgba(240,234,214,0.08)}
+.nar-title em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px rgba(255,240,180,0.7)}
+.nar-body{max-width:440px;display:flex;flex-direction:column;gap:16px}
+.nar-body p{font-size:14px;line-height:1.85;color:rgba(240,234,214,.62);font-weight:300}
+.nar-meta{display:flex;flex-direction:column;gap:18px;margin-top:18px;padding-top:22px;border-top:1px solid rgba(240,234,214,.08)}
+.nar-meta-row{display:grid;grid-template-columns:90px 1fr;gap:18px;align-items:baseline}
+.nar-meta-row dt{color:var(--gold-soft)}
+.nar-meta-row dd{font-family:'Bebas Neue',cursive;font-size:22px;color:var(--cream);letter-spacing:1.5px;line-height:1}
+
+.nar-right{padding:0 48px;display:flex;flex-direction:column;gap:140px}
+.nar-fig{width:100%;position:relative}
+.nar-fig-1{width:85%;margin-left:0}
+.nar-fig-1 .clip-media{aspect-ratio:4/5}
+.nar-fig-2{width:62%;margin-left:30%}
+.nar-fig-2 .clip-media{aspect-ratio:5/4}
+.nar-fig-3{width:78%;margin-left:10%}
+.nar-fig-3 .clip-media{aspect-ratio:3/4}
+.nar-fig-4{width:54%;margin-left:42%}
+.nar-fig-4 .clip-media{aspect-ratio:4/5}
+.nar-fig-cap{margin-top:14px;display:flex;justify-content:space-between;gap:20px}
+.nar-fig-cap .n{color:var(--gold-pulse);font-weight:500;letter-spacing:5px;text-shadow:0 0 24px rgba(232,196,90,0.45),0 0 48px rgba(201,168,76,0.18)}
+
+/* ═══ 3. KINETIC SHOWCASE ═══ */
+.psc-wrap{position:relative;background:var(--dark);padding:0;overflow:hidden}
+.psc-head{max-width:1680px;margin:0 auto;padding:120px 48px 60px;display:flex;justify-content:space-between;align-items:flex-end;gap:60px;flex-wrap:wrap}
+.psc-head h2{font-family:'Bebas Neue',cursive;font-size:clamp(60px,7.5vw,108px);line-height:.90;letter-spacing:2px;color:var(--cream);text-shadow:0 2px 4px rgba(0,0,0,0.7),0 0 12px rgba(240,234,214,0.08);max-width:940px}
+.psc-head h2 em{font-style:normal;font-family:'Montserrat',sans-serif;font-weight:500;font-size:0.46em;letter-spacing:5px;text-transform:uppercase;color:var(--gold-pulse);-webkit-text-stroke:0;text-shadow:0 0 24px rgba(232,196,90,0.45),0 0 48px rgba(201,168,76,0.18);animation:goldPulse 4.2s ease-in-out infinite;display:inline-block;vertical-align:baseline;margin-left:.3em;line-height:1}
+
+.ps-mask-wrap{overflow:hidden;display:block}
+.ps-mask-text{display:block;transform:translateY(110%);will-change:transform}
+.ps-eyebrow{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:var(--gold-soft);display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.ps-eyebrow::before{content:'';width:44px;height:1px;background:var(--gold);opacity:.55}
+.ps-cream{font-family:'Bebas Neue',cursive;font-size:clamp(56px,7vw,108px);line-height:.92;letter-spacing:2px;color:var(--cream);text-shadow:0 2px 4px rgba(0,0,0,0.7),0 0 12px rgba(240,234,214,0.08)}
+.ps-pulse{font-family:'Montserrat',sans-serif;font-weight:500;font-size:clamp(22px,2.6vw,42px);letter-spacing:5px;text-transform:uppercase;color:var(--gold-pulse);text-shadow:0 0 24px rgba(232,196,90,0.45),0 0 48px rgba(201,168,76,0.18);animation:goldPulse 4.2s ease-in-out infinite;display:block;margin-top:14px}
+.ps-mono{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:300;letter-spacing:2px;color:rgba(240,234,214,.62);margin-top:24px;line-height:1.8;max-width:420px}
+
+/* LAYOUT A — Z-STACK OVERLAP */
+.psc-stack{position:relative;width:100%;max-width:1680px;margin:0 auto;padding:80px 5vw 80px;height:90vh;min-height:680px}
+.psc-stack .stk-base{position:absolute;top:0;left:5vw;width:62%;height:90%;overflow:hidden;background:#0d0d0d;z-index:1}
+.psc-stack .stk-base img{position:absolute;inset:-10%;width:120%;height:120%;object-fit:cover;will-change:transform;backface-visibility:hidden}
+.psc-stack .stk-top{position:absolute;width:38%;height:62%;z-index:3;overflow:hidden;background:#0d0d0d;box-shadow:-30px 50px 90px rgba(0,0,0,.85),0 0 0 1px rgba(232,196,90,.06);right:5vw;bottom:6%}
+.psc-stack .stk-top img{position:absolute;inset:-10%;width:120%;height:120%;object-fit:cover;will-change:transform;backface-visibility:hidden}
+.psc-stack .stk-label{position:absolute;z-index:4;top:7%;right:5vw;width:38%;text-align:left;display:flex;flex-direction:column}
+.psc-stack .stk-label .ps-cream{font-size:clamp(48px,5.6vw,92px)}
+
+/* LAYOUT B — PINNED MASK REVEAL */
+.psc-pin-outer{position:relative;height:280vh;background:var(--dark)}
+.psc-pin{position:sticky;top:0;height:100vh;width:100%;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center}
+.psc-pin-frame{position:relative;width:88vw;max-width:1480px;height:80vh;overflow:hidden;background:#0d0d0d}
+.psc-pin-frame .pin-img{position:absolute;inset:-10%;width:120%;height:120%;object-fit:cover;will-change:transform,opacity;backface-visibility:hidden;opacity:0;transition:opacity .9s var(--ease)}
+.psc-pin-frame .pin-img.is-on{opacity:1}
+.psc-pin-scrim{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.05) 25%,rgba(0,0,0,.05) 60%,rgba(0,0,0,.85) 100%)}
+.psc-pin-bar{position:absolute;left:8vw;right:8vw;bottom:5vh;z-index:3;display:flex;justify-content:space-between;align-items:center;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:rgba(240,234,214,.45)}
+.psc-pin-bar-progress{position:relative;width:200px;height:1px;background:rgba(240,234,214,.15)}
+.psc-pin-bar-progress::after{content:'';position:absolute;left:0;top:0;height:100%;width:0;background:var(--gold-pulse);box-shadow:0 0 12px rgba(232,196,90,.6);transition:width .15s linear}
+.psc-pin-stage{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 8vw 8vh;opacity:0;transform:translateY(40px);will-change:transform,opacity;transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.psc-pin-stage.is-active{opacity:1;transform:translateY(0)}
+
+/* BEFORE / AFTER */
+.ba{position:relative;background:var(--dark);padding:140px 0 160px;overflow:hidden}
+.ba-head{max-width:1680px;margin:0 auto 60px;padding:0 48px}
+.ba-head h2{font-family:'Bebas Neue',cursive;font-size:clamp(56px,7vw,108px);line-height:.92;letter-spacing:2px;color:var(--cream);text-shadow:0 2px 4px rgba(0,0,0,0.7),0 0 12px rgba(240,234,214,0.08);max-width:1100px;margin-top:18px}
+.ba-head h2 em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px rgba(255,240,180,0.7)}
+.ba-stage{position:relative;max-width:1480px;margin:0 auto;padding:0 48px;user-select:none}
+.ba-frame{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;background:#0d0d0d;cursor:ew-resize}
+.ba-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba-after{clip-path:inset(0 0 0 50%);transition:clip-path .25s var(--ease)}
+.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--cream);box-shadow:0 0 18px rgba(240,234,214,.55),0 0 0 1px rgba(232,196,90,.45);z-index:5;pointer-events:none;transition:left .25s var(--ease)}
+.ba-knob{position:absolute;top:50%;left:50%;width:64px;height:64px;border-radius:50%;background:rgba(240,234,214,.92);border:1px solid rgba(232,196,90,.7);transform:translate(-50%,-50%);box-shadow:0 14px 40px rgba(0,0,0,.55);z-index:6;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:600;letter-spacing:3px;color:var(--dark);transition:left .25s var(--ease)}
+.ba-knob::before{content:'‹';margin-right:4px;font-size:18px;line-height:1}
+.ba-knob::after{content:'›';margin-left:4px;font-size:18px;line-height:1}
+.ba-frame.dragging .ba-after,.ba-frame.dragging .ba-handle,.ba-frame.dragging .ba-knob{transition:none}
+.ba-tag{position:absolute;top:24px;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:500;letter-spacing:7px;text-transform:uppercase;color:var(--cream);text-shadow:0 2px 6px rgba(0,0,0,.6);z-index:4;background:rgba(8,11,6,.55);backdrop-filter:blur(6px);padding:8px 14px;border:1px solid rgba(232,196,90,.18)}
+.ba-tag-before{left:24px}
+.ba-tag-after{right:24px;color:var(--gold-pulse);text-shadow:0 0 18px rgba(232,196,90,.45)}
+
+/* Mid gold-pulse statement */
+.psc-statement{position:relative;background:var(--dark);padding:140px 48px;text-align:center;overflow:hidden}
+.psc-statement-line{font-family:'Montserrat',sans-serif;font-weight:500;font-size:clamp(28px,4vw,64px);letter-spacing:5px;text-transform:uppercase;color:var(--gold-pulse);text-shadow:0 0 24px rgba(232,196,90,0.45),0 0 48px rgba(201,168,76,0.18);animation:goldPulse 4.2s ease-in-out infinite;display:inline-block;will-change:transform}
+.psc-statement-sub{margin-top:22px;font-family:'Bebas Neue',cursive;font-size:clamp(48px,7vw,108px);line-height:.92;letter-spacing:2px;color:var(--cream);text-shadow:0 2px 4px rgba(0,0,0,0.7),0 0 12px rgba(240,234,214,0.08);max-width:1100px;margin-left:auto;margin-right:auto}
+.psc-statement-sub em{font-style:normal;font-family:'Montserrat',sans-serif;font-weight:500;font-size:0.42em;letter-spacing:5px;text-transform:uppercase;color:var(--gold-pulse);-webkit-text-stroke:0;text-shadow:0 0 24px rgba(232,196,90,0.45),0 0 48px rgba(201,168,76,0.18);animation:goldPulse 4.2s ease-in-out infinite;display:inline-block;vertical-align:baseline;margin-left:.4em;line-height:1}
+
+/* ═══ 4. BLUEPRINT ═══ */
+.bp{background:var(--cream);color:#1a1a1a;padding:160px 0}
+.bp-inner{max-width:1280px;margin:0 auto;padding:0 48px}
+.bp-head{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;margin-bottom:56px;padding-bottom:30px;border-bottom:1px solid var(--line);align-items:end}
+.bp-head .t-eyebrow{color:rgba(160,122,74,0.85)}
+.bp-head .t-eyebrow.with-line::before{background:var(--bronze);opacity:.55}
+.bp-title{font-family:'Bebas Neue',cursive;font-size:clamp(60px,7vw,108px);line-height:.9;letter-spacing:2px;color:#1a1a1a}
+.bp-title em{font-style:normal;font-family:'Montserrat',sans-serif;font-weight:500;font-size:0.34em;letter-spacing:5px;text-transform:uppercase;color:var(--bronze);-webkit-text-stroke:0;text-shadow:0 0 20px rgba(160,122,74,.18);display:inline-block;vertical-align:baseline;margin-left:.3em;line-height:1}
+.bp-chapters{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:52px}
+.bp-chap{padding:32px 28px;border-right:1px solid var(--line)}
+.bp-chap:last-child{border-right:none}
+.bp-chap-eb{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:rgba(160,122,74,0.85);margin-bottom:20px}
+.bp-chap-h{font-family:'Bebas Neue',cursive;font-size:28px;letter-spacing:2px;color:#1a1a1a;margin-bottom:18px;line-height:1}
+.bp-chap ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.bp-chap li{font-size:11px;color:rgba(26,26,26,.75);line-height:1.6;font-weight:400;letter-spacing:.3px;display:flex;gap:10px}
+.bp-chap li::before{content:'–';color:var(--bronze)}
+.bp-meta{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.bp-meta-cell{padding:32px 28px;border-right:1px solid var(--line)}
+.bp-meta-cell:last-child{border-right:none}
+.bp-meta-lbl{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:rgba(160,122,74,0.75);margin-bottom:12px}
+.bp-meta-val{font-family:'Bebas Neue',cursive;font-size:38px;letter-spacing:2px;color:#1a1a1a;line-height:1}
+
+/* ═══ 5. HORIZON ═══ */
+.hz{position:relative;display:block;height:100vh;min-height:680px;overflow:hidden;background:#000}
+.hz-media{position:absolute;inset:0;overflow:hidden}
+.hz-media img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 1.6s var(--ease);filter:brightness(.52)}
+.hz:hover .hz-media img{transform:scale(1.0);filter:brightness(.72)}
+.hz-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,.15) 45%,rgba(10,10,10,.8) 100%);z-index:1}
+.hz-inner{position:relative;z-index:2;height:100%;max-width:1680px;margin:0 auto;padding:80px 48px 80px;display:flex;flex-direction:column;justify-content:space-between;pointer-events:none}
+.hz-title{font-family:'Bebas Neue',cursive;font-size:clamp(120px,18vw,300px);line-height:.88;letter-spacing:2px;color:var(--cream);text-shadow:0 2px 4px rgba(0,0,0,0.7),0 0 12px rgba(240,234,214,0.08)}
+.hz-title em{font-style:normal;font-family:'Montserrat',sans-serif;font-weight:500;font-size:0.22em;letter-spacing:5px;text-transform:uppercase;color:var(--gold-pulse);-webkit-text-stroke:0;text-shadow:0 0 24px rgba(232,196,90,0.45),0 0 48px rgba(201,168,76,0.18);animation:goldPulse 4.2s ease-in-out infinite;display:inline-block;vertical-align:baseline;margin-left:.4em;line-height:1}
+.hz-action{display:inline-flex;align-items:center;gap:18px}
+.hz-action::after{content:'→';font-size:16px}
+#hz-wipe{position:fixed;inset:0;background:var(--dark);z-index:900;transform:scaleY(0);transform-origin:top;pointer-events:none}
+
+/* ═══ FOOTER ═══ */
+footer{background:#050504;padding:72px 48px 28px;border-top:1px solid rgba(201,168,76,0.06)}
+.ft-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:44px;margin-bottom:52px;max-width:1680px;margin-left:auto;margin-right:auto}
+.ft-brand{font-family:'Bebas Neue',cursive;font-size:36px;letter-spacing:6px;color:var(--gold);margin-bottom:12px}
+.ft-tag{font-size:10px;color:rgba(240,234,214,.22);letter-spacing:2px;text-transform:uppercase;line-height:1.9;font-weight:300}
+.ft-info{margin-top:18px;font-size:11px;color:rgba(240,234,214,.32);line-height:2}
+.ft-info a{color:var(--gold)}
+.ft-ct{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:300;letter-spacing:7px;text-transform:uppercase;color:rgba(232,160,32,0.55);margin-bottom:18px;display:block}
+.ft-col a{display:block;font-size:11px;color:rgba(240,234,214,.28);margin-bottom:10px;transition:color .2s,transform .2s;font-weight:300;letter-spacing:.3px}
+.ft-col a:hover{color:var(--gold-pulse);transform:translateX(4px)}
+.ft-bot{border-top:1px solid rgba(240,234,214,.05);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;max-width:1680px;margin:0 auto}
+.ft-copy{font-size:9px;color:rgba(240,234,214,.18);letter-spacing:2px}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:900px){
+  .hdr{padding:16px 22px}
+  .hdr-nav{display:none}
+  .thr-inner{padding:80px 22px 60px}
+  .nar-grid{grid-template-columns:1fr;gap:80px}
+  .nar-left,.nar-right{padding:0 22px}
+  .nar-sticky{position:static}
+  .nar-right{gap:60px}
+  .nar-fig{width:100%!important;margin-left:0!important}
+  .psc-head{padding:60px 22px 30px}
+  .psc-stack{flex-direction:column;height:auto;min-height:0;padding:40px 22px}
+  .psc-stack .stk-base{position:relative;width:100%;height:48vh;left:auto;top:auto}
+  .psc-stack .stk-top{position:relative;width:80%;height:34vh;right:auto;bottom:auto;margin:-10vh 0 0 auto}
+  .psc-stack .stk-label{position:relative;width:100%;top:auto;right:auto;margin-bottom:24px}
+  .psc-pin-outer{height:auto}
+  .psc-pin{position:relative;height:auto;min-height:520px}
+  .psc-pin-frame{height:60vh}
+  .psc-pin-stage{padding:0 24px 8vh}
+  .psc-pin-bar{left:24px;right:24px}
+  .psc-statement{padding:80px 22px}
+  .bp-inner{padding:0 22px}
+  .bp-head{grid-template-columns:1fr;gap:24px}
+  .bp-chapters,.bp-meta{grid-template-columns:1fr}
+  .bp-chap,.bp-meta-cell{border-right:none;border-bottom:1px solid var(--line)}
+  .hz-inner{padding:60px 22px}
+  .ft-grid{grid-template-columns:1fr;gap:28px}
+  @media(hover:none){body{cursor:auto}#cur,#cur-ring{display:none}}
+}
+</style>
+</head>
+<body>
+
+<!-- custom cursor -->
+<div id="cur"></div><div id="cur-ring"></div>
+
+<!-- header -->
+<header class="hdr">
+  <a href="../index.html" class="hdr-brand">RED AGAVE</a>
+  <nav class="hdr-nav">
+    <a href="../featured.html">Work</a>
+    <a href="../about.html">Studio</a>
+    <a href="../contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- ═══ 1. THRESHOLD HERO ═══ -->
+<section class="thr">
+  <a href="../featured.html" class="thr-back t-eyebrow">All Work</a>
+  <div class="thr-media">
+    <img src="../images/projects/madison/IMG_8949.webp" alt="Madison — Austin, TX — Red Agave Landscaping">
+  </div>
+  <div class="thr-scrim"></div>
+  <div class="thr-inner">
+    <div class="thr-top">
+      <div class="thr-locator">
+        <span class="line-mask" data-delay="1"><span class="t-eyebrow with-line">Project / 01</span></span>
+        <span class="line-mask" data-delay="2"><span class="t-eyebrow">Austin, Texas · 2024</span></span>
+      </div>
+      <span class="line-mask" data-delay="3"><span class="thr-num t-ghost">01</span></span>
+    </div>
+    <div class="thr-bottom">
+      <h1 class="line-mask" data-delay="2"><span class="thr-title">Madison</span></h1>
+      <div class="thr-meta line-mask" data-delay="4">
+        <span class="t-eyebrow">Residence · Austin, TX</span>
+        <span class="t-eyebrow">Blank slate · Full outdoor living build · In-house</span>
+      </div>
+    </div>
+  </div>
+  <div class="thr-scroll"><span class="t-eyebrow t-pulse">Scroll</span></div>
+</section>
+
+<!-- ═══ 2. STICKY NARRATIVE ═══ -->
+<section class="nar">
+  <div class="nar-grid">
+    <aside class="nar-left">
+      <div class="nar-sticky">
+        <span class="line-mask"><span class="t-eyebrow with-line">Design Intent &middot; Austin, TX</span></span>
+        <h2 class="line-mask" data-delay="1"><span class="nar-title">A blank pad turned into the place you go at night.</span></h2>
+        <span class="line-mask" data-delay="2"><span class="ps-pulse" style="margin-top:6px">Turf &middot; Boulders &middot; Fire &middot; Light</span></span>
+        <div class="nar-body">
+          <p class="line-mask" data-delay="3"><span>The Madison site came to us completely bare &mdash; no grade, no definition, no reason to be outside. We started by terracing the space into two connected planes, giving the yard a sense of purpose before a single material was placed.</span></p>
+          <p class="line-mask" data-delay="4"><span>American Synthetic Turf &lsquo;Ultra Real&rsquo; threads across both levels, reading as lawn by day and as a lit stage after dark. Black diamond boulders were set and hand-drilled on-site &mdash; one becomes a floating bench, another a fire pit with a gas burner run through the stone itself.</span></p>
+          <p class="line-mask" data-delay="5"><span>COB strip lighting and low-voltage fixtures are buried throughout the landscape. After sunset the yard changes character entirely &mdash; warm pools of light define each zone without revealing a single fixture.</span></p>
+        </div>
+      </div>
+    </aside>
+    <div class="nar-right">
+      <figure class="nar-fig nar-fig-1">
+        <div class="clip-media has-parallax"><img src="../images/projects/madison/IMG_8976.webp" alt="American Synthetic Ultra Real turf — terraced outdoor living — Austin TX"></div>
+        <figcaption class="nar-fig-cap"><span class="t-eyebrow t-pulse n">01 &middot; Ultra Real Turf</span><span class="t-eyebrow">American Synthetic / terraced</span></figcaption>
+      </figure>
+      <figure class="nar-fig nar-fig-2">
+        <div class="clip-media has-parallax"><img src="../images/projects/madison/IMG_8977.webp" alt="Black diamond boulder fire pit with gas burner — Austin TX"></div>
+        <figcaption class="nar-fig-cap"><span class="t-eyebrow t-pulse n">02 &middot; Boulder Fire Pit</span><span class="t-eyebrow">Hand-drilled / gas burner</span></figcaption>
+      </figure>
+      <figure class="nar-fig nar-fig-3">
+        <div class="clip-media has-parallax"><img src="../images/projects/madison/IMG_8979.webp" alt="Black diamond boulder floating bench — Austin TX"></div>
+        <figcaption class="nar-fig-cap"><span class="t-eyebrow t-pulse n">03 &middot; Boulder Bench</span><span class="t-eyebrow">Black diamond / floating</span></figcaption>
+      </figure>
+      <figure class="nar-fig nar-fig-4">
+        <div class="clip-media has-parallax"><img src="../images/projects/madison/IMG_8997.webp" alt="COB and low-voltage lighting across terraced landscape — Austin TX"></div>
+        <figcaption class="nar-fig-cap"><span class="t-eyebrow t-pulse n">04 &middot; COB Lighting</span><span class="t-eyebrow">Low voltage / zone set</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BEFORE / AFTER DRAG SLIDER ═══ -->
+<section class="ba" id="ba-section">
+  <div class="ba-head">
+    <span class="line-mask"><span class="t-eyebrow with-line">Before &middot; After &middot; Austin, TX</span></span>
+    <h2 class="line-mask" data-delay="1"><span class="ba-h2">Bare ground. <em>Built stage.</em></span></h2>
+    <span class="line-mask" data-delay="2"><span class="ps-pulse" style="margin-top:14px">Drag the handle to reveal</span></span>
+  </div>
+  <div class="ba-stage">
+    <div class="ba-frame" id="ba-frame">
+      <img class="ba-before" id="ba-before" src="../images/projects/madison/before.webp" alt="Madison before — bare yard, no grade, no planting — Austin TX">
+      <img class="ba-after" id="ba-after" src="../images/projects/madison/after.webp" alt="Madison after — terraced Ultra Real turf, black diamond boulder fire pit and bench, COB lighting — Austin TX">
+      <div class="ba-tag ba-tag-before">Before</div>
+      <div class="ba-tag ba-tag-after">After</div>
+      <div class="ba-handle" id="ba-handle"></div>
+      <div class="ba-knob" id="ba-knob"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 3. KINETIC SHOWCASE ═══ -->
+<div class="psc-wrap">
+  <div class="psc-head">
+    <span class="line-mask"><span class="t-eyebrow with-line">The Build</span></span>
+    <h2 class="line-mask" data-delay="1"><span>Nothing approximated. <em>Every detail set.</em></span></h2>
+  </div>
+
+  <!-- LAYOUT A · Z-STACK OVERLAP — Turf + Boulders -->
+  <section class="psc-stack" data-psc-stack>
+    <div class="stk-base"><img class="stk-base-img" src="../images/projects/madison/IMG_9007.webp" alt="Terraced Ultra Real turf with low-voltage lighting — Austin TX"></div>
+    <div class="stk-top"><img class="stk-top-img" src="../images/projects/madison/IMG_9017.webp" alt="Black diamond boulder bench set into terraced landscape — Austin TX"></div>
+    <div class="stk-label">
+      <span class="ps-mask-wrap"><span class="ps-mask-text ps-eyebrow">Softscape &middot; 01</span></span>
+      <span class="ps-mask-wrap"><span class="ps-mask-text ps-cream">Ultra Real</span></span>
+      <span class="ps-mask-wrap"><span class="ps-mask-text ps-pulse">Synthetic Turf</span></span>
+      <span class="ps-mask-wrap"><span class="ps-mask-text ps-mono">American Synthetic Turf &lsquo;Ultra Real&rsquo; across two terraced planes. Laid continuous so the grade reads as a single surface &mdash; the transition between levels defined by boulder edge and light, not by material change.</span></span>
+    </div>
+  </section>
+</div>
+
+<!-- Mid gold-pulse statement -->
+<section class="psc-statement">
+  <div class="line-mask"><span class="psc-statement-line">Cut From Stone</span></div>
+  <div class="line-mask" data-delay="1"><span class="psc-statement-sub">Fire is a <em>design element.</em></span></div>
+</section>
+
+<!-- LAYOUT B · PINNED MASK REVEAL — 3 stages -->
+<div class="psc-pin-outer" id="pin-outer">
+  <div class="psc-pin" id="pin-track">
+    <div class="psc-pin-frame">
+      <img class="pin-img is-on" data-pin-img="0" src="../images/projects/madison/IMG_9021.webp" alt="Black diamond boulder fire pit lit at dusk — Austin TX">
+      <img class="pin-img" data-pin-img="1" src="../images/projects/madison/IMG_9027.webp" alt="Gas burner set into drilled black diamond boulder — Austin TX">
+      <img class="pin-img" data-pin-img="2" src="../images/projects/madison/IMG_9039.webp" alt="COB and low-voltage zone lighting across terraced turf — Austin TX">
+      <div class="psc-pin-scrim"></div>
+
+      <div class="psc-pin-stage is-active" data-pin-stage="0">
+        <div class="ps-mask-wrap"><div class="ps-mask-text ps-eyebrow">Feature &middot; 01</div></div>
+        <div class="ps-mask-wrap"><h3 class="ps-mask-text ps-cream">Boulder Fire</h3></div>
+        <div class="ps-mask-wrap"><span class="ps-mask-text ps-pulse">Black Diamond · Gas Burner</span></div>
+        <div class="ps-mask-wrap"><p class="ps-mask-text ps-mono">A black diamond boulder was selected, set, then hand-drilled on-site to accept a recessed gas burner. The flame appears to rise directly from the stone &mdash; no visible hardware, no surround.</p></div>
+      </div>
+      <div class="psc-pin-stage" data-pin-stage="1">
+        <div class="ps-mask-wrap"><div class="ps-mask-text ps-eyebrow">Feature &middot; 02</div></div>
+        <div class="ps-mask-wrap"><h3 class="ps-mask-text ps-cream">Floating Bench</h3></div>
+        <div class="ps-mask-wrap"><span class="ps-mask-text ps-pulse">Black Diamond · Cantilevered</span></div>
+        <div class="ps-mask-wrap"><p class="ps-mask-text ps-mono">A second black diamond boulder was cut and leveled to become a floating bench on the upper terrace &mdash; mass as furniture, anchored into the turf plane without a visible base.</p></div>
+      </div>
+      <div class="psc-pin-stage" data-pin-stage="2">
+        <div class="ps-mask-wrap"><div class="ps-mask-text ps-eyebrow">Lighting &middot; 01</div></div>
+        <div class="ps-mask-wrap"><h3 class="ps-mask-text ps-cream">After Dark</h3></div>
+        <div class="ps-mask-wrap"><span class="ps-mask-text ps-pulse">COB Strip &middot; Low Voltage</span></div>
+        <div class="ps-mask-wrap"><p class="ps-mask-text ps-mono">COB strip lighting and low-voltage fixtures are set flush through the landscape. No fixture is visible by day &mdash; at night each zone pools in warm light, anchored by the fire at the center.</p></div>
+      </div>
+
+      <div class="psc-pin-bar">
+        <span id="pin-counter">01 / 03</span>
+        <div class="psc-pin-bar-progress" id="pin-progress"></div>
+        <span>Scroll to advance</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ 4. BLUEPRINT ═══ -->
+<section class="bp">
+  <div class="bp-inner">
+    <div class="bp-head">
+      <span class="line-mask"><span class="t-eyebrow with-line">Takeoff / 2024</span></span>
+      <h2 class="line-mask" data-delay="1"><span class="bp-title">The <em>blueprint</em>.</span></h2>
+    </div>
+    <div class="bp-chapters">
+      <div class="bp-chap">
+        <div class="bp-chap-eb">01 / Softscape</div>
+        <div class="bp-chap-h">Turf + Grade</div>
+        <ul>
+          <li>American Synthetic &lsquo;Ultra Real&rsquo; turf</li>
+          <li>Two-plane terraced layout</li>
+          <li>Crushed decomposed granite base</li>
+          <li>Precision edge definition</li>
+          <li>Integrated drainage layer</li>
+        </ul>
+      </div>
+      <div class="bp-chap">
+        <div class="bp-chap-eb">02 / Hardscape</div>
+        <div class="bp-chap-h">Stone + Fire</div>
+        <ul>
+          <li>Black diamond boulder fire pit · drilled</li>
+          <li>Recessed gas burner · in-slab line</li>
+          <li>Black diamond boulder bench · floating</li>
+          <li>Boulder set + level on-site</li>
+          <li>Terrace retaining edge · natural stone</li>
+        </ul>
+      </div>
+      <div class="bp-chap">
+        <div class="bp-chap-eb">03 / Lighting</div>
+        <div class="bp-chap-h">COB + Low Volt</div>
+        <ul>
+          <li>COB strip lighting · flush set</li>
+          <li>Low-voltage zone fixtures</li>
+          <li>Transformer + timer control</li>
+          <li>Underground conduit runs</li>
+          <li>No visible hardware at grade</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bp-meta">
+      <div class="bp-meta-cell"><div class="bp-meta-lbl">Site</div><div class="bp-meta-val">Blank Slate</div></div>
+      <div class="bp-meta-cell"><div class="bp-meta-lbl">Build</div><div class="bp-meta-val">In-House</div></div>
+      <div class="bp-meta-cell"><div class="bp-meta-lbl">Lighting</div><div class="bp-meta-val">COB + LV</div></div>
+      <div class="bp-meta-cell"><div class="bp-meta-lbl">Delivered</div><div class="bp-meta-val">2024</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 5. HORIZON — NEXT PROJECT ═══ -->
+<a class="hz" href="hopeland.html" id="hz-link">
+  <div class="hz-media"><img src="../images/projects/hopeland/hero.webp" alt="Hopeland project preview — Circle C, Austin TX"></div>
+  <div class="hz-scrim"></div>
+  <div class="hz-inner">
+    <span class="t-eyebrow with-line">Next / 02</span>
+    <div>
+      <h2 class="hz-title">Hopeland <em>Build.</em></h2>
+      <span class="hz-action t-eyebrow t-pulse">Continue the journey</span>
+    </div>
+  </div>
+</a>
+<div id="hz-wipe"></div>
+
+<!-- footer -->
+<footer>
+  <div class="ft-grid">
+    <div>
+      <div class="ft-brand">RED AGAVE</div>
+      <div class="ft-tag">Modern, structural, tactile landscapes · Austin, TX</div>
+      <address class="ft-info">redagaveatx@gmail.com · <a href="tel:5129999999">512.999.9999</a></address>
+    </div>
+    <div class="ft-col">
+      <span class="ft-ct">Studio</span>
+      <a href="../about.html">About</a>
+      <a href="../featured.html">Work</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+    <div class="ft-col">
+      <span class="ft-ct">Services</span>
+      <a href="../services.html">Design + Build</a>
+      <a href="../services.html">Hardscape</a>
+      <a href="../services.html">Planting</a>
+    </div>
+    <div class="ft-col">
+      <span class="ft-ct">Connect</span>
+      <a href="#">Instagram</a>
+      <a href="#">Houzz</a>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <span class="ft-copy">&copy; Red Agave Landscaping &middot; All rights reserved</span>
+    <span class="ft-copy">Austin, Texas</span>
+  </div>
+</footer>
+
+<!-- ═══ LENIS + GSAP ═══ -->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  /* ═══ SMOOTH SCROLL (Lenis + GSAP) ═══ */
+  var lenis = null;
+  if (window.Lenis) {
+    lenis = new Lenis({duration:1.25,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));},smoothWheel:true,smoothTouch:false});
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(function(t){ lenis.raf(t*1000); });
+      gsap.ticker.lagSmoothing(0);
+    } else {
+      function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+    }
+  }
+
+  /* ═══ CUSTOM CURSOR ═══ */
+  var cur = document.getElementById('cur');
+  var ring = document.getElementById('cur-ring');
+  var isDesktop = window.matchMedia('(hover:hover)').matches;
+  if (cur && ring && isDesktop) {
+    var mx=innerWidth/2, my=innerHeight/2, rx=mx, ry=my;
+    document.addEventListener('mousemove',function(e){
+      mx=e.clientX; my=e.clientY;
+      cur.style.left=mx+'px'; cur.style.top=my+'px';
+    },{passive:true});
+    function loop(){ rx += (mx-rx)*0.18; ry += (my-ry)*0.18; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(loop); } loop();
+
+    document.querySelectorAll('.hdr-nav a,.hdr-brand,.thr-back,.hz,.ft-col a').forEach(function(el){
+      el.addEventListener('mouseenter',function(){ cur.classList.add('cur-mag'); ring.classList.add('cur-mag'); });
+      el.addEventListener('mouseleave',function(){ cur.classList.remove('cur-mag'); ring.classList.remove('cur-mag'); el.style.transform=''; });
+      el.addEventListener('mousemove',function(e){
+        var r = el.getBoundingClientRect();
+        var cx = r.left + r.width/2, cy = r.top + r.height/2;
+        var dx = (e.clientX - cx) * 0.22, dy = (e.clientY - cy) * 0.22;
+        el.style.transform = 'translate('+dx+'px,'+dy+'px)';
+      });
+    });
+    document.querySelectorAll('.nar-fig .clip-media').forEach(function(el){
+      el.addEventListener('mouseenter',function(){ cur.classList.add('cur-view'); ring.classList.add('cur-view'); });
+      el.addEventListener('mouseleave',function(){ cur.classList.remove('cur-view'); ring.classList.remove('cur-view'); });
+    });
+  } else if (cur && ring) {
+    cur.style.display='none'; ring.style.display='none'; document.body.style.cursor='auto';
+  }
+
+  /* ═══ REVEAL — line-mask + clip ═══ */
+  var revealEls = Array.from(document.querySelectorAll('.line-mask,.clip-media'));
+  function checkReveal(){
+    if (!revealEls.length) return;
+    var vh = window.innerHeight;
+    for (var i = revealEls.length - 1; i >= 0; i--) {
+      var el = revealEls[i];
+      var r = el.getBoundingClientRect();
+      if (r.top < vh * 0.92 && r.bottom > 0) {
+        el.classList.add('in');
+        revealEls.splice(i,1);
+      }
+    }
+  }
+  checkReveal();
+  window.addEventListener('scroll', checkReveal, {passive:true});
+  window.addEventListener('resize', checkReveal, {passive:true});
+  if (lenis && lenis.on) lenis.on('scroll', checkReveal);
+  var revealTick = setInterval(function(){ checkReveal(); if (!revealEls.length) clearInterval(revealTick); }, 120);
+
+  /* ═══ FIXED-FRAME INTERNAL PARALLAX ═══ */
+  if (window.gsap && window.ScrollTrigger) {
+    document.querySelectorAll('.clip-media.has-parallax img').forEach(function(img,i){
+      var dir = (i % 2 === 0) ? 1 : -1;
+      gsap.fromTo(img,
+        { yPercent: -10 * dir },
+        { yPercent: 10 * dir, ease:'none',
+          scrollTrigger:{ trigger: img.closest('.clip-media'), start:'top bottom', end:'bottom top', scrub: 1.2 }
+        }
+      );
+    });
+  }
+
+  /* ═══ LAYOUT A — Z-STACK OVERLAP ═══ */
+  if (window.gsap && window.ScrollTrigger) {
+    document.querySelectorAll('[data-psc-stack]').forEach(function(psc){
+      var label   = psc.querySelectorAll('.stk-label .ps-mask-text');
+      var baseImg = psc.querySelector('.stk-base-img');
+      var topImg  = psc.querySelector('.stk-top-img');
+
+      if (label.length){
+        gsap.to(label, { y:'0%', duration:1.0, stagger:0.09, ease:'power3.out',
+          scrollTrigger:{ trigger: psc, start:'top 75%' }});
+      }
+      if (baseImg){
+        gsap.fromTo(baseImg, {yPercent:-8}, {yPercent:8, ease:'none',
+          scrollTrigger:{ trigger: psc, start:'top bottom', end:'bottom top', scrub:1.2 }});
+      }
+      if (topImg){
+        gsap.fromTo(topImg, {yPercent:8}, {yPercent:-8, ease:'none',
+          scrollTrigger:{ trigger: psc, start:'top bottom', end:'bottom top', scrub:1.2 }});
+      }
+    });
+
+    /* ═══ LAYOUT B — PINNED MASK REVEAL ═══ */
+    var pinOuter   = document.getElementById('pin-outer');
+    var pinImgs    = document.querySelectorAll('#pin-track .pin-img');
+    var pinStages  = document.querySelectorAll('#pin-track .psc-pin-stage');
+    var pinCounter = document.getElementById('pin-counter');
+    var pinProg    = document.getElementById('pin-progress');
+    if (pinOuter && pinStages.length){
+      var totalStages = pinStages.length;
+      ScrollTrigger.create({
+        trigger: pinOuter,
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: 0.6,
+        onUpdate: function(self){
+          var p = self.progress;
+          if (pinProg){
+            var inner = pinProg.firstElementChild;
+            if (!inner){ inner = document.createElement('span'); inner.style.cssText='position:absolute;left:0;top:0;height:100%;background:var(--gold-pulse);box-shadow:0 0 12px rgba(232,196,90,.6);width:0';
+              pinProg.appendChild(inner); }
+            inner.style.width = (p*100).toFixed(1)+'%';
+          }
+          var active = Math.min(totalStages - 1, Math.floor(p * totalStages));
+          var localP = (p * totalStages) - active;
+          var imgY = (localP - 0.5) * 14;
+          pinStages.forEach(function(s, i){ s.classList.toggle('is-active', i === active); });
+          pinImgs.forEach(function(img, i){
+            var on = (i === active);
+            img.style.opacity = on ? '1' : '0';
+            img.classList.toggle('is-on', on);
+            img.style.transform = 'translate3d(0,' + (on ? imgY : 0).toFixed(2) + '%,0)';
+          });
+          if (pinCounter){
+            pinCounter.textContent = String(active + 1).padStart(2,'0') + ' / ' + String(totalStages).padStart(2,'0');
+          }
+        }
+      });
+
+      pinStages.forEach(function(stage){
+        var masks = stage.querySelectorAll('.ps-mask-text');
+        gsap.set(masks, {y: '110%'});
+        var observer = new MutationObserver(function(){
+          if (stage.classList.contains('is-active')){
+            gsap.fromTo(masks, {y:'110%'}, {y:'0%', duration:.9, stagger:.08, ease:'power3.out'});
+          } else {
+            gsap.set(masks, {y:'110%'});
+          }
+        });
+        observer.observe(stage, {attributes:true, attributeFilter:['class']});
+      });
+      var firstActive = document.querySelector('#pin-track .psc-pin-stage.is-active');
+      if (firstActive){
+        var masks = firstActive.querySelectorAll('.ps-mask-text');
+        gsap.fromTo(masks, {y:'110%'}, {y:'0%', duration:.9, stagger:.08, ease:'power3.out',
+          scrollTrigger:{trigger: pinOuter, start:'top 60%'}});
+      }
+    }
+
+    var stLine = document.querySelector('.psc-statement-line');
+    if (stLine){
+      gsap.fromTo(stLine, { y:30, opacity:0 }, { y:0, opacity:1, ease:'power3.out', duration:1.0,
+        scrollTrigger:{ trigger:'.psc-statement', start:'top 75%' }});
+    }
+  }
+
+  /* ═══ BEFORE / AFTER DRAG SLIDER ═══ */
+  (function(){
+    var frame  = document.getElementById('ba-frame');
+    var after  = document.getElementById('ba-after');
+    var handle = document.getElementById('ba-handle');
+    var knob   = document.getElementById('ba-knob');
+    if (!frame || !after) return;
+    var pct = 50;
+    function setPct(p){
+      pct = Math.max(0, Math.min(100, p));
+      after.style.clipPath  = 'inset(0 0 0 ' + pct + '%)';
+      handle.style.left     = pct + '%';
+      knob.style.left       = pct + '%';
+    }
+    setPct(50);
+    var dragging = false;
+    function update(clientX){
+      var r = frame.getBoundingClientRect();
+      setPct(((clientX - r.left) / r.width) * 100);
+    }
+    frame.addEventListener('mousedown', function(e){ dragging = true; frame.classList.add('dragging'); update(e.clientX); });
+    window.addEventListener('mousemove', function(e){ if (dragging) update(e.clientX); }, {passive:true});
+    window.addEventListener('mouseup',   function(){ dragging = false; frame.classList.remove('dragging'); });
+    frame.addEventListener('mousemove', function(e){ if (!dragging) update(e.clientX); }, {passive:true});
+    frame.addEventListener('touchstart', function(e){ dragging = true; frame.classList.add('dragging'); update(e.touches[0].clientX); }, {passive:true});
+    frame.addEventListener('touchmove',  function(e){ if (dragging) update(e.touches[0].clientX); }, {passive:true});
+    frame.addEventListener('touchend',   function(){ dragging = false; frame.classList.remove('dragging'); });
+  })();
+
+  /* ═══ GATEWAY WIPE TRANSITION ═══ */
+  var hz = document.getElementById('hz-link');
+  var wipe = document.getElementById('hz-wipe');
+  if (hz && wipe) {
+    hz.addEventListener('click', function(ev){
+      ev.preventDefault();
+      var href = hz.getAttribute('href');
+      wipe.style.transformOrigin = 'top';
+      wipe.style.transition = 'transform .8s var(--ease)';
+      wipe.style.transform = 'scaleY(1)';
+      setTimeout(function(){ window.location.href = href; }, 780);
+    });
+  }
+})();
+</script>
+</body>
+</html>
