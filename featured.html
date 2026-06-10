@@ -17,13 +17,15 @@
   "itemListOrder":"https://schema.org/ItemListOrderAscending",
   "numberOfItems":7,
   "itemListElement":[
-    {"@type":"ListItem","position":1,"item":{"@type":"CreativeWork","name":"The Ulit Transformation","description":"Full-yard luxury design+build project at 1707 Ulit Ave, Austin, TX with professional photography.","locationCreated":"Austin, TX"}},
+    {"@type":"ListItem","position":1,"item":{"@type":"CreativeWork","name":"The Ulit Transformation","description":"Custom outdoor living design+build in East Austin, TX — screened porch, inground pool, teak deck, outdoor kitchen, and backlit Corten steel screen. Red Agave Landscaping, Austin TX.","locationCreated":"East Austin, TX"}},
     {"@type":"ListItem","position":2,"item":{"@type":"CreativeWork","name":"The Desert Glass Garden","description":"Xeriscape, custom planters, and WLED lighting — Austin, TX.","locationCreated":"Austin, TX"}},
     {"@type":"ListItem","position":3,"item":{"@type":"CreativeWork","name":"The Elevated Deck","description":"Custom deck build with pergola and privacy walls — Austin, TX.","locationCreated":"Austin, TX"}},
     {"@type":"ListItem","position":4,"item":{"@type":"CreativeWork","name":"The Golden Hour Yard","description":"Outdoor living, landscape lighting and planting design — Austin, TX.","locationCreated":"Austin, TX"}},
     {"@type":"ListItem","position":5,"item":{"@type":"CreativeWork","name":"The Hill Country Estate","description":"Full design+build portfolio across a hill-country estate — Austin, TX.","locationCreated":"Austin, TX"}},
     {"@type":"ListItem","position":6,"item":{"@type":"CreativeWork","name":"The Modern Oasis","description":"Fire features, water features and xeriscape — Austin, TX.","locationCreated":"Austin, TX"}},
-    {"@type":"ListItem","position":7,"item":{"@type":"CreativeWork","name":"The Westlake Statement","description":"Hardscape, WLED lighting and steel edging — Westlake Hills, TX.","locationCreated":"Westlake Hills, TX"}}
+    {"@type":"ListItem","position":7,"item":{"@type":"CreativeWork","name":"The Westlake Statement","description":"Hardscape, WLED lighting and steel edging — Westlake Hills, TX.","locationCreated":"Westlake Hills, TX"}},
+    {"@type":"ListItem","position":8,"item":{"@type":"CreativeWork","name":"Riverview","description":"Black cantera wall on angle steel ledge with COB lighting, concrete poured to look like marble sealed with Clemons sealer, custom floating welded steel fire pit, native planting palette — Austin, TX. Red Agave Landscaping.","locationCreated":"Austin, TX"}},
+    {"@type":"ListItem","position":9,"item":{"@type":"CreativeWork","name":"Fly Catcher","description":"Large format pavers with synthetic turf joints, 1/4-inch steel terracing, two custom welded steel fire pits, native xeriscape planting, bermuda sod, and a river rock spillway — Austin, TX. Red Agave Landscaping.","locationCreated":"Austin, TX"}}
   ]
 }
 </script>
@@ -170,7 +172,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 <main>
 <div class="page-header">
   <canvas class="page-canvas" style="position:absolute;inset:0;z-index:1;pointer-events:none;width:100%;height:100%"></canvas>
-  <div class="page-header-bg" style="background-image:url('images/featured/1707 Ulit Ave-029-Kieran Reeves Photography [MLS].webp')"></div>
+  <div class="page-header-bg" style="background-image:url('images/projects/ulit/029.webp')"></div>
   <div class="page-header-ov"></div>
   <div class="page-header-inner">
     <div class="page-eyebrow rev">Red Agave Landscaping &nbsp;&middot;&nbsp; Austin, TX</div>
@@ -197,8 +199,8 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 <style>
 .featured-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:rgba(0,0,0,.4)}
 .feat-card{position:relative;overflow:hidden;height:520px;cursor:default}
-.feat-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.65);transition:filter .6s,transform .8s cubic-bezier(0.16,1,0.3,1)}
-.feat-card:hover img{filter:brightness(.9);transform:scale(1.04)}
+.feat-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.6) brightness(.6) contrast(1.05);transition:filter .8s cubic-bezier(0.16,1,0.3,1),transform .9s cubic-bezier(0.16,1,0.3,1)}
+.feat-card:hover img{filter:grayscale(0) brightness(1) contrast(1);transform:scale(1.04)}
 .feat-card-link{cursor:pointer;display:block}
 .feat-card-link .feat-view{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.85);opacity:0;transition:opacity .35s,transform .35s var(--ease);z-index:3;background:var(--gold);color:var(--dark);padding:12px 28px;font-size:9px;letter-spacing:3px;text-transform:uppercase;font-weight:700;font-family:'Montserrat',sans-serif;border-radius:9999px;white-space:nowrap;pointer-events:none}
 .feat-card-link:hover .feat-view{opacity:1;transform:translate(-50%,-50%) scale(1)}
@@ -209,6 +211,11 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 .feat-sub{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(240,234,214,.45)}
 .feat-services{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(201,168,76,.6);margin-top:8px}
 @media(max-width:768px){.featured-grid{grid-template-columns:1fr}.feat-card{height:380px}}
+/* Mobile scroll-reveal — touch devices can't hover, so reveal on scroll-into-view */
+@media(hover:none){
+  .feat-card img{transition:filter 1.1s cubic-bezier(0.16,1,0.3,1),transform 1.2s cubic-bezier(0.16,1,0.3,1)}
+  .feat-card.mob-reveal img{filter:grayscale(0) brightness(1) contrast(1);transform:scale(1.02)}
+}
 </style>
 <section class="sec" style="background:var(--dark2);padding-bottom:48px">
   <div class="s-eye rev">Our Portfolio</div>
@@ -216,14 +223,17 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   <p class="rev" style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--cream30);margin-top:20px;line-height:2.2">A selection of our finest design+build work across Austin and surrounding areas.</p>
 </section>
 <div class="featured-grid">
-  <div class="feat-card rev"><img src="images/featured/1707 Ulit Ave-029-Kieran Reeves Photography [MLS].webp" alt="Ulit Ave landscaping Austin" loading="lazy"><div class="feat-ov"></div><div class="feat-label"><div class="feat-tag">Full Design + Build</div><div class="feat-title">The Ulit Transformation</div><div class="feat-sub">Austin, TX</div><div class="feat-services">Full Yard Design + Build &nbsp;&middot;&nbsp; Professional Photography</div></div></div>
+  <a href="projects/madison.html" class="feat-card feat-card-link rev"><img src="images/projects/madison/IMG_8949.webp" alt="Madison project pergola deck outdoor living Austin TX" loading="lazy"><div class="feat-ov"></div><div class="feat-view">View Project &rarr;</div><div class="feat-label"><div class="feat-tag">Pergola + Deck + Outdoor Living</div><div class="feat-title">Madison</div><div class="feat-sub">Austin, TX</div><div class="feat-services">Custom Pergola &nbsp;&middot;&nbsp; Composite Deck &nbsp;&middot;&nbsp; Steel Planters &nbsp;&middot;&nbsp; Lighting</div></div></a>
+  <a href="projects/hopeland.html" class="feat-card feat-card-link rev"><img src="images/projects/hopeland/IMG_9628.webp" alt="Hopeland project pergola deck Austin TX" loading="lazy"><div class="feat-ov"></div><div class="feat-view">View Project &rarr;</div><div class="feat-label"><div class="feat-tag">Pergola + Outdoor Living</div><div class="feat-title">Hopeland</div><div class="feat-sub">Austin, TX</div><div class="feat-services">Pergola &nbsp;&middot;&nbsp; Deck &nbsp;&middot;&nbsp; Outdoor Living</div></div></a>
+  <a href="projects/riverview.html" class="feat-card feat-card-link rev"><img src="images/projects/riverview/hero.webp" alt="Riverview — floating welded steel fire pit, black cantera wall, concrete poured to look like marble — Austin TX" loading="lazy"><div class="feat-ov"></div><div class="feat-view">View Project &rarr;</div><div class="feat-label"><div class="feat-tag">Cantera Wall + Pavers + Fire</div><div class="feat-title">Riverview</div><div class="feat-sub">Austin, TX</div><div class="feat-services">Black Cantera Wall &nbsp;&middot;&nbsp; Concrete Slabs &nbsp;&middot;&nbsp; 1/4&Prime; Steel &nbsp;&middot;&nbsp; Floating Fire Pit &nbsp;&middot;&nbsp; COB Lighting</div></div></a>
+  <a href="projects/flycatcher.html" class="feat-card feat-card-link rev"><img src="images/projects/flycatcher/hero.webp" alt="Fly Catcher — large format pavers, welded steel fire pits, native xeriscape — Austin TX" loading="lazy"><div class="feat-ov"></div><div class="feat-view">View Project &rarr;</div><div class="feat-label"><div class="feat-tag">Pavers + Fire + Xeriscape</div><div class="feat-title">Fly Catcher</div><div class="feat-sub">Austin, TX</div><div class="feat-services">Large Format Pavers &nbsp;&middot;&nbsp; Welded Steel Fire Pits &nbsp;&middot;&nbsp; 1/4&Prime; Steel Terracing &nbsp;&middot;&nbsp; Native Planting &nbsp;&middot;&nbsp; Bermuda Sod</div></div></a>
   <div class="feat-card rev"><img src="images/featured/DSC04039.webp" alt="Desert glass garden xeriscape Austin" loading="lazy"><div class="feat-ov"></div><div class="feat-label"><div class="feat-tag">Xeriscape &amp; Lighting</div><div class="feat-title">The Desert Glass Garden</div><div class="feat-sub">Austin, TX</div><div class="feat-services">Xeriscape &nbsp;&middot;&nbsp; Custom Planters &nbsp;&middot;&nbsp; WLED Lighting</div></div></div>
   <div class="feat-card rev"><img src="images/featured/IMG_3855.webp" alt="Elevated deck build Austin TX" loading="lazy"><div class="feat-ov"></div><div class="feat-label"><div class="feat-tag">Custom Deck Build</div><div class="feat-title">The Elevated Deck</div><div class="feat-sub">Austin, TX</div><div class="feat-services">Custom Deck &nbsp;&middot;&nbsp; Pergola &nbsp;&middot;&nbsp; Privacy Walls</div></div></div>
   <div class="feat-card rev"><img src="images/featured/IMG_5451.webp" alt="Golden hour outdoor living Austin" loading="lazy"><div class="feat-ov"></div><div class="feat-label"><div class="feat-tag">Outdoor Living</div><div class="feat-title">The Golden Hour Yard</div><div class="feat-sub">Austin, TX</div><div class="feat-services">Outdoor Living &nbsp;&middot;&nbsp; Lighting &nbsp;&middot;&nbsp; Landscaping</div></div></div>
   <div class="feat-card rev"><img src="images/featured/IMG_8161.webp" alt="Hill country estate landscaping Austin" loading="lazy"><div class="feat-ov"></div><div class="feat-label"><div class="feat-tag">Full Design + Build</div><div class="feat-title">The Hill Country Estate</div><div class="feat-sub">Austin, TX</div><div class="feat-services">Full Yard Design + Build &nbsp;&middot;&nbsp; 14 Photos</div></div></div>
   <div class="feat-card rev"><img src="images/featured/IMG_8976.webp" alt="Modern oasis fire water xeriscape Austin" loading="lazy"><div class="feat-ov"></div><div class="feat-label"><div class="feat-tag">Fire + Water + Xeriscape</div><div class="feat-title">The Modern Oasis</div><div class="feat-sub">Austin, TX</div><div class="feat-services">Fire Features &nbsp;&middot;&nbsp; Water Features &nbsp;&middot;&nbsp; Xeriscape</div></div></div>
   <div class="feat-card rev"><img src="images/featured/IMG_3169.webp" alt="Westlake statement hardscape lighting" loading="lazy"><div class="feat-ov"></div><div class="feat-label"><div class="feat-tag">Hardscape + Lighting</div><div class="feat-title">The Westlake Statement</div><div class="feat-sub">Westlake Hills, TX</div><div class="feat-services">Hardscape &nbsp;&middot;&nbsp; WLED Lighting &nbsp;&middot;&nbsp; Steel Edging</div></div></div>
-  <a href="projects/hopeland.html" class="feat-card feat-card-link rev"><img src="images/projects/hopeland/IMG_9628.webp" alt="Hopeland project pergola deck Austin TX" loading="lazy"><div class="feat-ov"></div><div class="feat-view">View Project &rarr;</div><div class="feat-label"><div class="feat-tag">Pergola + Outdoor Living</div><div class="feat-title">Hopeland</div><div class="feat-sub">Austin, TX</div><div class="feat-services">Pergola &nbsp;&middot;&nbsp; Deck &nbsp;&middot;&nbsp; Outdoor Living</div></div></a>
+  <a href="projects/ulit.html" class="feat-card feat-card-link rev"><img src="images/projects/ulit/029.webp" alt="Ulit — pool, screened porch, outdoor kitchen — East Austin TX" loading="lazy"><div class="feat-ov"></div><div class="feat-view">View Project &rarr;</div><div class="feat-label"><div class="feat-tag">Pool + Porch + Outdoor Kitchen</div><div class="feat-title">Ulit</div><div class="feat-sub">East Austin, TX</div><div class="feat-services">Inground Pool &nbsp;&middot;&nbsp; Screened Porch &nbsp;&middot;&nbsp; Teak Deck &nbsp;&middot;&nbsp; Outdoor Kitchen &nbsp;&middot;&nbsp; Corten Screen</div></div></a>
 </div>
 <section class="sec" style="background:var(--gold);text-align:center">
   <h2 style="font-family:'Bebas Neue',cursive;font-size:clamp(48px,7vw,88px);color:var(--dark);line-height:.88;margin-bottom:20px">Start Your Project</h2>
@@ -293,6 +303,11 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
       (function anim(){requestAnimationFrame(anim);ptick+=.01;for(var k=0;k<count;k++){var vv=vels[k];pA.array[k*3]+=vv.x+Math.sin(ptick*.3+k*.1)*.001;pA.array[k*3+1]+=vv.y+Math.cos(ptick*.2+k*.07)*.0008;pA.array[k*3+2]+=vv.z;if(pA.array[k*3]>12)pA.array[k*3]=-12;if(pA.array[k*3]<-12)pA.array[k*3]=12;if(pA.array[k*3+1]>9)pA.array[k*3+1]=-9;if(pA.array[k*3+1]<-9)pA.array[k*3+1]=9;vv.tw+=vv.ts;sA.array[k]=sz[k]*(.6+.4*Math.abs(Math.sin(vv.tw)));}pA.needsUpdate=true;sA.needsUpdate=true;pts3.rotation.y=pmx*.15;pts3.rotation.x=pmy*.1;renderer.render(scene,camera);}());
       window.addEventListener('resize',function(){var nW=cv.parentElement.offsetWidth||1280,nH=cv.parentElement.offsetHeight||480;camera.aspect=nW/nH;camera.updateProjectionMatrix();renderer.setSize(nW,nH);},{passive:true});
     });
+  }
+  // Mobile scroll-reveal for feat-card images
+  if(window.matchMedia('(hover:none)').matches&&'IntersectionObserver' in window){
+    var cardObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('mob-reveal');});},{threshold:0.35});
+    document.querySelectorAll('.feat-card').forEach(function(c){cardObs.observe(c);});
   }
 })();
 </script>
