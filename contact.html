@@ -872,6 +872,25 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   }
   previewFiles('photo-input','photo-preview');
 
+  // ── HELPER: read a File as base64 (data URL minus the prefix) ──
+  function fileToBase64(file){
+    return new Promise(function(resolve,reject){
+      var r=new FileReader();
+      r.onload=function(){
+        var s=r.result||'';
+        var idx=String(s).indexOf(',');
+        resolve({
+          name: file.name,
+          type: file.type || 'application/octet-stream',
+          size: file.size,
+          data: idx>=0 ? String(s).slice(idx+1) : String(s)
+        });
+      };
+      r.onerror=function(){reject(r.error)};
+      r.readAsDataURL(file);
+    });
+  }
+
   // ── FORM SUBMIT ──
   document.getElementById('bk-form').addEventListener('submit',function(e){
     e.preventDefault();
@@ -883,47 +902,64 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
       alert('Please select a consultation date and time.');return;
     }
     btn.style.opacity='.7';txt.textContent='Sending...';
-    var data={
-      name:document.getElementById('fn').value,
-      phone:document.getElementById('fp').value,
-      email:document.getElementById('fe').value,
-      address:document.getElementById('fa').value+' '+document.getElementById('fc').value+' '+document.getElementById('fz').value,
-      slot:document.getElementById('selected-slot').value,
-      slotKey:document.getElementById('selected-slot-key').value,
-      budget:document.getElementById('budget-val').value,
-      services:document.getElementById('services-val').value,
-      timeline:document.getElementById('timeline-val').value,
-      notes:document.getElementById('fnotes').value,
-      referral:document.getElementById('fref').value
-    };
-    // Demo mode (no script URL set)
-    if(SCRIPT_URL==='YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'){
-      setTimeout(function(){
-        btn.style.opacity='1';btn.classList.add('sent');txt.textContent='Request Sent ✓';
+
+    // Cap per-file size (Apps Script POST payload ceiling ~ 50MB; be safe at 8MB/file, 25MB total)
+    var inputEl=document.getElementById('photo-input');
+    var files=inputEl?Array.from(inputEl.files||[]):[];
+    var MAX_FILE=8*1024*1024, MAX_TOTAL=25*1024*1024, total=0;
+    for(var i=0;i<files.length;i++){
+      if(files[i].size>MAX_FILE){alert('"'+files[i].name+'" is over 8MB. Please compress it or email it separately.');btn.style.opacity='1';txt.textContent='Request My Consultation →';return;}
+      total+=files[i].size;
+    }
+    if(total>MAX_TOTAL){alert('Total upload size is over 25MB. Please reduce the number of files.');btn.style.opacity='1';txt.textContent='Request My Consultation →';return;}
+
+    Promise.all(files.map(fileToBase64)).then(function(filePayloads){
+      var data={
+        name:document.getElementById('fn').value,
+        phone:document.getElementById('fp').value,
+        email:document.getElementById('fe').value,
+        address:document.getElementById('fa').value+' '+document.getElementById('fc').value+' '+document.getElementById('fz').value,
+        slot:document.getElementById('selected-slot').value,
+        slotKey:document.getElementById('selected-slot-key').value,
+        budget:document.getElementById('budget-val').value,
+        services:document.getElementById('services-val').value,
+        timeline:document.getElementById('timeline-val').value,
+        notes:document.getElementById('fnotes').value,
+        referral:document.getElementById('fref').value,
+        files: filePayloads // [{name,type,size,data(base64)}]
+      };
+      // Demo mode (no script URL set)
+      if(SCRIPT_URL==='YOUR_GOOGLE_APPS_SCRIPT_URL_HERE'){
+        setTimeout(function(){
+          btn.style.opacity='1';btn.classList.add('sent');txt.textContent='Request Sent ✓';
+          document.getElementById('success-panel').classList.add('show');
+          var s=document.querySelector('.slot.selected');
+          if(s){s.classList.remove('selected');s.classList.add('booked')}
+        },1000);
+        return;
+      }
+      // no-cors bypasses the CORS preflight block — Apps Script still receives and processes the POST
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify(data),
+        headers: {'Content-Type': 'text/plain'}
+      })
+      .then(function() {
+        btn.style.opacity='1';
+        btn.classList.add('sent');
+        txt.textContent='Request Sent ✓';
         document.getElementById('success-panel').classList.add('show');
         var s=document.querySelector('.slot.selected');
         if(s){s.classList.remove('selected');s.classList.add('booked')}
-      },1000);
-      return;
-    }
-    // no-cors bypasses the CORS preflight block — Apps Script still receives and processes the POST
-    fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: JSON.stringify(data),
-      headers: {'Content-Type': 'text/plain'}
-    })
-    .then(function() {
-      btn.style.opacity='1';
-      btn.classList.add('sent');
-      txt.textContent='Request Sent ✓';
-      document.getElementById('success-panel').classList.add('show');
-      var s=document.querySelector('.slot.selected');
-      if(s){s.classList.remove('selected');s.classList.add('booked')}
-    })
-    .catch(function(){
+      })
+      .catch(function(){
+        btn.style.opacity='1';txt.textContent='Request My Consultation →';
+        alert('Could not send. Please call or text: 512-695-7566');
+      });
+    }).catch(function(){
       btn.style.opacity='1';txt.textContent='Request My Consultation →';
-      alert('Could not send. Please call or text: 512-695-7566');
+      alert('One of your files could not be read. Try a different file or email us at redagaveatx@gmail.com');
     });
   });
 
