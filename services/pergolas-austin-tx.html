@@ -118,6 +118,11 @@ a{text-decoration:none;color:inherit}
 .cross-links{display:flex;gap:16px;flex-wrap:wrap;margin-top:40px}
 .cross-link{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.2);padding:10px 24px;border-radius:9999px;transition:all .3s}
 .cross-link:hover{background:var(--gold);color:var(--dark)}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:48px}
+.photo-item{position:relative;overflow:hidden;aspect-ratio:4/3}
+.photo-item img{width:100%;height:100%;object-fit:cover;filter:brightness(.85);transition:filter .5s,transform .6s}
+.photo-item:hover img{filter:brightness(1);transform:scale(1.04)}
+@media(max-width:768px){.photo-grid{grid-template-columns:1fr}}
 footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,168,76,0.06)}
 .ft-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:44px;margin-bottom:52px}
 .ft-brand{font-family:'Bebas Neue',cursive;font-size:34px;letter-spacing:6px;color:var(--gold);text-shadow:0 0 18px rgba(201,168,76,0.18);margin-bottom:10px}
@@ -179,7 +184,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 
 <main>
 <div class="page-header">
-  <div class="page-header-bg" style="background-image:url('../images/gallery/IMG_9566.webp')"></div>
+  <div class="page-header-bg" style="background-image:url('../images/projects/hopeland/IMG_9566.webp')"></div>
   <div class="page-header-ov"></div>
   <div class="page-header-inner">
     <div class="page-eyebrow rev">Red Agave Landscaping &nbsp;&middot;&nbsp; Austin, TX</div>
@@ -194,6 +199,16 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     <p>Austin summers push past 100 degrees for weeks at a time, turning unshaded backyards into no-go zones from May through September. A custom pergola from Red Agave transforms that dead space into the most used area of your home. We design and build freestanding and attached pergolas using heavy-gauge steel, Western red cedar, and Brazilian IPE hardwood, selecting materials based on your aesthetic goals, budget, and how much maintenance you want to take on over the years.</p>
     <p>Every pergola we build is engineered for Central Texas conditions. Steel posts are powder-coated to resist the UV degradation that destroys lesser finishes within two seasons. Cedar members are sealed and stained on-site for consistent color. IPE structures are left to silver naturally or oiled to maintain their deep chocolate tone. We integrate FCOB lighting into the beams and rafters so the space works after dark, and we run conduit during framing so there are no exposed wires or aftermarket clips. Most pergola projects in Austin range from $12,000 to $45,000 depending on size, materials, and whether we include integrated features like ceiling fans, shade sails, or privacy screens.</p>
     <p>The City of Austin requires a building permit for any shade structure over 200 square feet or any structure attached to the house. We handle the full permitting process, including site plans and structural calculations, so you never have to visit a permit office. From design through final inspection, the typical pergola project takes 3 to 5 weeks. Explore our <a href="../featured.html">Signature Projects</a> to see completed pergola builds, or <a href="../contact.html">request a free consultation</a> to get started.</p>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--dark);padding-bottom:40px">
+  <div class="s-eye rev">Our Work</div>
+  <h2 class="s-title rev">Recent <span class="slim-gold">Projects</span></h2>
+  <div class="photo-grid">
+    <div class="photo-item rev"><img src="../images/projects/hopeland/IMG_9652.webp" alt="Custom steel pergola with composite deck and boulder fire pit Circle C Austin TX" loading="lazy"></div>
+    <div class="photo-item rev"><img src="../images/projects/hopeland/IMG_9628.webp" alt="Steel triangle pergola with pendant lights and Dekorators deck Austin TX" loading="lazy"></div>
+    <div class="photo-item rev"><img src="../images/projects/hopeland/after-pergola.webp" alt="Pergola with Corten steel planter and privacy wall Austin TX" loading="lazy"></div>
   </div>
 </section>
 

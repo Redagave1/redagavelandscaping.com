@@ -118,6 +118,11 @@ a{text-decoration:none;color:inherit}
 .cross-links{display:flex;gap:16px;flex-wrap:wrap;margin-top:40px}
 .cross-link{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.2);padding:10px 24px;border-radius:9999px;transition:all .3s}
 .cross-link:hover{background:var(--gold);color:var(--dark)}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:48px}
+.photo-item{position:relative;overflow:hidden;aspect-ratio:4/3}
+.photo-item img{width:100%;height:100%;object-fit:cover;filter:brightness(.85);transition:filter .5s,transform .6s}
+.photo-item:hover img{filter:brightness(1);transform:scale(1.04)}
+@media(max-width:768px){.photo-grid{grid-template-columns:1fr}}
 footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,168,76,0.06)}
 .ft-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:44px;margin-bottom:52px}
 .ft-brand{font-family:'Bebas Neue',cursive;font-size:34px;letter-spacing:6px;color:var(--gold);text-shadow:0 0 18px rgba(201,168,76,0.18);margin-bottom:10px}
@@ -179,7 +184,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 
 <main>
 <div class="page-header">
-  <div class="page-header-bg" style="background-image:url('../images/gallery/IMG_3855.webp')"></div>
+  <div class="page-header-bg" style="background-image:url('../images/projects/hopeland/IMG_9628.webp')"></div>
   <div class="page-header-ov"></div>
   <div class="page-header-inner">
     <div class="page-eyebrow rev">Red Agave Landscaping &nbsp;&middot;&nbsp; Austin, TX</div>
@@ -194,6 +199,16 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     <p>A deck is the foundation of outdoor living in Austin. It defines the space, creates elevation changes that make small yards feel larger, and provides a clean, level surface for furniture, grills, and entertaining. Red Agave builds custom decks using three material families, each selected to handle Central Texas conditions: Dekorators composite decking, Western red cedar, and Brazilian IPE hardwood. The right choice depends on your budget, how much maintenance you want to do, and the aesthetic you are after.</p>
     <p>Dekorators composite boards are our most popular option for Austin builds. They resist UV fading, do not splinter, and never need staining or sealing. The Voyage line offers realistic wood grain textures in colors that pair well with the Hill Country palette. Cedar is the classic choice. It is naturally resistant to rot and insects, lighter than hardwoods, and takes stain beautifully. It does require re-staining every 2 to 3 years to maintain its color in the Austin sun. IPE is the premium tier. This Brazilian hardwood is so dense it sinks in water, resists rot, insects, and fire, and lasts 50 years or more with minimal maintenance. We source FSC-certified IPE and can leave it to silver naturally or oil it annually to maintain its deep brown tone.</p>
     <p>Every deck we build includes steel post brackets set in concrete footings, proper joist spacing for the decking material, and hidden fastener systems for a clean surface with no visible screw heads. We integrate <a href="pergolas-austin-tx.html">pergolas</a>, privacy walls, built-in bench seating, and FCOB under-rail lighting as part of the structure. Most custom deck projects in Austin range from $15,000 to $55,000. <a href="../contact.html">Request a free estimate</a> or view our <a href="../featured.html">Signature Projects</a> to see completed builds.</p>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--dark);padding-bottom:40px">
+  <div class="s-eye rev">Our Work</div>
+  <h2 class="s-title rev">Recent <span class="slim-gold">Projects</span></h2>
+  <div class="photo-grid">
+    <div class="photo-item rev"><img src="../images/projects/hopeland/IMG_9566.webp" alt="Custom composite deck with steel pergola and pendant lighting Circle C Austin TX" loading="lazy"></div>
+    <div class="photo-item rev"><img src="../images/projects/hopeland/IMG_9652.webp" alt="Dekorators Sea Salt deck with boulder fire pit and steel planters Austin TX" loading="lazy"></div>
+    <div class="photo-item rev"><img src="../images/projects/blazyk/IMG_3205.webp" alt="Multi-level terraced deck with steel edging and COB lighting Circle C Austin TX" loading="lazy"></div>
   </div>
 </section>
 

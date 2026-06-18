@@ -118,6 +118,11 @@ a{text-decoration:none;color:inherit}
 .cross-links{display:flex;gap:16px;flex-wrap:wrap;margin-top:40px}
 .cross-link{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,168,76,0.2);padding:10px 24px;border-radius:9999px;transition:all .3s}
 .cross-link:hover{background:var(--gold);color:var(--dark)}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:48px}
+.photo-item{position:relative;overflow:hidden;aspect-ratio:4/3}
+.photo-item img{width:100%;height:100%;object-fit:cover;filter:brightness(.85);transition:filter .5s,transform .6s}
+.photo-item:hover img{filter:brightness(1);transform:scale(1.04)}
+@media(max-width:768px){.photo-grid{grid-template-columns:1fr}}
 footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,168,76,0.06)}
 .ft-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:44px;margin-bottom:52px}
 .ft-brand{font-family:'Bebas Neue',cursive;font-size:34px;letter-spacing:6px;color:var(--gold);text-shadow:0 0 18px rgba(201,168,76,0.18);margin-bottom:10px}
@@ -179,7 +184,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 
 <main>
 <div class="page-header">
-  <div class="page-header-bg" style="background-image:url('../images/gallery/DSC04039.webp')"></div>
+  <div class="page-header-bg" style="background-image:url('../images/projects/flycatcher/hero.webp')"></div>
   <div class="page-header-ov"></div>
   <div class="page-header-inner">
     <div class="page-eyebrow rev">Red Agave Landscaping &nbsp;&middot;&nbsp; Austin, TX</div>
@@ -194,6 +199,16 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     <p>Most pool builders in Austin hand you a fiberglass shell catalog and call it custom. At Red Agave, every pool is designed from scratch to fit your yard, your slope, your soil, and your vision. We build custom inground pools using gunite and shotcrete construction, which allows for any shape, depth, and finish. Because we are a full-service landscaping company first, the pool is never an afterthought dropped into an empty yard. We design the pool as part of a complete outdoor environment that includes the deck, the plantings, the lighting, the hardscape, and every transition between them.</p>
     <p>Austin's limestone substrate creates unique challenges for pool construction. We work with experienced excavation crews who know how to cut through rock without destabilizing your lot. Proper drainage is critical in Central Texas, where a single storm can dump inches of rain in hours. We engineer drainage around the pool deck and equipment pad to prevent flooding and erosion. Pool plumbing includes circulation pumps, filtration systems, and optional features like spillover spas, tanning ledges, bubblers, and laminar jets. We handle all electrical work for pool pumps, lighting, and automation systems.</p>
     <p>The City of Austin requires a building permit for all swimming pool construction, along with a barrier (fence) permit to meet safety code. We manage the full permitting process and coordinate all inspections. Most pool projects take 8 to 14 weeks from excavation to fill day. Pair your pool with a <a href="pergolas-austin-tx.html">pergola</a> for shade, an <a href="outdoor-kitchens-austin-tx.html">outdoor kitchen</a> for poolside entertaining, or a <a href="xeriscape-austin-tx.html">xeriscape surround</a> for a low-maintenance pool landscape. <a href="../contact.html">Schedule a free consultation</a> to begin your design.</p>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--dark);padding-bottom:40px">
+  <div class="s-eye rev">Our Work</div>
+  <h2 class="s-title rev">Recent <span class="slim-gold">Projects</span></h2>
+  <div class="photo-grid">
+    <div class="photo-item rev"><img src="../images/projects/flycatcher/IMG_8798.webp" alt="Custom inground pool with turf joints and fire pit Austin TX" loading="lazy"></div>
+    <div class="photo-item rev"><img src="../images/projects/flycatcher/IMG_8807.webp" alt="Pool with steel fire bowls and glass media Austin TX" loading="lazy"></div>
+    <div class="photo-item rev"><img src="../images/projects/ulit/029.webp" alt="Pool with screened porch and teak deck East Austin TX" loading="lazy"></div>
   </div>
 </section>
 
