@@ -7,6 +7,7 @@
   <url><loc>https://www.redagaveatx.com/contact.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/service-area.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/media.html</loc><priority>0.6</priority><changefreq>weekly</changefreq></url>
+  <!-- Project Pages -->
   <url><loc>https://www.redagaveatx.com/projects/ulit.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/projects/hopeland.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/projects/madison.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
@@ -14,4 +15,22 @@
   <url><loc>https://www.redagaveatx.com/projects/riverview.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/projects/axehandle.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/projects/blazyk.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <!-- Service Landing Pages -->
+  <url><loc>https://www.redagaveatx.com/services/pergolas-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/services/outdoor-kitchens-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/services/fire-pits-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/services/xeriscape-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/services/custom-decks-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/services/pools-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <!-- Location Pages -->
+  <url><loc>https://www.redagaveatx.com/locations/round-rock-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/locations/cedar-park-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/locations/pflugerville-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/locations/bee-cave-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/locations/georgetown-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <!-- Blog -->
+  <url><loc>https://www.redagaveatx.com/blog/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/blog/xeriscaping-cost-austin-tx.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/blog/best-fire-pit-ideas-austin.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/blog/pergola-guide-austin-tx.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
 </urlset>
