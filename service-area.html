@@ -73,7 +73,7 @@ a{text-decoration:none;color:inherit}
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .3s var(--ease)}
 .nav-links a:hover{color:var(--cream)}.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
 .nav-r{display:flex;align-items:center;gap:16px}
-.nav-phone{font-size:10px;letter-spacing:1px;color:rgba(240,234,214,0.28)}
+.nav-phone{font-size:10px;letter-spacing:2px;color:var(--gold);transition:color .3s}.nav-phone:hover{color:var(--cream)}
 .nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:8px 22px;font-size:9px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;font-family:'Montserrat',sans-serif;border-radius:9999px;transition:all .3s}
 .nav-cta:hover{background:var(--gold);color:var(--dark)}
 .hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
@@ -168,7 +168,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     <div>
       <div class="mob-divider"></div>
       <div class="mob-bottom">
-        <a href="tel:5126957566" class="mob-phone">512-695-7566</a>
+        <a href="sms:5126957566" class="mob-phone">512-695-7566</a>
         <a href="contact.html" class="mob-cta">Get a Free Quote &rarr;</a>
         <div class="mob-location">Austin, Texas &nbsp;&middot;&nbsp; Any Project Any Budget</div>
       </div>
@@ -188,7 +188,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
       <li><a href="service-area.html">Service Area</a></li>
     </ul>
     <div class="nav-r">
-      <span class="nav-phone">512-695-7566</span>
+      <a href="sms:5126957566" class="nav-phone">512-695-7566</a>
       <a href="contact.html" class="nav-cta">Get a Quote</a>
     </div>
     <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
@@ -253,34 +253,34 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     <p class="area-p">Nestled in the Texas Hill Country, Barton Creek's dramatic topography calls for bold, naturalistic designs. We specialize in working with the terrain &mdash; limestone outcroppings, native cedar, and dramatic slope changes.</p>
     <div class="area-plant">Featured Native Plant<strong>Whale Tongue Agave</strong></div>
   </article>
-  <article id="round-rock" class="area-card rev">
+  <a href="locations/round-rock-tx.html" id="round-rock" class="area-card rev">
     <div class="area-bg" style="background-image:url('images/featured/IMG_8161.webp')" aria-hidden="true"></div>
     <h3 class="area-name">Round Rock</h3>
     <div class="area-sub">North Austin &nbsp;&middot;&nbsp; 78664</div>
     <p class="area-p">Round Rock's mix of established neighborhoods and new developments creates diverse opportunities. We bring the same premium design standards north, creating spaces that stand apart in any neighborhood.</p>
     <div class="area-plant">Featured Native Plant<strong>Russian Sage</strong></div>
-  </article>
-  <article id="bee-cave" class="area-card rev">
+  </a>
+  <a href="locations/bee-cave-tx.html" id="bee-cave" class="area-card rev">
     <div class="area-bg" style="background-image:url('images/featured/IMG_5451.webp')" aria-hidden="true"></div>
     <h3 class="area-name">Bee Cave</h3>
     <div class="area-sub">Hill Country &nbsp;&middot;&nbsp; 78738</div>
     <p class="area-p">Bee Cave's rapid growth hasn't diminished its Hill Country character. We design landscapes that honor the surrounding terrain while creating the luxurious outdoor spaces these properties deserve.</p>
     <div class="area-plant">Featured Native Plant<strong>White Cloud Muhly</strong></div>
-  </article>
-  <article id="westlake" class="area-card rev">
+  </a>
+  <a href="locations/westlake-hills-tx.html" id="westlake" class="area-card rev">
     <div class="area-bg" style="background-image:url('images/featured/IMG_3169.webp')" aria-hidden="true"></div>
     <h3 class="area-name">Westlake Hills</h3>
     <div class="area-sub">West Austin &nbsp;&middot;&nbsp; 78746</div>
     <p class="area-p">Westlake Hills is one of Austin's premier addresses &mdash; and its landscapes should match. We've transformed dozens of Westlake properties with our signature blend of luxury design and artisan craftsmanship.</p>
     <div class="area-plant">Featured Native Plant<strong>Desert Willow</strong></div>
-  </article>
-  <article id="buda" class="area-card rev">
+  </a>
+  <a href="locations/buda-kyle-tx.html" id="buda" class="area-card rev">
     <div class="area-bg" style="background-image:url('images/featured/IMG_8976.webp')" aria-hidden="true"></div>
     <h3 class="area-name">Buda</h3>
     <div class="area-sub">South Austin &nbsp;&middot;&nbsp; 78610</div>
     <p class="area-p">Buda's wide lots and open spaces offer incredible canvas for design. We bring city-quality craftsmanship south, creating landscapes that maximize every square foot of your property.</p>
     <div class="area-plant">Featured Native Plant<strong>Artemesia</strong></div>
-  </article>
+  </a>
   <article id="circle-c" class="area-card rev">
     <div class="area-bg" style="background-image:url('images/featured/IMG_3855.webp')" aria-hidden="true"></div>
     <h3 class="area-name">Circle C Ranch</h3>
@@ -295,13 +295,13 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     <p class="area-p">One of Austin's most storied neighborhoods, Tarrytown properties blend historic charm with modern aspirations. Our designs honor the character of the neighborhood while creating spaces for today's outdoor living.</p>
     <div class="area-plant">Featured Native Plant<strong>Crossvine</strong></div>
   </article>
-  <article id="cedar-park" class="area-card rev">
+  <a href="locations/cedar-park-tx.html" id="cedar-park" class="area-card rev">
     <div class="area-bg" style="background-image:url('images/featured/1707%20Ulit%20Ave-030-Kieran%20Reeves%20Photography%20%5BMLS%5D.webp')" aria-hidden="true"></div>
     <h3 class="area-name">Cedar Park</h3>
     <div class="area-sub">North Austin &nbsp;&middot;&nbsp; 78613</div>
     <p class="area-p">Cedar Park's explosive growth has brought new homeowners who demand premium outdoor spaces. We're building some of our most innovative xeriscape and lighting projects in this fast-growing community.</p>
     <div class="area-plant">Featured Native Plant<strong>Whale Tongue Agave</strong></div>
-  </article>
+  </a>
   <article id="rollingwood" class="area-card rev">
     <div class="area-bg" style="background-image:url('images/featured/IMG_8182.webp')" aria-hidden="true"></div>
     <h3 class="area-name">Rollingwood</h3>
@@ -323,7 +323,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
       <div class="ft-brand">Red Agave</div>
       <div class="ft-tag">Austin's Premier Design + Build Landscaper</div>
       <address class="ft-info">
-        <a href="tel:5126957566">512-695-7566</a><br>
+        <a href="sms:5126957566">512-695-7566</a><br>
         <a href="mailto:redagaveatx@gmail.com">redagaveatx@gmail.com</a><br>
         Austin, TX Luxury Landscaping<br>
         Cedar Park &middot; Westlake Hills &middot; Round Rock

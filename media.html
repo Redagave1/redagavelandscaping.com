@@ -50,7 +50,7 @@ a{text-decoration:none;color:inherit}
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .3s var(--ease)}
 .nav-links a:hover{color:var(--cream)}.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
 .nav-r{display:flex;align-items:center;gap:16px}
-.nav-phone{font-size:10px;letter-spacing:1px;color:rgba(240,234,214,0.28)}
+.nav-phone{font-size:10px;letter-spacing:2px;color:var(--gold);transition:color .3s}.nav-phone:hover{color:var(--cream)}
 .nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:8px 22px;font-size:9px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;font-family:'Montserrat',sans-serif;border-radius:9999px;transition:all .3s}
 .nav-cta:hover{background:var(--gold);color:var(--dark)}
 .hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
@@ -147,7 +147,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     <div>
       <div class="mob-divider"></div>
       <div class="mob-bottom">
-        <a href="tel:5126957566" class="mob-phone">512-695-7566</a>
+        <a href="sms:5126957566" class="mob-phone">512-695-7566</a>
         <a href="contact.html" class="mob-cta">Get a Free Quote &rarr;</a>
         <div class="mob-location">Austin, Texas &nbsp;&middot;&nbsp; Any Project Any Budget</div>
       </div>
@@ -167,7 +167,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
       <li><a href="service-area.html">Service Area</a></li>
     </ul>
     <div class="nav-r">
-      <span class="nav-phone">512-695-7566</span>
+      <a href="sms:5126957566" class="nav-phone">512-695-7566</a>
       <a href="contact.html" class="nav-cta">Get a Quote</a>
     </div>
     <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
@@ -418,7 +418,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
       <div class="ft-brand">Red Agave</div>
       <div class="ft-tag">Austin's Premier Design + Build Landscaper</div>
       <address class="ft-info">
-        <a href="tel:5126957566">512-695-7566</a><br>
+        <a href="sms:5126957566">512-695-7566</a><br>
         <a href="mailto:redagaveatx@gmail.com">redagaveatx@gmail.com</a><br>
         Austin, TX Luxury Landscaping<br>
         Cedar Park &middot; Westlake Hills &middot; Round Rock

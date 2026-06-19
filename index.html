@@ -257,7 +257,7 @@ a{text-decoration:none;color:inherit}
 .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .3s var(--ease)}
 .nav-links a:hover{color:var(--cream)}.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
 .nav-r{display:flex;align-items:center;gap:16px}
-.nav-phone{font-size:10px;letter-spacing:1px;color:rgba(240,234,214,0.28)}
+.nav-phone{font-size:10px;letter-spacing:2px;color:var(--gold);transition:color .3s}.nav-phone:hover{color:var(--cream)}
 .nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:8px 22px;font-size:9px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;font-family:'Montserrat',sans-serif;border-radius:9999px;transition:all .3s}
 .nav-cta:hover{background:var(--gold);color:var(--dark)}
 .hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
@@ -1821,6 +1821,20 @@ a{text-decoration:none;color:inherit}
 .ss-tile::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,0.55),transparent);opacity:0;transition:opacity .45s var(--ease);z-index:2}
 .ss-tile:hover::after{opacity:1}
 
+/* ══ FINANCING BANNER ══ */
+.fin-bar{background:var(--dark2);border-top:1px solid rgba(201,168,76,0.06);border-bottom:1px solid rgba(201,168,76,0.06);padding:48px 60px;text-align:center}
+.fin-inner{max-width:800px;margin:0 auto}
+.fin-eye{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:12px}
+.fin-eye::before,.fin-eye::after{content:'';width:28px;height:1px;background:var(--gold);opacity:.4}
+.fin-title{font-family:'Bebas Neue',cursive;font-size:clamp(28px,4vw,44px);line-height:.92;margin-bottom:14px}
+.fin-sub{font-size:13px;color:var(--cream30);font-weight:300;line-height:1.8;margin-bottom:24px}
+.fin-features{display:flex;justify-content:center;flex-wrap:wrap;gap:24px;margin-bottom:28px}
+.fin-feat{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--cream60);display:flex;align-items:center;gap:8px}
+.fin-feat::before{content:'';width:6px;height:6px;background:var(--gold);transform:rotate(45deg);flex-shrink:0}
+.fin-cta{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:12px 36px;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-family:'Montserrat',sans-serif;border-radius:9999px;transition:all .3s}
+.fin-cta:hover{background:var(--gold);color:var(--dark)}
+@media(max-width:768px){.fin-bar{padding:36px 24px}}
+
 /* ══ CONTACT / BOOKING SECTION ══ */
 .conversion{background:var(--dark2);padding:100px 60px;position:relative;overflow:hidden;border-top:1px solid rgba(201,168,76,0.08)}
 .conv-bg{position:absolute;inset:0;background:url('images/gallery/IMG_8575.webp') center/cover no-repeat;opacity:.06;filter:grayscale(100%);pointer-events:none;z-index:0}
@@ -1988,7 +2002,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   .conv-title{font-size:clamp(42px,11vw,72px)}
   .conv-phone{font-size:clamp(32px,9vw,52px)}
   .hbg{display:flex}
-  .nav-links,.nav-r{display:none}
+  .nav-links{display:none}.nav-r .nav-cta{display:none}
   /* Scroll parallax off on mobile — too much movement on small screen */
   .hero-title{transform:none !important}
 }
@@ -2136,9 +2150,9 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     <div>
       <div class="mob-divider"></div>
       <div class="mob-bottom">
-        <a href="tel:5126957566" class="mob-phone">512-695-7566</a>
+        <a href="sms:5126957566" class="mob-phone">512-695-7566</a>
         <a href="contact.html" class="mob-cta">Get a Free Quote &#8594;</a>
-        <div class="mob-location">Austin, Texas &nbsp;&middot;&nbsp; Any Project Any Budget</div>
+        <div class="mob-location">Austin, Texas &nbsp;&middot;&nbsp; Since 2009 &nbsp;&middot;&nbsp; Any Project Any Budget</div>
       </div>
     </div>
   </div>
@@ -2158,7 +2172,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
       <li><a href="service-area.html">Service Area</a></li>
     </ul>
     <div class="nav-r">
-      <span class="nav-phone">512-695-7566</span>
+      <a href="sms:5126957566" class="nav-phone">512-695-7566</a>
       <button class="nav-cta" id="nav-quote-btn">Request a Design Consultation</button>
     </div>
     <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
@@ -2185,7 +2199,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   <div class="hero-ov"></div>
   <div class="hero-inner">
     <div class="hero-text">
-      <div class="hero-eyebrow" id="eyebrow" style="opacity:0;transform:translateX(-20px)">Austin, Texas &nbsp;&middot;&nbsp; Any Project Any Budget</div>
+      <div class="hero-eyebrow" id="eyebrow" style="opacity:0;transform:translateX(-20px)">Austin, Texas &nbsp;&middot;&nbsp; Since 2009 &nbsp;&middot;&nbsp; Any Project Any Budget</div>
       <h1 class="hero-title" aria-label="Austin's Top Design +Build Landscaper">
         <span class="htl"><span class="htw hl1" id="hl1-word">AUSTIN'S</span></span>
         <span class="htl"><span class="htw hl2" id="hl2-word">TOP DESIGN</span></span>
@@ -2230,7 +2244,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 <!-- STATS -->
 <div class="stats">
   <div class="stat rev"><span class="s-num" data-target="750" data-suf="+">0+</span><span class="s-lbl">Projects Completed</span></div>
-  <div class="stat rev"><span class="s-num" data-target="15" data-suf="+">0+</span><span class="s-lbl">Years in Austin</span></div>
+  <div class="stat rev"><span class="s-num" data-target="17" data-suf="+">0+</span><span class="s-lbl">Years in Austin</span></div>
   <div class="stat rev"><span class="s-num">5&#9733;</span><span class="s-lbl">Star Rated Service</span></div>
   <div class="stat rev"><span class="s-num">100%</span><span class="s-lbl">Licensed &amp; Insured</span></div>
 </div>
@@ -2742,6 +2756,22 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   </div>
 </section>
 
+<!-- FINANCING BANNER -->
+<section class="fin-bar rev">
+  <div class="fin-inner">
+    <div class="fin-eye">Financing Available</div>
+    <h2 class="fin-title">Flexible Payment Options for <span style="color:var(--gold)">Every Budget</span></h2>
+    <p class="fin-sub">We partner with trusted lenders to offer competitive financing with low monthly payments. Pre-qualify in 60 seconds with no impact to your credit score.</p>
+    <div class="fin-features">
+      <span class="fin-feat">Low Monthly Payments</span>
+      <span class="fin-feat">Competitive Rates</span>
+      <span class="fin-feat">60-Second Pre-Qualification</span>
+      <span class="fin-feat">No Credit Impact</span>
+    </div>
+    <a href="contact.html" class="fin-cta">Ask About Financing &rarr;</a>
+  </div>
+</section>
+
 <!-- CONTACT / BOOKING SECTION -->
 <section class="conversion" id="contact">
   <div class="conv-bg" aria-hidden="true"></div>
@@ -2886,7 +2916,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
       <div class="ft-brand">Red Agave</div>
       <div class="ft-tag">Austin's Premier Design + Build Landscaper</div>
       <address class="ft-info">
-        <a href="tel:5126957566">512-695-7566</a><br>
+        <a href="sms:5126957566">512-695-7566</a><br>
         <a href="/cdn-cgi/l/email-protection#fb92959d94bb899e9f9a9c9a8d9e979a959f88989a8b92959cd5989496"><span class="__cf_email__" data-cfemail="e0898e868fa092858481878196858c818e8493838190898e87ce838f8d">[email&#160;protected]</span></a><br>
         Austin, TX Luxury Landscaping<br>
         Cedar Park &middot; Westlake Hills &middot; Round Rock

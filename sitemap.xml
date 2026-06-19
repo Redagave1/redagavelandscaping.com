@@ -29,6 +29,12 @@
   <url><loc>https://www.redagaveatx.com/locations/pflugerville-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/locations/bee-cave-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/locations/georgetown-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/locations/westlake-hills-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/locations/dripping-springs-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/locations/lakeway-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/locations/buda-kyle-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <!-- Before & After -->
+  <url><loc>https://www.redagaveatx.com/before-after.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <!-- Blog -->
   <url><loc>https://www.redagaveatx.com/blog/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/blog/xeriscaping-cost-austin-tx.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
