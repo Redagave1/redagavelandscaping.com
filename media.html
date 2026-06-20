@@ -25,8 +25,8 @@
   "url":"https://www.redagaveatx.com/",
   "logo":"https://www.redagaveatx.com/images/logo.webp",
   "sameAs":[
-    "https://www.instagram.com/redagavelandscaping",
-    "https://www.youtube.com/@redagavelandscaping"
+    "https://www.instagram.com/redagaveatx",
+    "https://www.youtube.com/@redagaveatx"
   ]
 }
 </script>
@@ -181,7 +181,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   <div class="page-header-ov"></div>
   <div class="page-header-inner">
     <div class="page-eyebrow rev">Red Agave Landscaping &nbsp;&middot;&nbsp; Austin, TX</div>
-    <h1 class="page-title rev">Youtube <span class="gold-pulse-word">+ Insta</span></h1>
+    <h1 class="page-title rev">Insta <span class="gold-pulse-word">+ YouTube</span></h1>
   </div>
 </div>
 <div class="ticker" aria-hidden="true"><div class="t-track">
@@ -254,7 +254,16 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 @media(max-width:480px){.ig-grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 
-<!-- YOUTUBE -->
+<!-- INSTAGRAM -->
+<section class="media-sec" aria-labelledby="ig-h2">
+  <div class="media-sec-eye rev">Follow Us</div>
+  <h2 id="ig-h2" class="media-sec-h2 rev">Instagram</h2>
+  <div id="ig-grid" class="ig-grid"></div>
+  <div class="ig-follow-cta rev">
+    <a href="https://www.instagram.com/redagaveatx/" target="_blank" rel="noopener" class="ig-follow-btn">&#9654;&nbsp; Follow @redagaveatx</a>
+  </div>
+</section>
+
 <!-- YOUTUBE SHORTS -->
 <section class="media-sec" aria-labelledby="yt-shorts-h2">
   <div class="media-sec-eye rev">Quick Clips</div>
@@ -272,16 +281,6 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
   </div>
 </section>
 
-<!-- INSTAGRAM -->
-<section class="media-sec" aria-labelledby="ig-h2">
-  <div class="media-sec-eye rev">Follow Us</div>
-  <h2 id="ig-h2" class="media-sec-h2 rev">Instagram</h2>
-  <div id="ig-grid" class="ig-grid"></div>
-  <div class="ig-follow-cta rev">
-    <a href="https://www.instagram.com/redagavelandscaping/" target="_blank" rel="noopener" class="ig-follow-btn">&#9654;&nbsp; Follow @redagavelandscaping</a>
-  </div>
-</section>
-
 <!-- YOUTUBE MODAL -->
 <div id="yt-modal" role="dialog" aria-modal="true" aria-label="Video player">
   <div id="yt-modal-inner">
@@ -292,31 +291,32 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 
 <script>
 (function(){
+  var YT_API_KEY = 'AIzaSyDo5BXaQ01tvG59aUYlF8HjrPWaJp-TVHo';
   var YT_CHANNEL = 'UCW_zBL9s7D1fptQC2cwLF4g';
-  // Piped is an open YouTube API — no key needed, full CORS support
-  var PIPED = 'https://pipedapi.kavin.rocks/channels/' + YT_CHANNEL;
 
-  // ── Instagram: gallery photos link to @redagavelandscaping ──
-  // Replace img paths with real Instagram post image URLs when available
   var IG_POSTS = [
-    { img: 'images/gallery/DSC03875.webp',  url: 'https://www.instagram.com/redagavelandscaping/' },
-    { img: 'images/gallery/IMG_8182.webp',  url: 'https://www.instagram.com/redagavelandscaping/' },
-    { img: 'images/gallery/DSC04001.webp',  url: 'https://www.instagram.com/redagavelandscaping/' },
-    { img: 'images/gallery/IMG_0990.webp',  url: 'https://www.instagram.com/redagavelandscaping/' },
-    { img: 'images/gallery/IMG_2706.webp',  url: 'https://www.instagram.com/redagavelandscaping/' },
-    { img: 'images/gallery/IMG_6284.webp',  url: 'https://www.instagram.com/redagavelandscaping/' },
-    { img: 'images/gallery/IMG_3861.webp',  url: 'https://www.instagram.com/redagavelandscaping/' },
-    { img: 'images/gallery/DSC04042.webp',  url: 'https://www.instagram.com/redagavelandscaping/' },
-    { img: 'images/gallery/IMG_5448.webp',  url: 'https://www.instagram.com/redagavelandscaping/' },
+    { img: 'images/gallery/DSC03875.webp',  url: 'https://www.instagram.com/redagaveatx/' },
+    { img: 'images/gallery/IMG_8182.webp',  url: 'https://www.instagram.com/redagaveatx/' },
+    { img: 'images/gallery/DSC04001.webp',  url: 'https://www.instagram.com/redagaveatx/' },
+    { img: 'images/gallery/IMG_0990.webp',  url: 'https://www.instagram.com/redagaveatx/' },
+    { img: 'images/gallery/IMG_2706.webp',  url: 'https://www.instagram.com/redagaveatx/' },
+    { img: 'images/gallery/IMG_6284.webp',  url: 'https://www.instagram.com/redagaveatx/' },
+    { img: 'images/gallery/IMG_3861.webp',  url: 'https://www.instagram.com/redagaveatx/' },
+    { img: 'images/gallery/DSC04042.webp',  url: 'https://www.instagram.com/redagaveatx/' },
+    { img: 'images/gallery/IMG_5448.webp',  url: 'https://www.instagram.com/redagaveatx/' },
   ];
 
-  // ── YouTube ──────────────────────────────────────────────
   var grid = document.getElementById('yt-grid');
+  var shortsGrid = document.getElementById('yt-shorts-grid');
   var modal = document.getElementById('yt-modal');
   var modalIframe = document.getElementById('yt-modal-iframe');
   var modalClose = document.getElementById('yt-modal-close');
 
-  function openModal(id) {
+  function openModal(id, isShort) {
+    if (isShort) {
+      window.open('https://www.youtube.com/shorts/' + id, '_blank');
+      return;
+    }
     modalIframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -332,14 +332,10 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 
   function fmtDate(str) {
     var d = new Date(str);
-    return d.toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'});
-  }
-  function extractId(link) {
-    var m = link.match(/[?&]v=([^&]+)/);
-    return m ? m[1] : null;
+    return d.toLocaleDateString('en-US',{year:'numeric',month:'short'});
   }
 
-  function buildCard(id, title, uploaded) {
+  function buildCard(id, title, uploaded, isShort) {
     var safeTitle = title.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
     var card = document.createElement('article');
     card.className = 'yt-card';
@@ -348,12 +344,10 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     var img = document.createElement('img');
     img.alt = safeTitle;
     img.loading = 'lazy';
-    // thumbnail fallback chain: maxres → hq → mq → gallery image
     var thumbSteps = [
       'https://img.youtube.com/vi/'+id+'/maxresdefault.jpg',
       'https://img.youtube.com/vi/'+id+'/hqdefault.jpg',
-      'https://img.youtube.com/vi/'+id+'/mqdefault.jpg',
-      'images/gallery/DSC03875.webp'
+      'https://img.youtube.com/vi/'+id+'/mqdefault.jpg'
     ];
     var thumbIdx = 0;
     img.src = thumbSteps[thumbIdx];
@@ -365,31 +359,69 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
     var infoDiv = document.createElement('div'); infoDiv.className = 'yt-info';
     infoDiv.innerHTML = '<p class="yt-info-title">'+safeTitle+'</p>'+(uploaded?'<span class="yt-info-meta">'+uploaded+'</span>':'');
     card.appendChild(thumbDiv); card.appendChild(infoDiv);
-    card.addEventListener('click', function(){ openModal(id); });
-    card.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' ') openModal(id); });
+    card.addEventListener('click', function(){ openModal(id, isShort); });
+    card.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' ') openModal(id, isShort); });
     return card;
   }
 
-  // ── YouTube Shorts (6 portrait slots) — swap IDs as new Shorts are published ──
-  var FALLBACK_SHORTS = [
-    { id: 'qGY8gIJ1hH0', title: 'Floating Boulder Fire Pit',                            date: 'Mar 2026' },
-    { id: 'Hr_-i-GtBMo', title: 'Cantilevered Planters & Boulder Fire Pits',            date: 'Dec 2025' },
-    { id: 'E21JFsUyA7w', title: 'Outdoor LED Diffused Light Box',                       date: 'Oct 2024' },
-    { id: 'g2Y4fiDTbSI', title: 'Shipping Container Pool',                              date: 'Dec 2025' },
-    { id: 'iZxHhxtEudA', title: 'Fire Pit & Outdoor Living Build',                      date: 'Dec 2025' },
-    { id: 'URl9wesdyVY', title: 'Ranch Pool, Fire Pit & Fountain',                      date: 'Oct 2024' },
-  ];
+  function parseDuration(iso) {
+    var m = iso.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
+    if (!m) return 0;
+    return (parseInt(m[1]||0)*3600) + (parseInt(m[2]||0)*60) + parseInt(m[3]||0);
+  }
 
-  // ── Regular YouTube videos (3 landscape slots) ──
-  var FALLBACK_REGULAR = [
-    { id: 'g2Y4fiDTbSI', title: 'Shipping Container Pool — Austin, TX',                date: 'Dec 2025' },
-    { id: 'iZxHhxtEudA', title: 'Fire Pit & Outdoor Living Build — Austin, TX',        date: 'Dec 2025' },
-    { id: 'URl9wesdyVY', title: 'Ranch Pool, Custom Welded Fire Pit & Fountain',       date: 'Oct 2024' },
-  ];
+  function fetchYouTube() {
+    var uploadsPlaylist = 'UU' + YT_CHANNEL.substring(2);
+    var playlistUrl = 'https://www.googleapis.com/youtube/v3/playlistItems?key='+YT_API_KEY
+      +'&playlistId='+uploadsPlaylist+'&part=snippet&maxResults=50';
 
-  var shortsGrid = document.getElementById('yt-shorts-grid');
-  FALLBACK_SHORTS.forEach(function(v){ shortsGrid.appendChild(buildCard(v.id, v.title, v.date)); });
-  FALLBACK_REGULAR.forEach(function(v){ grid.appendChild(buildCard(v.id, v.title, v.date)); });
+    fetch(playlistUrl).then(function(r){ return r.json(); }).then(function(data) {
+      if (!data.items || !data.items.length) throw new Error('No videos');
+      var ids = data.items.map(function(item){ return item.snippet.resourceId.videoId; }).join(',');
+      var detailsUrl = 'https://www.googleapis.com/youtube/v3/videos?key='+YT_API_KEY
+        +'&id='+ids+'&part=contentDetails,snippet';
+
+      return fetch(detailsUrl).then(function(r){ return r.json(); });
+    }).then(function(data) {
+      var shorts = [];
+      var regular = [];
+
+      data.items.forEach(function(v) {
+        var dur = parseDuration(v.contentDetails.duration);
+        var entry = {
+          id: v.id,
+          title: v.snippet.title,
+          date: fmtDate(v.snippet.publishedAt)
+        };
+        if (dur <= 60) {
+          shorts.push(entry);
+        } else {
+          regular.push(entry);
+        }
+      });
+
+      shortsGrid.innerHTML = '';
+      grid.innerHTML = '';
+
+      if (shorts.length) {
+        shorts.forEach(function(v){ shortsGrid.appendChild(buildCard(v.id, v.title, v.date, true)); });
+      }
+      if (regular.length) {
+        regular.forEach(function(v){ grid.appendChild(buildCard(v.id, v.title, v.date, false)); });
+      }
+    }).catch(function() {
+      // API failed — show fallbacks
+      shortsGrid.appendChild(buildCard('qGY8gIJ1hH0', 'Floating Boulder Fire Pit', 'Mar 2026', true));
+      [
+        { id: 'g2Y4fiDTbSI', title: 'Shipping Container Pool — Austin, TX', date: 'Dec 2025' },
+        { id: 'Hr_-i-GtBMo', title: 'Cantilevered Planters & Bench', date: 'Dec 2025' },
+        { id: 'E21JFsUyA7w', title: 'Outdoor LED Diffused Light Box', date: 'Jun 2025' },
+        { id: 'URl9wesdyVY', title: 'Ranch Pool, Custom Welded Fire Pit & Fountain', date: 'Jun 2025' },
+      ].forEach(function(v){ grid.appendChild(buildCard(v.id, v.title, v.date, false)); });
+    });
+  }
+
+  fetchYouTube();
 
   // ── Instagram ────────────────────────────────────────────
   var igGrid = document.getElementById('ig-grid');
@@ -408,6 +440,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
       igGrid.appendChild(a);
     });
   }
+
 })();
 </script>
 </main>
