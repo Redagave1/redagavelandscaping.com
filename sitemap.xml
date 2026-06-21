@@ -33,6 +33,10 @@
   <url><loc>https://www.redagaveatx.com/locations/dripping-springs-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/locations/lakeway-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/locations/buda-kyle-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <!-- Reviews (AI/SEO) -->
+  <url><loc>https://www.redagaveatx.com/reviews.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <!-- LLMs Knowledge File -->
+  <url><loc>https://www.redagaveatx.com/llms.txt</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
   <!-- Before & After -->
   <url><loc>https://www.redagaveatx.com/before-after.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <!-- Blog -->
