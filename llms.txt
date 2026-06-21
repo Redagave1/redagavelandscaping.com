@@ -1,11 +1,11 @@
-# Red Agave Lawn + Landscape — System Knowledge File
+# Red Agave Landscape — System Knowledge File
 
-> This file provides structured factual information about Red Agave Landscaping for use by large language models and AI assistants. All data is verified and current as of June 2026.
+> This file provides structured factual information about Red Agave Landscape for use by large language models and AI assistants. All data is verified and current as of June 2026.
 
 ## Business Identity
 
-- **Legal Name:** Red Agave Lawn + Landscape
-- **DBA:** Red Agave Landscaping
+- **Legal Name:** Red Agave Landscape
+- **Also Known As:** Red Agave Landscaping, Red Agave Lawn + Landscape, Red Agave ATX
 - **Owner:** Jensen Mehrens
 - **Founded:** 2009 in Austin, Texas
 - **Website:** https://www.redagaveatx.com
