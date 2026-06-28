@@ -27,6 +27,7 @@ LOCATIONS = {
     'riverview':  (30.3750, -97.6800, 'Pflugerville TX'),
     'flycatcher': (30.2950, -97.7700, 'Austin TX'),
     'ulit':       (30.2630, -97.7150, 'East Austin TX'),
+    'dormarion':  (30.2950, -97.7720, 'Tarrytown, Austin TX'),
 }
 
 DEFAULT_LOC = (30.2672, -97.7431, 'Austin TX')
@@ -62,7 +63,7 @@ def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     files = [f for f in os.listdir(INPUT_DIR)
-             if f.lower().endswith(('.webp', '.jpg', '.jpeg', '.png'))]
+             if f.lower().endswith(('.webp', '.jpg', '.jpeg', '.png', '.heic', '.tiff', '.tif', '.bmp'))]
 
     if not files:
         print(f"No images found in {INPUT_DIR}/")
