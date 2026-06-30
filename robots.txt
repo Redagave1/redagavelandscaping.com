@@ -1,4 +1,32 @@
 User-agent: *
 Allow: /
 
+# AI Crawlers — welcome
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
 Sitemap: https://www.redagaveatx.com/sitemap.xml
+
+# AI Knowledge File
+# See https://www.redagaveatx.com/llms.txt for structured business data
