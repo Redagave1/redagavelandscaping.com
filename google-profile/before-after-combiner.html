@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 <title>Before & After — GBP Photo Combiner</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -231,6 +233,7 @@ body { font-family: var(--font); background: var(--bg); color: #e8c96a; text-sha
 </div>
 
 <script>
+document.fonts.load('400 36px "Bebas Neue"');
 let beforeImg = null, afterImg = null;
 const $ = id => document.getElementById(id);
 const canvas = $('outputCanvas');
@@ -324,8 +327,8 @@ function render() {
   ctx.fillStyle = '#c9a84c';
   ctx.fillRect(599, 0, 2, 900);
   if ($('showLabels').checked) {
-    tag(ctx, 'BEFORE', 20, 852);
-    tag(ctx, 'AFTER', 621, 852);
+    tag(ctx, 'BEFORE', 20, 856);
+    tag(ctx, 'AFTER', 621, 856);
   }
 }
 
@@ -336,19 +339,32 @@ function cover(ctx, img, x, y, w, h) {
 }
 
 function tag(ctx, text, x, y) {
-  ctx.font = '700 30px -apple-system, BlinkMacSystemFont, sans-serif';
-  ctx.textBaseline = 'middle';
-  ctx.letterSpacing = '3px';
+  ctx.save();
+  ctx.font = '400 36px "Bebas Neue", "Oswald", "Impact", sans-serif';
+  ctx.letterSpacing = '8px';
+  ctx.textBaseline = 'alphabetic';
   const tw = ctx.measureText(text).width;
-  const px = 16, h = 42;
-  ctx.fillStyle = 'rgba(0,0,0,0.45)';
-  ctx.fillRect(x, y, tw + px * 2, h);
+  const tx = x + 24, ty = y + 32;
+
+  // outer soft glow
+  ctx.shadowColor = 'rgba(201,168,76,0.5)';
+  ctx.shadowBlur = 40;
+  ctx.fillStyle = 'rgba(232,201,106,0.01)';
+  ctx.fillText(text, tx, ty);
+
+  // mid glow
   ctx.shadowColor = 'rgba(232,196,90,0.6)';
-  ctx.shadowBlur = 24;
+  ctx.shadowBlur = 18;
   ctx.fillStyle = '#e8c96a';
-  ctx.fillText(text, x + px, y + h / 2 + 1);
+  ctx.fillText(text, tx, ty);
+
+  // crisp gold on top — no shadow
   ctx.shadowColor = 'transparent';
   ctx.shadowBlur = 0;
+  ctx.fillStyle = '#f0d878';
+  ctx.fillText(text, tx, ty);
+
+  ctx.restore();
 }
 
 function updateBtn() {
