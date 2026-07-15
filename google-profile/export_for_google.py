@@ -1,22 +1,16 @@
 """
 Red Agave Photo Exporter — GBP + Website Gallery
 
-Organize photos into subfolders by service/project for SEO-friendly names:
-
-    input/
-      xeriscape-blazyk/        → austin-xeriscape-blazyk-001.jpg
-      landscape-lighting/      → austin-landscape-lighting-001.jpg
-      concrete-patio/          → austin-concrete-patio-001.jpg
-      fire-pit-hopeland/       → austin-fire-pit-hopeland-001.jpg
-
-Or drop files directly into input/ — names are guessed from the filename.
+1. Drop photos into input/
+2. Double-click "Geotag Photos"
+3. It asks: "Describe these photos" → type something like:
+     xeriscape blazyk
+     landscape lighting westlake
+     concrete patio cedar park
 
 Output:
     output/gbp/      — Geotagged JPEGs ≤ 5 MB for Google Business Profile
-    output/gallery/  — Speed-optimized WebP ≤ 200 KB for website gallery
-
-Run:  python3 google-profile/export_for_google.py
-      — or double-click "Geotag Photos.command"
+    output/gallery/  — Speed-optimized WebP for website gallery
 """
 
 from PIL import Image
@@ -31,12 +25,12 @@ GALLERY_DIR = os.path.join(SCRIPT_DIR, 'output', 'gallery')
 
 IMAGE_EXTS = ('.webp', '.jpg', '.jpeg', '.png', '.heic', '.tiff', '.tif', '.bmp')
 
-GBP_MAX_BYTES = 5 * 1024 * 1024   # 5 MB Google limit
-GBP_MAX_PX    = 4000               # max dimension for GBP
+GBP_MAX_BYTES = 5 * 1024 * 1024
+GBP_MAX_PX    = 4000
 GBP_QUALITY   = 92
 
-GALLERY_WIDTH  = 1200              # max width for gallery
-GALLERY_QUALITY = 80               # webp quality — fast loading
+GALLERY_WIDTH  = 1200
+GALLERY_QUALITY = 80
 
 LOCATIONS = {
     'blazyk':     (30.1715, -97.8581, 'Circle C'),
@@ -77,18 +71,27 @@ def guess_project(text):
     return None
 
 
-def seo_name(folder, project, index):
+def make_slug(description):
+    slug = description.lower().strip()
+    slug = slug.replace('  ', ' ').replace(' ', '-').replace('_', '-')
+    for ch in '.,;:!?\'\"()[]{}':
+        slug = slug.replace(ch, '')
+    while '--' in slug:
+        slug = slug.replace('--', '-')
+    return slug.strip('-')
+
+
+def seo_name(slug, project, index):
     parts = ['austin']
 
-    if folder:
-        slug = folder.lower().replace(' ', '-').replace('_', '-')
+    if slug:
         parts.append(slug)
     elif project:
         parts.append(f'landscaping-{project}')
     else:
         parts.append('landscaping')
 
-    if project and project not in (folder or '').lower():
+    if project and project not in slug:
         loc = LOCATIONS[project]
         city = loc[2].lower().replace(' ', '-')
         if city != 'austin':
@@ -98,8 +101,8 @@ def seo_name(folder, project, index):
     return '-'.join(parts)
 
 
-def get_location(folder, filename):
-    project = guess_project(folder or '') or guess_project(filename)
+def get_location(description, filename):
+    project = guess_project(description) or guess_project(filename)
     if project:
         loc = LOCATIONS[project]
         return loc[0], loc[1], f'{loc[2]}, Austin TX', project
@@ -123,7 +126,6 @@ def resize_to_width(img, max_w):
 
 
 def save_gbp(img, dst, exif_bytes):
-    """Save JPEG for GBP, ensuring ≤ 5 MB."""
     sized = resize_to_fit(img, GBP_MAX_PX)
     quality = GBP_QUALITY
 
@@ -141,28 +143,9 @@ def save_gbp(img, dst, exif_bytes):
 
 
 def save_gallery(img, dst):
-    """Save speed-optimized WebP for website gallery."""
     sized = resize_to_width(img, GALLERY_WIDTH)
     sized.save(dst, 'WEBP', quality=GALLERY_QUALITY)
     return os.path.getsize(dst)
-
-
-def collect_files():
-    """Walk input/ for images — subfolders become the SEO category."""
-    items = []
-
-    for fname in os.listdir(INPUT_DIR):
-        fpath = os.path.join(INPUT_DIR, fname)
-        if os.path.isfile(fpath) and fname.lower().endswith(IMAGE_EXTS):
-            items.append((None, fname, fpath))
-        elif os.path.isdir(fpath):
-            folder = fname
-            for sub in os.listdir(fpath):
-                subpath = os.path.join(fpath, sub)
-                if os.path.isfile(subpath) and sub.lower().endswith(IMAGE_EXTS):
-                    items.append((folder, sub, subpath))
-
-    return items
 
 
 def main():
@@ -170,57 +153,71 @@ def main():
     os.makedirs(GBP_DIR, exist_ok=True)
     os.makedirs(GALLERY_DIR, exist_ok=True)
 
-    items = collect_files()
-    if not items:
+    files = sorted([f for f in os.listdir(INPUT_DIR)
+                    if os.path.isfile(os.path.join(INPUT_DIR, f))
+                    and f.lower().endswith(IMAGE_EXTS)])
+
+    if not files:
         print(f'No images found in {INPUT_DIR}/')
-        print('Drop files or create subfolders (e.g. input/xeriscape-blazyk/) and re-run.')
+        print('Drop photos there and re-run.')
         sys.exit(0)
 
-    groups = {}
-    for folder, fname, fpath in items:
-        key = folder or '__root__'
-        groups.setdefault(key, []).append((folder, fname, fpath))
+    print(f'\nFound {len(files)} photos in input/\n')
+    print('Describe these photos for SEO naming.')
+    print('Examples:')
+    print('  xeriscape blazyk')
+    print('  landscape lighting westlake')
+    print('  concrete patio fire pit')
+    print('  outdoor living hopeland')
+    print()
+    description = input('Description: ').strip()
 
-    total = len(items)
-    print(f'Processing {total} images...\n')
+    if not description:
+        print('No description entered — using "landscaping"')
+        description = 'landscaping'
+
+    slug = make_slug(description)
+    project = guess_project(description)
+    lat, lon, label, project = get_location(description, '')
+
+    exif_bytes = build_gps_exif(lat, lon)
+
+    print(f'\n  Slug:     austin-{slug}-###')
+    print(f'  Geotag:   {label} ({lat:.4f}, {lon:.4f})')
+    print(f'  Photos:   {len(files)}')
+    print()
 
     count = 0
-    for key in sorted(groups.keys()):
-        group = sorted(groups[key], key=lambda x: x[1])
+    for idx, fname in enumerate(files, 1):
+        fpath = os.path.join(INPUT_DIR, fname)
+        name = seo_name(slug, project, idx)
 
-        if key != '__root__':
-            print(f'  [{key}/]')
+        try:
+            img = Image.open(fpath)
+            if img.mode in ('RGBA', 'P'):
+                img = img.convert('RGB')
 
-        for idx, (folder, fname, fpath) in enumerate(group, 1):
-            lat, lon, label, project = get_location(folder, fname)
-            exif_bytes = build_gps_exif(lat, lon)
-            name = seo_name(folder, project, idx)
+            gbp_path = os.path.join(GBP_DIR, name + '.jpg')
+            gbp_size = save_gbp(img, gbp_path, exif_bytes)
 
-            try:
-                img = Image.open(fpath)
-                if img.mode in ('RGBA', 'P'):
-                    img = img.convert('RGB')
+            gal_path = os.path.join(GALLERY_DIR, name + '.webp')
+            gal_size = save_gallery(img, gal_path)
 
-                gbp_path = os.path.join(GBP_DIR, name + '.jpg')
-                gbp_size = save_gbp(img, gbp_path, exif_bytes)
+            gbp_mb = gbp_size / (1024 * 1024)
+            gal_kb = gal_size / 1024
+            print(f'  ✓ {fname}')
+            print(f'    → {name}.jpg  ({gbp_mb:.1f} MB)')
+            print(f'    → {name}.webp ({gal_kb:.0f} KB)')
+            count += 1
 
-                gal_path = os.path.join(GALLERY_DIR, name + '.webp')
-                gal_size = save_gallery(img, gal_path)
-
-                gbp_mb = gbp_size / (1024 * 1024)
-                gal_kb = gal_size / 1024
-                print(f'    ✓ {fname}')
-                print(f'      → {name}.jpg  ({gbp_mb:.1f} MB, geotagged [{label}])')
-                print(f'      → {name}.webp ({gal_kb:.0f} KB, gallery)')
-                count += 1
-
-            except Exception as e:
-                print(f'    ✗ {fname}: {e}')
+        except Exception as e:
+            print(f'  ✗ {fname}: {e}')
 
     print(f'\n{"="*50}')
-    print(f'Done! {count}/{total} images exported.')
+    print(f'Done! {count}/{len(files)} photos exported.')
     print(f'  GBP:     {GBP_DIR}/')
     print(f'  Gallery: {GALLERY_DIR}/')
+    print(f'  Geotag:  {label}')
 
 
 if __name__ == '__main__':
