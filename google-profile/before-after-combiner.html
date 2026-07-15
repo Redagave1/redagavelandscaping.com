@@ -44,7 +44,7 @@
   }
 }
 
-body { font-family: var(--font); background: var(--bg); color: var(--cream); -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); background: var(--bg); color: #e8c96a; text-shadow: 0 0 24px rgba(232,196,90,0.45), 0 0 48px rgba(201,168,76,0.18); -webkit-font-smoothing: antialiased; }
 
 .tool { max-width: 720px; margin: 0 auto; padding: 32px 20px 48px; }
 
@@ -336,14 +336,19 @@ function cover(ctx, img, x, y, w, h) {
 }
 
 function tag(ctx, text, x, y) {
-  ctx.font = '600 26px -apple-system, BlinkMacSystemFont, sans-serif';
-  const tw = ctx.measureText(text).width;
-  const px = 12, h = 34;
-  ctx.fillStyle = 'rgba(0,0,0,0.5)';
-  ctx.fillRect(x, y, tw + px * 2, h);
-  ctx.fillStyle = 'rgba(255,255,255,0.92)';
+  ctx.font = '700 30px -apple-system, BlinkMacSystemFont, sans-serif';
   ctx.textBaseline = 'middle';
+  ctx.letterSpacing = '3px';
+  const tw = ctx.measureText(text).width;
+  const px = 16, h = 42;
+  ctx.fillStyle = 'rgba(0,0,0,0.45)';
+  ctx.fillRect(x, y, tw + px * 2, h);
+  ctx.shadowColor = 'rgba(232,196,90,0.6)';
+  ctx.shadowBlur = 24;
+  ctx.fillStyle = '#e8c96a';
   ctx.fillText(text, x + px, y + h / 2 + 1);
+  ctx.shadowColor = 'transparent';
+  ctx.shadowBlur = 0;
 }
 
 function updateBtn() {
