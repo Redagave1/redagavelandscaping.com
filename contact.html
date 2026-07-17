@@ -963,7 +963,8 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
         btn.style.opacity='1';
         btn.classList.add('sent');
         txt.textContent='Request Sent ✓';
-        document.getElementById('success-panel').classList.add('show');gtag('event','form_submission',{event_category:'contact',event_label:'consultation_request',value:1});
+        document.getElementById('success-panel').classList.add('show');
+        gtag('event','form_submission',{event_category:'contact',event_label:'consultation_request',value:1});
         var s=document.querySelector('.slot.selected');
         if(s){s.classList.remove('selected');s.classList.add('booked')}
       })
