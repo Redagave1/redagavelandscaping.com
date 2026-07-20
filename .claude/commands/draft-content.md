@@ -36,4 +36,8 @@ Given a target keyword (passed as $ARGUMENTS), write a complete blog post or ser
 
 7. **Add internal links** — find 2-3 existing pages that should link TO this new page and add the links.
 
-8. **Report** the new page URL, word count, target keywords, and schema types added.
+8. **Generate a GBP post** — run the `/gbp-post` process on the new page to create a ready-to-publish Google Business Profile update. Output it alongside the report.
+
+9. **Run a local page audit** — run `/local-page-audit` on the new page to verify it scores B or higher before publishing.
+
+10. **Report** the new page URL, word count, target keywords, schema types added, local audit score, and the GBP post.
