@@ -51,7 +51,13 @@ Quick pass on internal linking:
 - Check if location pages link to all relevant services
 - Add 3-5 natural internal links
 
-### 6. Summary Report
+### 6. Citation Check (monthly — run if first week of month)
+If this is the first weekly run of the month, run `/local-citations-audit` to check:
+- Are all priority citations still active and consistent?
+- Any new directories worth submitting to?
+- NAP consistency across all known listings
+
+### 7. Summary Report
 Output a concise summary:
 - Pages checked: X
 - Local audit scores: [table of service page grades]

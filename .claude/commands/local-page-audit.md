@@ -178,6 +178,10 @@ Total greens / total applicable items as a percentage:
 - Do not give vague advice like "improve the content."
 - Focus on on-page levers the user can change in this file.
 
+## When to Suggest Citations Audit
+
+If the audit reveals strong on-page work but the page score is still low due to missing trust signals or weak local authority, recommend running `/local-citations-audit` next. Citations and on-page reinforce each other — weak NAP consistency across the web will cap the gains from a good page.
+
 ## Red Agave Brand Checks (always verify)
 
 - Material references use "mild steel" not "aluminum"
