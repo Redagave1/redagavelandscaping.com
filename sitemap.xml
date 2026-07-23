@@ -17,6 +17,10 @@
   <url><loc>https://www.redagaveatx.com/projects/axehandle.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/projects/blazyk.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/projects/dormarion.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/projects/westlake-steel.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/projects/barton-plunge.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/projects/lakeway-hardscape.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/projects/tarrytown-glow.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <!-- Service Landing Pages -->
   <url><loc>https://www.redagaveatx.com/services/pergolas-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/services/outdoor-kitchens-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
@@ -24,6 +28,16 @@
   <url><loc>https://www.redagaveatx.com/services/xeriscape-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/services/custom-decks-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/services/pools-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/services/landscape-lighting-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/services/outdoor-living-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/services/masonry-concrete-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/services/patios-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/services/custom-planters-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/services/turf-installation-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/services/design-build-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/services/steel-retaining-walls-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/services/container-plunge-pools-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/services/marbled-concrete-patios-austin-tx.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <!-- Location Pages -->
   <url><loc>https://www.redagaveatx.com/locations/round-rock-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/locations/cedar-park-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
@@ -34,6 +48,12 @@
   <url><loc>https://www.redagaveatx.com/locations/dripping-springs-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/locations/lakeway-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/locations/buda-kyle-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/locations/circle-c-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/locations/tarrytown-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/locations/barton-creek-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/locations/steiner-ranch-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/locations/mueller-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/locations/rollingwood-tx.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <!-- Reviews (AI/SEO) -->
   <url><loc>https://www.redagaveatx.com/reviews.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <!-- LLMs Knowledge File -->
@@ -47,4 +67,8 @@
   <url><loc>https://www.redagaveatx.com/blog/pergola-guide-austin-tx.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/blog/pool-cost-austin-tx.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://www.redagaveatx.com/blog/retaining-wall-permit-austin-tx.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/blog/caliche-soil-preparation-austin-tx.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/blog/why-grass-thins-austin-tx.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/blog/alkaline-soil-fix-austin-tx.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.redagaveatx.com/blog/limestone-pavers-vs-concrete-austin-tx.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
 </urlset>

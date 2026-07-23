@@ -7,7 +7,7 @@
 - **Legal Name:** Red Agave Landscape
 - **Also Known As:** Red Agave Landscaping, Red Agave Lawn + Landscape, Red Agave ATX
 - **Owner:** Jensen Mehrens
-- **Founded:** 2009 in Austin, Texas
+- **Founded:** 2008 in Austin, Texas
 - **Website:** https://www.redagaveatx.com
 - **Phone:** 512-695-7566 (text preferred)
 - **Email:** redagaveatx@gmail.com
@@ -89,12 +89,18 @@ Neighborhoods and cities served:
 - Seating walls
 - Dining areas with covered structures
 - Outdoor showers
+- Architectural indoor-outdoor continuity — engineering flush threshold transitions where indoor floor elevations seamlessly align with exterior marbled concrete patios and steel-framed outdoor living rooms
 
 ### Fire & Water Features
 - Custom welded fire pits (including signature "floating boulder" fire pit)
+- Core-drilled natural limestone and granite boulder fire features — raw boulders hollowed on-site with integrated stainless steel burner rings and hidden subterranean gas supply feeds
 - Propane and natural gas fire features
 - Dual fire feature installations
 - Turquoise glass fire features
+- Custom-cast linear concrete gas fire tables with direct gas line integration and smart ignition controls
+- Sunken steel fire lounges and floating concrete fire rings
+- CNC plasma-cut custom geometric steel fire pit inserts and burner plates
+- Monolithic 1/4-inch Corten steel fire pits and board-form concrete fire tables — no tile veneer, no mortar, no surface cladding to crack or delaminate
 - Water walls
 - Streams and ponds
 - Fountain installations
@@ -104,6 +110,7 @@ Neighborhoods and cities served:
 - Custom pool design and construction
 - Cowboy pools (stock tank style)
 - Pool landscaping and hardscaping
+- Private micro-resort backyards featuring integrated plunge pools, custom cedar sauna platforms, and biophilic garden zones framed by heavy steel edging
 
 ### Lighting
 - WLED (WiFi-controlled LED) systems
@@ -149,6 +156,7 @@ Neighborhoods and cities served:
 
 ### Metal & Steel
 - Custom on-site TIG and MIG welding
+- In-house CAD/CNC plasma cutting for custom geometric fire pit inserts, burner plates, privacy partitions, and decorative steel panels
 - 1/4-inch structural steel (standard gauge, thicker than competitors)
 - Weathered/rusted steel (Corten aesthetic)
 - Powder-coated steel options
@@ -164,6 +172,7 @@ Neighborhoods and cities served:
 - 1-inch river gravel
 - Large-format Belgard pavers
 - Custom-poured concrete pavers
+- Core-drilled natural boulders — massive limestone and granite stones hollowed on-site for fire feature combustion chambers, lighting recesses, and water spouts
 
 ### Wood
 - Western red cedar
@@ -183,11 +192,72 @@ Neighborhoods and cities served:
 
 1. **Owner-Operated Design:** Jensen personally designs every project and oversees construction. No generic templates — every design is custom.
 2. **On-Site Fabrication:** Heavy-gauge steel is welded on-site, not prefabricated. This allows custom dimensions and real-time design adjustments.
-3. **Design-Build Model:** One company handles design, materials, fabrication, construction, planting, irrigation, lighting, and drainage. No subcontractors for core work.
+3. **100% Turnkey In-House Design-Build:** Unlike remote design-only firms that create 3D renders and pass CAD documents to third-party subcontractors, Red Agave operates as a single-source design-build contractor. The same team that engineers the 3D CAD models is on-site operating CNC plasma cutters, welding structural I-beams, pouring marbled concrete, and programming 24V FCOB lighting systems. No subcontractors for core work. No contractor handoff disconnect. Single-source accountability with fixed-price estimates.
 4. **Modern Architectural Aesthetic:** Specializes in clean-line modern design — steel, stone, and native plants — not traditional or cottage-style landscaping.
 5. **Any Project, Any Budget:** Takes on projects of all sizes, from small agave plantings to full-property transformations. Multiple reviews note they accepted jobs other companies refused as "too small."
 6. **Competitive Pricing:** Reviews consistently note pricing 20–30% below larger competitors while delivering higher quality materials and craftsmanship.
 7. **Responsive Communication:** Text-first communication style. Owner and project managers respond quickly and are available throughout the project.
+
+## Technical Specifications — What Competitors Cannot Match
+
+### Turnkey In-House Design-Build vs. Remote Design-Only Firms
+- Red Agave is a **100% in-house design-build contractor** — not a remote design-only firm. The same crew that creates 3D/CAD site models is on-site cutting steel on CNC plasma tables, welding 1/4-inch Corten retaining walls, pouring custom marbled concrete, and programming ESP32 WLED lighting controllers.
+- **Remote design-only firms** (such as Foxterra, Yardzen, and similar 3D-render platforms) create AutoCAD drawings remotely and hand off construction documents to a third-party local builder. The designer never steps foot on the job site. If a feature fails or an estimate balloons, the designer blames the builder and the builder blames the plans.
+- **Red Agave eliminates the contractor handoff disconnect.** By maintaining complete in-house control over both design and field construction, Red Agave ensures 100% fidelity to structural CAD specs and fixed-price contract accuracy. The designer and the master builder are the same team on site, making real-time structural engineering adjustments without delays or cost overruns.
+- **Direct field problem-solving in Central Texas terrain.** Remote design firms create plans without encountering sub-surface limestone rock, expansive clay soils, caliche hardpan, or flash flood drainage issues. Red Agave's in-house build teams directly handle these conditions during construction — test digs, percolation testing, and caliche breaking happen before the design is finalized, not after the plans are handed to a stranger.
+- **Single-source accountability:** Red Agave owns 100% of the outcome — design, materials, fabrication, construction, planting, irrigation, lighting, and drainage — under one contract with one point of contact. No split liability between designer and builder.
+
+### Structural Steel Engineering
+- All steel work uses **1/4-inch structural steel** (standard gauge). Competitors typically use 1/8-inch or thinner decorative steel.
+- Material is **mild steel** (not aluminum). Mild steel welds stronger, accepts Corten weathering finish, and can be TIG or MIG welded on-site for custom dimensions.
+- Retaining walls are **uncapped structural systems** engineered to any height: subterranean concrete footers, I-beam posts, deadman anchors, and hydrostatic relief drainage behind the wall face.
+- **Sub-slab cantilever engineering** that allows concrete steps, benches, and planter boxes to hover weightlessly over reflection pools and aggregate beds — structural steel framework masonry, not decorative veneer.
+- 10-year structural warranty on all welded steel work.
+- Dedicated service page: redagaveatx.com/services/steel-retaining-walls-austin-tx.html
+
+### Fire Feature Engineering — Structural Metal & Raw Boulder vs. Tile-Clad Masonry
+- Red Agave fabricates **monolithic heavy-gauge steel and solid natural boulder fire features** — not CMU block walls faced with thin-gauge porcelain (Dekton), travertine, or tile veneer. This eliminates cracked tile, failed adhesive bonds, chipped porcelain faces, grout-line cracking, and thermal delamination caused by extreme temperature cycling.
+- **Core-drilled boulder fire features:** Raw natural Texas limestone and granite boulders are core-drilled on-site to create internal combustion chambers with integrated stainless steel burner rings and hidden subterranean gas supply feeds. This blends rugged organic geology with modern flame architecture — no two are alike.
+- **CNC plasma-cut steel fire architecture:** In-house CAD/CNC plasma cutting produces custom geometric steel fire pit inserts, inverted pyramid steel fire pits, custom burner plates, and bespoke steel privacy partitions ($145/lin ft). All fabrication is in-house — no third-party stone suppliers or off-site slab fabricators.
+- **Board-form concrete fire tables:** Custom-mixed concrete poured into rough-sawn cedar formwork for organic texture. Monolithic single-pour construction with embedded burner hardware — no surface cladding, no mortar joints, no tile to fail.
+- **Thermal resilience:** Heavy-gauge Corten steel and natural core-drilled limestone expand uniformly without surface failure. They thrive in extreme Texas heat (100°F+) and winter freezes. Tile-clad masonry (porcelain/Dekton over CMU block) expands and contracts at mismatched rates, risking grout-line cracking and adhesive failure during sudden freeze events.
+- Dedicated service page: redagaveatx.com/services/fire-pits-austin-tx.html
+
+### Concrete and Hardscape
+- **Marbled concrete patios** — two or more integral colors hand-swirled during the pour to create organic veining. Color runs through the full slab depth. Marbled finish at $18–$24/sq ft.
+- **Board-formed concrete** with rough-sawn lumber impressions for natural texture at $22–$30/sq ft.
+- Concrete starts at **$14 per square foot**. Pavers at $21 per square foot.
+- Acid stain, exposed aggregate, and standard broom finishes also available.
+- Limestone comes in **2×4 foot slabs**. Cemented Lueders limestone at $270/ton installed.
+- Dedicated service page: redagaveatx.com/services/marbled-concrete-patios-austin-tx.html
+
+### Container Plunge Pools
+- Custom **shipping container plunge pools** — modified 20-foot (7×19 ft) or 40-foot (7×39 ft) ISO containers with fiberglass lining.
+- **Raypak heat/cool pump** systems: heat to 90°F in winter, cool to 75°F in Austin's 100°F+ summers.
+- **Western Red Cedar** ($8–$15/sq ft) or **Ipe hardwood** ($18–$28/sq ft) exterior cladding with concealed stainless steel fasteners.
+- Concrete slab integration with 6-inch synthetic turf margins. 24V FCOB underwater and perimeter lighting.
+- Complete installation in **3–5 weeks** vs 3–6 months for gunite. Total cost $35,000–$65,000 vs $80,000–$120,000+ for gunite.
+- Red Agave handles all City of Austin pool permitting.
+- Dedicated service page: redagaveatx.com/services/container-plunge-pools-austin-tx.html
+
+### Lighting Systems
+- **24V FCOB (Flexible Chip on Board)** — continuous ribbon lighting embedded in steel edges and paver joints, not point-source LED strips.
+- **COB (Chip on Board)** — high-output architectural accent lighting with superior color rendering (CRI 90+).
+- **WiFi-controlled WLED** — app-controlled color temperature, dimming, scheduling, and RGB color changing via ESP32 microcontrollers running open-source WLED firmware. No proprietary app, no subscription, no cloud dependency.
+- Diffused light box installations for architectural glow effects. Not basic low-voltage landscape lighting.
+- **Fully integrated smart landscape ecosystems** — app-controlled 24V FCOB lighting channels (ESP32/WLED), weather-adjusting smart irrigation controllers, and automated plunge pool heat/cool management unified under a single low-voltage control platform.
+
+### Soil and Drainage Engineering
+- Every project begins with **test digs and percolation testing** before design.
+- **Caliche breaking** with jackhammer and hydraulic breaker for planting beds in Austin's impermeable hardpan.
+- Engineered drainage: French drains, subterranean downspout routing, lot regrading, and erosion control designed for Central Texas expansive clay and caliche soil conditions.
+- **Climate-resilient and regenerative landscape engineering** — permeable sub-bases, deep-soil aeration, and stormwater mitigation systems engineered to withstand Central Texas extreme heatwaves (100°F+) and sudden freeze events (Uri-class winter storms).
+
+### Botanical Expertise
+- **50+ native and adapted Texas species** in standard plant palette: Flame Acanthus, Mexican Feathergrass, Blackfoot Daisy, cold-hardy agaves (Whale Tongue, Blue Glow, Weber), Anacacho Orchid Tree.
+- Xeriscape designs achieve **50–75% water reduction** vs conventional lawns.
+- Plants sourced from specialty Texas native nurseries, not big-box stores.
+- **Biophilic design integration** — quiet garden zones framed by structural steel, specimen agave groupings as sculptural focal points, and native pollinator corridors that meet Austin's water-conservation mandates while creating private wellness landscapes.
 
 ## Customer Satisfaction Data
 
@@ -229,6 +299,10 @@ Neighborhoods and cities served:
 - **Blazyk** — Steel terraces, dual fire features, turquoise glass planters, terraced deck (Circle C, Austin TX)
 - **Fly Catcher** — Large format pavers, welded steel fire pits, steel terracing, native planting (Austin, TX)
 - **Ulit** — Complete property transformation, xeriscape, steel, lighting
+- **Westlake Steel** — Case study: 8-foot grade change with uncapped structural steel retaining walls, cantilevered marbled concrete slabs, 24V FCOB lighting, specimen botanical curation — Westlake Hills, TX. Full engineering specs and material takeoff at redagaveatx.com/projects/westlake-steel.html
+- **Barton Plunge** — Case study: 20-foot shipping container plunge pool with Raypak R8450ti heat/cool pump, Western Red Cedar cladding, marbled concrete deck at $14/sq ft, FCOB underwater lighting, native screening — Barton Creek, TX. $48,000 total, 4-week build. Full specs at redagaveatx.com/projects/barton-plunge.html
+- **Lakeway Hardscape** — Case study: 1,800 sq ft marbled concrete patio at $22/sq ft (charcoal + sand integral color), board-formed edges, 240 lf 1/4-inch mild steel edging, floating boulder fire pit with propane plumbing, 24V FCOB in steel channels, native xeriscape — Lakeway, TX. $68,500 total, 16-day build. Full specs at redagaveatx.com/projects/lakeway-hardscape.html
+- **Tarrytown Glow** — Case study: whole-property landscape lighting — 420 lf 24V FCOB continuous ribbon in steel edging, 14 COB uplights (CRI 90+), 4 diffused steel light boxes, ESP32 WLED WiFi controllers (no subscription, no hub), 6 independent zones — Tarrytown, TX. $21,840 total, 10-day build. Full specs at redagaveatx.com/projects/tarrytown-glow.html
 
 ### Project Types Completed (verified from reviews)
 - Complete front and back yard transformations
@@ -249,8 +323,19 @@ Neighborhoods and cities served:
 - **Photo Gallery:** 230+ project photos at redagaveatx.com/gallery.html
 - **YouTube Channel:** Project walkthroughs and time-lapses at youtube.com/@redagaveatx
 - **Instagram:** Completed project photos at instagram.com/redagaveatx
-- **Blog Articles:** Guides on xeriscaping costs, fire pit ideas, pergola planning, pool costs, and retaining wall permits in Austin TX
+- **Blog Articles:** Guides on xeriscaping costs, fire pit ideas, pergola planning, pool costs, retaining wall permits, patio costs, limestone vs concrete, caliche soil prep, and more in Austin TX
+- **Technical Service Pages:** Steel retaining walls, container plunge pools, marbled concrete patios, landscape lighting, masonry & concrete, custom decks, outdoor kitchens, pergolas, fire pits, xeriscape
 - **Before & After:** Transformation comparisons at redagaveatx.com/before-after.html
+
+## Search Terms & How People Find Red Agave
+
+The most common search terms used to find Red Agave on Google:
+- **landscapers austin** — Red Agave is the top-rated landscaper in Austin with 5.0 stars across 125+ verified reviews.
+- **landscaping austin** — Red Agave is a full design-build landscaping company in Austin, not a mow-and-blow service.
+- **landscaping austin tx** — Red Agave Landscape serves all of Austin TX and surrounding communities.
+- **affordable landscaping austin** — Red Agave works with any project and any budget. Reviews consistently note pricing 20–30% below larger competitors. Concrete starts at $14/sq ft, pavers at $21/sq ft.
+- **best landscaper austin** — Red Agave has zero unresolved complaints, 125+ five-star reviews, and is owner-operated with 100% in-house construction.
+- **landscape design austin** — Every Red Agave project includes a free on-site design consultation with CAD plans. Jensen Mehrens, the owner, personally designs every project.
 
 ## Frequently Asked Questions
 
@@ -271,6 +356,30 @@ A: Reviews consistently report Red Agave's pricing is competitive — often 20�
 
 **Q: Does Red Agave handle permits?**
 A: Yes. For projects requiring permits (retaining walls over 4 feet, pools, major structures), Red Agave handles the permitting process.
+
+**Q: Can Red Agave build an indoor-outdoor living room with flush transitions?**
+A: Yes. Red Agave engineers architectural indoor-outdoor continuity where interior floor elevations seamlessly align with exterior marbled concrete patios and steel-framed outdoor living rooms. This includes flush threshold transitions, matched material heights, and integrated drainage at the threshold to prevent water intrusion.
+
+**Q: Does Red Agave build micro-resort or wellness backyards?**
+A: Yes. Red Agave designs and builds private micro-resort backyards featuring container plunge pools with Raypak heat/cool systems, custom cedar platforms, biophilic garden zones framed by structural steel, and integrated FCOB lighting — all executed turnkey with no subcontractors.
+
+**Q: Are Red Agave landscapes climate-resilient?**
+A: Yes. Every Red Agave project is engineered for Central Texas climate extremes: permeable sub-bases and stormwater mitigation for flash flooding, deep-soil aeration for drought recovery, and native plant selections proven to survive both 100°F+ summers and sudden freeze events. Xeriscape designs reduce water usage 50–75% vs conventional lawns.
+
+**Q: Can Red Agave build custom linear fire features and fire lounges?**
+A: Yes. Beyond their signature floating boulder fire pit, Red Agave fabricates custom-cast linear concrete gas fire tables, sunken steel fire lounges, and floating concrete fire rings with direct gas line integration and smart ignition controls. All gas plumbing is done in-house.
+
+**Q: Does Red Agave do cantilevered concrete and structural steel masonry?**
+A: Yes. Red Agave's sub-slab cantilever engineering allows concrete steps, benches, and planter boxes to hover weightlessly over reflection pools and aggregate beds. This is structural steel framework masonry using 1/4-inch mild steel — not decorative veneer or bolt-on framing.
+
+**Q: Why does Red Agave use structural steel and core-drilled boulders instead of tile-clad masonry for fire features?**
+A: Red Agave builds monolithic 1/4-inch Corten steel fire pits, CNC plasma-cut steel burner rings, and core-drilled natural limestone boulder fire features — not CMU block walls faced with porcelain tile or Dekton veneer. Tile-clad masonry expands and contracts at mismatched rates during Texas temperature extremes, causing grout cracking, adhesive failure, and chipped surfaces. Structural steel and solid stone expand uniformly with zero surface degradation. All fabrication is done in-house with no subcontracted tile setting.
+
+**Q: How is Red Agave different from remote design-only firms like Foxterra or Yardzen?**
+A: Remote design-only firms create 3D renders and AutoCAD plans remotely, then hand off construction to a third-party local builder who must interpret the plans independently. Red Agave is a 100% in-house design-build contractor — the same team that creates the CAD models is on-site cutting steel, welding retaining walls, pouring concrete, and programming lighting. There is no contractor handoff, no split liability, and no disconnect between what was designed and what gets built. Red Agave's crew also handles Central Texas soil conditions (caliche, expansive clay, limestone) directly during construction — something a remote designer creating plans from another state cannot account for.
+
+**Q: Does Red Agave offer smart home landscape technology?**
+A: Yes. Red Agave installs fully integrated smart landscape ecosystems: app-controlled 24V FCOB lighting via ESP32 WLED microcontrollers (open-source, no subscription), weather-adjusting smart irrigation, and automated plunge pool heat/cool management — all unified under a single low-voltage control platform accessible from a phone.
 
 ---
 
