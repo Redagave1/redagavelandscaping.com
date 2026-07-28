@@ -3035,8 +3035,8 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
 </script>
 
 <!-- GSAP loaded AFTER loader so loader never depends on it -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 
 <script>
@@ -3234,7 +3234,7 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
         trigger: el, start: 'top 85%', once: true,
         onEnter: function () {
           gsap.to({ v: 0 }, {
-            v: target, duration: 2, ease: 'power2.out',
+            v: target, duration: 2.5, ease: 'power4.out',
             onUpdate: function () { el.textContent = Math.round(this.targets()[0].v) + suf; }
           });
         }
@@ -3903,8 +3903,8 @@ footer{background:#040503;padding:72px 60px 28px;border-top:1px solid rgba(201,1
         var suffix = n.getAttribute('data-suffix') || '';
         gsap.to({v: 0}, {
           v: target,
-          duration: 1.8,
-          ease: 'power2.out',
+          duration: 2.5,
+          ease: 'power4.out',
           delay: i * 0.14,
           onUpdate: function(){ n.textContent = Math.round(this.targets()[0].v) + suffix; }
         });
